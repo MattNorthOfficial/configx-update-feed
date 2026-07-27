@@ -1,4 +1,4 @@
-# Win X driver feed
+# Win X update feed
 
 A small JSON feed of the latest AMD driver versions and Windows builds,
 consumed by the [Win X](https://github.com/MattNorthOfficial) app. Neither AMD
@@ -62,7 +62,7 @@ release appears.
 Fetch the raw file:
 
 ```
-https://raw.githubusercontent.com/MattNorthOfficial/winx-driver-feed/main/feed/drivers.json
+https://raw.githubusercontent.com/MattNorthOfficial/winx-update-feed/main/feed/drivers.json
 ```
 
 ## Running locally

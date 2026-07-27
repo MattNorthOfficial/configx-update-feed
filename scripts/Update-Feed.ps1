@@ -9,7 +9,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$userAgent = 'Mozilla/5.0 winx-driver-feed/1.0'
+$userAgent = 'Mozilla/5.0 winx-update-feed/1.0'
 $outputPath = Join-Path $PSScriptRoot '..\feed\drivers.json'
 
 function Get-CellText([string] $cell) {
