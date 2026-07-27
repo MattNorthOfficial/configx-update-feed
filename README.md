@@ -40,6 +40,9 @@ release appears.
   "windowsBuilds": {
     "25H2": { "build": "26200.8894", "date": "2026-07-18", "kb": "KB5121767" },
     "24H2": { "build": "26100.8894", "date": "2026-07-18", "kb": "KB5121767" }
+  },
+  "motherboards": {
+    "MAG X870 TOMAHAWK WIFI (MS-7E51)": { "bios": "7E51v1A92", "date": "2026-07-01" }
   }
 }
 ```
@@ -56,6 +59,10 @@ release appears.
 - `windowsBuilds` maps each Windows 11 version to its latest *required* build:
   Patch Tuesday (B) and out-of-band (OOB) releases count, optional D-week
   previews do not, so fully patched machines are never flagged as outdated.
+- `motherboards` maps board models (as WMI reports them) to the latest
+  non-beta BIOS on the manufacturer's support page. MSI's API rejects plain
+  HTTP clients, so the scraper fetches it through a headless Chrome/Edge.
+  Coverage grows board by board; models not listed simply get no BIOS check.
 
 ## Consuming
 

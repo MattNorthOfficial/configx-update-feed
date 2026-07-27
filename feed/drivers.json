@@ -1,5 +1,5 @@
 ﻿{
-    "updated":  "2026-07-27T15:43:15Z",
+    "updated":  "2026-07-27T16:27:19Z",
     "source":  "https://gpuopen.com/version-table/",
     "amd":  {
                 "windows":  {
@@ -65,5 +65,11 @@
                                        "date":  "2024-10-08",
                                        "kb":  "KB5044280"
                                    }
-                      }
+                      },
+    "motherboards":  {
+                         "MAG X870 TOMAHAWK WIFI (MS-7E51)":  {
+                                                                  "bios":  "7E51v1A92",
+                                                                  "date":  "2026-07-01"
+                                                              }
+                     }
 }

@@ -203,6 +203,87 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
     }
 }
 
+# --- Motherboard BIOS versions (MSI product API) -----------------------------
+
+# MSI's API rejects plain HTTP clients (Akamai TLS fingerprinting) but serves a
+# real browser engine without any challenge, so fetch it through a headless
+# Chrome/Edge with a regular user agent. Keys match the model string Win X
+# reads from WMI (Win32_BaseBoard.Product).
+$msiBoards = [ordered]@{
+    'MAG X870 TOMAHAWK WIFI (MS-7E51)' = 'MAG-X870-TOMAHAWK-WIFI'
+}
+
+function Find-HeadlessBrowser {
+    foreach ($name in 'google-chrome', 'chromium-browser', 'chromium') {
+        if (Get-Command $name -ErrorAction SilentlyContinue) { return $name }
+    }
+    $windowsPaths = @(
+        "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
+        "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe"
+        "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"
+    )
+    foreach ($path in $windowsPaths) {
+        if ($path -and (Test-Path $path)) { return $path }
+    }
+    return $null
+}
+
+$motherboards = $null
+try {
+    $browser = Find-HeadlessBrowser
+    if (-not $browser) {
+        throw 'No Chrome or Edge available for the MSI fetch.'
+    }
+    $browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+
+    $boards = [ordered]@{}
+    foreach ($model in $msiBoards.Keys) {
+        $apiUrl = "https://www.msi.com/api/v1/product/support/panel?product=$($msiBoards[$model])&type=bios"
+
+        # The browser logs harmless warnings to stderr, which would become
+        # terminating errors under $ErrorActionPreference = 'Stop'.
+        $previousPreference = $ErrorActionPreference
+        $ErrorActionPreference = 'Continue'
+        $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --dump-dom $apiUrl 2>$null | Out-String
+        $ErrorActionPreference = $previousPreference
+
+        # The JSON response is rendered as text inside the DOM, HTML-escaped.
+        $json = [regex]::Match($dom, '(?s)\{.*\}').Value
+        if (-not $json) {
+            Write-Warning "No JSON returned for $model."
+            continue
+        }
+
+        $data = [System.Net.WebUtility]::HtmlDecode($json) | ConvertFrom-Json
+        $latest = @($data.result.downloads.'AMI BIOS') |
+            Where-Object { $_.download_version -and "$($_.download_version) $($_.download_title)" -notmatch 'beta' } |
+            Select-Object -First 1
+
+        if ($latest) {
+            $boards[$model] = [ordered]@{
+                bios = $latest.download_version
+                date = $latest.download_release
+            }
+        }
+    }
+
+    if ($boards.Count -eq 0) {
+        throw 'No BIOS versions could be fetched.'
+    }
+    $motherboards = $boards
+}
+catch {
+    Write-Warning "Motherboard BIOS scrape failed: $($_.Exception.Message)"
+}
+
+if (-not $motherboards -and (Test-Path $outputPath)) {
+    $previousBoards = (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
+    if ($previousBoards) {
+        Write-Warning 'Reusing previously published motherboard data.'
+        $motherboards = $previousBoards
+    }
+}
+
 # --- Write the feed ----------------------------------------------------------
 
 $amd = [ordered]@{ windows = $latestPerBranch }
@@ -214,8 +295,8 @@ if ($chipset) {
 # workflow only commits on actual releases.
 if (Test-Path $outputPath) {
     $existing = Get-Content $outputPath -Raw | ConvertFrom-Json
-    $existingData = @($existing.amd, $existing.windowsBuilds) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds) | ConvertTo-Json -Depth 5
+    $existingData = @($existing.amd, $existing.windowsBuilds, $existing.motherboards) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds, $motherboards) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-Host 'Driver data unchanged; feed not rewritten.'
         return
@@ -229,6 +310,9 @@ $feed = [ordered]@{
 }
 if ($windowsBuilds) {
     $feed.windowsBuilds = $windowsBuilds
+}
+if ($motherboards) {
+    $feed.motherboards = $motherboards
 }
 
 $json = $feed | ConvertTo-Json -Depth 5
