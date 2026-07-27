@@ -94,6 +94,11 @@ try {
         if ($notesLink -notmatch '^https?:') { $notesLink = "https://www.amd.com$notesLink" }
         $notesText = ((Invoke-WebRequest $notesLink -UserAgent $userAgent -UseBasicParsing).Content) -replace '<[^>]+>', ' '
 
+        # The notes use non-breaking spaces; Windows PowerShell 5.1 additionally
+        # mis-decodes them as "Â ". Normalize both so \s+ in the patterns works
+        # regardless of the PowerShell version running this script.
+        $notesText = $notesText -replace [char]0x00C2, ' ' -replace [char]0x00A0, ' '
+
         # Only the components Win X displays. "AMD Interface Driver" is the
         # package behind the SMBus PnP device on current installs.
         $componentPatterns = [ordered]@{
@@ -101,6 +106,12 @@ try {
             psp = 'AMD PSP Driver\s+(\d+(?:\.\d+)+)'
             ppm = 'AMD PPM Provisioning File Driver\s+(\d+(?:\.\d+)+)'
             vcache = 'AMD 3D V-Cache Performance Optimizer Driver\s+(\d+(?:\.\d+)+)'
+            gpio = 'AMD GPIO2 Driver\s+(\d+(?:\.\d+)+)'
+            i2c = 'AMD I2C Driver\s+(\d+(?:\.\d+)+)'
+            # PT GPIO is the one component whose Windows 10 and 11 versions can
+            # differ; skip the first (Windows 10) column when both are present.
+            ptgpio = 'PT GPIO Driver\D{1,30}(?:\d+(?:\.\d+)+\D{1,10})?(\d+(?:\.\d+)+)'
+            compatdb = 'AMD Application Compatibility Database Driver\s+(\d+(?:\.\d+)+)'
         }
 
         $components = [ordered]@{}

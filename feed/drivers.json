@@ -1,33 +1,37 @@
-{
-  "updated": "2026-07-27T02:38:57Z",
-  "source": "https://gpuopen.com/version-table/",
-  "amd": {
-    "windows": {
-      "current": {
-        "adrenalin": "26.6.4",
-        "whql": true,
-        "driverStore": "32.0.31021.5001"
-      },
-      "rdna1-2": {
-        "adrenalin": "26.6.2",
-        "whql": true,
-        "driverStore": "32.0.21043.19003"
-      },
-      "polaris-vega": {
-        "adrenalin": "26.5.2",
-        "whql": true,
-        "driverStore": "31.0.21925.1001"
-      }
-    },
-    "chipset": {
-      "revision": "8.05.04.516",
-      "date": "2026-05-18",
-      "components": {
-        "smbus": "2.0.0.26",
-        "psp": "5.44.0.0",
-        "ppm": "8.0.0.62",
-        "vcache": "1.0.0.12"
-      }
-    }
-  }
+﻿{
+    "updated":  "2026-07-27T06:10:39Z",
+    "source":  "https://gpuopen.com/version-table/",
+    "amd":  {
+                "windows":  {
+                                "current":  {
+                                                "adrenalin":  "26.6.4",
+                                                "whql":  true,
+                                                "driverStore":  "32.0.31021.5001"
+                                            },
+                                "rdna1-2":  {
+                                                "adrenalin":  "26.6.2",
+                                                "whql":  true,
+                                                "driverStore":  "32.0.21043.19003"
+                                            },
+                                "polaris-vega":  {
+                                                     "adrenalin":  "26.5.2",
+                                                     "whql":  true,
+                                                     "driverStore":  "31.0.21925.1001"
+                                                 }
+                            },
+                "chipset":  {
+                                "revision":  "8.05.04.516",
+                                "date":  "2026-05-18",
+                                "components":  {
+                                                   "smbus":  "2.0.0.26",
+                                                   "psp":  "5.44.0.0",
+                                                   "ppm":  "8.0.0.62",
+                                                   "vcache":  "1.0.0.12",
+                                                   "gpio":  "2.2.0.137",
+                                                   "i2c":  "1.2.0.126",
+                                                   "ptgpio":  "3.0.5.0",
+                                                   "compatdb":  "1.0.0.3"
+                                               }
+                            }
+            }
 }

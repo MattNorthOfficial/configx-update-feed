@@ -27,7 +27,11 @@ plus its release notes (chipset) every six hours, and commits
         "smbus": "2.0.0.26",
         "psp": "5.44.0.0",
         "ppm": "8.0.0.62",
-        "vcache": "1.0.0.12"
+        "vcache": "1.0.0.12",
+        "gpio": "2.2.0.137",
+        "i2c": "1.2.0.126",
+        "ptgpio": "3.0.5.0",
+        "compatdb": "1.0.0.3"
       }
     }
   }
@@ -41,7 +45,8 @@ plus its release notes (chipset) every six hours, and commits
   maintenance branches AMD keeps for older GPU generations.
 - `chipset.revision` is the AMD Chipset Software bundle version; `components`
   holds the driver versions bundled in that release (SMBus/interface, PSP,
-  PPM provisioning, 3D V-Cache optimizer) as reported by PnP devices.
+  PPM provisioning, 3D V-Cache optimizer, GPIO, I2C, Promontory GPIO, and the
+  application compatibility database) as reported by PnP devices.
 
 ## Consuming
 
