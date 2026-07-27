@@ -20,12 +20,12 @@ jobs:
 
       - name: Commit feed if changed
         run: |
-          if git diff --quiet -- feed/drivers.json; then
+          if git diff --quiet -- feed/updates.json; then
             echo "Feed unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feed/drivers.json
+          git add feed/updates.json
           git commit -m "Update feed"
           git push

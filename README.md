@@ -7,7 +7,7 @@ nor Microsoft offer a public API for this, so a scheduled GitHub Action scrapes
 [AMD's chipset driver page](https://www.amd.com/en/support/downloads/drivers.html/chipsets/am5/x870e.html)
 plus its release notes (chipset), and
 [Microsoft's Windows 11 release information](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information)
-(OS builds) every six hours, and commits `feed/drivers.json` when a new
+(OS builds) every six hours, and commits `feed/updates.json` when a new
 release appears.
 
 ## Feed format
@@ -69,7 +69,7 @@ release appears.
 Fetch the raw file:
 
 ```
-https://raw.githubusercontent.com/MattNorthOfficial/winx-update-feed/main/feed/drivers.json
+https://raw.githubusercontent.com/MattNorthOfficial/winx-update-feed/main/feed/updates.json
 ```
 
 ## Running locally

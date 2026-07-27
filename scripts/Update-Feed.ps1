@@ -1,4 +1,4 @@
-# Scrapes the latest AMD driver versions and writes feed/drivers.json:
+# Scrapes the latest AMD driver versions and writes feed/updates.json:
 # - Graphics: GPUOpen's version table, which maps every Adrenalin release to
 #   its Windows driver-store version (the version WMI reports), including the
 #   separate RDNA1/2 and Polaris/Vega branches that older GPUs are kept on.
@@ -10,7 +10,7 @@
 $ErrorActionPreference = 'Stop'
 
 $userAgent = 'Mozilla/5.0 winx-update-feed/1.0'
-$outputPath = Join-Path $PSScriptRoot '..\feed\drivers.json'
+$outputPath = Join-Path $PSScriptRoot '..\feed\updates.json'
 
 function Get-CellText([string] $cell) {
     $text = $cell -replace '<[^>]+>', ''
