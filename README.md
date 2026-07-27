@@ -1,10 +1,12 @@
 # Win X driver feed
 
-A small JSON feed of the latest AMD graphics driver versions, consumed by the
+A small JSON feed of the latest AMD driver versions, consumed by the
 [Win X](https://github.com/MattNorthOfficial) app. AMD offers no public API for
 driver releases, so a scheduled GitHub Action scrapes
-[AMD GPUOpen's version table](https://gpuopen.com/version-table/) every six
-hours and commits `feed/drivers.json` when a new release appears.
+[AMD GPUOpen's version table](https://gpuopen.com/version-table/) (graphics)
+and [AMD's chipset driver page](https://www.amd.com/en/support/downloads/drivers.html/chipsets/am5/x870e.html)
+plus its release notes (chipset) every six hours, and commits
+`feed/drivers.json` when a new release appears.
 
 ## Feed format
 
@@ -17,6 +19,16 @@ hours and commits `feed/drivers.json` when a new release appears.
       "current":      { "adrenalin": "26.6.4", "whql": true, "driverStore": "32.0.31021.5001" },
       "rdna1-2":      { "adrenalin": "26.6.2", "whql": true, "driverStore": "32.0.21043.19003" },
       "polaris-vega": { "adrenalin": "26.5.2", "whql": true, "driverStore": "31.0.21925.1001" }
+    },
+    "chipset": {
+      "revision": "8.05.04.516",
+      "date": "2026-05-18",
+      "components": {
+        "smbus": "2.0.0.26",
+        "psp": "5.44.0.0",
+        "ppm": "8.0.0.62",
+        "vcache": "1.0.0.12"
+      }
     }
   }
 }
@@ -27,6 +39,9 @@ hours and commits `feed/drivers.json` when a new release appears.
   reports), which lets a client match its installed driver to the right branch.
 - `current` is the mainline release; `rdna1-2` and `polaris-vega` are the
   maintenance branches AMD keeps for older GPU generations.
+- `chipset.revision` is the AMD Chipset Software bundle version; `components`
+  holds the driver versions bundled in that release (SMBus/interface, PSP,
+  PPM provisioning, 3D V-Cache optimizer) as reported by PnP devices.
 
 ## Consuming
 

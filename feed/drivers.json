@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27T02:13:29Z",
+  "updated": "2026-07-27T02:38:57Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -17,6 +17,16 @@
         "adrenalin": "26.5.2",
         "whql": true,
         "driverStore": "31.0.21925.1001"
+      }
+    },
+    "chipset": {
+      "revision": "8.05.04.516",
+      "date": "2026-05-18",
+      "components": {
+        "smbus": "2.0.0.26",
+        "psp": "5.44.0.0",
+        "ppm": "8.0.0.62",
+        "vcache": "1.0.0.12"
       }
     }
   }
