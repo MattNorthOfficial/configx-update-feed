@@ -137,6 +137,72 @@ if (-not $chipset -and (Test-Path $outputPath)) {
     }
 }
 
+# --- Windows builds (Microsoft's release information page) ------------------
+
+# The release-history tables list every update per version, newest first.
+# Only B (Patch Tuesday) and OOB releases count as required - D-week releases
+# are optional previews and would flag fully patched machines as outdated.
+$windowsSourceUrl = 'https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information'
+$windowsBuilds = $null
+try {
+    $winHtml = (Invoke-WebRequest $windowsSourceUrl -UserAgent $userAgent -UseBasicParsing).Content
+
+    $versionPattern = 'Version (?<version>\d\dH\d) \(OS build \d+\)'
+    $winRowPattern = '<tr>\s*<td[^>]*>(?<opt>.*?)</td>\s*<td[^>]*>(?<type>.*?)</td>\s*<td[^>]*>(?<date>.*?)</td>\s*<td[^>]*>(?<build>.*?)</td>\s*<td[^>]*>(?<kb>.*?)</td>'
+
+    $versionMatches = [regex]::Matches($winHtml, $versionPattern)
+    $builds = [ordered]@{}
+
+    for ($i = 0; $i -lt $versionMatches.Count; $i++) {
+        $version = $versionMatches[$i].Groups['version'].Value
+        if ($builds.Contains($version)) {
+            continue  # the page mentions each version again in later sections
+        }
+
+        $start = $versionMatches[$i].Index
+        $end = if ($i + 1 -lt $versionMatches.Count) { $versionMatches[$i + 1].Index } else { $winHtml.Length }
+        $block = $winHtml.Substring($start, $end - $start)
+
+        foreach ($row in [regex]::Matches($block, $winRowPattern, 'Singleline')) {
+            $type = Get-CellText $row.Groups['type'].Value
+            if ($type -notmatch '(\bB|OOB)$') {
+                continue
+            }
+            $build = Get-CellText $row.Groups['build'].Value
+            if ($build -notmatch '^\d+\.\d+$') {
+                continue
+            }
+
+            $entry = [ordered]@{
+                build = $build
+                date = Get-CellText $row.Groups['date'].Value
+            }
+            $kb = [regex]::Match($row.Groups['kb'].Value, 'KB\d+').Value
+            if ($kb) {
+                $entry.kb = $kb
+            }
+            $builds[$version] = $entry
+            break
+        }
+    }
+
+    if ($builds.Count -eq 0) {
+        throw 'No Windows build rows found - the page layout may have changed.'
+    }
+    $windowsBuilds = $builds
+}
+catch {
+    Write-Warning "Windows builds scrape failed: $($_.Exception.Message)"
+}
+
+if (-not $windowsBuilds -and (Test-Path $outputPath)) {
+    $previousBuilds = (Get-Content $outputPath -Raw | ConvertFrom-Json).windowsBuilds
+    if ($previousBuilds) {
+        Write-Warning 'Reusing previously published Windows build data.'
+        $windowsBuilds = $previousBuilds
+    }
+}
+
 # --- Write the feed ----------------------------------------------------------
 
 $amd = [ordered]@{ windows = $latestPerBranch }
@@ -144,11 +210,13 @@ if ($chipset) {
     $amd.chipset = $chipset
 }
 
-# Leave the file untouched when the driver data hasn't changed, so the
-# scheduled workflow only commits on actual releases.
+# Leave the file untouched when the data hasn't changed, so the scheduled
+# workflow only commits on actual releases.
 if (Test-Path $outputPath) {
     $existing = Get-Content $outputPath -Raw | ConvertFrom-Json
-    if (($existing.amd | ConvertTo-Json -Depth 5) -eq ($amd | ConvertTo-Json -Depth 5)) {
+    $existingData = @($existing.amd, $existing.windowsBuilds) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds) | ConvertTo-Json -Depth 5
+    if ($existingData -eq $newData) {
         Write-Host 'Driver data unchanged; feed not rewritten.'
         return
     }
@@ -158,6 +226,9 @@ $feed = [ordered]@{
     updated = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
     source = $gpuSourceUrl
     amd = $amd
+}
+if ($windowsBuilds) {
+    $feed.windowsBuilds = $windowsBuilds
 }
 
 $json = $feed | ConvertTo-Json -Depth 5

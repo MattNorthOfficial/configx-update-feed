@@ -1,12 +1,14 @@
 # Win X driver feed
 
-A small JSON feed of the latest AMD driver versions, consumed by the
-[Win X](https://github.com/MattNorthOfficial) app. AMD offers no public API for
-driver releases, so a scheduled GitHub Action scrapes
-[AMD GPUOpen's version table](https://gpuopen.com/version-table/) (graphics)
-and [AMD's chipset driver page](https://www.amd.com/en/support/downloads/drivers.html/chipsets/am5/x870e.html)
-plus its release notes (chipset) every six hours, and commits
-`feed/drivers.json` when a new release appears.
+A small JSON feed of the latest AMD driver versions and Windows builds,
+consumed by the [Win X](https://github.com/MattNorthOfficial) app. Neither AMD
+nor Microsoft offer a public API for this, so a scheduled GitHub Action scrapes
+[AMD GPUOpen's version table](https://gpuopen.com/version-table/) (graphics),
+[AMD's chipset driver page](https://www.amd.com/en/support/downloads/drivers.html/chipsets/am5/x870e.html)
+plus its release notes (chipset), and
+[Microsoft's Windows 11 release information](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information)
+(OS builds) every six hours, and commits `feed/drivers.json` when a new
+release appears.
 
 ## Feed format
 
@@ -34,6 +36,10 @@ plus its release notes (chipset) every six hours, and commits
         "compatdb": "1.0.0.3"
       }
     }
+  },
+  "windowsBuilds": {
+    "25H2": { "build": "26200.8894", "date": "2026-07-18", "kb": "KB5121767" },
+    "24H2": { "build": "26100.8894", "date": "2026-07-18", "kb": "KB5121767" }
   }
 }
 ```
@@ -47,6 +53,9 @@ plus its release notes (chipset) every six hours, and commits
   holds the driver versions bundled in that release (SMBus/interface, PSP,
   PPM provisioning, 3D V-Cache optimizer, GPIO, I2C, Promontory GPIO, and the
   application compatibility database) as reported by PnP devices.
+- `windowsBuilds` maps each Windows 11 version to its latest *required* build:
+  Patch Tuesday (B) and out-of-band (OOB) releases count, optional D-week
+  previews do not, so fully patched machines are never flagged as outdated.
 
 ## Consuming
 
