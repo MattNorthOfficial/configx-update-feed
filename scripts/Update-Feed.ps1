@@ -1,9 +1,13 @@
-# Scrapes the latest AMD driver versions and writes feed/updates.json:
-# - Graphics: GPUOpen's version table, which maps every Adrenalin release to
-#   its Windows driver-store version (the version WMI reports), including the
-#   separate RDNA1/2 and Polaris/Vega branches that older GPUs are kept on.
-# - Chipset: AMD's chipset driver page (the package is identical across AM4/AM5
-#   chipsets) plus its release notes, which list the component driver versions.
+# Scrapes the latest driver/firmware versions and writes feed/updates.json:
+# - AMD graphics: GPUOpen's version table, which maps every Adrenalin release
+#   to its Windows driver-store version (the version WMI reports), including
+#   the separate RDNA1/2 and Polaris/Vega branches that older GPUs are kept on.
+# - AMD chipset: AMD's chipset driver page (the package is identical across
+#   AM4/AM5 chipsets) plus its release notes with the component versions.
+# - Windows builds: Microsoft's release information page.
+# - Motherboard BIOS: MSI's product support API.
+# - Intel: the chipset INF utility and both graphics-driver download pages.
+# - NVIDIA: the driver-search endpoint behind NVIDIA's own download page.
 #
 # Runs on PowerShell 7 (locally on Windows or in GitHub Actions on Linux).
 
@@ -228,24 +232,32 @@ function Find-HeadlessBrowser {
     return $null
 }
 
+$browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+
+# Runs a URL through headless Chrome/Edge and returns the page DOM. Bypasses
+# the TLS-fingerprinting bot protection (Akamai) that MSI and Intel use, which
+# rejects plain HTTP clients but serves a real browser engine unchallenged.
+function Get-BrowserDom([string] $browser, [string] $url) {
+    # The browser logs harmless warnings to stderr, which would become
+    # terminating errors under $ErrorActionPreference = 'Stop'.
+    $previousPreference = $script:ErrorActionPreference
+    $script:ErrorActionPreference = 'Continue'
+    $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --dump-dom $url 2>$null | Out-String
+    $script:ErrorActionPreference = $previousPreference
+    return $dom
+}
+
 $motherboards = $null
 try {
     $browser = Find-HeadlessBrowser
     if (-not $browser) {
         throw 'No Chrome or Edge available for the MSI fetch.'
     }
-    $browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
 
     $boards = [ordered]@{}
     foreach ($model in $msiBoards.Keys) {
         $apiUrl = "https://www.msi.com/api/v1/product/support/panel?product=$($msiBoards[$model])&type=bios"
-
-        # The browser logs harmless warnings to stderr, which would become
-        # terminating errors under $ErrorActionPreference = 'Stop'.
-        $previousPreference = $ErrorActionPreference
-        $ErrorActionPreference = 'Continue'
-        $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --dump-dom $apiUrl 2>$null | Out-String
-        $ErrorActionPreference = $previousPreference
+        $dom = Get-BrowserDom $browser $apiUrl
 
         # The JSON response is rendered as text inside the DOM, HTML-escaped.
         $json = [regex]::Match($dom, '(?s)\{.*\}').Value
@@ -284,6 +296,114 @@ if (-not $motherboards -and (Test-Path $outputPath)) {
     }
 }
 
+# --- Intel drivers (Intel download-center pages) ------------------------------
+
+# Each download page states its latest version in the short-description text.
+# Graphics has two branches since Intel's 2025 split: "arc" (Arc cards and
+# Core Ultra iGPUs) and "xe" (legacy-support package for 11th-14th gen
+# Iris Xe / UHD). Keys match the app's feed lookups.
+$intelPages = [ordered]@{
+    chipset = @{
+        url = 'https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html'
+        pattern = 'utility version\s+(\d+(?:\.\d+)+)'
+    }
+    arc = @{
+        url = 'https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html'
+        pattern = 'Graphics Driver\s+(\d+(?:\.\d+)+)\s+for'
+    }
+    xe = @{
+        url = 'https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html'
+        pattern = 'Graphics Driver\s+(\d+(?:\.\d+)+)\s+for'
+    }
+}
+
+$intel = $null
+try {
+    $browser = Find-HeadlessBrowser
+    if (-not $browser) {
+        throw 'No Chrome or Edge available for the Intel fetch.'
+    }
+
+    $entries = [ordered]@{}
+    foreach ($key in $intelPages.Keys) {
+        $page = $intelPages[$key]
+        $text = [System.Net.WebUtility]::HtmlDecode(
+            ((Get-BrowserDom $browser $page.url) -replace '<[^>]+>', ' '))
+
+        if ($text -match $page.pattern) {
+            $entries[$key] = [ordered]@{
+                version = $Matches[1]
+                url = $page.url
+            }
+        }
+        else {
+            Write-Warning "No version found on the Intel '$key' page."
+        }
+    }
+
+    if ($entries.Count -eq 0) {
+        throw 'No Intel versions could be fetched.'
+    }
+    $intel = $entries
+}
+catch {
+    Write-Warning "Intel scrape failed: $($_.Exception.Message)"
+}
+
+if (-not $intel -and (Test-Path $outputPath)) {
+    $previousIntel = (Get-Content $outputPath -Raw | ConvertFrom-Json).intel
+    if ($previousIntel) {
+        Write-Warning 'Reusing previously published Intel data.'
+        $intel = $previousIntel
+    }
+}
+
+# --- NVIDIA GeForce driver (NVIDIA's driver-search endpoint) ------------------
+
+# One Game Ready release covers every GeForce the current branch supports, so
+# a single representative card's lookup yields the feed version. The pfid
+# comes from the same community GPU map the app uses for its online lookup.
+$nvidia = $null
+try {
+    $gpuData = Invoke-RestMethod 'https://raw.githubusercontent.com/ZenitH-AT/nvidia-data/main/gpu-data.json' -UserAgent $userAgent
+    $pfid = $null
+    foreach ($section in $gpuData.PSObject.Properties) {
+        $hit = $section.Value.PSObject.Properties |
+            Where-Object Name -in 'GeForce RTX 5090', 'GeForce RTX 4090' |
+            Select-Object -First 1
+        if ($hit) {
+            $pfid = $hit.Value
+            break
+        }
+    }
+    if (-not $pfid) {
+        throw 'No known GPU found in the community GPU map.'
+    }
+
+    $lookupUrl = 'https://gfwsl.geforce.com/services_toolkit/services/com/nvidia/services/AjaxDriverService.php' +
+        "?func=DriverManualLookup&pfid=$pfid&osID=135&languageCode=1033&isWHQL=1&dch=1&sort1=0&numberOfResults=1"
+    $info = (Invoke-RestMethod $lookupUrl -UserAgent $userAgent).IDS[0].downloadInfo
+    if (-not $info.Version) {
+        throw 'Lookup returned no version.'
+    }
+
+    $nvidia = [ordered]@{
+        gameReady = $info.Version
+        url = "$($info.DetailsURL)"
+    }
+}
+catch {
+    Write-Warning "NVIDIA lookup failed: $($_.Exception.Message)"
+}
+
+if (-not $nvidia -and (Test-Path $outputPath)) {
+    $previousNvidia = (Get-Content $outputPath -Raw | ConvertFrom-Json).nvidia
+    if ($previousNvidia) {
+        Write-Warning 'Reusing previously published NVIDIA data.'
+        $nvidia = $previousNvidia
+    }
+}
+
 # --- Write the feed ----------------------------------------------------------
 
 $amd = [ordered]@{ windows = $latestPerBranch }
@@ -295,8 +415,8 @@ if ($chipset) {
 # workflow only commits on actual releases.
 if (Test-Path $outputPath) {
     $existing = Get-Content $outputPath -Raw | ConvertFrom-Json
-    $existingData = @($existing.amd, $existing.windowsBuilds, $existing.motherboards) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds, $motherboards) | ConvertTo-Json -Depth 5
+    $existingData = @($existing.amd, $existing.windowsBuilds, $existing.motherboards, $existing.intel, $existing.nvidia) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds, $motherboards, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-Host 'Driver data unchanged; feed not rewritten.'
         return
@@ -313,6 +433,12 @@ if ($windowsBuilds) {
 }
 if ($motherboards) {
     $feed.motherboards = $motherboards
+}
+if ($intel) {
+    $feed.intel = $intel
+}
+if ($nvidia) {
+    $feed.nvidia = $nvidia
 }
 
 $json = $feed | ConvertTo-Json -Depth 5

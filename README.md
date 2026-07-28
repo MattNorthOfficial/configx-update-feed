@@ -1,14 +1,17 @@
 # Win X update feed
 
-A small JSON feed of the latest AMD driver versions and Windows builds,
-consumed by the [Win X](https://github.com/MattNorthOfficial) app. Neither AMD
-nor Microsoft offer a public API for this, so a scheduled GitHub Action scrapes
+A small JSON feed of the latest driver versions, Windows builds, and BIOS
+releases, consumed by the [Win X](https://github.com/MattNorthOfficial) app.
+None of the vendors offer a stable public API for this, so a scheduled GitHub
+Action scrapes
 [AMD GPUOpen's version table](https://gpuopen.com/version-table/) (graphics),
 [AMD's chipset driver page](https://www.amd.com/en/support/downloads/drivers.html/chipsets/am5/x870e.html)
-plus its release notes (chipset), and
+plus its release notes (chipset),
 [Microsoft's Windows 11 release information](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information)
-(OS builds) every six hours, and commits `feed/updates.json` when a new
-release appears.
+(OS builds), MSI's product support API (BIOS), Intel's download-center pages
+(chipset INF utility and both graphics branches), and NVIDIA's driver-search
+endpoint (GeForce Game Ready) every six hours, and commits
+`feed/updates.json` when a new release appears.
 
 ## Feed format
 
@@ -43,6 +46,15 @@ release appears.
   },
   "motherboards": {
     "MAG X870 TOMAHAWK WIFI (MS-7E51)": { "bios": "7E51v1A92", "date": "2026-07-01" }
+  },
+  "intel": {
+    "chipset": { "version": "10.1.20398.8776", "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html" },
+    "arc":     { "version": "32.0.101.8864",   "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html" },
+    "xe":      { "version": "32.0.101.7088",   "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html" }
+  },
+  "nvidia": {
+    "gameReady": "610.74",
+    "url": "https://www.nvidia.com/en-us/drivers/details/274187/"
   }
 }
 ```
@@ -63,6 +75,14 @@ release appears.
   non-beta BIOS on the manufacturer's support page. MSI's API rejects plain
   HTTP clients, so the scraper fetches it through a headless Chrome/Edge.
   Coverage grows board by board; models not listed simply get no BIOS check.
+- `intel` holds the chipset INF utility version plus the two graphics-driver
+  branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
+  Ultra iGPUs) and `xe` (the legacy-support package for 11th-14th gen
+  Iris Xe / UHD). Intel's pages sit behind the same bot protection as MSI's,
+  so they also go through the headless browser.
+- `nvidia.gameReady` is the latest GeForce Game Ready driver, which covers
+  every GPU the current branch supports; Win X uses it as the offline
+  fallback for its per-GPU online lookup.
 
 ## Consuming
 
