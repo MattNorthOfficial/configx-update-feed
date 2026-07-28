@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28T10:36:43Z",
+  "updated": "2026-07-28T14:00:06Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -87,7 +87,7 @@
     }
   },
   "nvidia": {
-    "gameReady": "610.74",
-    "url": "https://www.nvidia.com/en-us/drivers/details/274187/"
+    "gameReady": "610.88",
+    "url": "https://www.nvidia.com/en-us/drivers/details/274383/"
   }
 }
