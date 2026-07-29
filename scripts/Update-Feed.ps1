@@ -210,35 +210,22 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # --- Motherboard BIOS versions (MSI product API) -----------------------------
 
 # MSI's API rejects plain HTTP clients (Akamai TLS fingerprinting) but serves a
-# real browser engine unchallenged, so fetch it through headless Chrome/Edge.
+# real browser engine unchallenged, so everything here goes through headless
+# Chrome/Edge. The board list is not maintained by hand: MSI's products
+# sitemap enumerates every motherboard slug, filtered to desktop chipsets
+# (AM4/AM5, LGA1200/1700/1851, HEDT). Each board's support panel then reports
+# its official marketing name ("PRO X870-P WIFI") - the feed key, matching
+# what Win X reads from WMI once it strips the "(MS-7E51)"-style suffix -
+# alongside its BIOS downloads.
+#
 # ASUS is not here - it exposes a public API the app queries live for any
 # board; Gigabyte and ASRock aren't yet supported (their BIOS lists need,
 # respectively, Nuxt devalue-payload resolution and a per-board table scrape
 # that the current --dump-dom approach doesn't reliably reach).
-#
-# Feed keys are the clean marketing name - Win X strips WMI's "(MS-7E51)"-style
-# suffix before looking a board up - so boards are added by name alone, and the
-# URL slug is just the name with spaces turned into hyphens. Boards whose slug
-# doesn't resolve are skipped, so an incorrect guess is harmless.
-$msiBoards = @(
-    'MAG X870 TOMAHAWK WIFI'
-    'MAG X870E TOMAHAWK WIFI'
-    'PRO X870-P WIFI'
-    'MPG X870E CARBON WIFI'
-    'MAG B850 TOMAHAWK MAX WIFI'
-    'PRO B850-P WIFI'
-    'MAG B650 TOMAHAWK WIFI'
-    'PRO B650-P WIFI'
-    'MPG B650 CARBON WIFI'
-    'MAG X670E TOMAHAWK WIFI'
-    'MPG Z890 CARBON WIFI'
-    'MAG Z890 TOMAHAWK WIFI'
-    'PRO Z890-P WIFI'
-    'MAG B860 TOMAHAWK WIFI'
-    'MPG Z790 CARBON WIFI'
-    'MAG Z790 TOMAHAWK WIFI'
-    'MAG B760 TOMAHAWK WIFI'
-)
+$msiSitemapUrl = 'https://www.msi.com/sitemap-products-001.xml'
+$msiChipsetFilter = '\b(X870|X670|B850|B840|B650|A620|X570|B550|A520|B450|X470|X370|B350|A320' +
+    '|Z890|B860|H810|Z790|B760|H770|Z690|B660|H670|H610|Z590|B560|H510|Z490|B460|H410|H310' +
+    '|TRX50|TRX40|WRX90|X399|X299)[A-Z]*\b'
 
 function Find-HeadlessBrowser {
     foreach ($name in 'google-chrome', 'chromium-browser', 'chromium') {
@@ -280,21 +267,25 @@ function Format-BiosDate([string] $raw) {
     return $raw.Trim()
 }
 
-# MSI: JSON support panel via headless browser (Akamai-protected). The slug is
-# the marketing name with spaces turned into hyphens.
-function Get-MsiBios([string] $browser, [string] $model) {
-    $slug = ($model -replace '\s+', '-')
+# MSI: JSON support panel via headless browser (Akamai-protected). Returns the
+# board's official name alongside its newest non-beta BIOS, or $null when the
+# slug doesn't resolve or lists no BIOS.
+function Get-MsiBios([string] $browser, [string] $slug) {
     $dom = Get-BrowserDom $browser "https://www.msi.com/api/v1/product/support/panel?product=$slug&type=bios"
     $json = [regex]::Match($dom, '(?s)\{.*\}').Value
     if (-not $json) { return $null }
 
     $data = [System.Net.WebUtility]::HtmlDecode($json) | ConvertFrom-Json
+    $name = "$($data.result.title)".Trim()
     $latest = @($data.result.downloads.'AMI BIOS') |
         Where-Object { $_.download_version -and "$($_.download_version) $($_.download_title)" -notmatch 'beta' } |
         Select-Object -First 1
-    if (-not $latest) { return $null }
+    if (-not $name -or -not $latest) { return $null }
 
-    return [ordered]@{ bios = $latest.download_version; date = (Format-BiosDate $latest.download_release) }
+    return [pscustomobject]@{
+        Name = $name
+        Entry = [ordered]@{ bios = $latest.download_version; date = (Format-BiosDate $latest.download_release) }
+    }
 }
 
 $motherboards = $null
@@ -304,24 +295,63 @@ try {
         throw 'No Chrome or Edge available for the MSI fetch.'
     }
 
-    $boards = [ordered]@{}
-    foreach ($model in $msiBoards) {
+    $slugs = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
+            'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
+        ForEach-Object { $_.Groups[1].Value } |
+        Sort-Object -Unique |
+        Where-Object { $_ -match $msiChipsetFilter })
+    if ($slugs.Count -lt 50) {
+        throw "Only $($slugs.Count) boards enumerated - the sitemap layout may have changed."
+    }
+    Write-Host "MSI: checking $($slugs.Count) boards..."
+
+    # Each headless call takes a few seconds; a handful in flight keeps the
+    # full sweep to minutes without hammering MSI. The parallel runspaces
+    # don't inherit functions, so they are re-hydrated from their text.
+    $getBrowserDom = ${function:Get-BrowserDom}.ToString()
+    $getMsiBios = ${function:Get-MsiBios}.ToString()
+    $formatBiosDate = ${function:Format-BiosDate}.ToString()
+    $results = $slugs | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $slug = $_
+        ${function:Get-BrowserDom} = $using:getBrowserDom
+        ${function:Get-MsiBios} = $using:getMsiBios
+        ${function:Format-BiosDate} = $using:formatBiosDate
+        $browserUa = $using:browserUa
         try {
-            $entry = Get-MsiBios $browser $model
-            if ($entry) {
-                $boards[$model] = $entry
-            }
-            else {
-                Write-Warning "MSI: no BIOS for $model."
-            }
+            Get-MsiBios $using:browser $slug
         }
         catch {
-            Write-Warning "MSI '$model' failed: $($_.Exception.Message)"
+            Write-Warning "MSI '$slug' failed: $($_.Exception.Message)"
+            $null
         }
     }
 
-    if ($boards.Count -eq 0) {
+    $fetched = @{}
+    foreach ($result in $results | Where-Object { $_ }) {
+        $fetched[$result.Name] = $result.Entry
+    }
+    if ($fetched.Count -eq 0) {
         throw 'No BIOS versions could be fetched.'
+    }
+    Write-Host "MSI: $($fetched.Count) boards resolved."
+
+    # Boards that dropped out of this sweep (a transient API failure, or MSI
+    # delisting an older product) keep their previously published entry: the
+    # last-known BIOS remains the newest one there is.
+    if (Test-Path $outputPath) {
+        $previousBoards = (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
+        foreach ($prop in @($previousBoards.PSObject.Properties)) {
+            if ($prop.Value.bios -and -not $fetched.ContainsKey($prop.Name)) {
+                $fetched[$prop.Name] = [ordered]@{ bios = $prop.Value.bios; date = "$($prop.Value.date)" }
+            }
+        }
+    }
+
+    # Sorted keys keep the feed diff stable across runs (parallel completion
+    # order varies run to run).
+    $boards = [ordered]@{}
+    foreach ($name in ($fetched.Keys | Sort-Object)) {
+        $boards[$name] = $fetched[$name]
     }
     $motherboards = $boards
 }

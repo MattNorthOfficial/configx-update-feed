@@ -74,12 +74,15 @@ endpoint (GeForce Game Ready) every six hours, and commits
   previews do not, so fully patched machines are never flagged as outdated.
 - `motherboards` maps board models (the clean marketing name; Win X strips
   WMI's "(MS-7E51)"-style suffix before looking a board up) to the latest
-  non-beta BIOS on the manufacturer's support page. MSI's API rejects plain
-  HTTP clients, so the scraper fetches it through a headless Chrome/Edge.
-  Coverage grows board by board; models not listed simply get no BIOS check.
-  ASUS is handled entirely in the app, which queries ASUS's public BIOS API
-  live for any board, so ASUS boards never need a feed entry. Gigabyte and
-  ASRock aren't covered yet - their BIOS lists need, respectively, Nuxt
+  non-beta BIOS on the manufacturer's support page. The MSI board list is
+  enumerated from MSI's products sitemap (every desktop board on AM4/AM5,
+  LGA1200/1700/1851, and HEDT sockets - about 450 models), then each board's
+  support panel supplies its official name and BIOS list. MSI's API rejects
+  plain HTTP clients, so all of it goes through a headless Chrome/Edge.
+  Boards that drop out of a sweep keep their last published entry. ASUS is
+  handled entirely in the app, which queries ASUS's public BIOS API live for
+  any board, so ASUS boards never need a feed entry. Gigabyte and ASRock
+  aren't covered yet - their BIOS lists need, respectively, Nuxt
   devalue-payload resolution and a per-board table scrape.
 - `intel` holds the chipset INF utility version plus the two graphics-driver
   branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
