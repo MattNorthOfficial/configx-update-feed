@@ -210,12 +210,35 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # --- Motherboard BIOS versions (MSI product API) -----------------------------
 
 # MSI's API rejects plain HTTP clients (Akamai TLS fingerprinting) but serves a
-# real browser engine without any challenge, so fetch it through a headless
-# Chrome/Edge with a regular user agent. Keys match the model string Win X
-# reads from WMI (Win32_BaseBoard.Product).
-$msiBoards = [ordered]@{
-    'MAG X870 TOMAHAWK WIFI (MS-7E51)' = 'MAG-X870-TOMAHAWK-WIFI'
-}
+# real browser engine unchallenged, so fetch it through headless Chrome/Edge.
+# ASUS is not here - it exposes a public API the app queries live for any
+# board; Gigabyte and ASRock aren't yet supported (their BIOS lists need,
+# respectively, Nuxt devalue-payload resolution and a per-board table scrape
+# that the current --dump-dom approach doesn't reliably reach).
+#
+# Feed keys are the clean marketing name - Win X strips WMI's "(MS-7E51)"-style
+# suffix before looking a board up - so boards are added by name alone, and the
+# URL slug is just the name with spaces turned into hyphens. Boards whose slug
+# doesn't resolve are skipped, so an incorrect guess is harmless.
+$msiBoards = @(
+    'MAG X870 TOMAHAWK WIFI'
+    'MAG X870E TOMAHAWK WIFI'
+    'PRO X870-P WIFI'
+    'MPG X870E CARBON WIFI'
+    'MAG B850 TOMAHAWK MAX WIFI'
+    'PRO B850-P WIFI'
+    'MAG B650 TOMAHAWK WIFI'
+    'PRO B650-P WIFI'
+    'MPG B650 CARBON WIFI'
+    'MAG X670E TOMAHAWK WIFI'
+    'MPG Z890 CARBON WIFI'
+    'MAG Z890 TOMAHAWK WIFI'
+    'PRO Z890-P WIFI'
+    'MAG B860 TOMAHAWK WIFI'
+    'MPG Z790 CARBON WIFI'
+    'MAG Z790 TOMAHAWK WIFI'
+    'MAG B760 TOMAHAWK WIFI'
+)
 
 function Find-HeadlessBrowser {
     foreach ($name in 'google-chrome', 'chromium-browser', 'chromium') {
@@ -247,6 +270,33 @@ function Get-BrowserDom([string] $browser, [string] $url) {
     return $dom
 }
 
+# Normalizes a release date to yyyy-MM-dd where parseable.
+function Format-BiosDate([string] $raw) {
+    if (-not $raw) { return '' }
+    $parsed = [datetime]::MinValue
+    if ([datetime]::TryParse($raw.Trim(), [ref] $parsed)) {
+        return $parsed.ToString('yyyy-MM-dd')
+    }
+    return $raw.Trim()
+}
+
+# MSI: JSON support panel via headless browser (Akamai-protected). The slug is
+# the marketing name with spaces turned into hyphens.
+function Get-MsiBios([string] $browser, [string] $model) {
+    $slug = ($model -replace '\s+', '-')
+    $dom = Get-BrowserDom $browser "https://www.msi.com/api/v1/product/support/panel?product=$slug&type=bios"
+    $json = [regex]::Match($dom, '(?s)\{.*\}').Value
+    if (-not $json) { return $null }
+
+    $data = [System.Net.WebUtility]::HtmlDecode($json) | ConvertFrom-Json
+    $latest = @($data.result.downloads.'AMI BIOS') |
+        Where-Object { $_.download_version -and "$($_.download_version) $($_.download_title)" -notmatch 'beta' } |
+        Select-Object -First 1
+    if (-not $latest) { return $null }
+
+    return [ordered]@{ bios = $latest.download_version; date = (Format-BiosDate $latest.download_release) }
+}
+
 $motherboards = $null
 try {
     $browser = Find-HeadlessBrowser
@@ -255,27 +305,18 @@ try {
     }
 
     $boards = [ordered]@{}
-    foreach ($model in $msiBoards.Keys) {
-        $apiUrl = "https://www.msi.com/api/v1/product/support/panel?product=$($msiBoards[$model])&type=bios"
-        $dom = Get-BrowserDom $browser $apiUrl
-
-        # The JSON response is rendered as text inside the DOM, HTML-escaped.
-        $json = [regex]::Match($dom, '(?s)\{.*\}').Value
-        if (-not $json) {
-            Write-Warning "No JSON returned for $model."
-            continue
-        }
-
-        $data = [System.Net.WebUtility]::HtmlDecode($json) | ConvertFrom-Json
-        $latest = @($data.result.downloads.'AMI BIOS') |
-            Where-Object { $_.download_version -and "$($_.download_version) $($_.download_title)" -notmatch 'beta' } |
-            Select-Object -First 1
-
-        if ($latest) {
-            $boards[$model] = [ordered]@{
-                bios = $latest.download_version
-                date = $latest.download_release
+    foreach ($model in $msiBoards) {
+        try {
+            $entry = Get-MsiBios $browser $model
+            if ($entry) {
+                $boards[$model] = $entry
             }
+            else {
+                Write-Warning "MSI: no BIOS for $model."
+            }
+        }
+        catch {
+            Write-Warning "MSI '$model' failed: $($_.Exception.Message)"
         }
     }
 

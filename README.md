@@ -45,7 +45,8 @@ endpoint (GeForce Game Ready) every six hours, and commits
     "24H2": { "build": "26100.8894", "date": "2026-07-18", "kb": "KB5121767" }
   },
   "motherboards": {
-    "MAG X870 TOMAHAWK WIFI (MS-7E51)": { "bios": "7E51v1A92", "date": "2026-07-01" }
+    "MAG X870 TOMAHAWK WIFI": { "bios": "7E51v1A92", "date": "2026-07-01" },
+    "MAG Z890 TOMAHAWK WIFI": { "bios": "7E32v1AD0", "date": "2026-07-27" }
   },
   "intel": {
     "chipset": { "version": "10.1.20398.8776", "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html" },
@@ -71,10 +72,15 @@ endpoint (GeForce Game Ready) every six hours, and commits
 - `windowsBuilds` maps each Windows 11 version to its latest *required* build:
   Patch Tuesday (B) and out-of-band (OOB) releases count, optional D-week
   previews do not, so fully patched machines are never flagged as outdated.
-- `motherboards` maps board models (as WMI reports them) to the latest
+- `motherboards` maps board models (the clean marketing name; Win X strips
+  WMI's "(MS-7E51)"-style suffix before looking a board up) to the latest
   non-beta BIOS on the manufacturer's support page. MSI's API rejects plain
   HTTP clients, so the scraper fetches it through a headless Chrome/Edge.
   Coverage grows board by board; models not listed simply get no BIOS check.
+  ASUS is handled entirely in the app, which queries ASUS's public BIOS API
+  live for any board, so ASUS boards never need a feed entry. Gigabyte and
+  ASRock aren't covered yet - their BIOS lists need, respectively, Nuxt
+  devalue-payload resolution and a per-board table scrape.
 - `intel` holds the chipset INF utility version plus the two graphics-driver
   branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
   Ultra iGPUs) and `xe` (the legacy-support package for 11th-14th gen

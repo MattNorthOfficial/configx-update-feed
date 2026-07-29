@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-29T02:24:12Z",
+  "updated": "2026-07-29T18:50:30Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -67,9 +67,73 @@
     }
   },
   "motherboards": {
-    "MAG X870 TOMAHAWK WIFI (MS-7E51)": {
+    "MAG X870 TOMAHAWK WIFI": {
       "bios": "7E51v1A92",
       "date": "2026-07-01"
+    },
+    "MAG X870E TOMAHAWK WIFI": {
+      "bios": "7E59v2AC3",
+      "date": "2026-06-26"
+    },
+    "PRO X870-P WIFI": {
+      "bios": "7E47v1A92",
+      "date": "2026-07-01"
+    },
+    "MPG X870E CARBON WIFI": {
+      "bios": "7E49v1AA3",
+      "date": "2026-06-26"
+    },
+    "MAG B850 TOMAHAWK MAX WIFI": {
+      "bios": "7E62v2A62",
+      "date": "2026-06-30"
+    },
+    "PRO B850-P WIFI": {
+      "bios": "7E56v2A92",
+      "date": "2026-06-26"
+    },
+    "MAG B650 TOMAHAWK WIFI": {
+      "bios": "7D75v1R2",
+      "date": "2026-07-06"
+    },
+    "PRO B650-P WIFI": {
+      "bios": "7D78v1M2",
+      "date": "2026-07-08"
+    },
+    "MPG B650 CARBON WIFI": {
+      "bios": "7D74v1L2",
+      "date": "2026-07-06"
+    },
+    "MAG X670E TOMAHAWK WIFI": {
+      "bios": "7E12v1L2",
+      "date": "2026-07-06"
+    },
+    "MPG Z890 CARBON WIFI": {
+      "bios": "7E17v1AB0",
+      "date": "2026-07-09"
+    },
+    "MAG Z890 TOMAHAWK WIFI": {
+      "bios": "7E32v1AD0",
+      "date": "2026-07-27"
+    },
+    "PRO Z890-P WIFI": {
+      "bios": "7E34v1AE0",
+      "date": "2026-07-08"
+    },
+    "MAG B860 TOMAHAWK WIFI": {
+      "bios": "7E39v1BA0",
+      "date": "2026-07-07"
+    },
+    "MPG Z790 CARBON WIFI": {
+      "bios": "7D89v1I",
+      "date": "2026-03-26"
+    },
+    "MAG Z790 TOMAHAWK WIFI": {
+      "bios": "7D91vHI",
+      "date": "2026-04-22"
+    },
+    "MAG B760 TOMAHAWK WIFI": {
+      "bios": "7D96vAE",
+      "date": "2026-04-07"
     }
   },
   "intel": {
