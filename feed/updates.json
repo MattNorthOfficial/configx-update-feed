@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T02:09:36Z",
+  "updated": "2026-07-30T08:24:42Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -140,7 +140,7 @@
       "date": "2026-07-01"
     },
     "B550 GAMING": {
-      "bios": "7C56vW1",
+      "bios": "7C56vW11",
       "date": "2026-07-27"
     },
     "B550 GAMING GEN3": {
@@ -152,7 +152,7 @@
       "date": "2026-07-22"
     },
     "B550 GAMING WIFI6E": {
-      "bios": "7C56vW1",
+      "bios": "7C56vW11",
       "date": "2026-07-27"
     },
     "B550-A PRO": {
