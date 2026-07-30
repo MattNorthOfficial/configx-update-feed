@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T08:24:42Z",
+  "updated": "2026-07-30T13:56:01Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -1152,8 +1152,8 @@
       "date": "2026-07-24"
     },
     "PRO B550M-B": {
-      "bios": "7D14vH12",
-      "date": "2026-07-27"
+      "bios": "7D14vH1",
+      "date": "2026-07-30"
     },
     "PRO B550M-P": {
       "bios": "7C95vM12",
