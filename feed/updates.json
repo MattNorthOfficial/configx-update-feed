@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-29T23:41:03Z",
+  "updated": "2026-07-30T02:09:36Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -80,8 +80,8 @@
       "date": "2026-07-29"
     },
     "A520M PRO": {
-      "bios": "7D14v1N",
-      "date": "2026-07-27"
+      "bios": "7D14v1O1",
+      "date": "2026-07-30"
     },
     "A520M PRO-C DASH": {
       "bios": "7C57v1J2",
@@ -168,8 +168,8 @@
       "date": "2026-07-24"
     },
     "B550M PRO": {
-      "bios": "7D14v2I",
-      "date": "2026-07-29"
+      "bios": "7D14v2J1",
+      "date": "2026-07-30"
     },
     "B550M PRO-DASH": {
       "bios": "7C95v3K1",
