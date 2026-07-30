@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T13:56:01Z",
+  "updated": "2026-07-30T19:24:54Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -20,15 +20,15 @@
       }
     },
     "chipset": {
-      "revision": "8.05.04.516",
-      "date": "2026-05-18",
+      "revision": "8.07.16.1035",
+      "date": "2026-07-30",
       "components": {
-        "smbus": "2.0.0.26",
-        "psp": "5.44.0.0",
+        "smbus": "2.0.0.29",
+        "psp": "5.46.0.0",
         "ppm": "8.0.0.62",
         "vcache": "1.0.0.12",
         "gpio": "2.2.0.137",
-        "i2c": "1.2.0.126",
+        "i2c": "1.2.0.131",
         "ptgpio": "3.0.5.0",
         "compatdb": "1.0.0.3"
       }
