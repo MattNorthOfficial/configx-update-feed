@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31T17:14:52Z",
+  "updated": "2026-07-31T17:34:24Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -1882,7 +1882,7 @@
     },
     "X670 AORUS ELITE AX": {
       "bios": "F42d",
-      "date": "2026-07-20",
+      "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-11/support#support-dl-bios"
     },
     "X670E GAMING PLUS WIFI": {
