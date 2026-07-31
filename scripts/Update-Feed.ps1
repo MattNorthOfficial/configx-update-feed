@@ -219,9 +219,9 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # alongside its BIOS downloads.
 #
 # ASUS is not here - it exposes a public API the app queries live for any
-# board; Gigabyte and ASRock aren't yet supported (their BIOS lists need,
-# respectively, Nuxt devalue-payload resolution and a per-board table scrape
-# that the current --dump-dom approach doesn't reliably reach).
+# board. Gigabyte and ASRock are covered further down with curated board
+# lists (Gigabyte's pages are server-rendered but only exist at canonical
+# revision URLs; ASRock's derive from the model name).
 $msiSitemapUrl = 'https://www.msi.com/sitemap-products-001.xml'
 $msiChipsetFilter = '\b(X870|X670|B850|B840|B650|A620|X570|B550|A520|B450|X470|X370|B350|A320' +
     '|Z890|B860|H810|Z790|B760|H770|Z690|B660|H670|H610|Z590|B560|H510|Z490|B460|H410|H310' +
@@ -257,11 +257,14 @@ function Get-BrowserDom([string] $browser, [string] $url) {
     return $dom
 }
 
-# Normalizes a release date to yyyy-MM-dd where parseable.
+# Normalizes a release date to yyyy-MM-dd where parseable. Invariant culture,
+# so "Jul 20, 2026" (Gigabyte) and "2026/7/2" (ASRock) parse the same way
+# regardless of the machine's locale.
 function Format-BiosDate([string] $raw) {
     if (-not $raw) { return '' }
     $parsed = [datetime]::MinValue
-    if ([datetime]::TryParse($raw.Trim(), [ref] $parsed)) {
+    if ([datetime]::TryParse($raw.Trim(), [cultureinfo]::InvariantCulture,
+            [System.Globalization.DateTimeStyles]::None, [ref] $parsed)) {
         return $parsed.ToString('yyyy-MM-dd')
     }
     return $raw.Trim()
@@ -286,6 +289,50 @@ function Get-MsiBios([string] $browser, [string] $slug) {
         Name = $name
         Entry = [ordered]@{ bios = $latest.download_version; date = (Format-BiosDate $latest.download_release) }
     }
+}
+
+# Gigabyte: the BIOS list is server-rendered into each board's support page,
+# but pages only exist at canonical revision URLs ("...-rev-10-11") that
+# cannot be derived from a board name - so boards are curated here with their
+# resolved slug. The entry's url rides into the feed so the app can link the
+# exact page (its pattern-built Gigabyte links would land on an error shell).
+function Get-GigabyteBios([string] $browser, [string] $name, [string] $slug) {
+    $url = "https://www.gigabyte.com/Motherboard/$slug/support"
+    $dom = Get-BrowserDom $browser $url
+    # First version cell ("F42c") with its date cell nearby = newest BIOS.
+    $m = [regex]::Match($dom, '(?s)>(F\d{1,2}[a-z]?)<.{0,400}?>([A-Z][a-z]{2} \d{1,2}, \d{4})<')
+    if (-not $m.Success) { return $null }
+
+    return [ordered]@{
+        bios = $m.Groups[1].Value
+        date = Format-BiosDate $m.Groups[2].Value
+        url  = "$url#support-dl-bios"
+    }
+}
+
+# ASRock: BIOS.html renders under headless. Some boards list oldest-first, so
+# the newest entry is picked by date rather than position; beta rows ("[Beta]"
+# or ".AS06"-suffixed versions) never match because the pattern requires the
+# date to follow the plain version directly. The page URL rides into the feed
+# because Phantom Gaming boards live on pg.asrock.com - their old
+# www.asrock.com pages froze when the line moved (~2022) and would otherwise
+# look plausible while being years stale.
+function Get-AsrockBios([string] $browser, [string] $url) {
+    $dom = Get-BrowserDom $browser $url
+    $text = $dom -replace '<[^>]+>', ' ' -replace '\s+', ' '
+
+    $best = $null
+    $bestDate = [datetime]::MinValue
+    foreach ($m in [regex]::Matches($text, '\b(\d+\.\d+[A-Za-z]?)\s+(\d{4}/\d{1,2}/\d{1,2})\b')) {
+        $date = [datetime]::MinValue
+        if ([datetime]::TryParse($m.Groups[2].Value, [cultureinfo]::InvariantCulture,
+                [System.Globalization.DateTimeStyles]::None, [ref] $date) -and $date -gt $bestDate) {
+            $bestDate = $date
+            $best = [ordered]@{ bios = $m.Groups[1].Value; date = $date.ToString('yyyy-MM-dd'); url = $url }
+        }
+    }
+
+    return $best
 }
 
 $motherboards = $null
@@ -335,14 +382,85 @@ try {
     }
     Write-Host "MSI: $($fetched.Count) boards resolved."
 
-    # Boards that dropped out of this sweep (a transient API failure, or MSI
-    # delisting an older product) keep their previously published entry: the
-    # last-known BIOS remains the newest one there is.
+    # Gigabyte boards, keyed by the marketing name WMI reports, with the
+    # canonical slug their pages live at (resolved by probing; misses like
+    # the multi-revision DS3H boards can be added once resolved).
+    $gigabyteBoards = [ordered]@{
+        'X870E AORUS MASTER'     = 'X870E-AORUS-MASTER'
+        'X870 AORUS ELITE WIFI7' = 'X870-AORUS-ELITE-WIFI7-rev-10-11'
+        'X870 GAMING X WIFI7'    = 'X870-GAMING-X-WIFI7-rev-1x'
+        'B850 AORUS ELITE WIFI7' = 'B850-AORUS-ELITE-WIFI7-rev-1x'
+        'B850 GAMING X WIFI6E'   = 'B850-GAMING-X-WIFI6E-rev-1x'
+        'B650 AORUS ELITE AX'    = 'B650-AORUS-ELITE-AX-rev-10-11'
+        'X670 AORUS ELITE AX'    = 'X670-AORUS-ELITE-AX-rev-11'
+        'B550 AORUS ELITE V2'    = 'B550-AORUS-ELITE-V2-rev-10-11'
+        'B450M DS3H'             = 'B450M-DS3H-rev-1x'
+        'X570 AORUS ELITE'       = 'X570-AORUS-ELITE-rev-10'
+        'Z890 AORUS ELITE WIFI7' = 'Z890-AORUS-ELITE-WIFI7'
+        'Z790 AORUS ELITE AX'    = 'Z790-AORUS-ELITE-AX-rev-10'
+        'B760 GAMING X AX'       = 'B760-GAMING-X-AX-rev-1x'
+        'B760M DS3H AX'          = 'B760M-DS3H-AX-rev-1x'
+    }
+
+    foreach ($name in $gigabyteBoards.Keys) {
+        try {
+            $entry = Get-GigabyteBios $browser $name $gigabyteBoards[$name]
+            if ($entry) { $fetched[$name] = $entry }
+            else { Write-Warning "Gigabyte: no BIOS for $name." }
+        }
+        catch {
+            Write-Warning "Gigabyte '$name' failed: $($_.Exception.Message)"
+        }
+    }
+    Write-Host 'Gigabyte: done.'
+
+    # ASRock boards with their probe-verified BIOS page. Phantom Gaming (PG)
+    # boards live on pg.asrock.com; everything else on www.
+    $asrockBoards = [ordered]@{
+        'X870E Taichi'            = 'https://www.asrock.com/mb/AMD/X870E%20Taichi/BIOS.html'
+        'X870 Steel Legend WiFi'  = 'https://www.asrock.com/mb/AMD/X870%20Steel%20Legend%20WiFi/BIOS.html'
+        'X870 Pro RS WiFi'        = 'https://www.asrock.com/mb/AMD/X870%20Pro%20RS%20WiFi/BIOS.html'
+        'B850 Steel Legend WiFi'  = 'https://www.asrock.com/mb/AMD/B850%20Steel%20Legend%20WiFi/BIOS.html'
+        'B850 Pro RS'             = 'https://www.asrock.com/mb/AMD/B850%20Pro%20RS/BIOS.html'
+        'B650E Steel Legend WiFi' = 'https://www.asrock.com/mb/AMD/B650E%20Steel%20Legend%20WiFi/BIOS.html'
+        'B650E PG Riptide WiFi'   = 'https://pg.asrock.com/mb/AMD/B650E%20PG%20Riptide%20WiFi/BIOS.html'
+        'B650 Pro RS'             = 'https://www.asrock.com/mb/AMD/B650%20Pro%20RS/BIOS.html'
+        'B650M Pro RS'            = 'https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/BIOS.html'
+        'X670E Steel Legend'      = 'https://www.asrock.com/mb/AMD/X670E%20Steel%20Legend/BIOS.html'
+        'X570 Steel Legend'       = 'https://www.asrock.com/mb/AMD/X570%20Steel%20Legend/BIOS.html'
+        'X570 Phantom Gaming 4'   = 'https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%204/BIOS.html'
+        'B550 Steel Legend'       = 'https://www.asrock.com/mb/AMD/B550%20Steel%20Legend/BIOS.html'
+        'B550M Pro4'              = 'https://www.asrock.com/mb/AMD/B550M%20Pro4/BIOS.html'
+        'B450M Pro4'              = 'https://www.asrock.com/mb/AMD/B450M%20Pro4/BIOS.html'
+        'Z890 Steel Legend WiFi'  = 'https://www.asrock.com/mb/Intel/Z890%20Steel%20Legend%20WiFi/BIOS.html'
+        'B860 Steel Legend WiFi'  = 'https://www.asrock.com/mb/Intel/B860%20Steel%20Legend%20WiFi/BIOS.html'
+        'Z790 Steel Legend WiFi'  = 'https://www.asrock.com/mb/Intel/Z790%20Steel%20Legend%20WiFi/BIOS.html'
+        'B760 Pro RS'             = 'https://www.asrock.com/mb/Intel/B760%20Pro%20RS/BIOS.html'
+        'Z690 Steel Legend'       = 'https://www.asrock.com/mb/Intel/Z690%20Steel%20Legend/BIOS.html'
+    }
+
+    foreach ($name in $asrockBoards.Keys) {
+        try {
+            $entry = Get-AsrockBios $browser $asrockBoards[$name]
+            if ($entry) { $fetched[$name] = $entry }
+            else { Write-Warning "ASRock: no BIOS for $name." }
+        }
+        catch {
+            Write-Warning "ASRock '$name' failed: $($_.Exception.Message)"
+        }
+    }
+    Write-Host 'ASRock: done.'
+
+    # Boards that dropped out of this sweep (a transient API failure, or a
+    # vendor delisting an older product) keep their previously published
+    # entry: the last-known BIOS remains the newest one there is.
     if (Test-Path $outputPath) {
         $previousBoards = (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
         foreach ($prop in @($previousBoards.PSObject.Properties)) {
             if ($prop.Value.bios -and -not $fetched.ContainsKey($prop.Name)) {
-                $fetched[$prop.Name] = [ordered]@{ bios = $prop.Value.bios; date = "$($prop.Value.date)" }
+                $carried = [ordered]@{ bios = $prop.Value.bios; date = "$($prop.Value.date)" }
+                if ($prop.Value.url) { $carried.url = $prop.Value.url }
+                $fetched[$prop.Name] = $carried
             }
         }
     }

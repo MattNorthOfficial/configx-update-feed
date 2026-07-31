@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T19:24:54Z",
+  "updated": "2026-07-31T17:14:52Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -119,6 +119,16 @@
       "bios": "7C87v1H2",
       "date": "2026-07-24"
     },
+    "B450M DS3H": {
+      "bios": "F68a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-DS3H-rev-1x/support#support-dl-bios"
+    },
+    "B450M Pro4": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450M%20Pro4/BIOS.html"
+    },
     "B450M-A PRO MAX II": {
       "bios": "7C52vA62",
       "date": "2026-07-27"
@@ -139,6 +149,11 @@
       "bios": "7C88v1B2",
       "date": "2026-07-01"
     },
+    "B550 AORUS ELITE V2": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-V2-rev-10-11/support#support-dl-bios"
+    },
     "B550 GAMING": {
       "bios": "7C56vW11",
       "date": "2026-07-27"
@@ -154,6 +169,11 @@
     "B550 GAMING WIFI6E": {
       "bios": "7C56vW11",
       "date": "2026-07-27"
+    },
+    "B550 Steel Legend": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/B550%20Steel%20Legend/BIOS.html"
     },
     "B550-A PRO": {
       "bios": "7C56vAM1",
@@ -186,6 +206,11 @@
     "B550M PRO-VDH WIFI (CEC)": {
       "bios": "7C95vHG1",
       "date": "2026-07-24"
+    },
+    "B550M Pro4": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20Pro4/BIOS.html"
     },
     "B550M-A PRO": {
       "bios": "7C96v2J3",
@@ -223,6 +248,11 @@
       "bios": "7D20v2A1",
       "date": "2026-04-09"
     },
+    "B650 AORUS ELITE AX": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-AX-rev-10-11/support#support-dl-bios"
+    },
     "B650 GAMING PLUS": {
       "bios": "7E26v1O2",
       "date": "2026-07-08"
@@ -230,6 +260,21 @@
     "B650 GAMING PLUS WIFI": {
       "bios": "7E26v1O2",
       "date": "2026-07-08"
+    },
+    "B650 Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/B650%20Pro%20RS/BIOS.html"
+    },
+    "B650E PG Riptide WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-17",
+      "url": "https://pg.asrock.com/mb/AMD/B650E%20PG%20Riptide%20WiFi/BIOS.html"
+    },
+    "B650E Steel Legend WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/AMD/B650E%20Steel%20Legend%20WiFi/BIOS.html"
     },
     "B650M BOMBER WIFI": {
       "bios": "7E30v272",
@@ -243,6 +288,11 @@
       "bios": "7E30v1F2",
       "date": "2026-07-06"
     },
+    "B650M Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/BIOS.html"
+    },
     "B650M PROJECT ZERO": {
       "bios": "7E09v1I2",
       "date": "2026-07-06"
@@ -254,6 +304,21 @@
     "B760 GAMING PLUS WIFI DDR4": {
       "bios": "7D98vM9",
       "date": "2026-06-03"
+    },
+    "B760 GAMING X AX": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760 Pro RS": {
+      "bios": "14.02",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RS/BIOS.html"
+    },
+    "B760M DS3H AX": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-AX-rev-1x/support#support-dl-bios"
     },
     "B760M GAMING PLUS WIFI": {
       "bios": "7D99vH9",
@@ -295,6 +360,11 @@
       "bios": "7E76v1A42",
       "date": "2026-07-01"
     },
+    "B850 AORUS ELITE WIFI7": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-WIFI7-rev-1x/support#support-dl-bios"
+    },
     "B850 GAMING PLUS WIFI": {
       "bios": "7E56v1AA2",
       "date": "2026-06-26"
@@ -311,9 +381,24 @@
       "bios": "7E89v1A31",
       "date": "2026-06-03"
     },
+    "B850 GAMING X WIFI6E": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-GAMING-X-WIFI6E-rev-1x/support#support-dl-bios"
+    },
     "B850 MLG EDITION": {
       "bios": "7E62v3A32",
       "date": "2026-06-30"
+    },
+    "B850 Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Pro%20RS/BIOS.html"
+    },
+    "B850 Steel Legend WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Steel%20Legend%20WiFi/BIOS.html"
     },
     "B850M GAMING PLUS WIFI": {
       "bios": "7E66v1A43",
@@ -342,6 +427,11 @@
     "B860 GAMING PLUS WIFI": {
       "bios": "7E41v2A90",
       "date": "2026-07-24"
+    },
+    "B860 Steel Legend WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Steel%20Legend%20WiFi/BIOS.html"
     },
     "B860M GAMING PLUS WIFI": {
       "bios": "7E42v2A9",
@@ -1775,17 +1865,72 @@
       "bios": "7A94vA2",
       "date": "2022-09-20"
     },
+    "X570 AORUS ELITE": {
+      "bios": "F41a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "X570 Phantom Gaming 4": {
+      "bios": "5.80",
+      "date": "2026-03-31",
+      "url": "https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "X570 Steel Legend": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Steel%20Legend/BIOS.html"
+    },
+    "X670 AORUS ELITE AX": {
+      "bios": "F42d",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-11/support#support-dl-bios"
+    },
     "X670E GAMING PLUS WIFI": {
       "bios": "7E16v1D2",
       "date": "2026-07-06"
+    },
+    "X670E Steel Legend": {
+      "bios": "4.43",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/AMD/X670E%20Steel%20Legend/BIOS.html"
+    },
+    "X870 AORUS ELITE WIFI7": {
+      "bios": "F13d",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-rev-10-11/support#support-dl-bios"
     },
     "X870 GAMING PLUS WIFI": {
       "bios": "7E47v2A72",
       "date": "2026-07-01"
     },
+    "X870 GAMING X WIFI7": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-GAMING-X-WIFI7-rev-1x/support#support-dl-bios"
+    },
+    "X870 Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "X870 Steel Legend WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "X870E AORUS MASTER": {
+      "bios": "F14c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-MASTER/support#support-dl-bios"
+    },
     "X870E GAMING PLUS WIFI": {
       "bios": "7E70v1A62",
       "date": "2026-06-30"
+    },
+    "X870E Taichi": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870E%20Taichi/BIOS.html"
     },
     "Z490 PLUS": {
       "bios": "7C98v1A2",
@@ -1815,6 +1960,16 @@
       "bios": "7D18v291",
       "date": "2026-04-09"
     },
+    "Z690 Steel Legend": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Steel%20Legend/BIOS.html"
+    },
+    "Z790 AORUS ELITE AX": {
+      "bios": "F16",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
+    },
     "Z790 GAMING PLUS WIFI": {
       "bios": "7E06vHA",
       "date": "2026-05-20"
@@ -1835,6 +1990,11 @@
       "bios": "7E23v1A",
       "date": "2026-04-07"
     },
+    "Z790 Steel Legend WiFi": {
+      "bios": "22.02",
+      "date": "2026-06-29",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Steel%20Legend%20WiFi/BIOS.html"
+    },
     "Z790-S01": {
       "bios": "7D88v1H",
       "date": "2026-03-31"
@@ -1842,6 +2002,11 @@
     "Z790M GAMING PLUS WIFI": {
       "bios": "7E11vA2",
       "date": "2026-04-07"
+    },
+    "Z890 AORUS ELITE WIFI7": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7/support#support-dl-bios"
     },
     "Z890 GAMING PLUS WIFI": {
       "bios": "7E34v2AB0",
@@ -1858,6 +2023,11 @@
     "Z890 GAMING WIFI6E": {
       "bios": "7E54v2B30",
       "date": "2026-07-21"
+    },
+    "Z890 Steel Legend WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Steel%20Legend%20WiFi/BIOS.html"
     }
   },
   "intel": {
