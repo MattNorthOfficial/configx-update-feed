@@ -193,6 +193,23 @@ try {
     if ($builds.Count -eq 0) {
         throw 'No Windows build rows found - the page layout may have changed.'
     }
+
+    # The page's summary table also carries each version's end-of-servicing
+    # dates. Its row holds ISO dates in the order: availability, end of
+    # updates for Home/Pro, end of updates for Enterprise/Education, latest
+    # revision - so the two tiers sit at positions 1 and 2. Versions whose
+    # row can't be found simply ship without the dates.
+    foreach ($version in @($builds.Keys)) {
+        $row = [regex]::Match($winHtml, "(?s)<tr[^>]*>\s*<td[^>]*>\s*(?:Version\s+)?$version\s*</td>.*?</tr>")
+        if ($row.Success) {
+            $dates = @([regex]::Matches($row.Value, '\d{4}-\d{2}-\d{2}') | ForEach-Object { $_.Value })
+            if ($dates.Count -ge 4) {
+                $builds[$version].eosHome = $dates[1]
+                $builds[$version].eosEnterprise = $dates[2]
+            }
+        }
+    }
+
     $windowsBuilds = $builds
 }
 catch {

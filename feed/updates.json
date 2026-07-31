@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31T17:34:24Z",
+  "updated": "2026-07-31T19:38:37Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -38,17 +38,23 @@
     "25H2": {
       "build": "26200.8894",
       "date": "2026-07-18",
-      "kb": "KB5121767"
+      "kb": "KB5121767",
+      "eosHome": "2027-10-12",
+      "eosEnterprise": "2028-10-10"
     },
     "26H1": {
       "build": "28000.2525",
       "date": "2026-07-14",
-      "kb": "KB5101649"
+      "kb": "KB5101649",
+      "eosHome": "2028-03-14",
+      "eosEnterprise": "2029-03-13"
     },
     "24H2": {
       "build": "26100.8894",
       "date": "2026-07-18",
-      "kb": "KB5121767"
+      "kb": "KB5121767",
+      "eosHome": "2026-10-13",
+      "eosEnterprise": "2027-10-12"
     },
     "23H2": {
       "build": "22631.7376",
@@ -1882,7 +1888,7 @@
     },
     "X670 AORUS ELITE AX": {
       "bios": "F42d",
-      "date": "2026-07-21",
+      "date": "2026-07-20",
       "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-11/support#support-dl-bios"
     },
     "X670E GAMING PLUS WIFI": {
