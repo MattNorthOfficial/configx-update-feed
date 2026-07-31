@@ -199,19 +199,36 @@ try {
         throw 'No Windows build rows found - the page layout may have changed.'
     }
 
-    # The page's summary table also carries each version's end-of-servicing
-    # dates. Its row holds ISO dates in the order: availability, end of
-    # updates for Home/Pro, end of updates for Enterprise/Education, latest
-    # revision - so the two tiers sit at positions 1 and 2. Versions whose
-    # row can't be found simply ship without the dates.
-    foreach ($version in @($builds.Keys)) {
-        $row = [regex]::Match($winHtml, "(?s)<tr[^>]*>\s*<td[^>]*>\s*(?:Version\s+)?$version\s*</td>.*?</tr>")
-        if ($row.Success) {
-            $dates = @([regex]::Matches($row.Value, '\d{4}-\d{2}-\d{2}') | ForEach-Object { $_.Value })
-            if ($dates.Count -ge 4) {
-                $builds[$version].eosHome = $dates[1]
-                $builds[$version].eosEnterprise = $dates[2]
+    # End-of-servicing dates come from Microsoft's lifecycle pages, not the
+    # release information summary table: once a tier leaves support, the
+    # summary replaces its date with the text "End of updates" (and fully
+    # retired versions drop out of that table entirely), so parsing it left
+    # out-of-support versions - the ones the row matters most for - with no
+    # dates at all. The lifecycle pages keep every version's exact dates,
+    # past and future. Versions missing there just ship without the dates.
+    $lifecycleTiers = @(
+        @{ Field = 'eosHome'; Url = 'https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro' }
+        @{ Field = 'eosEnterprise'; Url = 'https://learn.microsoft.com/en-us/lifecycle/products/windows-11-enterprise-and-education' }
+    )
+    foreach ($tier in $lifecycleTiers) {
+        try {
+            $lifecycleHtml = (Invoke-WebRequest $tier.Url -UserAgent $userAgent -UseBasicParsing).Content
+            foreach ($version in @($builds.Keys)) {
+                # Each version's row holds two ISO timestamps - availability,
+                # then retirement - but the HTML repeats each one (a machine-
+                # readable attribute plus the rendered text), so positions
+                # aren't fixed. The retirement date is always the last stamp.
+                $row = [regex]::Match($lifecycleHtml, "(?s)<tr[^>]*>\s*<td[^>]*>\s*Version\s+$version\s*</td>.*?</tr>")
+                if ($row.Success) {
+                    $stamps = @([regex]::Matches($row.Value, '(\d{4}-\d{2}-\d{2})T') | ForEach-Object { $_.Groups[1].Value })
+                    if ($stamps.Count -ge 2) {
+                        $builds[$version][$tier.Field] = $stamps[-1]
+                    }
+                }
             }
+        }
+        catch {
+            Write-Warning "Windows lifecycle scrape failed for $($tier.Field): $($_.Exception.Message)"
         }
     }
 
