@@ -103,10 +103,15 @@ try {
         # regardless of the PowerShell version running this script.
         $notesText = $notesText -replace [char]0x00C2, ' ' -replace [char]0x00A0, ' '
 
-        # Only the components Win X displays. "AMD Interface Driver" is the
-        # package behind the SMBus PnP device on current installs.
+        # Only the components Win X displays. The SMBus PnP device runs two
+        # different driver families: "AMD Interface Driver" (2.x) on AM5 and
+        # the legacy "AMD SMBUS Driver" (5.12.x) on AM4 - the notes list
+        # both, and the app picks the entry matching the installed family.
         $componentPatterns = [ordered]@{
             smbus = 'AMD Interface Driver[^0-9]{0,160}(\d+(?:\.\d+)+)'
+            # Like PT GPIO, the Win10 and Win11 columns can both appear;
+            # take the later (Win11) one when two versions are present.
+            smbusAm4 = 'AMD SMBUS Driver\D{1,30}(?:\d+(?:\.\d+)+\D{1,10})?(\d+(?:\.\d+)+)'
             psp = 'AMD PSP Driver\s+(\d+(?:\.\d+)+)'
             ppm = 'AMD PPM Provisioning File Driver\s+(\d+(?:\.\d+)+)'
             vcache = 'AMD 3D V-Cache Performance Optimizer Driver\s+(\d+(?:\.\d+)+)'
