@@ -238,6 +238,50 @@ catch {
     Write-Warning "Windows builds scrape failed: $($_.Exception.Message)"
 }
 
+# --- Windows 10 support windows (Microsoft's lifecycle pages) ---------------
+
+# Windows 10 shares version names with Windows 11 (both have a 22H2), so its
+# dates live in a separate section the app consults when the running OS is
+# Windows 10. No build tracking: Windows 10 receives no feature updates, so
+# the useful signal is the support window itself.
+$windows10 = $null
+try {
+    $win10Tiers = @(
+        @{ Field = 'eosHome'; Url = 'https://learn.microsoft.com/en-us/lifecycle/products/windows-10-home-and-pro' }
+        @{ Field = 'eosEnterprise'; Url = 'https://learn.microsoft.com/en-us/lifecycle/products/windows-10-enterprise-and-education' }
+    )
+    $win10 = [ordered]@{}
+    foreach ($tier in $win10Tiers) {
+        $lifecycleHtml = (Invoke-WebRequest $tier.Url -UserAgent $userAgent -UseBasicParsing).Content
+        foreach ($row in [regex]::Matches($lifecycleHtml, '(?s)<tr[^>]*>\s*<td[^>]*>\s*Version\s+(\d\dH\d)\s*</td>.*?</tr>')) {
+            # Same layout as the Windows 11 pages: two ISO timestamps per row
+            # (each duplicated by the HTML), retirement always last.
+            $version = $row.Groups[1].Value
+            $stamps = @([regex]::Matches($row.Value, '(\d{4}-\d{2}-\d{2})T') | ForEach-Object { $_.Groups[1].Value })
+            if ($stamps.Count -ge 2) {
+                if (-not $win10.Contains($version)) {
+                    $win10[$version] = [ordered]@{}
+                }
+                $win10[$version][$tier.Field] = $stamps[-1]
+            }
+        }
+    }
+    if ($win10.Count -gt 0) {
+        $windows10 = $win10
+    }
+}
+catch {
+    Write-Warning "Windows 10 lifecycle scrape failed: $($_.Exception.Message)"
+}
+
+if (-not $windows10 -and (Test-Path $outputPath)) {
+    $previousWin10 = (Get-Content $outputPath -Raw | ConvertFrom-Json).windows10
+    if ($previousWin10) {
+        Write-Warning 'Reusing previously published Windows 10 data.'
+        $windows10 = $previousWin10
+    }
+}
+
 if (-not $windowsBuilds -and (Test-Path $outputPath)) {
     $previousBuilds = (Get-Content $outputPath -Raw | ConvertFrom-Json).windowsBuilds
     if ($previousBuilds) {
@@ -654,8 +698,8 @@ if ($chipset) {
 # workflow only commits on actual releases.
 if (Test-Path $outputPath) {
     $existing = Get-Content $outputPath -Raw | ConvertFrom-Json
-    $existingData = @($existing.amd, $existing.windowsBuilds, $existing.motherboards, $existing.intel, $existing.nvidia) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds, $motherboards, $intel, $nvidia) | ConvertTo-Json -Depth 5
+    $existingData = @($existing.amd, $existing.windowsBuilds, $existing.windows10, $existing.motherboards, $existing.intel, $existing.nvidia) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-Host 'Driver data unchanged; feed not rewritten.'
         return
@@ -669,6 +713,9 @@ $feed = [ordered]@{
 }
 if ($windowsBuilds) {
     $feed.windowsBuilds = $windowsBuilds
+}
+if ($windows10) {
+    $feed.windows10 = $windows10
 }
 if ($motherboards) {
     $feed.motherboards = $motherboards

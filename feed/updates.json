@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01T02:36:54Z",
+  "updated": "2026-08-01T20:47:48Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -77,6 +77,24 @@
       "kb": "KB5044280",
       "eosHome": "2023-10-10",
       "eosEnterprise": "2024-10-08"
+    }
+  },
+  "windows10": {
+    "22H2": {
+      "eosHome": "2025-10-14",
+      "eosEnterprise": "2025-10-14"
+    },
+    "21H2": {
+      "eosHome": "2023-06-13",
+      "eosEnterprise": "2024-06-11"
+    },
+    "21H1": {
+      "eosHome": "2022-12-13",
+      "eosEnterprise": "2022-12-13"
+    },
+    "20H2": {
+      "eosHome": "2022-05-10",
+      "eosEnterprise": "2023-05-09"
     }
   },
   "motherboards": {
