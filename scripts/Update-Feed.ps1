@@ -13,7 +13,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$userAgent = 'Mozilla/5.0 winx-update-feed/1.0'
+$userAgent = 'Mozilla/5.0 rigx-update-feed/1.0'
 $outputPath = Join-Path $PSScriptRoot '..\feed\updates.json'
 
 function Get-CellText([string] $cell) {
@@ -103,7 +103,7 @@ try {
         # regardless of the PowerShell version running this script.
         $notesText = $notesText -replace [char]0x00C2, ' ' -replace [char]0x00A0, ' '
 
-        # Only the components Win X displays. The SMBus PnP device runs two
+        # Only the components Rig X displays. The SMBus PnP device runs two
         # different driver families: "AMD Interface Driver" (2.x) on AM5 and
         # the legacy "AMD SMBUS Driver" (5.12.x) on AM4 - the notes list
         # both, and the app picks the entry matching the installed family.
@@ -298,7 +298,7 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # sitemap enumerates every motherboard slug, filtered to desktop chipsets
 # (AM4/AM5, LGA1200/1700/1851, HEDT). Each board's support panel then reports
 # its official marketing name ("PRO X870-P WIFI") - the feed key, matching
-# what Win X reads from WMI once it strips the "(MS-7E51)"-style suffix -
+# what Rig X reads from WMI once it strips the "(MS-7E51)"-style suffix -
 # alongside its BIOS downloads.
 #
 # ASUS is not here - it exposes a public API the app queries live for any

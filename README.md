@@ -1,7 +1,7 @@
-# Win X update feed
+# Rig X update feed
 
 A small JSON feed of the latest driver versions, Windows builds, and BIOS
-releases, consumed by the [Win X](https://github.com/MattNorthOfficial) app.
+releases, consumed by the [Rig X](https://github.com/MattNorthOfficial) app.
 None of the vendors offer a stable public API for this, so a scheduled GitHub
 Action scrapes
 [AMD GPUOpen's version table](https://gpuopen.com/version-table/) (graphics),
@@ -73,7 +73,7 @@ endpoint (GeForce Game Ready) every six hours, and commits
 - `windowsBuilds` maps each Windows 11 version to its latest *required* build:
   Patch Tuesday (B) and out-of-band (OOB) releases count, optional D-week
   previews do not, so fully patched machines are never flagged as outdated.
-- `motherboards` maps board models (the clean marketing name; Win X strips
+- `motherboards` maps board models (the clean marketing name; Rig X strips
   WMI's "(MS-7E51)"-style suffix before looking a board up) to the latest
   non-beta BIOS on the manufacturer's support page. The MSI board list is
   enumerated from MSI's products sitemap (every desktop board on AM4/AM5,
@@ -93,7 +93,7 @@ endpoint (GeForce Game Ready) every six hours, and commits
   Iris Xe / UHD). Intel's pages sit behind the same bot protection as MSI's,
   so they also go through the headless browser.
 - `nvidia.gameReady` is the latest GeForce Game Ready driver, which covers
-  every GPU the current branch supports; Win X uses it as the offline
+  every GPU the current branch supports; Rig X uses it as the offline
   fallback for its per-GPU online lookup.
 - `download` (Intel and NVIDIA entries) is the installer file itself, straight
   off the vendor's CDN, so the app can offer the download directly. AMD has no
@@ -104,7 +104,7 @@ endpoint (GeForce Game Ready) every six hours, and commits
 Fetch the raw file:
 
 ```
-https://raw.githubusercontent.com/MattNorthOfficial/winx-update-feed/main/feed/updates.json
+https://raw.githubusercontent.com/MattNorthOfficial/rigx-update-feed/main/feed/updates.json
 ```
 
 ## Running locally
