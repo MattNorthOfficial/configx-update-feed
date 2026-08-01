@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01T00:25:43Z",
+  "updated": "2026-08-01T02:36:54Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -1980,7 +1980,7 @@
     },
     "Z790 AORUS ELITE AX": {
       "bios": "F16",
-      "date": "2026-06-29",
+      "date": "2026-06-30",
       "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
     },
     "Z790 GAMING PLUS WIFI": {
