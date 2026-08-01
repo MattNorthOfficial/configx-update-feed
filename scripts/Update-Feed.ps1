@@ -555,13 +555,21 @@ try {
     $entries = [ordered]@{}
     foreach ($key in $intelPages.Keys) {
         $page = $intelPages[$key]
-        $text = [System.Net.WebUtility]::HtmlDecode(
-            ((Get-BrowserDom $browser $page.url) -replace '<[^>]+>', ' '))
+        $dom = Get-BrowserDom $browser $page.url
+        $text = [System.Net.WebUtility]::HtmlDecode(($dom -replace '<[^>]+>', ' '))
 
         if ($text -match $page.pattern) {
             $entries[$key] = [ordered]@{
                 version = $Matches[1]
                 url = $page.url
+            }
+
+            # The page's download button links straight to Intel's CDN, where
+            # the installer (.exe) sits alongside release notes and readmes.
+            # Published so the app can offer the file directly.
+            $exe = [regex]::Match($dom, 'https://downloadmirror\.intel\.com/[^\s"''<>]+\.exe')
+            if ($exe.Success) {
+                $entries[$key].download = $exe.Value
             }
         }
         else {
@@ -618,6 +626,9 @@ try {
     $nvidia = [ordered]@{
         gameReady = $info.Version
         url = "$($info.DetailsURL)"
+        # The lookup also names the installer file itself, so the app can
+        # offer the download directly instead of the details page.
+        download = "$($info.DownloadURL)"
     }
 }
 catch {

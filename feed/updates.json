@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31T22:54:16Z",
+  "updated": "2026-08-01T00:25:43Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -1895,7 +1895,7 @@
     },
     "X670 AORUS ELITE AX": {
       "bios": "F42d",
-      "date": "2026-07-20",
+      "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-11/support#support-dl-bios"
     },
     "X670E GAMING PLUS WIFI": {
@@ -2046,19 +2046,23 @@
   "intel": {
     "chipset": {
       "version": "10.1.20398.8776",
-      "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html"
+      "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html",
+      "download": "https://downloadmirror.intel.com/872506/SetupChipset.exe"
     },
     "arc": {
       "version": "32.0.101.8864",
-      "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html"
+      "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html",
+      "download": "https://downloadmirror.intel.com/923907/gfx_win_101.8864.exe"
     },
     "xe": {
       "version": "32.0.101.7088",
-      "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html"
+      "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html",
+      "download": "https://downloadmirror.intel.com/922492/gfx_win_101.7088.exe"
     }
   },
   "nvidia": {
     "gameReady": "610.88",
-    "url": "https://www.nvidia.com/en-us/drivers/details/274383/"
+    "url": "https://www.nvidia.com/en-us/drivers/details/274383/",
+    "download": "https://us.download.nvidia.com/Windows/610.88/610.88-desktop-win10-win11-64bit-international-dch-whql.exe"
   }
 }

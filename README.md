@@ -49,13 +49,14 @@ endpoint (GeForce Game Ready) every six hours, and commits
     "MAG Z890 TOMAHAWK WIFI": { "bios": "7E32v1AD0", "date": "2026-07-27" }
   },
   "intel": {
-    "chipset": { "version": "10.1.20398.8776", "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html" },
-    "arc":     { "version": "32.0.101.8864",   "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html" },
-    "xe":      { "version": "32.0.101.7088",   "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html" }
+    "chipset": { "version": "10.1.20398.8776", "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html", "download": "https://downloadmirror.intel.com/872506/SetupChipset.exe" },
+    "arc":     { "version": "32.0.101.8864",   "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html", "download": "https://downloadmirror.intel.com/923907/gfx_win_101.8864.exe" },
+    "xe":      { "version": "32.0.101.7088",   "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html", "download": "https://downloadmirror.intel.com/922492/gfx_win_101.7088.exe" }
   },
   "nvidia": {
     "gameReady": "610.74",
-    "url": "https://www.nvidia.com/en-us/drivers/details/274187/"
+    "url": "https://www.nvidia.com/en-us/drivers/details/274187/",
+    "download": "https://us.download.nvidia.com/Windows/610.74/610.74-desktop-win10-win11-64bit-international-dch-whql.exe"
   }
 }
 ```
@@ -94,6 +95,9 @@ endpoint (GeForce Game Ready) every six hours, and commits
 - `nvidia.gameReady` is the latest GeForce Game Ready driver, which covers
   every GPU the current branch supports; Win X uses it as the offline
   fallback for its per-GPU online lookup.
+- `download` (Intel and NVIDIA entries) is the installer file itself, straight
+  off the vendor's CDN, so the app can offer the download directly. AMD has no
+  equivalent: its CDN rejects requests that don't come from its own pages.
 
 ## Consuming
 
