@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T15:16:42Z",
+  "updated": "2026-08-02T18:02:25Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -165,6 +165,61 @@
       "date": "2026-04-08",
       "url": "https://www.asrock.com/mb/AMD/A320M-ITX/BIOS.html"
     },
+    "A520 AORUS ELITE": {
+      "bios": "F22a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "A520I AC": {
+      "bios": "F23a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520I-AC-rev-15/support#support-dl-bios"
+    },
+    "A520M AORUS ELITE": {
+      "bios": "F18a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-AORUS-ELITE-rev-1x/support#support-dl-bios"
+    },
+    "A520M DS3H": {
+      "bios": "F21a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-DS3H-rev-1x/support#support-dl-bios"
+    },
+    "A520M DS3H AC": {
+      "bios": "F23a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-DS3H-AC-rev-1x/support#support-dl-bios"
+    },
+    "A520M DS3H V2": {
+      "bios": "F7a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-DS3H-V2-rev-10/support#support-dl-bios"
+    },
+    "A520M DS3H WIFI6E": {
+      "bios": "F2a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-DS3H-WIFI6E/support#support-dl-bios"
+    },
+    "A520M H": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-H-rev-1x/support#support-dl-bios"
+    },
+    "A520M H ARGB": {
+      "bios": "FA1",
+      "date": "2026-04-21",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-H-ARGB-rev-11/support#support-dl-bios"
+    },
+    "A520M K": {
+      "bios": "F7a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-K-rev-10/support#support-dl-bios"
+    },
+    "A520M K V2": {
+      "bios": "F7a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-K-V2-rev-10/support#support-dl-bios"
+    },
     "A520M Phantom Gaming 4": {
       "bios": "3.90",
       "date": "2025-10-15",
@@ -190,6 +245,16 @@
       "bios": "3.90",
       "date": "2025-10-15",
       "url": "https://www.asrock.com/mb/AMD/A520M%20Pro4/BIOS.html"
+    },
+    "A520M S2H": {
+      "bios": "F21b",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-S2H-rev-1x/support#support-dl-bios"
+    },
+    "A520M S2HP": {
+      "bios": "F2",
+      "date": "2026-05-25",
+      "url": "https://www.gigabyte.com/Motherboard/A520M-S2HP/support#support-dl-bios"
     },
     "A520M-A PRO": {
       "bios": "7C96v1L8",
@@ -235,6 +300,11 @@
       "date": "2026-07-13",
       "url": "https://www.asrock.com/mb/AMD/A620AI%20WiFi/BIOS.html"
     },
+    "A620AM C": {
+      "bios": "F7c",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/A620AM-C/support#support-dl-bios"
+    },
     "A620AM Pro RS": {
       "bios": "4.43",
       "date": "2026-07-09",
@@ -275,14 +345,44 @@
       "date": "2026-07-09",
       "url": "https://www.asrock.com/mb/AMD/A620AM-X%20WiFi/BIOS.html"
     },
+    "A620I AX": {
+      "bios": "FB2c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/A620I-AX-rev-11/support#support-dl-bios"
+    },
     "A620I Lightning WiFi": {
       "bios": "4.43",
       "date": "2026-07-23",
       "url": "https://pg.asrock.com/mb/AMD/A620I%20Lightning%20WiFi/BIOS.html"
     },
+    "A620M C": {
+      "bios": "F41c",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/A620M-C-rev-10/support#support-dl-bios"
+    },
+    "A620M DS3H": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/A620M-DS3H-rev-10/support#support-dl-bios"
+    },
     "A620M GAMING": {
       "bios": "7E30vAD2",
       "date": "2026-07-06"
+    },
+    "A620M GAMING X": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/A620M-GAMING-X-rev-10/support#support-dl-bios"
+    },
+    "A620M GAMING X AX": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/A620M-GAMING-X-AX-rev-10/support#support-dl-bios"
+    },
+    "A620M H": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/A620M-H-rev-10/support#support-dl-bios"
     },
     "A620M Pro RS": {
       "bios": "4.43",
@@ -293,6 +393,11 @@
       "bios": "4.43",
       "date": "2026-07-22",
       "url": "https://www.asrock.com/mb/AMD/A620M%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "A620M S2H": {
+      "bios": "FB1c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/A620M-S2H-rev-20/support#support-dl-bios"
     },
     "A620M-AYW WIFI": {
       "bios": "3886",
@@ -364,9 +469,44 @@
       "date": "2026-04-07",
       "url": "https://www.asrock.com/mb/AMD/AB350M-HDV%20R4.0/BIOS.html"
     },
+    "B450 AORUS ELITE": {
+      "bios": "F68a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450-AORUS-ELITE-rev-1x/support#support-dl-bios"
+    },
+    "B450 AORUS Elite V2": {
+      "bios": "F69a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450-AORUS-Elite-V2-rev-1x/support#support-dl-bios"
+    },
+    "B450 AORUS M": {
+      "bios": "F68a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450-AORUS-M-rev-1x/support#support-dl-bios"
+    },
+    "B450 AORUS PRO": {
+      "bios": "F67a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
+    "B450 AORUS PRO WIFI": {
+      "bios": "F67a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-dl-bios"
+    },
     "B450 GAMING PRO CARBON MAX WIFI": {
       "bios": "7B85v2I2",
       "date": "2026-07-24"
+    },
+    "B450 Gaming X": {
+      "bios": "F68a",
+      "date": "2026-04-13",
+      "url": "https://www.gigabyte.com/Motherboard/B450-Gaming-X-rev-1x/support#support-dl-bios"
+    },
+    "B450 I AORUS PRO WIFI": {
+      "bios": "F67a",
+      "date": "2026-04-13",
+      "url": "https://www.gigabyte.com/Motherboard/B450-I-AORUS-PRO-WIFI-rev-10/support#support-dl-bios"
     },
     "B450 Pro4": {
       "bios": "10.60",
@@ -391,6 +531,11 @@
       "bios": "7A40vBG2",
       "date": "2026-07-24"
     },
+    "B450M AORUS ELITE": {
+      "bios": "F69a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-AORUS-ELITE-rev-1x/support#support-dl-bios"
+    },
     "B450M BAZOOKA MAX WIFI": {
       "bios": "7C87v1H2",
       "date": "2026-07-24"
@@ -399,6 +544,36 @@
       "bios": "F68a",
       "date": "2026-04-14",
       "url": "https://www.gigabyte.com/Motherboard/B450M-DS3H-rev-1x/support#support-dl-bios"
+    },
+    "B450M DS3H V2": {
+      "bios": "F68a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-DS3H-V2-rev-1x/support#support-dl-bios"
+    },
+    "B450M DS3H V3": {
+      "bios": "F4a",
+      "date": "2026-04-13",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-DS3H-V3-rev-15/support#support-dl-bios"
+    },
+    "B450M DS3H WIFI": {
+      "bios": "F70a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-DS3H-WIFI-rev-10-11-12-13/support#support-dl-bios"
+    },
+    "B450M GAMING": {
+      "bios": "F68a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-GAMING-rev-1x/support#support-dl-bios"
+    },
+    "B450M H": {
+      "bios": "F68a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-H-rev-1x/support#support-dl-bios"
+    },
+    "B450M K": {
+      "bios": "F7a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-K-rev-10/support#support-dl-bios"
     },
     "B450M Pro4": {
       "bios": "10.60",
@@ -414,6 +589,16 @@
       "bios": "10.60",
       "date": "2026-05-08",
       "url": "https://www.asrock.com/mb/AMD/B450M%20Pro4-F/BIOS.html"
+    },
+    "B450M S2H": {
+      "bios": "F68a",
+      "date": "2026-04-13",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-S2H-rev-1x/support#support-dl-bios"
+    },
+    "B450M S2H V2": {
+      "bios": "F67a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B450M-S2H-V2-rev-1x/support#support-dl-bios"
     },
     "B450M Steel Legend": {
       "bios": "10.60",
@@ -464,6 +649,11 @@
       "date": "2020-09-09",
       "url": "https://www.asrock.com/mb/Intel/B460%20Steel%20Legend/BIOS.html"
     },
+    "B460M DS3H V2": {
+      "bios": "F27a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B460M-DS3H-V2-rev-10/support#support-dl-bios"
+    },
     "B460M PRO": {
       "bios": "7C88v1B2",
       "date": "2026-07-01"
@@ -505,10 +695,70 @@
       "date": "2021-04-07",
       "url": "https://www.asrock.com/mb/Intel/B460M-ITXac/BIOS.html"
     },
+    "B550 AORUS ELITE": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "B550 AORUS ELITE AX": {
+      "bios": "F21a",
+      "date": "2026-04-13",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
+    },
+    "B550 AORUS ELITE AX V2": {
+      "bios": "F1",
+      "date": "2026-06-23",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-AX-V2-rev-17/support#support-dl-bios"
+    },
+    "B550 AORUS ELITE AX V3": {
+      "bios": "F3a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-AX-V3-rev-15/support#support-dl-bios"
+    },
     "B550 AORUS ELITE V2": {
       "bios": "F20a",
       "date": "2026-04-14",
       "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-V2-rev-10-11/support#support-dl-bios"
+    },
+    "B550 AORUS ELITE WIFI7": {
+      "bios": "F1",
+      "date": "2026-06-24",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-WIFI7/support#support-dl-bios"
+    },
+    "B550 AORUS MASTER": {
+      "bios": "F19a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "B550 AORUS PRO": {
+      "bios": "F19a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
+    "B550 AORUS PRO AC": {
+      "bios": "F19a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-PRO-AC-rev-1x/support#support-dl-bios"
+    },
+    "B550 AORUS PRO AX": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "B550 AORUS PRO V2": {
+      "bios": "F19πäç",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-PRO-V2-rev-10/support#support-dl-bios"
+    },
+    "B550 EAGLE": {
+      "bios": "F4a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-EAGLE/support#support-dl-bios"
+    },
+    "B550 EAGLE WIFI6": {
+      "bios": "F4a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-EAGLE-WIFI6/support#support-dl-bios"
     },
     "B550 Extreme4": {
       "bios": "3.90",
@@ -530,6 +780,16 @@
     "B550 GAMING WIFI6E": {
       "bios": "7C56vW11",
       "date": "2026-07-27"
+    },
+    "B550 GAMING X": {
+      "bios": "F19a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-GAMING-X-rev-10/support#support-dl-bios"
+    },
+    "B550 GAMING X V2": {
+      "bios": "F21a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-GAMING-X-V2-rev-10-11-12/support#support-dl-bios"
     },
     "B550 PG Riptide": {
       "bios": "3.90",
@@ -581,6 +841,26 @@
       "date": "2025-10-15",
       "url": "https://www.asrock.com/mb/AMD/B550%20Taichi%20Razer%20Edition/BIOS.html"
     },
+    "B550 UD AC": {
+      "bios": "FHa",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550-UD-AC-rev-12/support#support-dl-bios"
+    },
+    "B550 UD WIFI6E": {
+      "bios": "F1",
+      "date": "2026-04-17",
+      "url": "https://www.gigabyte.com/Motherboard/B550-UD-WIFI6E-rev-12/support#support-dl-bios"
+    },
+    "B550 VISION D": {
+      "bios": "F19b",
+      "date": "2026-07-01",
+      "url": "https://www.gigabyte.com/Motherboard/B550-VISION-D-rev-10/support#support-dl-bios"
+    },
+    "B550 VISION D-P": {
+      "bios": "F19b",
+      "date": "2026-07-01",
+      "url": "https://www.gigabyte.com/Motherboard/B550-VISION-D-P-rev-1x/support#support-dl-bios"
+    },
     "B550-A PRO": {
       "bios": "7C56vAM1",
       "date": "2026-07-24"
@@ -589,9 +869,89 @@
       "bios": "7C56vHE1",
       "date": "2026-07-24"
     },
+    "B550I AORUS PRO AX": {
+      "bios": "F22a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550I-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "B550M AORUS ELITE": {
+      "bios": "F22b",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-AORUS-ELITE-rev-10-11-12/support#support-dl-bios"
+    },
+    "B550M AORUS ELITE AX": {
+      "bios": "F8b",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-AORUS-ELITE-AX-rev-13/support#support-dl-bios"
+    },
+    "B550M AORUS PRO": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
+    "B550M AORUS PRO AX": {
+      "bios": "F10a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "B550M AORUS PRO-P": {
+      "bios": "FGa",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-AORUS-PRO-P-rev-11/support#support-dl-bios"
+    },
+    "B550M DS3H": {
+      "bios": "F21a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-DS3H-rev-10-11-12-13/support#support-dl-bios"
+    },
+    "B550M DS3H AC": {
+      "bios": "F21a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-DS3H-AC-rev-10-11-12-13/support#support-dl-bios"
+    },
+    "B550M DS3H AC R2": {
+      "bios": "FA1",
+      "date": "2026-07-01",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-DS3H-AC-R2-rev-12/support#support-dl-bios"
+    },
+    "B550M DS3H R2": {
+      "bios": "F4a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-DS3H-R2/support#support-dl-bios"
+    },
+    "B550M GAMING": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-GAMING-rev-1x/support#support-dl-bios"
+    },
     "B550M GAMING PLUS WIFI6E": {
       "bios": "7C95vN11",
       "date": "2026-07-24"
+    },
+    "B550M GAMING X WIFI6": {
+      "bios": "F5a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-GAMING-X-WIFI6/support#support-dl-bios"
+    },
+    "B550M H": {
+      "bios": "F19a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-H-rev-10/support#support-dl-bios"
+    },
+    "B550M H ARGB": {
+      "bios": "FA1",
+      "date": "2026-04-15",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-H-ARGB-rev-11/support#support-dl-bios"
+    },
+    "B550M K": {
+      "bios": "F1",
+      "date": "2026-04-15",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-K-rev-12/support#support-dl-bios"
+    },
+    "B550M K WIFI6E": {
+      "bios": "FA2",
+      "date": "2026-04-22",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-K-WIFI6E-rev-12/support#support-dl-bios"
     },
     "B550M PG Riptide": {
       "bios": "3.90",
@@ -643,6 +1003,11 @@
       "date": "2025-10-09",
       "url": "https://www.asrock.com/mb/AMD/B550M%20Pro4/BIOS.html"
     },
+    "B550M S2H": {
+      "bios": "F20a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-S2H-rev-1x/support#support-dl-bios"
+    },
     "B550M Steel Legend": {
       "bios": "3.90",
       "date": "2025-10-13",
@@ -657,6 +1022,11 @@
       "bios": "3.90",
       "date": "2025-10-13",
       "url": "https://www.asrock.com/mb/AMD/B550M%20WiFi%20SE/BIOS.html"
+    },
+    "B550M X AORUS ELITE WIFI7": {
+      "bios": "F1",
+      "date": "2026-07-09",
+      "url": "https://www.gigabyte.com/Motherboard/B550M-X-AORUS-ELITE-WIFI7/support#support-dl-bios"
     },
     "B550M-A PRO": {
       "bios": "7C96v2J3",
@@ -687,6 +1057,16 @@
       "date": "2025-10-09",
       "url": "https://www.asrock.com/mb/AMD/B550Mac/BIOS.html"
     },
+    "B560 AORUS PRO AX": {
+      "bios": "F14d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "B560 HD3": {
+      "bios": "F18d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560-HD3-rev-1x/support#support-dl-bios"
+    },
     "B560 Pro4": {
       "bios": "2.30",
       "date": "2022-01-27",
@@ -700,6 +1080,81 @@
     "B560-A PRO": {
       "bios": "7D15vH91",
       "date": "2026-04-09"
+    },
+    "B560I AORUS PRO AX": {
+      "bios": "F14d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560I-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "B560M AORUS ELITE": {
+      "bios": "F13d",
+      "date": "2026-06-29",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-AORUS-ELITE-rev-1x/support#support-dl-bios"
+    },
+    "B560M AORUS PRO": {
+      "bios": "f14d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-AORUS-PRO-rev-1x/support#support-dl-bios"
+    },
+    "B560M AORUS PRO AX": {
+      "bios": "F15d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-AORUS-PRO-AX-rev-1x/support#support-dl-bios"
+    },
+    "B560M D2V": {
+      "bios": "F15d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-D2V-rev-1x/support#support-dl-bios"
+    },
+    "B560M D3H": {
+      "bios": "F13d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-D3H-rev-1x/support#support-dl-bios"
+    },
+    "B560M DS3H": {
+      "bios": "F12d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-DS3H-rev-10/support#support-dl-bios"
+    },
+    "B560M DS3H AC": {
+      "bios": "F15d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-DS3H-AC-rev-1x/support#support-dl-bios"
+    },
+    "B560M DS3H PLUS": {
+      "bios": "F10d",
+      "date": "2025-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-DS3H-PLUS-rev-10/support#support-dl-bios"
+    },
+    "B560M DS3H V2": {
+      "bios": "F12d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-DS3H-V2-rev-1x/support#support-dl-bios"
+    },
+    "B560M DS3H V3": {
+      "bios": "F3a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-DS3H-V3-rev-10/support#support-dl-bios"
+    },
+    "B560M GAMING HD": {
+      "bios": "F15d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-GAMING-HD-rev-1x/support#support-dl-bios"
+    },
+    "B560M H": {
+      "bios": "F14d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-H-rev-1x/support#support-dl-bios"
+    },
+    "B560M H V2": {
+      "bios": "F5d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-H-V2-rev-10/support#support-dl-bios"
+    },
+    "B560M POWER": {
+      "bios": "F15d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/B560M-POWER-rev-1x/support#support-dl-bios"
     },
     "B560M PRO": {
       "bios": "7D20v1A1",
@@ -789,10 +1244,50 @@
       "date": "2026-01-06",
       "url": "https://www.asus.com/supportonly/B560M-P/helpdesk_bios/"
     },
+    "B650 AERO G": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AERO-G-rev-10/support#support-dl-bios"
+    },
+    "B650 AORUS ELITE": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
     "B650 AORUS ELITE AX": {
       "bios": "F42c",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-AX-rev-10-11/support#support-dl-bios"
+    },
+    "B650 AORUS ELITE AX ICE": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-AX-ICE/support#support-dl-bios"
+    },
+    "B650 AORUS ELITE AX V2": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-AX-V2/support#support-dl-bios"
+    },
+    "B650 AORUS ELITE V2": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-V2/support#support-dl-bios"
+    },
+    "B650 AORUS PRO AX": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-PRO-AX-rev-1x/support#support-dl-bios"
+    },
+    "B650 EAGLE": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-EAGLE-rev-10/support#support-dl-bios"
+    },
+    "B650 EAGLE AX": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-EAGLE-AX-rev-10-11/support#support-dl-bios"
     },
     "B650 GAMING PLUS": {
       "bios": "7E26v1O2",
@@ -801,6 +1296,21 @@
     "B650 GAMING PLUS WIFI": {
       "bios": "7E26v1O2",
       "date": "2026-07-08"
+    },
+    "B650 GAMING X": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-GAMING-X-rev-10-11-12/support#support-dl-bios"
+    },
+    "B650 GAMING X AX": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-GAMING-X-AX-rev-10-11-12/support#support-dl-bios"
+    },
+    "B650 GAMING X AX V2": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-GAMING-X-AX-V2-rev-10-11-12/support#support-dl-bios"
     },
     "B650 LiveMixer": {
       "bios": "4.43",
@@ -837,6 +1347,51 @@
       "date": "2026-06-23",
       "url": "https://www.asrock.com/mb/AMD/B650%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "B650 UD AC": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-UD-AC-rev-10/support#support-dl-bios"
+    },
+    "B650 UD AX": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-UD-AX-rev-10/support#support-dl-bios"
+    },
+    "B650E AORUS ELITE X AX ICE": {
+      "bios": "F44c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-AORUS-ELITE-X-AX-ICE-rev-10-11/support#support-dl-bios"
+    },
+    "B650E AORUS MASTER": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "B650E AORUS PRO X USB4": {
+      "bios": "F14c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-AORUS-PRO-X-USB4-rev-10/support#support-dl-bios"
+    },
+    "B650E AORUS STEALTH ICE": {
+      "bios": "F14c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-AORUS-STEALTH-ICE/support#support-dl-bios"
+    },
+    "B650E AORUS TACHYON": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-AORUS-TACHYON-rev-10/support#support-dl-bios"
+    },
+    "B650E EAGLE": {
+      "bios": "F5c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-EAGLE/support#support-dl-bios"
+    },
+    "B650E EAGLE WIFI6E": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650E-EAGLE-WIFI6E/support#support-dl-bios"
+    },
     "B650E MAX GAMING WIFI": {
       "bios": "3886",
       "date": "2026-07-02",
@@ -872,27 +1427,134 @@
       "date": "2026-07-22",
       "url": "https://www.asrock.com/mb/AMD/B650E%20Taichi%20Lite/BIOS.html"
     },
+    "B650EM C": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650EM-C/support#support-dl-bios"
+    },
+    "B650EM DS3H WIFI6E": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650EM-DS3H-WIFI6E/support#support-dl-bios"
+    },
+    "B650EM FORCE WIFI6E": {
+      "bios": "F7c",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/B650EM-FORCE-WIFI6E/support#support-dl-bios"
+    },
     "B650EM MAX GAMING WIFI": {
       "bios": "3886",
       "date": "2026-07-02",
       "url": "https://www.asus.com/supportonly/B650EM%20MAX%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "B650I AORUS ULTRA": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650I-AORUS-ULTRA-rev-13/support#support-dl-bios"
+    },
+    "B650I AX": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650I-AX-rev-10/support#support-dl-bios"
     },
     "B650I Lightning WiFi": {
       "bios": "4.43",
       "date": "2026-07-23",
       "url": "https://pg.asrock.com/mb/AMD/B650I%20Lightning%20WiFi/BIOS.html"
     },
+    "B650M AORUS ELITE": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "B650M AORUS ELITE AX": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-AORUS-ELITE-AX-rev-10-11/support#support-dl-bios"
+    },
+    "B650M AORUS ELITE AX ICE": {
+      "bios": "F43c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-AORUS-ELITE-AX-ICE-rev-1x/support#support-dl-bios"
+    },
+    "B650M AORUS PRO AX": {
+      "bios": "FC4c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-AORUS-PRO-AX-rev-12/support#support-dl-bios"
+    },
     "B650M BOMBER WIFI": {
       "bios": "7E30v272",
       "date": "2026-07-06"
     },
+    "B650M C": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-C-rev-10/support#support-dl-bios"
+    },
+    "B650M C V2": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-C-V2-rev-10/support#support-dl-bios"
+    },
+    "B650M C V3": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-C-V3-rev-10/support#support-dl-bios"
+    },
+    "B650M D2H": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-D2H-rev-10/support#support-dl-bios"
+    },
+    "B650M D2HP": {
+      "bios": "FA9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-D2HP-rev-13/support#support-dl-bios"
+    },
+    "B650M D3HP": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-D3HP-rev-1x/support#support-dl-bios"
+    },
+    "B650M D3HP AX": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-D3HP-AX-rev-10-12/support#support-dl-bios"
+    },
+    "B650M DS3H": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-DS3H-rev-10-11-12/support#support-dl-bios"
+    },
     "B650M GAMING PLUS WIFI": {
-      "bios": "7E24v1E2",
-      "date": "2026-07-06"
+      "bios": "FA9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-PLUS-WIFI-rev-13/support#support-dl-bios"
     },
     "B650M GAMING WIFI": {
-      "bios": "7E30v1F2",
-      "date": "2026-07-06"
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-WIFI-rev-12/support#support-dl-bios"
+    },
+    "B650M GAMING WIFI6E": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-WIFI6E-rev-12/support#support-dl-bios"
+    },
+    "B650M GAMING X AX": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-X-AX-rev-10-11-12/support#support-dl-bios"
+    },
+    "B650M H": {
+      "bios": "FB2c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-H-rev-13/support#support-dl-bios"
+    },
+    "B650M K": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-K-rev-10/support#support-dl-bios"
     },
     "B650M PG Lightning": {
       "bios": "4.44",
@@ -948,6 +1610,11 @@
       "bios": "7E09v1I2",
       "date": "2026-07-06"
     },
+    "B650M S2H": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650M-S2H-rev-12/support#support-dl-bios"
+    },
     "B650M-AYW WIFI": {
       "bios": "3886",
       "date": "2026-07-02",
@@ -978,6 +1645,61 @@
       "date": "2026-07-23",
       "url": "https://www.asrock.com/mb/AMD/B650M-HDVM.2%20White/BIOS.html"
     },
+    "B660 AORUS ELITE AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-AORUS-ELITE-AX-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660 AORUS ELITE DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-AORUS-ELITE-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660 AORUS MASTER": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-AORUS-MASTER-rev-1x/support#support-dl-bios"
+    },
+    "B660 AORUS MASTER DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-AORUS-MASTER-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660 DS3H AC": {
+      "bios": "F20",
+      "date": "2022-02-22",
+      "url": "https://www.gigabyte.com/Motherboard/B660-DS3H-AC-rev-10/support#support-dl-bios"
+    },
+    "B660 DS3H AC DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-DS3H-AC-DDR4-rev-10-12/support#support-dl-bios"
+    },
+    "B660 DS3H AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-DS3H-AX-DDR4-rev-10-11/support#support-dl-bios"
+    },
+    "B660 DS3H DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-DS3H-DDR4-rev-10-11/support#support-dl-bios"
+    },
+    "B660 GAMING X": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-GAMING-X-rev-10/support#support-dl-bios"
+    },
+    "B660 GAMING X AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-GAMING-X-AX-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660 GAMING X DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660-GAMING-X-DDR4-rev-10/support#support-dl-bios"
+    },
     "B660 Pro RS": {
       "bios": "20.01",
       "date": "2025-10-30",
@@ -988,6 +1710,101 @@
       "date": "2025-10-30",
       "url": "https://www.asrock.com/mb/Intel/B660%20Steel%20Legend/BIOS.html"
     },
+    "B660I AORUS PRO DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660I-AORUS-PRO-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M AORUS ELITE AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-AORUS-ELITE-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M AORUS ELITE DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-AORUS-ELITE-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M AORUS PRO": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
+    "B660M AORUS PRO AX": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-AORUS-PRO-AX-rev-1x/support#support-dl-bios"
+    },
+    "B660M AORUS PRO AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-AORUS-PRO-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M AORUS PRO DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-AORUS-PRO-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660M D2H DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-D2H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660M D3H DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-D3H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660M DS3H AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-DS3H-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M DS3H DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-DS3H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660M GAMING AC": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-AC-rev-10/support#support-dl-bios"
+    },
+    "B660M GAMING AC DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-AC-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M GAMING DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B660M GAMING X": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-X-rev-10/support#support-dl-bios"
+    },
+    "B660M GAMING X AX": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-X-AX-rev-10/support#support-dl-bios"
+    },
+    "B660M GAMING X AX DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-X-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M GAMING X DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-GAMING-X-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B660M K DDR4": {
+      "bios": "F9a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-K-DDR4-rev-10/support#support-dl-bios"
+    },
     "B660M PG Riptide": {
       "bios": "13.01",
       "date": "2025-10-30",
@@ -997,6 +1814,11 @@
       "bios": "14.01",
       "date": "2025-10-30",
       "url": "https://pg.asrock.com/mb/Intel/B660M%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "B660M POWER DDR4": {
+      "bios": "F36a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B660M-POWER-DDR4-rev-10/support#support-dl-bios"
     },
     "B660M Pro RS": {
       "bios": "16.01",
@@ -1043,6 +1865,76 @@
       "date": "2025-12-09",
       "url": "https://www.asrock.com/mb/Intel/B660M-ITXeDP/BIOS.html"
     },
+    "B760 AORUS ELITE": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "B760 AORUS ELITE AX": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-AORUS-ELITE-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760 AORUS ELITE AX DDR4": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-AORUS-ELITE-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760 AORUS ELITE DDR4": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-AORUS-ELITE-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760 AORUS MASTER DDR4": {
+      "bios": "F17a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-AORUS-MASTER-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760 DS3H": {
+      "bios": "F17a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-rev-10/support#support-dl-bios"
+    },
+    "B760 DS3H AC": {
+      "bios": "F11a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-AC-rev-10-11/support#support-dl-bios"
+    },
+    "B760 DS3H AC DDR4": {
+      "bios": "F17a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-AC-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760 DS3H AX": {
+      "bios": "F17a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760 DS3H AX DDR4": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760 DS3H AX V2": {
+      "bios": "F10a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-AX-V2-rev-10/support#support-dl-bios"
+    },
+    "B760 DS3H DDR4": {
+      "bios": "F17a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760 DS3H GEN5": {
+      "bios": "F6a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-GEN5/support#support-dl-bios"
+    },
+    "B760 DS3H WIFI6E GEN5": {
+      "bios": "F6a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-DS3H-WIFI6E-GEN5/support#support-dl-bios"
+    },
     "B760 GAMING PLUS WIFI": {
       "bios": "7D98vHD",
       "date": "2026-04-09"
@@ -1051,10 +1943,35 @@
       "bios": "7D98vM9",
       "date": "2026-06-03"
     },
+    "B760 GAMING X": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-rev-10/support#support-dl-bios"
+    },
     "B760 GAMING X AX": {
       "bios": "F18a",
-      "date": "2026-07-30",
+      "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760 GAMING X DDR4": {
+      "bios": "F18b",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760 GAMING X DDR4 GEN5": {
+      "bios": "F7b",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760 GAMING X GEN5": {
+      "bios": "F6a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-GEN5/support#support-dl-bios"
+    },
+    "B760 GAMING X WIFI6E GEN5": {
+      "bios": "F6a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-WIFI6E-GEN5/support#support-dl-bios"
     },
     "B760 Pro RS": {
       "bios": "14.02",
@@ -1086,23 +2003,234 @@
       "date": "2026-07-07",
       "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RSD4%20WiFi%20White/BIOS.html"
     },
+    "B760I AORUS PRO": {
+      "bios": "F17a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760I-AORUS-PRO-rev-1x/support#support-dl-bios"
+    },
+    "B760I AORUS PRO DDR4": {
+      "bios": "F18a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760I-AORUS-PRO-DDR4-rev-1x/support#support-dl-bios"
+    },
     "B760I Lightning WiFi": {
       "bios": "8.02",
       "date": "2026-07-14",
       "url": "https://pg.asrock.com/mb/Intel/B760I%20Lightning%20WiFi/BIOS.html"
+    },
+    "B760M AORUS ELITE": {
+      "bios": "F25",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-rev-1x/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE AX": {
+      "bios": "F25",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE AX DDR4": {
+      "bios": "F25a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE DDR4": {
+      "bios": "F25a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE DDR4 GEN5": {
+      "bios": "F6a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE GEN5": {
+      "bios": "F7a",
+      "date": "2026-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-GEN5/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE WIFI6E DDR4 GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-WIFI6E-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE WIFI6E GEN5": {
+      "bios": "F6",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-WIFI6E-GEN5/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE WIFI6E-P GEN5": {
+      "bios": "F6",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-WIFI6E-P-GEN5/support#support-dl-bios"
+    },
+    "B760M AORUS ELITE X AX": {
+      "bios": "F11",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-ELITE-X-AX/support#support-dl-bios"
+    },
+    "B760M AORUS PRO": {
+      "bios": "F25",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
+    "B760M AORUS PRO AX": {
+      "bios": "F25",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-PRO-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760M AORUS PRO AX DDR4": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-PRO-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760M AORUS PRO DDR4": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-AORUS-PRO-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M C": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-C-rev-10/support#support-dl-bios"
+    },
+    "B760M C V2": {
+      "bios": "F8",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-C-V2-rev-10/support#support-dl-bios"
+    },
+    "B760M C V3": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-C-V3/support#support-dl-bios"
+    },
+    "B760M D": {
+      "bios": "F10",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D-rev-10/support#support-dl-bios"
+    },
+    "B760M D DDR4": {
+      "bios": "F15",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M D2H": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D2H-rev-10/support#support-dl-bios"
+    },
+    "B760M D2H DDR4": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D2H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M D3H": {
+      "bios": "F11",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D3H-rev-1x/support#support-dl-bios"
+    },
+    "B760M D3H DDR4": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D3H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M D3HP": {
+      "bios": "F10",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D3HP/support#support-dl-bios"
+    },
+    "B760M D3HP DDR4": {
+      "bios": "F9",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D3HP-DDR4/support#support-dl-bios"
+    },
+    "B760M D3HP WIFI6": {
+      "bios": "F6",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-D3HP-WIFI6/support#support-dl-bios"
+    },
+    "B760M DS3H": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-rev-10/support#support-dl-bios"
     },
     "B760M DS3H AX": {
       "bios": "F24",
       "date": "2026-06-12",
       "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-AX-rev-1x/support#support-dl-bios"
     },
+    "B760M DS3H AX DDR4": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760M DS3H DDR4": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M DS3H DDR4 GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M DS3H GEN5": {
+      "bios": "F7",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-GEN5/support#support-dl-bios"
+    },
+    "B760M DS3H WIFI6E DDR4 GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-WIFI6E-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M DS3H WIFI6E GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-DS3H-WIFI6E-GEN5/support#support-dl-bios"
+    },
+    "B760M E": {
+      "bios": "F15",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-E-rev-10/support#support-dl-bios"
+    },
+    "B760M G AX": {
+      "bios": "F9",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-G-AX-rev-10/support#support-dl-bios"
+    },
+    "B760M GAMING": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-rev-10/support#support-dl-bios"
+    },
+    "B760M GAMING AC": {
+      "bios": "F23",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-AC-rev-10-11/support#support-dl-bios"
+    },
+    "B760M GAMING AC DDR4": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-AC-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "B760M GAMING AC DDR4 GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-AC-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M GAMING DDR4": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-DDR4-rev-1x/support#support-dl-bios"
+    },
     "B760M GAMING PLUS WIFI": {
       "bios": "7D99vH9",
       "date": "2026-04-07"
     },
     "B760M GAMING PLUS WIFI DDR4": {
-      "bios": "7D99vM8",
-      "date": "2026-06-08"
+      "bios": "F10",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-PLUS-WIFI-DDR4-rev-10/support#support-dl-bios"
     },
     "B760M GAMING PLUS WIFI DDR4 II": {
       "bios": "7D99vN3",
@@ -1117,8 +2245,84 @@
       "date": "2026-03-19"
     },
     "B760M GAMING WIFI": {
-      "bios": "7D90vH9",
-      "date": "2026-04-07"
+      "bios": "F14",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI-rev-12-14/support#support-dl-bios"
+    },
+    "B760M GAMING WIFI PLUS": {
+      "bios": "F9",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI-PLUS-rev-11/support#support-dl-bios"
+    },
+    "B760M GAMING WIFI6 PLUS GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI6-PLUS-GEN5/support#support-dl-bios"
+    },
+    "B760M GAMING WIFI6E GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI6E-GEN5/support#support-dl-bios"
+    },
+    "B760M GAMING X": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-rev-10/support#support-dl-bios"
+    },
+    "B760M GAMING X AX": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-AX-rev-1x/support#support-dl-bios"
+    },
+    "B760M GAMING X DDR4": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M GAMING X DDR4 GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M GAMING X GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-GEN5/support#support-dl-bios"
+    },
+    "B760M GAMING X WIFI6E DDR4 GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-WIFI6E-DDR4-GEN5/support#support-dl-bios"
+    },
+    "B760M GAMING X WIFI6E GEN5": {
+      "bios": "F5",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-X-WIFI6E-GEN5/support#support-dl-bios"
+    },
+    "B760M H": {
+      "bios": "F15",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-H-rev-10/support#support-dl-bios"
+    },
+    "B760M H DDR4": {
+      "bios": "F17",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M H V2": {
+      "bios": "F4",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-H-V2/support#support-dl-bios"
+    },
+    "B760M K DDR4": {
+      "bios": "F15",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-K-DDR4-rev-10/support#support-dl-bios"
+    },
+    "B760M K V2 DDR4": {
+      "bios": "F9",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-K-V2-DDR4/support#support-dl-bios"
     },
     "B760M MAX GAMING WIFI": {
       "bios": "1836",
@@ -1154,6 +2358,16 @@
       "bios": "14.02",
       "date": "2026-07-07",
       "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20SONIC%20WiFi/BIOS.html"
+    },
+    "B760M POWER": {
+      "bios": "F24",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-POWER-rev-10/support#support-dl-bios"
+    },
+    "B760M POWER DDR4": {
+      "bios": "F16",
+      "date": "2026-06-12",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-POWER-DDR4-rev-10/support#support-dl-bios"
     },
     "B760M Pro RS": {
       "bios": "13.01",
@@ -1279,22 +2493,83 @@
       "date": "2026-07-14",
       "url": "https://www.asrock.com/mb/Intel/B760M-X%20Gen5/BIOS.html"
     },
+    "B840 EAGLE WIFI6E": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840-EAGLE-WIFI6E/support#support-dl-bios"
+    },
     "B840 GAMING PLUS WIFI": {
       "bios": "7E57v2A72",
       "date": "2026-06-26"
+    },
+    "B840 GAMING X WIFI6E": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840-GAMING-X-WIFI6E/support#support-dl-bios"
+    },
+    "B840M AORUS ELITE WIFI6E": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-AORUS-ELITE-WIFI6E-rev-10/support#support-dl-bios"
     },
     "B840M AYW GAMING WIFI": {
       "bios": "1686",
       "date": "2026-07-02",
       "url": "https://www.asus.com/supportonly/B840M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
     },
+    "B840M D2H": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-D2H-rev-10-11/support#support-dl-bios"
+    },
+    "B840M D3HP": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-D3HP/support#support-dl-bios"
+    },
+    "B840M D3HP WIFI6E": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-D3HP-WIFI6E/support#support-dl-bios"
+    },
+    "B840M DS3H": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-DS3H-rev-10/support#support-dl-bios"
+    },
+    "B840M DS3H WIFI6": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-DS3H-WIFI6-rev-11/support#support-dl-bios"
+    },
+    "B840M EAGLE WIFI6": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-EAGLE-WIFI6-rev-10-11/support#support-dl-bios"
+    },
+    "B840M FORCE WIFI6E": {
+      "bios": "F2c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-FORCE-WIFI6E/support#support-dl-bios"
+    },
     "B840M GAMING PLUS WIFI6E": {
-      "bios": "7E77v1A42",
-      "date": "2026-06-26"
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-GAMING-PLUS-WIFI6E/support#support-dl-bios"
     },
     "B840M GAMING WIFI6E": {
       "bios": "7E76v1A42",
       "date": "2026-07-01"
+    },
+    "B840M GAMING X WIFI6E": {
+      "bios": "F6c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-GAMING-X-WIFI6E/support#support-dl-bios"
+    },
+    "B840M H": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B840M-H/support#support-dl-bios"
     },
     "B840M MAX GAMING AX": {
       "bios": "1686",
@@ -1306,10 +2581,40 @@
       "date": "2026-07-13",
       "url": "https://www.asrock.com/mb/AMD/B840M-HVS/BIOS.html"
     },
+    "B850 AI TOP": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AI-TOP-rev-10/support#support-dl-bios"
+    },
     "B850 AORUS ELITE WIFI7": {
       "bios": "F12c",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-WIFI7-rev-1x/support#support-dl-bios"
+    },
+    "B850 AORUS ELITE WIFI7 ICE": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-WIFI7-ICE-rev-1x/support#support-dl-bios"
+    },
+    "B850 AORUS ELITE X3D": {
+      "bios": "F2c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-X3D/support#support-dl-bios"
+    },
+    "B850 AORUS ELITE-P ICE": {
+      "bios": "F2c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-P-ICE/support#support-dl-bios"
+    },
+    "B850 AORUS STEALTH": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-STEALTH/support#support-dl-bios"
+    },
+    "B850 AORUS STEALTH ICE": {
+      "bios": "FA7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-STEALTH-ICE-rev-11/support#support-dl-bios"
     },
     "B850 Challenger WiFi": {
       "bios": "4.43",
@@ -1320,6 +2625,21 @@
       "bios": "4.43",
       "date": "2026-07-02",
       "url": "https://www.asrock.com/mb/AMD/B850%20Challenger%20WiFi%20White/BIOS.html"
+    },
+    "B850 EAGLE ICE": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-EAGLE-ICE/support#support-dl-bios"
+    },
+    "B850 EAGLE WIFI6E": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-EAGLE-WIFI6E-rev-1x/support#support-dl-bios"
+    },
+    "B850 EAGLE WIFI7 ICE": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-EAGLE-WIFI7-ICE/support#support-dl-bios"
     },
     "B850 GAMING PLUS WIFI": {
       "bios": "7E56v1AA2",
@@ -1336,6 +2656,11 @@
     "B850 GAMING PRO WIFI6E": {
       "bios": "7E89v1A31",
       "date": "2026-06-03"
+    },
+    "B850 GAMING WIFI6": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850-GAMING-WIFI6-rev-1x/support#support-dl-bios"
     },
     "B850 GAMING X WIFI6E": {
       "bios": "F11c",
@@ -1401,10 +2726,50 @@
       "date": "2026-07-03",
       "url": "https://www.asrock.com/mb/AMD/B850%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "B850I AORUS PRO": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850I-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
     "B850I Lightning WiFi": {
       "bios": "4.43",
       "date": "2026-07-07",
       "url": "https://pg.asrock.com/mb/AMD/B850I%20Lightning%20WiFi/BIOS.html"
+    },
+    "B850M AORUS ELITE": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE/support#support-dl-bios"
+    },
+    "B850M AORUS ELITE WIFI6E": {
+      "bios": "F11c",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-rev-1x/support#support-dl-bios"
+    },
+    "B850M AORUS ELITE WIFI6E ICE": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI6E-ICE-rev-1x/support#support-dl-bios"
+    },
+    "B850M AORUS ELITE WIFI7 ICE-P": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-ELITE-WIFI7-ICE-P/support#support-dl-bios"
+    },
+    "B850M AORUS PRO WIFI7": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-PRO-WIFI7/support#support-dl-bios"
+    },
+    "B850M AORUS STEALTH": {
+      "bios": "F2d",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-STEALTH/support#support-dl-bios"
+    },
+    "B850M AORUS STEALTH ICE": {
+      "bios": "F2d",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-AORUS-STEALTH-ICE/support#support-dl-bios"
     },
     "B850M AYW GAMING OC WIFI7 W": {
       "bios": "1688",
@@ -1415,6 +2780,11 @@
       "bios": "1686",
       "date": "2026-07-02",
       "url": "https://www.asus.com/supportonly/B850M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "B850M C": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-C/support#support-dl-bios"
     },
     "B850M Challenger": {
       "bios": "4.43",
@@ -1430,6 +2800,56 @@
       "bios": "4.43",
       "date": "2026-07-03",
       "url": "https://www.asrock.com/mb/AMD/B850M%20Challenger%20WiFi%20White/BIOS.html"
+    },
+    "B850M D3HP": {
+      "bios": "FA8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-D3HP-rev-11/support#support-dl-bios"
+    },
+    "B850M DS3H": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-DS3H-rev-10/support#support-dl-bios"
+    },
+    "B850M DS3H ICE": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-DS3H-ICE-rev-10/support#support-dl-bios"
+    },
+    "B850M EAGLE WIFI6E": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-rev-10/support#support-dl-bios"
+    },
+    "B850M EAGLE WIFI6E ICE": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI6E-ICE-rev-10/support#support-dl-bios"
+    },
+    "B850M EAGLE WIFI7": {
+      "bios": "F6c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-EAGLE-WIFI7/support#support-dl-bios"
+    },
+    "B850M FORCE": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-FORCE-rev-12/support#support-dl-bios"
+    },
+    "B850M FORCE V2": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-FORCE-V2/support#support-dl-bios"
+    },
+    "B850M FORCE WIFI6E": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-FORCE-WIFI6E-rev-10/support#support-dl-bios"
+    },
+    "B850M FORCE WIFI6E V2": {
+      "bios": "F7c",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-FORCE-WIFI6E-V2/support#support-dl-bios"
     },
     "B850M GAMING PLUS WIFI": {
       "bios": "7E66v1A43",
@@ -1450,6 +2870,11 @@
     "B850M GAMING WIFI6E": {
       "bios": "7E87v1A33",
       "date": "2026-06-26"
+    },
+    "B850M GAMING X WIFI6E": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/B850M-GAMING-X-WIFI6E-rev-11/support#support-dl-bios"
     },
     "B850M MAX GAMING WIFI": {
       "bios": "1686",
@@ -1540,6 +2965,11 @@
       "bios": "7E83v1A36",
       "date": "2026-07-16"
     },
+    "B860 AORUS ELITE WIFI7 ICE": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios"
+    },
     "B860 Challenger WiFi": {
       "bios": "3.31",
       "date": "2026-07-20",
@@ -1550,9 +2980,29 @@
       "date": "2026-07-20",
       "url": "https://www.asrock.com/mb/Intel/B860%20Challenger%20WiFi%20White/BIOS.html"
     },
+    "B860 DS3H": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860-DS3H-rev-11/support#support-dl-bios"
+    },
+    "B860 DS3H WIFI6E": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860-DS3H-WIFI6E-rev-10/support#support-dl-bios"
+    },
+    "B860 EAGLE WIFI6E": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860-EAGLE-WIFI6E/support#support-dl-bios"
+    },
     "B860 GAMING PLUS WIFI": {
       "bios": "7E41v2A90",
       "date": "2026-07-24"
+    },
+    "B860 GAMING X WIFI6E": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860-GAMING-X-WIFI6E/support#support-dl-bios"
     },
     "B860 Lightning WiFi": {
       "bios": "3.31",
@@ -1594,6 +3044,11 @@
       "date": "2026-07-15",
       "url": "https://www.asrock.com/mb/Intel/B860%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "B860I AORUS PRO ICE": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860I-AORUS-PRO-ICE/support#support-dl-bios"
+    },
     "B860I Lightning WiFi": {
       "bios": "3.31",
       "date": "2026-07-20",
@@ -1604,10 +3059,35 @@
       "date": "2026-07-15",
       "url": "https://www.asrock.com/mb/Intel/B860I%20WiFi/BIOS.html"
     },
+    "B860M AORUS ELITE": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE/support#support-dl-bios"
+    },
+    "B860M AORUS ELITE WIFI6E": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E/support#support-dl-bios"
+    },
+    "B860M AORUS ELITE WIFI6E ICE": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-ELITE-WIFI6E-ICE/support#support-dl-bios"
+    },
+    "B860M AORUS PRO WIFI7": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-AORUS-PRO-WIFI7/support#support-dl-bios"
+    },
     "B860M AYW GAMING WIFI": {
       "bios": "3020",
       "date": "2026-04-29",
       "url": "https://www.asus.com/supportonly/B860M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "B860M C": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-C/support#support-dl-bios"
     },
     "B860M Challenger WiFi": {
       "bios": "3.31",
@@ -1618,6 +3098,71 @@
       "bios": "3.31",
       "date": "2026-07-20",
       "url": "https://www.asrock.com/mb/Intel/B860M%20Challenger%20WiFi%20White/BIOS.html"
+    },
+    "B860M D": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-D/support#support-dl-bios"
+    },
+    "B860M D2H": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-D2H/support#support-dl-bios"
+    },
+    "B860M D3HP": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-D3HP-rev-10/support#support-dl-bios"
+    },
+    "B860M D3W": {
+      "bios": "F2",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-D3W/support#support-dl-bios"
+    },
+    "B860M DS3H": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-DS3H-rev-10/support#support-dl-bios"
+    },
+    "B860M DS3H WIFI6E": {
+      "bios": "FA6",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-DS3H-WIFI6E-rev-20/support#support-dl-bios"
+    },
+    "B860M E": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-E/support#support-dl-bios"
+    },
+    "B860M E GEN5": {
+      "bios": "F3",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-E-GEN5/support#support-dl-bios"
+    },
+    "B860M EAGLE": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-EAGLE/support#support-dl-bios"
+    },
+    "B860M EAGLE PLUS WIFI6E": {
+      "bios": "FA5",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-EAGLE-PLUS-WIFI6E-rev-20/support#support-dl-bios"
+    },
+    "B860M EAGLE V2": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-EAGLE-V2/support#support-dl-bios"
+    },
+    "B860M EAGLE WIFI6": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-EAGLE-WIFI6/support#support-dl-bios"
+    },
+    "B860M EAGLE WIFI6 V2": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-EAGLE-WIFI6-V2/support#support-dl-bios"
     },
     "B860M GAMING PLUS WIFI": {
       "bios": "7E42v2A9",
@@ -1630,6 +3175,36 @@
     "B860M GAMING WIFI": {
       "bios": "7E68v2A60",
       "date": "2026-07-07"
+    },
+    "B860M GAMING WIFI6": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-GAMING-WIFI6/support#support-dl-bios"
+    },
+    "B860M GAMING X": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-GAMING-X/support#support-dl-bios"
+    },
+    "B860M GAMING X WIFI6E": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-GAMING-X-WIFI6E-rev-1x/support#support-dl-bios"
+    },
+    "B860M H": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-H/support#support-dl-bios"
+    },
+    "B860M K": {
+      "bios": "F10",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-K/support#support-dl-bios"
+    },
+    "B860M K GEN5": {
+      "bios": "F3",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-K-GEN5/support#support-dl-bios"
     },
     "B860M Lightning WiFi": {
       "bios": "3.31",
@@ -1645,6 +3220,11 @@
       "bios": "3021",
       "date": "2026-05-28",
       "url": "https://www.asus.com/supportonly/B860M%20MAX%20GAMING%20AX/helpdesk_bios/"
+    },
+    "B860M POWER": {
+      "bios": "F11",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/B860M-POWER/support#support-dl-bios"
     },
     "B860M Pro RS": {
       "bios": "3.31",
@@ -1730,6 +3310,11 @@
       "bios": "3.31",
       "date": "2026-07-17",
       "url": "https://www.asrock.com/mb/Intel/B860M-X%20WiFi/BIOS.html"
+    },
+    "C621 AORUS XTREME": {
+      "bios": "F4b",
+      "date": "2024-08-22",
+      "url": "https://www.gigabyte.com/Motherboard/C621-AORUS-XTREME-rev-10/support#support-dl-bios"
     },
     "Creator TRX40": {
       "bios": "7C59v198",
@@ -1964,13 +3549,988 @@
       "date": "2026-05-11",
       "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X470%20Gaming-ITXac/BIOS.html"
     },
+    "GA-A520I-DASH": {
+      "bios": "F4h",
+      "date": "2023-08-30",
+      "url": "https://www.gigabyte.com/Motherboard/GA-A520I-DASH-rev-10/support#support-dl-bios"
+    },
+    "GA-B560M-D3P": {
+      "bios": "F12d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/GA-B560M-D3P-rev-10/support#support-dl-bios"
+    },
+    "GA-B75M-S": {
+      "bios": "F2c",
+      "date": "2024-08-18",
+      "url": "https://www.gigabyte.com/Motherboard/GA-B75M-S-rev-10/support#support-dl-bios"
+    },
+    "GA-C1007UN": {
+      "bios": "F2",
+      "date": "2013-03-05",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C1007UN-rev-10/support#support-dl-bios"
+    },
+    "GA-C1007UN-D": {
+      "bios": "F2",
+      "date": "2013-03-05",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C1007UN-D-rev-10/support#support-dl-bios"
+    },
+    "GA-C1037UN": {
+      "bios": "FA",
+      "date": "2014-03-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C1037UN-rev-20/support#support-dl-bios"
+    },
+    "GA-C1037UN-EU": {
+      "bios": "FA",
+      "date": "2014-03-05",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C1037UN-EU-rev-20/support#support-dl-bios"
+    },
+    "GA-C1037UN-L": {
+      "bios": "F2",
+      "date": "2013-12-04",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C1037UN-L-rev-10/support#support-dl-bios"
+    },
+    "GA-C1037UN-LA": {
+      "bios": "F1",
+      "date": "2014-03-05",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C1037UN-LA-rev-10/support#support-dl-bios"
+    },
+    "GA-C807N": {
+      "bios": "F3",
+      "date": "2013-02-07",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C807N-rev-10/support#support-dl-bios"
+    },
+    "GA-C847N": {
+      "bios": "F3",
+      "date": "2013-02-07",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C847N-rev-10/support#support-dl-bios"
+    },
+    "GA-C847N-D": {
+      "bios": "F2",
+      "date": "2013-02-07",
+      "url": "https://www.gigabyte.com/Motherboard/GA-C847N-D-rev-10/support#support-dl-bios"
+    },
+    "GA-D425TU": {
+      "bios": "F2",
+      "date": "2013-01-22",
+      "url": "https://www.gigabyte.com/Motherboard/GA-D425TU-rev-14/support#support-dl-bios"
+    },
+    "GA-D425TUD": {
+      "bios": "F7",
+      "date": "2012-12-03",
+      "url": "https://www.gigabyte.com/Motherboard/GA-D425TUD-rev-14/support#support-dl-bios"
+    },
+    "GA-D510UD": {
+      "bios": "F4",
+      "date": "2010-04-22",
+      "url": "https://www.gigabyte.com/Motherboard/GA-D510UD-rev-10/support#support-dl-bios"
+    },
+    "GA-D525TUD": {
+      "bios": "FA",
+      "date": "2013-10-04",
+      "url": "https://www.gigabyte.com/Motherboard/GA-D525TUD-rev-15/support#support-dl-bios"
+    },
+    "GA-E2100N": {
+      "bios": "F2",
+      "date": "2014-06-23",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E2100N-rev-10/support#support-dl-bios"
+    },
+    "GA-E240N": {
+      "bios": "F1",
+      "date": "2012-07-27",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E240N-rev-10/support#support-dl-bios"
+    },
+    "GA-E2500N": {
+      "bios": "F1",
+      "date": "2018-11-21",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E2500N-rev-10/support#support-dl-bios"
+    },
+    "GA-E3000N": {
+      "bios": "F1",
+      "date": "2018-02-01",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E3000N-rev-10/support#support-dl-bios"
+    },
+    "GA-E350N": {
+      "bios": "FA",
+      "date": "2012-10-01",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E350N-rev-30/support#support-dl-bios"
+    },
+    "GA-E350N WIN8": {
+      "bios": "F4a",
+      "date": "2013-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E350N-WIN8-rev-10/support#support-dl-bios"
+    },
+    "GA-E350N-USB3": {
+      "bios": "F2",
+      "date": "2011-09-19",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E350N-USB3-rev-10/support#support-dl-bios"
+    },
+    "GA-E3800N": {
+      "bios": "F2",
+      "date": "2017-07-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E3800N-rev-1x/support#support-dl-bios"
+    },
+    "GA-E6010N": {
+      "bios": "F2b",
+      "date": "2020-09-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-E6010N-rev-10/support#support-dl-bios"
+    },
+    "GA-F2A55-DS3": {
+      "bios": "F5a",
+      "date": "2015-05-07",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A55-DS3-rev-30/support#support-dl-bios"
+    },
+    "GA-F2A55M-DS2": {
+      "bios": "FFb",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A55M-DS2-rev-30/support#support-dl-bios"
+    },
+    "GA-F2A55M-HD2": {
+      "bios": "FGa",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A55M-HD2-rev-30/support#support-dl-bios"
+    },
+    "GA-F2A55M-S1": {
+      "bios": "FEa",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A55M-S1-rev-30/support#support-dl-bios"
+    },
+    "GA-F2A58-DS3": {
+      "bios": "F3e",
+      "date": "2015-05-07",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A58-DS3-rev-3x/support#support-dl-bios"
+    },
+    "GA-F2A58M-DS2": {
+      "bios": "F3a",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A58M-DS2-rev-3x/support#support-dl-bios"
+    },
+    "GA-F2A58M-DS2H": {
+      "bios": "F2a",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A58M-DS2H-rev-30/support#support-dl-bios"
+    },
+    "GA-F2A58M-H": {
+      "bios": "F2a",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A58M-H-rev-31/support#support-dl-bios"
+    },
+    "GA-F2A58M-HD2": {
+      "bios": "F3b",
+      "date": "2015-10-29",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A58M-HD2-rev-3x/support#support-dl-bios"
+    },
+    "GA-F2A58M-S1": {
+      "bios": "F3c",
+      "date": "2015-05-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-F2A58M-S1-rev-32/support#support-dl-bios"
+    },
+    "GA-GC220": {
+      "bios": "F1",
+      "date": "2008-03-27",
+      "url": "https://www.gigabyte.com/Motherboard/GA-GC220-rev-10/support#support-dl-bios"
+    },
+    "GA-GC230D": {
+      "bios": "F2",
+      "date": "2009-08-04",
+      "url": "https://www.gigabyte.com/Motherboard/GA-GC230D-rev-10/support#support-dl-bios"
+    },
+    "GA-GC330UD": {
+      "bios": "F3",
+      "date": "2009-09-30",
+      "url": "https://www.gigabyte.com/Motherboard/GA-GC330UD-rev-10/support#support-dl-bios"
+    },
+    "GA-H110-D3": {
+      "bios": "F25b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110-D3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110-D3A": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110-D3A-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-A": {
+      "bios": "F25b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-A-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-D3H": {
+      "bios": "F22g",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-D3H-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-D3H R2": {
+      "bios": "F24b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-D3H-R2-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-D3H R2 TPM": {
+      "bios": "F22f",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-D3H-R2-TPM-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-DS2": {
+      "bios": "F28b",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-DS2-rev-10-11-12/support#support-dl-bios"
+    },
+    "GA-H110M-DS2 DDR3": {
+      "bios": "F20g",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-DS2-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-DS2V": {
+      "bios": "F25b",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-DS2V-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-DS2V DDR3": {
+      "bios": "F22b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-DS2V-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-Gaming 3": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-Gaming-3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-H": {
+      "bios": "F28b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-H-rev-10-11-12/support#support-dl-bios"
+    },
+    "GA-H110M-H DDR3": {
+      "bios": "F21g",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-H-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-HD2": {
+      "bios": "F25b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-HD2-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-HD3 DDR3": {
+      "bios": "F20h",
+      "date": "2018-03-09",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-HD3-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-M.2": {
+      "bios": "F25b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-M2-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2": {
+      "bios": "F27b",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2-rev-1x/support#support-dl-bios"
+    },
+    "GA-H110M-S2 DDR3": {
+      "bios": "F20g",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2H": {
+      "bios": "F26h",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2H-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2H DDR3": {
+      "bios": "F21b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2H-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2HP": {
+      "bios": "F22g",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2HP-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2PH": {
+      "bios": "F1",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2PH-rev-20/support#support-dl-bios"
+    },
+    "GA-H110M-S2PH DDR3": {
+      "bios": "F20g",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2PH-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2PT": {
+      "bios": "F25b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2PT-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2PV": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2PV-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2PV DDR3": {
+      "bios": "F20g",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2PV-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2V": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2V-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-S2V DDR3": {
+      "bios": "F21f",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-S2V-DDR3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110M-WW": {
+      "bios": "F25b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110M-WW-rev-10/support#support-dl-bios"
+    },
+    "GA-H110MSTX-HD3": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110MSTX-HD3-rev-10/support#support-dl-bios"
+    },
+    "GA-H110MSTX-HD3-ZK": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110MSTX-HD3-ZK-rev-10/support#support-dl-bios"
+    },
+    "GA-H110N": {
+      "bios": "F25b",
+      "date": "2025-06-19",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110N-rev-10/support#support-dl-bios"
+    },
+    "GA-H110TN": {
+      "bios": "F26b",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110TN-rev-10/support#support-dl-bios"
+    },
+    "GA-H110TN-CM": {
+      "bios": "F26a",
+      "date": "2024-07-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110TN-CM-rev-10/support#support-dl-bios"
+    },
+    "GA-H110TN-E": {
+      "bios": "F23g",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110TN-E-rev-10/support#support-dl-bios"
+    },
+    "GA-H110TN-M": {
+      "bios": "F23g",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H110TN-M-rev-10/support#support-dl-bios"
+    },
+    "GA-H310MSTX-HD3": {
+      "bios": "F8b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H310MSTX-HD3-rev-10/support#support-dl-bios"
+    },
+    "GA-H310MSTX-HD3-CM": {
+      "bios": "F8b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H310MSTX-HD3-CM-rev-10/support#support-dl-bios"
+    },
+    "GA-H310TN": {
+      "bios": "F18b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H310TN-rev-10/support#support-dl-bios"
+    },
+    "GA-H310TN-CM": {
+      "bios": "F18b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H310TN-CM-rev-10/support#support-dl-bios"
+    },
+    "GA-H310TN-R2": {
+      "bios": "F5b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H310TN-R2-rev-10/support#support-dl-bios"
+    },
+    "GA-H61M-DS2 R2": {
+      "bios": "F1",
+      "date": "2017-11-08",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H61M-DS2-R2-rev-10/support#support-dl-bios"
+    },
+    "GA-H81-D3": {
+      "bios": "FC",
+      "date": "2015-08-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81-D3-rev-21/support#support-dl-bios"
+    },
+    "GA-H81-D3P": {
+      "bios": "F5",
+      "date": "2015-08-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81-D3P-rev-10/support#support-dl-bios"
+    },
+    "GA-H81.AMP-UP": {
+      "bios": "F5",
+      "date": "2015-08-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81Amp-UP-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-D2": {
+      "bios": "F2",
+      "date": "2015-08-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-D2-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-D2V": {
+      "bios": "FC",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-D2V-rev-20/support#support-dl-bios"
+    },
+    "GA-H81M-D3H": {
+      "bios": "F7",
+      "date": "2016-11-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-D3H-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-D3V": {
+      "bios": "F5",
+      "date": "2015-08-18",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-D3V-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-DS2": {
+      "bios": "FA",
+      "date": "2023-01-10",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-DS2-rev-41/support#support-dl-bios"
+    },
+    "GA-H81M-DS2 Plus": {
+      "bios": "F2",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-DS2-Plus-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-DS2V": {
+      "bios": "FC",
+      "date": "2015-08-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-DS2V-rev-20/support#support-dl-bios"
+    },
+    "GA-H81M-Gaming 3": {
+      "bios": "F2",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-Gaming-3-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-H": {
+      "bios": "FA",
+      "date": "2023-01-30",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-H-rev-22/support#support-dl-bios"
+    },
+    "GA-H81M-HD2": {
+      "bios": "F6",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-HD2-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-HD3": {
+      "bios": "F7",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-HD3-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-S": {
+      "bios": "FA",
+      "date": "2021-04-29",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S-rev-2x/support#support-dl-bios"
+    },
+    "GA-H81M-S1": {
+      "bios": "FA",
+      "date": "2021-04-29",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S1-rev-3x/support#support-dl-bios"
+    },
+    "GA-H81M-S2H": {
+      "bios": "F2",
+      "date": "2015-08-19",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S2H-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-S2PH": {
+      "bios": "FA",
+      "date": "2023-01-10",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S2PH-rev-23/support#support-dl-bios"
+    },
+    "GA-H81M-S2PT": {
+      "bios": "F5",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S2PT-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-S2PV": {
+      "bios": "F9",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S2PV-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-S2V": {
+      "bios": "F3",
+      "date": "2015-08-31",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S2V-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-S2VP": {
+      "bios": "F7",
+      "date": "2015-08-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-S2VP-rev-10/support#support-dl-bios"
+    },
+    "GA-H81M-WW": {
+      "bios": "F4",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81M-WW-rev-10/support#support-dl-bios"
+    },
+    "GA-H81N": {
+      "bios": "F5",
+      "date": "2015-08-13",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81N-rev-10/support#support-dl-bios"
+    },
+    "GA-H81N-D2H": {
+      "bios": "F3",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81N-D2H-rev-10/support#support-dl-bios"
+    },
+    "GA-H81TN": {
+      "bios": "F7",
+      "date": "2015-12-03",
+      "url": "https://www.gigabyte.com/Motherboard/GA-H81TN-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB1900N": {
+      "bios": "F2a",
+      "date": "2024-08-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB1900N-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB1900TN": {
+      "bios": "F2c",
+      "date": "2024-08-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB1900TN-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB310N": {
+      "bios": "F6b",
+      "date": "2020-09-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB310N-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB310TN": {
+      "bios": "F15b",
+      "date": "2020-09-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB310TN-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB310TN-CM": {
+      "bios": "F13",
+      "date": "2019-06-28",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB310TN-CM-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB4100TN": {
+      "bios": "F3a",
+      "date": "2024-08-01",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB4100TN-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB410M": {
+      "bios": "F2",
+      "date": "2020-07-08",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB410M-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB410N": {
+      "bios": "F1",
+      "date": "2020-05-28",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB410N-rev-10/support#support-dl-bios"
+    },
+    "GA-IMB410TN": {
+      "bios": "F1",
+      "date": "2020-07-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMB410TN-rev-10/support#support-dl-bios"
+    },
+    "GA-IMBLAP3350": {
+      "bios": "FA",
+      "date": "2020-06-02",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMBLAP3350-rev-20/support#support-dl-bios"
+    },
+    "GA-IMBLAP3450": {
+      "bios": "F2",
+      "date": "2019-01-23",
+      "url": "https://www.gigabyte.com/Motherboard/GA-IMBLAP3450-rev-10/support#support-dl-bios"
+    },
+    "GA-J1800M-D2P": {
+      "bios": "F4c",
+      "date": "2024-08-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800M-D2P-rev-11/support#support-dl-bios"
+    },
+    "GA-J1800M-D2P-IN": {
+      "bios": "F2c",
+      "date": "2024-08-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800M-D2P-IN-rev-11/support#support-dl-bios"
+    },
+    "GA-J1800M-D3P": {
+      "bios": "F4b",
+      "date": "2023-11-06",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800M-D3P-rev-1x/support#support-dl-bios"
+    },
+    "GA-J1800N-D2H": {
+      "bios": "F9a",
+      "date": "2024-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800N-D2H-rev-1x/support#support-dl-bios"
+    },
+    "GA-J1800N-D2P": {
+      "bios": "F3g",
+      "date": "2024-08-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800N-D2P-rev-10/support#support-dl-bios"
+    },
+    "GA-J1800N-D2PH": {
+      "bios": "F2c",
+      "date": "2024-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800N-D2PH-rev-11/support#support-dl-bios"
+    },
+    "GA-J1800N-H": {
+      "bios": "F3c",
+      "date": "2024-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1800N-H-rev-11/support#support-dl-bios"
+    },
+    "GA-J1900M-D2P": {
+      "bios": "F4b",
+      "date": "2024-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1900M-D2P-rev-11/support#support-dl-bios"
+    },
+    "GA-J1900M-D3P": {
+      "bios": "F4b",
+      "date": "2024-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1900M-D3P-rev-10/support#support-dl-bios"
+    },
+    "GA-J1900N-D2H": {
+      "bios": "F6c",
+      "date": "2024-08-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1900N-D2H-rev-1x-2x/support#support-dl-bios"
+    },
+    "GA-J1900N-D3V": {
+      "bios": "F9a",
+      "date": "2024-08-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J1900N-D3V-rev-1x/support#support-dl-bios"
+    },
+    "GA-J3355N-D2P": {
+      "bios": "F1",
+      "date": "2017-04-12",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J3355N-D2P-rev-10/support#support-dl-bios"
+    },
+    "GA-J3455N-D3H": {
+      "bios": "F3",
+      "date": "2018-11-23",
+      "url": "https://www.gigabyte.com/Motherboard/GA-J3455N-D3H-rev-10/support#support-dl-bios"
+    },
+    "GA-N3050M-D3P": {
+      "bios": "F4b",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3050M-D3P-rev-10/support#support-dl-bios"
+    },
+    "GA-N3050N-D2P": {
+      "bios": "F5e",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3050N-D2P-rev-10/support#support-dl-bios"
+    },
+    "GA-N3050N-D3H": {
+      "bios": "F4b",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3050N-D3H-rev-10/support#support-dl-bios"
+    },
+    "GA-N3150M-D3P": {
+      "bios": "F5d",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3150M-D3P-rev-10/support#support-dl-bios"
+    },
+    "GA-N3150N-D2H": {
+      "bios": "F5h",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3150N-D2H-rev-10/support#support-dl-bios"
+    },
+    "GA-N3150N-D3V": {
+      "bios": "F5d",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3150N-D3V-rev-10/support#support-dl-bios"
+    },
+    "GA-N3160M-D3P": {
+      "bios": "F3a",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3160M-D3P-rev-10/support#support-dl-bios"
+    },
+    "GA-N3160N-D2H": {
+      "bios": "F3a",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3160N-D2H-rev-10/support#support-dl-bios"
+    },
+    "GA-N3160N-D3V": {
+      "bios": "F2a",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3160N-D3V-rev-10/support#support-dl-bios"
+    },
+    "GA-N3160TN": {
+      "bios": "F5a",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-N3160TN-rev-10/support#support-dl-bios"
+    },
+    "GA-P110-D3": {
+      "bios": "F22",
+      "date": "2018-04-18",
+      "url": "https://www.gigabyte.com/Motherboard/GA-P110-D3-rev-10/support#support-dl-bios"
+    },
+    "GA-P81-D3": {
+      "bios": "F3",
+      "date": "2015-08-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-P81-D3-rev-10/support#support-dl-bios"
+    },
+    "GA-PICO3350": {
+      "bios": "F1",
+      "date": "2019-10-01",
+      "url": "https://www.gigabyte.com/Motherboard/GA-PICO3350-rev-10/support#support-dl-bios"
+    },
+    "GA-SBC4100": {
+      "bios": "F3a",
+      "date": "2024-08-01",
+      "url": "https://www.gigabyte.com/Motherboard/GA-SBC4100-rev-10/support#support-dl-bios"
+    },
+    "GA-SBCAP3350": {
+      "bios": "FA",
+      "date": "2020-06-02",
+      "url": "https://www.gigabyte.com/Motherboard/GA-SBCAP3350-rev-20/support#support-dl-bios"
+    },
+    "GA-SBCAP3450": {
+      "bios": "F2",
+      "date": "2019-01-23",
+      "url": "https://www.gigabyte.com/Motherboard/GA-SBCAP3450-rev-11/support#support-dl-bios"
+    },
+    "GA-SBCAP3455": {
+      "bios": "FA",
+      "date": "2020-04-13",
+      "url": "https://www.gigabyte.com/Motherboard/GA-SBCAP3455-rev-20/support#support-dl-bios"
+    },
+    "GA-SBCAP3940": {
+      "bios": "F2",
+      "date": "2019-01-23",
+      "url": "https://www.gigabyte.com/Motherboard/GA-SBCAP3940-rev-10/support#support-dl-bios"
+    },
+    "GA-SBCAP4200": {
+      "bios": "FA",
+      "date": "2020-06-02",
+      "url": "https://www.gigabyte.com/Motherboard/GA-SBCAP4200-rev-20/support#support-dl-bios"
+    },
+    "GA-X150-PLUS WS": {
+      "bios": "F22",
+      "date": "2018-04-16",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X150-PLUS-WS-rev-10/support#support-dl-bios"
+    },
+    "GA-X150-PRO ECC": {
+      "bios": "F21d",
+      "date": "2018-01-11",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X150-PRO-ECC-rev-10/support#support-dl-bios"
+    },
+    "GA-X150M-PLUS WS": {
+      "bios": "F21",
+      "date": "2018-04-20",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X150M-PLUS-WS-rev-10/support#support-dl-bios"
+    },
+    "GA-X150M-PRO ECC": {
+      "bios": "F22i",
+      "date": "2024-08-14",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X150M-PRO-ECC-rev-10/support#support-dl-bios"
+    },
+    "GA-X170-EXTREME ECC": {
+      "bios": "F21h",
+      "date": "2024-08-01",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X170-EXTREME-ECC-rev-10/support#support-dl-bios"
+    },
+    "GA-X170-WS ECC": {
+      "bios": "F22e",
+      "date": "2018-10-15",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X170-WS-ECC-rev-10/support#support-dl-bios"
+    },
+    "GA-X79S-UP5-WIFI": {
+      "bios": "F5f",
+      "date": "2014-03-29",
+      "url": "https://www.gigabyte.com/Motherboard/GA-X79S-UP5-WIFI-rev-11/support#support-dl-bios"
+    },
+    "GB-SBCAP3450": {
+      "bios": "F2",
+      "date": "2019-01-23",
+      "url": "https://www.gigabyte.com/Motherboard/GB-SBCAP3450-rev-11/support#support-dl-bios"
+    },
+    "H110M-DS2": {
+      "bios": "F2a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H110M-DS2-rev-14/support#support-dl-bios"
+    },
+    "H110M-M.2": {
+      "bios": "FA3a",
+      "date": "2025-06-20",
+      "url": "https://www.gigabyte.com/Motherboard/H110M-M2-rev-11/support#support-dl-bios"
+    },
+    "H310 D3": {
+      "bios": "F20a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310-D3-rev-10/support#support-dl-bios"
+    },
+    "H310 D3 2.0": {
+      "bios": "F6",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310-D3-20-rev-10/support#support-dl-bios"
+    },
+    "H310M A": {
+      "bios": "F17a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-A-rev-10/support#support-dl-bios"
+    },
+    "H310M A 2.0": {
+      "bios": "F5",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-A-20-rev-10/support#support-dl-bios"
+    },
+    "H310M D3H": {
+      "bios": "F6a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-D3H-rev-10/support#support-dl-bios"
+    },
+    "H310M D3H 2.0": {
+      "bios": "F4",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-D3H-20-rev-10/support#support-dl-bios"
+    },
+    "H310M DS2": {
+      "bios": "F22a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-DS2-rev-10/support#support-dl-bios"
+    },
+    "H310M DS2 2.0": {
+      "bios": "F14",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-DS2-20-rev-10/support#support-dl-bios"
+    },
+    "H310M DS2V": {
+      "bios": "F18a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-DS2V-rev-10/support#support-dl-bios"
+    },
+    "H310M DS2V 2.0": {
+      "bios": "F14",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-DS2V-20-rev-10/support#support-dl-bios"
+    },
+    "H310M DS2V DDR3": {
+      "bios": "F5",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-DS2V-DDR3-rev-10/support#support-dl-bios"
+    },
+    "H310M H": {
+      "bios": "F21b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-H-rev-10-13/support#support-dl-bios"
+    },
+    "H310M H 2.0": {
+      "bios": "F14a",
+      "date": "2021-11-26",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-H-20-rev-10/support#support-dl-bios"
+    },
+    "H310M HD2": {
+      "bios": "F17a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-HD2-rev-10/support#support-dl-bios"
+    },
+    "H310M HD2 2.0": {
+      "bios": "F6a",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-HD2-20-rev-10/support#support-dl-bios"
+    },
+    "H310M HD3 2.0": {
+      "bios": "F18a",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-HD3-20-rev-1x/support#support-dl-bios"
+    },
+    "H310M M.2 2.0": {
+      "bios": "F3",
+      "date": "2026-07-01",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-M2-20-rev-13/support#support-dl-bios"
+    },
     "H310M PRO-C": {
       "bios": "7D02v13",
       "date": "2024-08-09"
     },
+    "H310M S2": {
+      "bios": "F19a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2-rev-10/support#support-dl-bios"
+    },
+    "H310M S2 2.0": {
+      "bios": "F14a",
+      "date": "2021-11-26",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2-20-rev-10/support#support-dl-bios"
+    },
+    "H310M S2H": {
+      "bios": "FRa",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2H-rev-11/support#support-dl-bios"
+    },
+    "H310M S2H 2.0": {
+      "bios": "F14",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2H-20-rev-10/support#support-dl-bios"
+    },
+    "H310M S2P": {
+      "bios": "F25a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2P-rev-10-13/support#support-dl-bios"
+    },
+    "H310M S2P 2.0": {
+      "bios": "F15",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2P-20-rev-10/support#support-dl-bios"
+    },
+    "H310M S2V": {
+      "bios": "F17b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2V-rev-10/support#support-dl-bios"
+    },
+    "H310M S2V 2.0": {
+      "bios": "F14",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310M-S2V-20-rev-10/support#support-dl-bios"
+    },
+    "H310N": {
+      "bios": "F19b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H310N-rev-10/support#support-dl-bios"
+    },
+    "H310N 2.0": {
+      "bios": "F5",
+      "date": "2021-11-29",
+      "url": "https://www.gigabyte.com/Motherboard/H310N-20-rev-10/support#support-dl-bios"
+    },
     "H410I PRO WIFI": {
       "bios": "7C86v262",
       "date": "2026-07-01"
+    },
+    "H410M DS2V": {
+      "bios": "F7a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-DS2V-rev-10/support#support-dl-bios"
+    },
+    "H410M DS2V V2": {
+      "bios": "FGa",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-DS2V-V2-rev-11/support#support-dl-bios"
+    },
+    "H410M DS2V V3": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-DS2V-V3-rev-10/support#support-dl-bios"
+    },
+    "H410M H": {
+      "bios": "FA2",
+      "date": "2026-03-24",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-H-rev-20/support#support-dl-bios"
+    },
+    "H410M H V2": {
+      "bios": "FBa",
+      "date": "2025-07-16",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-H-V2-rev-19/support#support-dl-bios"
+    },
+    "H410M H V3": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10-12/support#support-dl-bios"
+    },
+    "H410M HD3P": {
+      "bios": "F9a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-HD3P-rev-10-11/support#support-dl-bios"
+    },
+    "H410M K": {
+      "bios": "FDa",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-K-rev-11/support#support-dl-bios"
+    },
+    "H410M K 2.0": {
+      "bios": "F2",
+      "date": "2026-03-23",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-K-20/support#support-dl-bios"
     },
     "H410M PRO": {
       "bios": "7C89v1F1",
@@ -1987,6 +4547,36 @@
     "H410M PRO-VH": {
       "bios": "7C89v1F1",
       "date": "2026-07-01"
+    },
+    "H410M S2": {
+      "bios": "F10a",
+      "date": "2025-07-23",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-S2-rev-1x/support#support-dl-bios"
+    },
+    "H410M S2 V2": {
+      "bios": "F6a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-S2-V2-rev-10/support#support-dl-bios"
+    },
+    "H410M S2 V3": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-S2-V3-rev-10-12/support#support-dl-bios"
+    },
+    "H410M S2H": {
+      "bios": "F9a",
+      "date": "2025-07-23",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-S2H-rev-1x/support#support-dl-bios"
+    },
+    "H410M S2H V2": {
+      "bios": "FIa",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-S2H-V2-rev-11-12-13-14-16/support#support-dl-bios"
+    },
+    "H410M S2H V3": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H410M-S2H-V3-rev-10-12/support#support-dl-bios"
     },
     "H410M-A PRO": {
       "bios": "7C89v1F1",
@@ -2047,6 +4637,16 @@
       "date": "2021-09-06",
       "url": "https://www.asrock.com/mb/Intel/H410TM-ITX/BIOS.html"
     },
+    "H470 AORUS PRO AX": {
+      "bios": "F26a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H470-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "H470 HD3": {
+      "bios": "F26a",
+      "date": "2025-06-10",
+      "url": "https://www.gigabyte.com/Motherboard/H470-HD3-rev-10/support#support-dl-bios"
+    },
     "H470 Phantom Gaming 4": {
       "bios": "1.10",
       "date": "2020-06-12",
@@ -2056,6 +4656,26 @@
       "bios": "1.60",
       "date": "2021-03-24",
       "url": "https://www.asrock.com/mb/Intel/H470%20Steel%20Legend/BIOS.html"
+    },
+    "H470I AORUS PRO AX": {
+      "bios": "F26a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H470I-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "H470M DS3H": {
+      "bios": "F26a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H470M-DS3H-rev-10/support#support-dl-bios"
+    },
+    "H470M H": {
+      "bios": "F6a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H470M-H-rev-10/support#support-dl-bios"
+    },
+    "H470M K": {
+      "bios": "F9b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H470M-K-rev-10/support#support-dl-bios"
     },
     "H470M Pro4": {
       "bios": "1.30",
@@ -2101,6 +4721,46 @@
       "bios": "7D16v1A1",
       "date": "2026-04-09"
     },
+    "H510M A": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-A-rev-10/support#support-dl-bios"
+    },
+    "H510M DS2": {
+      "bios": "F16d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-DS2-rev-10-11/support#support-dl-bios"
+    },
+    "H510M DS2V": {
+      "bios": "F17d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-DS2V-rev-10-12-15/support#support-dl-bios"
+    },
+    "H510M H": {
+      "bios": "FGf",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-H-rev-13-16/support#support-dl-bios"
+    },
+    "H510M H V2": {
+      "bios": "F5b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-H-V2-rev-10/support#support-dl-bios"
+    },
+    "H510M HD3P": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-HD3P-rev-10/support#support-dl-bios"
+    },
+    "H510M K": {
+      "bios": "F7d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-K-rev-10/support#support-dl-bios"
+    },
+    "H510M K V2": {
+      "bios": "F5b",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-K-V2-rev-10/support#support-dl-bios"
+    },
     "H510M PLUS II": {
       "bios": "7E05vH11",
       "date": "2026-04-16"
@@ -2112,6 +4772,36 @@
     "H510M PRO-E": {
       "bios": "7D23v1A1",
       "date": "2026-04-09"
+    },
+    "H510M S2": {
+      "bios": "FGd",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-S2-rev-13/support#support-dl-bios"
+    },
+    "H510M S2 V2": {
+      "bios": "F4a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-S2-V2-rev-20/support#support-dl-bios"
+    },
+    "H510M S2H": {
+      "bios": "F18g",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-S2H-rev-10-11-12/support#support-dl-bios"
+    },
+    "H510M S2H V2": {
+      "bios": "F14d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-S2H-V2-rev-10/support#support-dl-bios"
+    },
+    "H510M S2H V3": {
+      "bios": "F4a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-S2H-V3-rev-20/support#support-dl-bios"
+    },
+    "H510M S2P": {
+      "bios": "F15e",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H510M-S2P-rev-10-12/support#support-dl-bios"
     },
     "H510M-A PRO": {
       "bios": "7D22v3E1",
@@ -2196,6 +4886,16 @@
       "date": "2022-03-08",
       "url": "https://www.asrock.com/mb/Intel/H570M-ITXac/BIOS.html"
     },
+    "H610I": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610I-rev-10/support#support-dl-bios"
+    },
+    "H610I DDR4": {
+      "bios": "F37",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610I-DDR4-rev-10/support#support-dl-bios"
+    },
     "H610M COMBO": {
       "bios": "2.08",
       "date": "2025-12-12",
@@ -2205,6 +4905,141 @@
       "bios": "1.08",
       "date": "2026-03-05",
       "url": "https://www.asrock.com/mb/Intel/H610M%20COMBO%20II/BIOS.html"
+    },
+    "H610M D3H DDR4": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-D3H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M D3H WIFI DDR4": {
+      "bios": "F6",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-D3H-WIFI-DDR4/support#support-dl-bios"
+    },
+    "H610M D3W": {
+      "bios": "F4",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-D3W-rev-10/support#support-dl-bios"
+    },
+    "H610M D3W DDR4": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-D3W-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M D3W WIFI6": {
+      "bios": "F4",
+      "date": "2026-06-29",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-D3W-WIFI6-rev-11/support#support-dl-bios"
+    },
+    "H610M GAMING WIFI DDR4": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-GAMING-WIFI-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M H": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-H-rev-10/support#support-dl-bios"
+    },
+    "H610M H DDR4": {
+      "bios": "FY",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-H-DDR4-rev-11-13/support#support-dl-bios"
+    },
+    "H610M H GEN5": {
+      "bios": "F3",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-H-GEN5/support#support-dl-bios"
+    },
+    "H610M H V2": {
+      "bios": "F9",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-H-V2-rev-10/support#support-dl-bios"
+    },
+    "H610M H V2 DDR4": {
+      "bios": "F35",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-H-V2-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M H V3 DDR4": {
+      "bios": "F9",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-H-V3-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M HD3P": {
+      "bios": "F35",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-HD3P-rev-10/support#support-dl-bios"
+    },
+    "H610M K": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-K-rev-10/support#support-dl-bios"
+    },
+    "H610M K DDR4": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-K-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M K DDR4 GEN5": {
+      "bios": "F2",
+      "date": "2026-06-29",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-K-DDR4-GEN5/support#support-dl-bios"
+    },
+    "H610M K GEN5": {
+      "bios": "F2",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-K-GEN5/support#support-dl-bios"
+    },
+    "H610M K V2": {
+      "bios": "F9",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-K-V2-rev-10/support#support-dl-bios"
+    },
+    "H610M S2": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2-rev-10/support#support-dl-bios"
+    },
+    "H610M S2 DDR4": {
+      "bios": "FY",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2-DDR4-rev-12/support#support-dl-bios"
+    },
+    "H610M S2 V2 DDR4": {
+      "bios": "F35",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2-V2-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M S2 V3 DDR4": {
+      "bios": "F9",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2-V3-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M S2H": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2H-rev-10/support#support-dl-bios"
+    },
+    "H610M S2H DDR4": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2H-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M S2H V2": {
+      "bios": "F9",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2H-V2-rev-10/support#support-dl-bios"
+    },
+    "H610M S2H V2 DDR4": {
+      "bios": "F35",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2H-V2-DDR4-rev-10/support#support-dl-bios"
+    },
+    "H610M S2H V3 DDR4": {
+      "bios": "F9",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/H610M-S2H-V3-DDR4-rev-10/support#support-dl-bios"
     },
     "H610M-AYW D4": {
       "bios": "4003",
@@ -2345,9 +5180,54 @@
       "date": "2026-04-30",
       "url": "https://www.asus.com/supportonly/H810M%20AYW%20GAMING%20WIFI-CSM/helpdesk_bios/"
     },
+    "H810M D2HX SI GEN5": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-D2HX-SI-GEN5/support#support-dl-bios"
+    },
+    "H810M GAMING WIFI6": {
+      "bios": "F8",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-GAMING-WIFI6/support#support-dl-bios"
+    },
+    "H810M GAMING WIFI6 GEN5": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-GAMING-WIFI6-GEN5/support#support-dl-bios"
+    },
     "H810M GAMING WIFI6E": {
       "bios": "7E64v2A60",
       "date": "2026-06-18"
+    },
+    "H810M H": {
+      "bios": "F7",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-H-rev-10/support#support-dl-bios"
+    },
+    "H810M H GEN5": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-H-GEN5/support#support-dl-bios"
+    },
+    "H810M K": {
+      "bios": "F8",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-K/support#support-dl-bios"
+    },
+    "H810M K GEN5": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-K-GEN5/support#support-dl-bios"
+    },
+    "H810M S2H": {
+      "bios": "F7",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-S2H-rev-10/support#support-dl-bios"
+    },
+    "H810M S2H GEN5": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/H810M-S2H-GEN5/support#support-dl-bios"
     },
     "H810M-H": {
       "bios": "3.31",
@@ -2388,6 +5268,21 @@
       "bios": "1.00",
       "date": "2026-06-01",
       "url": "https://www.asrock.com/mb/Intel/H810TM-ITX/BIOS.html"
+    },
+    "H81M-H M.2": {
+      "bios": "F1",
+      "date": "2023-07-23",
+      "url": "https://www.gigabyte.com/Motherboard/H81M-H-M2-rev-10/support#support-dl-bios"
+    },
+    "J4005N D2P": {
+      "bios": "F4a",
+      "date": "2024-08-01",
+      "url": "https://www.gigabyte.com/Motherboard/J4005N-D2P-rev-10/support#support-dl-bios"
+    },
+    "J4105N H": {
+      "bios": "F4a",
+      "date": "2024-08-01",
+      "url": "https://www.gigabyte.com/Motherboard/J4105N-H-rev-10/support#support-dl-bios"
     },
     "MAG A520M BAZOOKA WIFI": {
       "bios": "7D49vA2",
@@ -3072,6 +5967,21 @@
     "MPG Z890I EDGE TI WIFI": {
       "bios": "7E33v1A90",
       "date": "2026-04-07"
+    },
+    "N4120I H": {
+      "bios": "F1",
+      "date": "2022-08-29",
+      "url": "https://www.gigabyte.com/Motherboard/N4120I-H-rev-10/support#support-dl-bios"
+    },
+    "N5105I H": {
+      "bios": "F3",
+      "date": "2022-05-19",
+      "url": "https://www.gigabyte.com/Motherboard/N5105I-H-rev-10/support#support-dl-bios"
+    },
+    "P310 D3": {
+      "bios": "F6a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/P310-D3-rev-10/support#support-dl-bios"
     },
     "PRIME A320I-K": {
       "bios": "6254",
@@ -5632,10 +8542,30 @@
       "date": "2026-05-08",
       "url": "https://www.asus.com/supportonly/ProArt%20Z890-CREATOR%20WIFI/helpdesk_bios/"
     },
+    "Q570M D3H": {
+      "bios": "F12d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Q570M-D3H-rev-10/support#support-dl-bios"
+    },
+    "Q670M D3H": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Q670M-D3H-rev-10/support#support-dl-bios"
+    },
+    "Q670M D3H DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Q670M-D3H-DDR4-rev-10/support#support-dl-bios"
+    },
     "Q670M vPro": {
       "bios": "2.05",
       "date": "2025-02-25",
       "url": "https://www.asrock.com/mb/Intel/Q670M%20vPro/BIOS.html"
+    },
+    "Q870M D3H": {
+      "bios": "F7",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Q870M-D3H/support#support-dl-bios"
     },
     "ROG CROSSHAIR X670E EXTREME": {
       "bios": "3902",
@@ -6302,10 +9232,45 @@
       "date": "2026-05-08",
       "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z890-I%20GAMING%20WIFI/helpdesk_bios/"
     },
+    "S12-P04R": {
+      "bios": "F1",
+      "date": "2019-06-27",
+      "url": "https://www.gigabyte.com/Motherboard/S12-P04R-rev-10/support#support-dl-bios"
+    },
+    "S12-P04S": {
+      "bios": "F1",
+      "date": "2019-06-27",
+      "url": "https://www.gigabyte.com/Motherboard/S12-P04S-rev-10/support#support-dl-bios"
+    },
+    "S12-P10R": {
+      "bios": "F1",
+      "date": "2019-06-27",
+      "url": "https://www.gigabyte.com/Motherboard/S12-P10R-rev-10/support#support-dl-bios"
+    },
+    "TRX40 AORUS MASTER": {
+      "bios": "F8h",
+      "date": "2025-11-21",
+      "url": "https://www.gigabyte.com/Motherboard/TRX40-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "TRX40 AORUS PRO WIFI": {
+      "bios": "F7g",
+      "date": "2025-11-21",
+      "url": "https://www.gigabyte.com/Motherboard/TRX40-AORUS-PRO-WIFI-rev-10/support#support-dl-bios"
+    },
+    "TRX40 AORUS XTREME": {
+      "bios": "FEg",
+      "date": "2025-11-21",
+      "url": "https://www.gigabyte.com/Motherboard/TRX40-AORUS-XTREME-rev-11/support#support-dl-bios"
+    },
     "TRX40 Creator": {
       "bios": "1.86",
       "date": "2024-01-26",
       "url": "https://www.asrock.com/mb/AMD/TRX40%20Creator/BIOS.html"
+    },
+    "TRX40 DESIGNARE": {
+      "bios": "F7g",
+      "date": "2025-11-21",
+      "url": "https://www.gigabyte.com/Motherboard/TRX40-DESIGNARE-rev-10/support#support-dl-bios"
     },
     "TRX40 PRO 10G": {
       "bios": "7C60v1A4",
@@ -6323,6 +9288,16 @@
     "TRX40-A PRO": {
       "bios": "7C60v1A4",
       "date": "2026-06-23"
+    },
+    "TRX50 AERO D": {
+      "bios": "F12h",
+      "date": "2026-07-09",
+      "url": "https://www.gigabyte.com/Motherboard/TRX50-AERO-D-rev-10/support#support-dl-bios"
+    },
+    "TRX50 AI TOP": {
+      "bios": "F12h",
+      "date": "2026-07-09",
+      "url": "https://www.gigabyte.com/Motherboard/TRX50-AI-TOP/support#support-dl-bios"
     },
     "TRX50 WS": {
       "bios": "14.10",
@@ -6844,10 +9819,40 @@
       "date": "2026-04-01",
       "url": "https://www.asus.com/supportonly/TUF%20X299%20MARK%202/helpdesk_bios/"
     },
+    "W42G-P08R": {
+      "bios": "F1",
+      "date": "2019-09-03",
+      "url": "https://www.gigabyte.com/Motherboard/W42G-P08R-rev-10/support#support-dl-bios"
+    },
     "W480 Creator": {
       "bios": "1.50",
       "date": "2021-08-10",
       "url": "https://www.asrock.com/mb/Intel/W480%20Creator/BIOS.html"
+    },
+    "W480 VISION D": {
+      "bios": "F24a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/W480-VISION-D-rev-10/support#support-dl-bios"
+    },
+    "W480 VISION W": {
+      "bios": "F25a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/W480-VISION-W-rev-10/support#support-dl-bios"
+    },
+    "W480M VISION W": {
+      "bios": "F25a",
+      "date": "2025-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/W480M-VISION-W-rev-10/support#support-dl-bios"
+    },
+    "W790 AI TOP": {
+      "bios": "F9a",
+      "date": "2025-12-03",
+      "url": "https://www.gigabyte.com/Motherboard/W790-AI-TOP/support#support-dl-bios"
+    },
+    "W880 AI TOP": {
+      "bios": "F8",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/W880-AI-TOP/support#support-dl-bios"
     },
     "WRX80 Creator": {
       "bios": "10.03",
@@ -6858,6 +9863,11 @@
       "bios": "10.03",
       "date": "2025-12-23",
       "url": "https://www.asrock.com/mb/AMD/WRX80%20Creator%20R2.0/BIOS.html"
+    },
+    "WRX80-SU8-IPMI": {
+      "bios": "F6",
+      "date": "2023-06-08",
+      "url": "https://www.gigabyte.com/Motherboard/WRX80-SU8-IPMI-rev-10/support#support-dl-bios"
     },
     "WRX90 WS EVO": {
       "bios": "12.09",
@@ -7051,6 +10061,36 @@
       "date": "2026-04-14",
       "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-ELITE-rev-10/support#support-dl-bios"
     },
+    "X570 AORUS ELITE WIFI": {
+      "bios": "F41a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-ELITE-WIFI-rev-1x/support#support-dl-bios"
+    },
+    "X570 AORUS MASTER": {
+      "bios": "F40a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "X570 AORUS PRO": {
+      "bios": "F40a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-PRO-rev-11-12/support#support-dl-bios"
+    },
+    "X570 AORUS PRO WIFI": {
+      "bios": "F40a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-PRO-WIFI-rev-11-12/support#support-dl-bios"
+    },
+    "X570 AORUS ULTRA": {
+      "bios": "F40b",
+      "date": "2026-07-01",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-ULTRA-rev-10/support#support-dl-bios"
+    },
+    "X570 AORUS XTREME": {
+      "bios": "F40a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-XTREME-rev-10/support#support-dl-bios"
+    },
     "X570 AQUA": {
       "bios": "5.80",
       "date": "2026-04-02",
@@ -7070,6 +10110,16 @@
       "bios": "5.80",
       "date": "2026-04-02",
       "url": "https://www.asrock.com/mb/AMD/X570%20Extreme4%20WiFi%20ax/BIOS.html"
+    },
+    "X570 GAMING X": {
+      "bios": "F41a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-GAMING-X-rev-11/support#support-dl-bios"
+    },
+    "X570 I AORUS PRO WIFI": {
+      "bios": "F40a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-I-AORUS-PRO-WIFI-rev-10/support#support-dl-bios"
     },
     "X570 PG Velocita": {
       "bios": "5.80",
@@ -7126,15 +10176,60 @@
       "date": "2026-04-02",
       "url": "https://www.asrock.com/mb/AMD/X570%20Taichi%20Razer%20Edition/BIOS.html"
     },
+    "X570 UD": {
+      "bios": "F41b",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570-UD-rev-10/support#support-dl-bios"
+    },
     "X570M Pro4": {
       "bios": "5.80",
       "date": "2026-04-07",
       "url": "https://www.asrock.com/mb/AMD/X570M%20Pro4/BIOS.html"
     },
+    "X570S AERO G": {
+      "bios": "F8b",
+      "date": "2026-07-01",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-AERO-G-rev-1x/support#support-dl-bios"
+    },
+    "X570S AORUS ELITE": {
+      "bios": "F10a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "X570S AORUS ELITE AX": {
+      "bios": "F10a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-AORUS-ELITE-AX-rev-1x/support#support-dl-bios"
+    },
+    "X570S AORUS MASTER": {
+      "bios": "F9a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "X570S AORUS PRO AX": {
+      "bios": "F9a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "X570S GAMING X": {
+      "bios": "F9a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-GAMING-X-rev-10/support#support-dl-bios"
+    },
     "X570S PG Riptide": {
       "bios": "5.80",
       "date": "2026-03-31",
       "url": "https://pg.asrock.com/mb/AMD/X570S%20PG%20Riptide/BIOS.html"
+    },
+    "X570S UD": {
+      "bios": "F9a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570S-UD-rev-10/support#support-dl-bios"
+    },
+    "X570SI AORUS PRO AX": {
+      "bios": "F8a",
+      "date": "2026-04-14",
+      "url": "https://www.gigabyte.com/Motherboard/X570SI-AORUS-PRO-AX-rev-10/support#support-dl-bios"
     },
     "X600M-STX R2.0": {
       "bios": "1.23",
@@ -7150,6 +10245,31 @@
       "bios": "F42d",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X670-AORUS-ELITE-AX-rev-11/support#support-dl-bios"
+    },
+    "X670 GAMING X AX": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X670-GAMING-X-AX-rev-10/support#support-dl-bios"
+    },
+    "X670 GAMING X AX V2": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X670-GAMING-X-AX-V2-rev-10/support#support-dl-bios"
+    },
+    "X670E AORUS MASTER": {
+      "bios": "F43c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X670E-AORUS-MASTER-rev-1x/support#support-dl-bios"
+    },
+    "X670E AORUS PRO X": {
+      "bios": "F41c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X670E-AORUS-PRO-X/support#support-dl-bios"
+    },
+    "X670E AORUS XTREME": {
+      "bios": "F42c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X670E-AORUS-XTREME-rev-1x/support#support-dl-bios"
     },
     "X670E GAMING PLUS WIFI": {
       "bios": "7E16v1D2",
@@ -7185,6 +10305,41 @@
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-rev-10-11/support#support-dl-bios"
     },
+    "X870 AORUS ELITE WIFI7 ICE": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-ICE-rev-10-11/support#support-dl-bios"
+    },
+    "X870 AORUS ELITE X3D": {
+      "bios": "F6c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-X3D/support#support-dl-bios"
+    },
+    "X870 AORUS ELITE X3D ICE": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-X3D-ICE/support#support-dl-bios"
+    },
+    "X870 AORUS INFINITY": {
+      "bios": "F2c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-INFINITY/support#support-dl-bios"
+    },
+    "X870 AORUS STEALTH": {
+      "bios": "F7c",
+      "date": "2026-07-20",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH/support#support-dl-bios"
+    },
+    "X870 AORUS STEALTH ICE": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-STEALTH-ICE-rev-10/support#support-dl-bios"
+    },
+    "X870 AORUS TACHYON ICE": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-TACHYON-ICE/support#support-dl-bios"
+    },
     "X870 AYW GAMING WIFI W": {
       "bios": "1686",
       "date": "2026-07-02",
@@ -7200,13 +10355,23 @@
       "date": "2026-07-01",
       "url": "https://www.asrock.com/mb/AMD/X870%20Challenger%20WiFi%20White/BIOS.html"
     },
+    "X870 EAGLE WIFI7": {
+      "bios": "F13d",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-EAGLE-WIFI7-rev-1x/support#support-dl-bios"
+    },
     "X870 GAMING PLUS WIFI": {
       "bios": "7E47v2A72",
       "date": "2026-07-01"
     },
+    "X870 GAMING WIFI6": {
+      "bios": "F14c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870-GAMING-WIFI6-rev-1x/support#support-dl-bios"
+    },
     "X870 GAMING X WIFI7": {
       "bios": "F13c",
-      "date": "2026-07-20",
+      "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870-GAMING-X-WIFI7-rev-1x/support#support-dl-bios"
     },
     "X870 LiveMixer WiFi": {
@@ -7259,10 +10424,80 @@
       "date": "2026-07-02",
       "url": "https://www.asrock.com/mb/AMD/X870%20Taichi%20Creator/BIOS.html"
     },
+    "X870E AERO X3D DARK WOOD": {
+      "bios": "F3c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AERO-X3D-DARK-WOOD/support#support-dl-bios"
+    },
+    "X870E AERO X3D WOOD": {
+      "bios": "F6c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AERO-X3D-WOOD/support#support-dl-bios"
+    },
+    "X870E AORUS ELITE WIFI7": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-ELITE-WIFI7-rev-10-11/support#support-dl-bios"
+    },
+    "X870E AORUS ELITE WIFI7 ICE": {
+      "bios": "F11c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-ELITE-WIFI7-ICE-rev-12/support#support-dl-bios"
+    },
+    "X870E AORUS ELITE X3D": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-ELITE-X3D/support#support-dl-bios"
+    },
+    "X870E AORUS ELITE X3D ICE": {
+      "bios": "F9d",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-ELITE-X3D-ICE/support#support-dl-bios"
+    },
     "X870E AORUS MASTER": {
       "bios": "F14c",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-MASTER/support#support-dl-bios"
+    },
+    "X870E AORUS MASTER X3D": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-MASTER-X3D/support#support-dl-bios"
+    },
+    "X870E AORUS MASTER X3D ICE": {
+      "bios": "F10d",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-MASTER-X3D-ICE/support#support-dl-bios"
+    },
+    "X870E AORUS PRO": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-PRO-rev-10/support#support-dl-bios"
+    },
+    "X870E AORUS PRO ICE": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-PRO-ICE-rev-10/support#support-dl-bios"
+    },
+    "X870E AORUS PRO X3D": {
+      "bios": "F7c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-PRO-X3D/support#support-dl-bios"
+    },
+    "X870E AORUS PRO X3D ICE": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-PRO-X3D-ICE/support#support-dl-bios"
+    },
+    "X870E AORUS XTREME AI TOP": {
+      "bios": "F13c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-XTREME-AI-TOP-rev-1x/support#support-dl-bios"
+    },
+    "X870E AORUS XTREME X3D AI TOP": {
+      "bios": "F8c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-XTREME-X3D-AI-TOP/support#support-dl-bios"
     },
     "X870E Challenger WiFi": {
       "bios": "4.43",
@@ -7273,6 +10508,16 @@
       "bios": "4.43",
       "date": "2026-07-01",
       "url": "https://www.asrock.com/mb/AMD/X870E%20Challenger%20WiFi%20White/BIOS.html"
+    },
+    "X870E EAGLE WIFI7": {
+      "bios": "F5c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-EAGLE-WIFI7/support#support-dl-bios"
+    },
+    "X870E EAGLE X3D WIFI7": {
+      "bios": "F6c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870E-EAGLE-X3D-WIFI7-rev-11/support#support-dl-bios"
     },
     "X870E GAMING PLUS WIFI": {
       "bios": "7E70v1A62",
@@ -7302,6 +10547,21 @@
       "bios": "4.43",
       "date": "2026-07-01",
       "url": "https://www.asrock.com/mb/AMD/X870E%20Taichi%20White/BIOS.html"
+    },
+    "X870I AORUS PRO ICE": {
+      "bios": "F12c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870I-AORUS-PRO-ICE-rev-10/support#support-dl-bios"
+    },
+    "X870M AORUS ELITE WIFI7": {
+      "bios": "F10c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870M-AORUS-ELITE-WIFI7/support#support-dl-bios"
+    },
+    "X870M AORUS ELITE WIFI7 ICE": {
+      "bios": "F9c",
+      "date": "2026-07-21",
+      "url": "https://www.gigabyte.com/Motherboard/X870M-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios"
     },
     "Z490 AQUA": {
       "bios": "2.10",
@@ -7381,6 +10641,51 @@
       "date": "2020-07-09",
       "url": "https://www.asrock.com/mb/Intel/Z490M-ITXac/BIOS.html"
     },
+    "Z590 AORUS ELITE": {
+      "bios": "F9d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS ELITE AX": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS MASTER": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS PRO AX": {
+      "bios": "F12d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-PRO-AX-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS TACHYON": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-TACHYON-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS ULTRA": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-ULTRA-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS XTREME": {
+      "bios": "F15f",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-XTREME-rev-10/support#support-dl-bios"
+    },
+    "Z590 AORUS XTREME WATERFORCE": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-AORUS-XTREME-WATERFORCE-rev-10/support#support-dl-bios"
+    },
+    "Z590 D": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-D-rev-10/support#support-dl-bios"
+    },
     "Z590 Extreme": {
       "bios": "2.20",
       "date": "2023-04-07",
@@ -7390,6 +10695,11 @@
       "bios": "2.20",
       "date": "2023-04-07",
       "url": "https://www.asrock.com/mb/Intel/Z590%20Extreme%20WiFi%206E/BIOS.html"
+    },
+    "Z590 GAMING X": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-GAMING-X-rev-1x/support#support-dl-bios"
     },
     "Z590 OC Formula": {
       "bios": "1.40",
@@ -7453,6 +10763,26 @@
       "date": "2022-04-14",
       "url": "https://www.asrock.com/mb/Intel/Z590%20Taichi/BIOS.html"
     },
+    "Z590 UD": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-UD-rev-10/support#support-dl-bios"
+    },
+    "Z590 UD AC": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-UD-AC-rev-1x/support#support-dl-bios"
+    },
+    "Z590 VISION D": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-VISION-D-rev-10/support#support-dl-bios"
+    },
+    "Z590 VISION G": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590-VISION-G-rev-10/support#support-dl-bios"
+    },
     "Z590 WIFI GUNDAM EDITION": {
       "bios": "2803",
       "date": "2026-01-06",
@@ -7461,6 +10791,26 @@
     "Z590-A PRO": {
       "bios": "7D09v1B1",
       "date": "2026-04-14"
+    },
+    "Z590I AORUS ULTRA": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590I-AORUS-ULTRA-rev-10/support#support-dl-bios"
+    },
+    "Z590I VISION D": {
+      "bios": "F11d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590I-VISION-D-rev-10/support#support-dl-bios"
+    },
+    "Z590M": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590M-rev-10/support#support-dl-bios"
+    },
+    "Z590M GAMING X": {
+      "bios": "F10d",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z590M-GAMING-X-rev-10/support#support-dl-bios"
     },
     "Z590M Phantom Gaming 4": {
       "bios": "2.00",
@@ -7481,6 +10831,86 @@
       "date": "2022-04-14",
       "url": "https://www.asrock.com/mb/Intel/Z590M-ITXax/BIOS.html"
     },
+    "Z690 AERO D": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AERO-D-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AERO G": {
+      "bios": "F33",
+      "date": "2026-06-29",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AERO-G-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AERO G DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AERO-G-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS ELITE": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ELITE-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS ELITE AX": {
+      "bios": "FV",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ELITE-AX-rev-14/support#support-dl-bios"
+    },
+    "Z690 AORUS ELITE AX DDR4": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ELITE-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS ELITE AX DDR4 V2": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ELITE-AX-DDR4-V2-rev-10/support#support-dl-bios"
+    },
+    "Z690 AORUS ELITE DDR4": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ELITE-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS ELITE DDR4 V2": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ELITE-DDR4-V2-rev-10/support#support-dl-bios"
+    },
+    "Z690 AORUS MASTER": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-MASTER-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS PRO": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-PRO-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS PRO DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-PRO-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS TACHYON": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-TACHYON-rev-10/support#support-dl-bios"
+    },
+    "Z690 AORUS ULTRA": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-ULTRA-rev-1x/support#support-dl-bios"
+    },
+    "Z690 AORUS XTREME": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-XTREME-rev-10/support#support-dl-bios"
+    },
+    "Z690 AORUS XTREME WATERFORCE": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-AORUS-XTREME-WATERFORCE-rev-10/support#support-dl-bios"
+    },
     "Z690 AQUA": {
       "bios": "22.01",
       "date": "2025-05-27",
@@ -7500,6 +10930,21 @@
       "bios": "21.01",
       "date": "2025-10-30",
       "url": "https://www.asrock.com/mb/Intel/Z690%20Extreme%20WiFi%206E/BIOS.html"
+    },
+    "Z690 GAMING X": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-GAMING-X-rev-10-11/support#support-dl-bios"
+    },
+    "Z690 GAMING X DDR4": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-GAMING-X-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z690 GAMING X DDR4 V2": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-GAMING-X-DDR4-V2-rev-10/support#support-dl-bios"
     },
     "Z690 PG Riptide": {
       "bios": "21.01",
@@ -7561,6 +11006,91 @@
       "date": "2025-10-29",
       "url": "https://www.asrock.com/mb/Intel/Z690%20Taichi%20Razer%20Edition/BIOS.html"
     },
+    "Z690 UD": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-rev-1x/support#support-dl-bios"
+    },
+    "Z690 UD AC": {
+      "bios": "F34",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-AC-rev-10/support#support-dl-bios"
+    },
+    "Z690 UD AX": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-AX-rev-1x/support#support-dl-bios"
+    },
+    "Z690 UD AX DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690 UD AX DDR4 V2": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-AX-DDR4-V2-rev-10/support#support-dl-bios"
+    },
+    "Z690 UD AX V2": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-AX-V2-rev-10/support#support-dl-bios"
+    },
+    "Z690 UD DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690 UD DDR4 V2": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690-UD-DDR4-V2-rev-10/support#support-dl-bios"
+    },
+    "Z690I AORUS ULTRA": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690I-AORUS-ULTRA-rev-10/support#support-dl-bios"
+    },
+    "Z690I AORUS ULTRA DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690I-AORUS-ULTRA-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z690I AORUS ULTRA LITE": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690I-AORUS-ULTRA-LITE-rev-10/support#support-dl-bios"
+    },
+    "Z690I AORUS ULTRA LITE DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690I-AORUS-ULTRA-LITE-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z690I AORUS ULTRA PLUS": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690I-AORUS-ULTRA-PLUS-rev-10/support#support-dl-bios"
+    },
+    "Z690I AORUS ULTRA PLUS DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690I-AORUS-ULTRA-PLUS-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z690M AORUS ELITE AX DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690M-AORUS-ELITE-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z690M AORUS ELITE DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690M-AORUS-ELITE-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z690M DS3H DDR4": {
+      "bios": "F33",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z690M-DS3H-DDR4-rev-10/support#support-dl-bios"
+    },
     "Z690M PG Riptide/D5": {
       "bios": "19.01",
       "date": "2025-10-30",
@@ -7576,10 +11106,120 @@
       "date": "2025-10-30",
       "url": "https://www.asrock.com/mb/Intel/Z690M-ITXax/BIOS.html"
     },
-    "Z790 AORUS ELITE AX": {
+    "Z790 AERO G": {
       "bios": "F16",
       "date": "2026-06-30",
-      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-rev-10/support#support-dl-bios"
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AERO-G-rev-10/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE": {
+      "bios": "F16",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE AX": {
+      "bios": "FO",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-rev-1x/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE AX DDR4": {
+      "bios": "F17",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-DDR4-rev-1x/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE AX-W": {
+      "bios": "F12",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-AX-W-rev-1x/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE DDR4": {
+      "bios": "F17",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE X": {
+      "bios": "F10",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-X/support#support-dl-bios"
+    },
+    "Z790 AORUS ELITE X AX": {
+      "bios": "F10",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-ELITE-X-AX/support#support-dl-bios"
+    },
+    "Z790 AORUS MASTER": {
+      "bios": "F19",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-MASTER-rev-10/support#support-dl-bios"
+    },
+    "Z790 AORUS PRO X WIFI7": {
+      "bios": "F8",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-PRO-X-WIFI7/support#support-dl-bios"
+    },
+    "Z790 AORUS TACHYON": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-TACHYON-rev-10/support#support-dl-bios"
+    },
+    "Z790 AORUS TACHYON X": {
+      "bios": "F8",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-TACHYON-X/support#support-dl-bios"
+    },
+    "Z790 AORUS XTREME": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-XTREME-rev-10/support#support-dl-bios"
+    },
+    "Z790 AORUS XTREME X": {
+      "bios": "F10",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-XTREME-X/support#support-dl-bios"
+    },
+    "Z790 AORUS XTREME X ICE": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-AORUS-XTREME-X-ICE/support#support-dl-bios"
+    },
+    "Z790 D": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-D-rev-10-12/support#support-dl-bios"
+    },
+    "Z790 D AC": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-D-AC-rev-10/support#support-dl-bios"
+    },
+    "Z790 D AX": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-D-AX-rev-1x/support#support-dl-bios"
+    },
+    "Z790 D DDR4": {
+      "bios": "F16",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-D-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z790 D WIFI": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-D-WIFI-rev-10/support#support-dl-bios"
+    },
+    "Z790 EAGLE": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-EAGLE-rev-10/support#support-dl-bios"
+    },
+    "Z790 EAGLE AX": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-EAGLE-AX-rev-1x/support#support-dl-bios"
+    },
+    "Z790 GAMING PLUS AX": {
+      "bios": "F8",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-GAMING-PLUS-AX-rev-10/support#support-dl-bios"
     },
     "Z790 GAMING PLUS WIFI": {
       "bios": "7E06vHA",
@@ -7601,6 +11241,16 @@
       "bios": "1837",
       "date": "2026-05-12",
       "url": "https://www.asus.com/supportonly/Z790%20GAMING%20WIFI7/helpdesk_bios/"
+    },
+    "Z790 GAMING X": {
+      "bios": "FH",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-GAMING-X-rev-20/support#support-dl-bios"
+    },
+    "Z790 GAMING X AX": {
+      "bios": "F16",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-GAMING-X-AX-rev-1x/support#support-dl-bios"
     },
     "Z790 Lightning WiFi": {
       "bios": "13.02",
@@ -7671,6 +11321,16 @@
       "date": "2026-06-24",
       "url": "https://pg.asrock.com/mb/Intel/Z790%20Riptide%20WiFi/BIOS.html"
     },
+    "Z790 S DDR4": {
+      "bios": "F8",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-S-DDR4-rev-10/support#support-dl-bios"
+    },
+    "Z790 S WIFI DDR4": {
+      "bios": "F8",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-S-WIFI-DDR4-rev-10/support#support-dl-bios"
+    },
     "Z790 Steel Legend WiFi": {
       "bios": "22.02",
       "date": "2026-06-29",
@@ -7690,6 +11350,21 @@
       "bios": "13.01",
       "date": "2026-06-26",
       "url": "https://www.asrock.com/mb/Intel/Z790%20Taichi%20Lite/BIOS.html"
+    },
+    "Z790 UD": {
+      "bios": "F17",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-UD-rev-10/support#support-dl-bios"
+    },
+    "Z790 UD AC": {
+      "bios": "F16",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-UD-AC-rev-1x/support#support-dl-bios"
+    },
+    "Z790 UD WIFI7": {
+      "bios": "F3",
+      "date": "2026-06-29",
+      "url": "https://www.gigabyte.com/Motherboard/Z790-UD-WIFI7-rev-12/support#support-dl-bios"
     },
     "Z790-AYW OC WIFI": {
       "bios": "1836",
@@ -7725,10 +11400,30 @@
       "bios": "7D88v1H",
       "date": "2026-03-31"
     },
+    "Z790I AORUS ULTRA": {
+      "bios": "F13",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790I-AORUS-ULTRA-rev-10/support#support-dl-bios"
+    },
     "Z790I Lightning WiFi": {
       "bios": "11.02",
       "date": "2026-06-29",
       "url": "https://pg.asrock.com/mb/Intel/Z790I%20Lightning%20WiFi/BIOS.html"
+    },
+    "Z790M AORUS ELITE": {
+      "bios": "F14",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790M-AORUS-ELITE-rev-10/support#support-dl-bios"
+    },
+    "Z790M AORUS ELITE AX": {
+      "bios": "FL",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790M-AORUS-ELITE-AX-rev-12/support#support-dl-bios"
+    },
+    "Z790M AORUS ELITE AX ICE": {
+      "bios": "F7",
+      "date": "2026-06-30",
+      "url": "https://www.gigabyte.com/Motherboard/Z790M-AORUS-ELITE-AX-ICE/support#support-dl-bios"
     },
     "Z790M GAMING PLUS WIFI": {
       "bios": "7E11vA2",
@@ -7744,15 +11439,105 @@
       "date": "2026-06-24",
       "url": "https://www.asrock.com/mb/Intel/Z790M-ITX%20WiFi/BIOS.html"
     },
+    "Z890 AERO D": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AERO-D/support#support-dl-bios"
+    },
+    "Z890 AERO G": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AERO-G/support#support-dl-bios"
+    },
+    "Z890 AI TOP": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AI-TOP/support#support-dl-bios"
+    },
+    "Z890 AORUS ELITE DUO X": {
+      "bios": "F3",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-DUO-X/support#support-dl-bios"
+    },
     "Z890 AORUS ELITE WIFI7": {
       "bios": "F20",
       "date": "2026-06-11",
       "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7/support#support-dl-bios"
     },
+    "Z890 AORUS ELITE WIFI7 ICE": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios"
+    },
+    "Z890 AORUS ELITE WIFI7 PLUS": {
+      "bios": "F5",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7-PLUS/support#support-dl-bios"
+    },
+    "Z890 AORUS ELITE X ICE": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-X-ICE/support#support-dl-bios"
+    },
+    "Z890 AORUS MASTER": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-MASTER/support#support-dl-bios"
+    },
+    "Z890 AORUS MASTER AI TOP": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-MASTER-AI-TOP/support#support-dl-bios"
+    },
+    "Z890 AORUS PRO ICE": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-PRO-ICE/support#support-dl-bios"
+    },
+    "Z890 AORUS TACHYON DUO X ICE": {
+      "bios": "F2",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-TACHYON-DUO-X-ICE/support#support-dl-bios"
+    },
+    "Z890 AORUS TACHYON ICE": {
+      "bios": "F7",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-TACHYON-ICE/support#support-dl-bios"
+    },
+    "Z890 AORUS XTREME AI TOP": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-XTREME-AI-TOP/support#support-dl-bios"
+    },
     "Z890 AYW GAMING WIFI W": {
       "bios": "3020",
       "date": "2026-04-30",
       "url": "https://www.asus.com/supportonly/Z890%20AYW%20GAMING%20WIFI%20W/helpdesk_bios/"
+    },
+    "Z890 D PLUS": {
+      "bios": "F4",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-D-PLUS/support#support-dl-bios"
+    },
+    "Z890 EAGLE": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE/support#support-dl-bios"
+    },
+    "Z890 EAGLE PLUS": {
+      "bios": "F5",
+      "date": "2026-06-10",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-PLUS/support#support-dl-bios"
+    },
+    "Z890 EAGLE WIFI7": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7/support#support-dl-bios"
+    },
+    "Z890 EAGLE WIFI7 PLUS": {
+      "bios": "F5",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-EAGLE-WIFI7-PLUS/support#support-dl-bios"
     },
     "Z890 GAMING PLUS WIFI": {
       "bios": "7E34v2AB0",
@@ -7769,6 +11554,11 @@
     "Z890 GAMING WIFI6E": {
       "bios": "7E54v2B30",
       "date": "2026-07-21"
+    },
+    "Z890 GAMING X WIFI7": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-GAMING-X-WIFI7/support#support-dl-bios"
     },
     "Z890 Lightning WiFi": {
       "bios": "3.31",
@@ -7845,10 +11635,50 @@
       "date": "2026-07-13",
       "url": "https://www.asrock.com/mb/Intel/Z890%20Taichi%20OCF/BIOS.html"
     },
+    "Z890 UD": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-UD-rev-10/support#support-dl-bios"
+    },
+    "Z890 UD WIFI6E": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-UD-WIFI6E-rev-10/support#support-dl-bios"
+    },
+    "Z890 UD WIFI7": {
+      "bios": "F2",
+      "date": "2026-06-23",
+      "url": "https://www.gigabyte.com/Motherboard/Z890-UD-WIFI7-rev-11/support#support-dl-bios"
+    },
+    "Z890I AORUS ULTRA": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890I-AORUS-ULTRA/support#support-dl-bios"
+    },
     "Z890I Nova WiFi": {
       "bios": "3.31",
       "date": "2026-07-15",
       "url": "https://pg.asrock.com/mb/Intel/Z890I%20Nova%20WiFi/BIOS.html"
+    },
+    "Z890M AORUS ELITE WIFI7": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-rev-1x/support#support-dl-bios"
+    },
+    "Z890M AORUS ELITE WIFI7 ICE": {
+      "bios": "F21",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890M-AORUS-ELITE-WIFI7-ICE/support#support-dl-bios"
+    },
+    "Z890M FORCE DUO X WIFI7": {
+      "bios": "F3",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890M-FORCE-DUO-X-WIFI7/support#support-dl-bios"
+    },
+    "Z890M GAMING X": {
+      "bios": "F20",
+      "date": "2026-06-11",
+      "url": "https://www.gigabyte.com/Motherboard/Z890M-GAMING-X/support#support-dl-bios"
     },
     "Z890M Riptide WiFi": {
       "bios": "3.31",

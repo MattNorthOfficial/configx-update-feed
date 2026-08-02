@@ -86,12 +86,14 @@ endpoint (GeForce Game Ready) every six hours, and commits
   and a miss on one subdomain retries on the other since some lines moved
   without the catalog saying so. The Gigabyte board list is enumerated by
   walking the server-rendered pages of gigabyte.com's All-Series grid,
-  which yields the canonical revision slugs their pages only exist at
-  (about 600 models after the same socket filter; multi-revision boards
-  collapse onto the marketing name WMI reports, keeping whichever revision
-  published the newest BIOS, and entries carry a `url` the app links to).
-  All of it goes through a headless Chrome/Edge since these sites reject
-  plain HTTP clients. ASUS boards (~600 on the same sockets, enumerated from the JSON
+  which yields the canonical revision slugs their pages only exist at -
+  swept unfiltered, every generation the grid lists (~780 boards resolve).
+  Each board's BIOS list is read structurally from its support page
+  (version schemes vary: "F42c", "FA3h", "FIb"), boards are named from the
+  page's own title, multi-revision boards collapse onto that name keeping
+  whichever revision published the newest BIOS, and entries carry a `url`
+  the app links to. All of it goes through a headless Chrome/Edge since
+  these sites reject plain HTTP clients. ASUS boards (~600 on the same sockets, enumerated from the JSON
   API behind asus.com's product grid) are swept through ASUS's public
   GetPDBIOS API with plain requests; the app still checks ASUS live first
   and uses these entries as the offline fallback. Boards that drop out of
