@@ -15,7 +15,18 @@
 # gigabyte, asrock, asus). Anything not swept keeps its previously published
 # entry through the usual carry-forward, so a targeted re-sweep of one
 # vendor never loses the others' data.
-param([string[]] $BoardVendors = @('msi', 'gigabyte', 'asrock', 'asus'))
+#
+# -MaxParallel caps how many headless browsers run at once (0 = each
+# phase's tuned default). Sustained 6-8 concurrent browser launches are a
+# heavy load; a cap of 2-3 lets the sweep run gently on a workstation.
+param(
+    [string[]] $BoardVendors = @('msi', 'gigabyte', 'asrock', 'asus'),
+    [int] $MaxParallel = 0
+)
+
+function Get-Throttle([int] $tuned) {
+    if ($MaxParallel -gt 0 -and $MaxParallel -lt $tuned) { $MaxParallel } else { $tuned }
+}
 
 $ErrorActionPreference = 'Stop'
 
@@ -485,7 +496,7 @@ try {
         # Each headless call takes a few seconds; a handful in flight keeps
         # the full sweep to minutes without hammering MSI.
         $getMsiBios = ${function:Get-MsiBios}.ToString()
-        $results = $slugs | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $results = $slugs | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-MsiBios} = $using:getMsiBios
@@ -515,7 +526,7 @@ try {
         $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
         $pageStart = 1
         while ($pageStart -le 200) {
-            $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit 8 -Parallel {
+            $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
                 ${function:Get-BrowserDom} = $using:getBrowserDom
                 $browserUa = $using:browserUa
                 $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
@@ -543,7 +554,7 @@ try {
         # rate control starts slow-walking rapid requests from one address,
         # which stalled full-throttle sweeps.
         $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
-        $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit 4 -Parallel {
+        $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit (Get-Throttle 4) -Parallel {
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
@@ -606,7 +617,7 @@ try {
         Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
 
         $getAsrockBios = ${function:Get-AsrockBios}.ToString()
-        $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
             $board = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-AsrockBios} = $using:getAsrockBios
