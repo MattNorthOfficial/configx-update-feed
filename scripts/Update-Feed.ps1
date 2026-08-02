@@ -301,11 +301,12 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # what Config X reads from WMI once it strips the "(MS-7E51)"-style suffix -
 # alongside its BIOS downloads.
 #
-# Gigabyte and ASRock are covered further down with curated board lists
-# (Gigabyte's pages are server-rendered but only exist at canonical
-# revision URLs; ASRock's derive from the model name). ASUS is swept last,
-# through its public APIs - the app checks ASUS live first and uses those
-# feed entries as the offline fallback.
+# Gigabyte and ASRock are covered further down with full catalog sweeps of
+# their own (Gigabyte's pages are server-rendered but only exist at
+# canonical revision URLs enumerated from its All-Series grid; ASRock's
+# derive from the model name). ASUS is swept last, through its public
+# APIs - the app checks ASUS live first and uses those feed entries as the
+# offline fallback.
 $msiSitemapUrl = 'https://www.msi.com/sitemap-products-001.xml'
 $msiChipsetFilter = '\b(X870|X670|B850|B840|B650|A620|X570|B550|A520|B450|X470|X370|B350|A320' +
     '|Z890|B860|H810|Z790|B760|H770|Z690|B660|H670|H610|Z590|B560|H510|Z490|B460|H410|H310' +
@@ -377,10 +378,10 @@ function Get-MsiBios([string] $browser, [string] $slug) {
 
 # Gigabyte: the BIOS list is server-rendered into each board's support page,
 # but pages only exist at canonical revision URLs ("...-rev-10-11") that
-# cannot be derived from a board name - so boards are curated here with their
-# resolved slug. The entry's url rides into the feed so the app can link the
-# exact page (its pattern-built Gigabyte links would land on an error shell).
-function Get-GigabyteBios([string] $browser, [string] $name, [string] $slug) {
+# cannot be derived from a board name - so slugs come from enumerating the
+# All-Series grid. The entry's url rides into the feed so the app can link
+# the exact page (pattern-built Gigabyte links would land on an error shell).
+function Get-GigabyteBios([string] $browser, [string] $slug) {
     $url = "https://www.gigabyte.com/Motherboard/$slug/support"
     $dom = Get-BrowserDom $browser $url
     # First version cell ("F42c") with its date cell nearby = newest BIOS.
@@ -466,37 +467,70 @@ try {
     }
     Write-Host "MSI: $($fetched.Count) boards resolved."
 
-    # Gigabyte boards, keyed by the marketing name WMI reports, with the
-    # canonical slug their pages live at (resolved by probing; misses like
-    # the multi-revision DS3H boards can be added once resolved).
-    $gigabyteBoards = [ordered]@{
-        'X870E AORUS MASTER'     = 'X870E-AORUS-MASTER'
-        'X870 AORUS ELITE WIFI7' = 'X870-AORUS-ELITE-WIFI7-rev-10-11'
-        'X870 GAMING X WIFI7'    = 'X870-GAMING-X-WIFI7-rev-1x'
-        'B850 AORUS ELITE WIFI7' = 'B850-AORUS-ELITE-WIFI7-rev-1x'
-        'B850 GAMING X WIFI6E'   = 'B850-GAMING-X-WIFI6E-rev-1x'
-        'B650 AORUS ELITE AX'    = 'B650-AORUS-ELITE-AX-rev-10-11'
-        'X670 AORUS ELITE AX'    = 'X670-AORUS-ELITE-AX-rev-11'
-        'B550 AORUS ELITE V2'    = 'B550-AORUS-ELITE-V2-rev-10-11'
-        'B450M DS3H'             = 'B450M-DS3H-rev-1x'
-        'X570 AORUS ELITE'       = 'X570-AORUS-ELITE-rev-10'
-        'Z890 AORUS ELITE WIFI7' = 'Z890-AORUS-ELITE-WIFI7'
-        'Z790 AORUS ELITE AX'    = 'Z790-AORUS-ELITE-AX-rev-10'
-        'B760 GAMING X AX'       = 'B760-GAMING-X-AX-rev-1x'
-        'B760M DS3H AX'          = 'B760M-DS3H-AX-rev-1x'
+    # Gigabyte: the All-Series grid server-renders its catalog page by page
+    # (~14 products each), and its anchors carry the canonical revision
+    # slugs. Walking pages until no new slug appears enumerates every board
+    # ever listed; out-of-range pages just echo page 1, which that stop
+    # condition also catches.
+    $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    $pageStart = 1
+    while ($pageStart -le 200) {
+        $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit 8 -Parallel {
+            ${function:Get-BrowserDom} = $using:getBrowserDom
+            $browserUa = $using:browserUa
+            $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
+            [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
+        }
+        $before = $gigabyteSlugs.Count
+        foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
+        if ($gigabyteSlugs.Count -eq $before) { break }
+        $pageStart += 8
     }
 
-    foreach ($name in $gigabyteBoards.Keys) {
+    # Unlike the other vendors, Gigabyte is swept unfiltered - every board
+    # the grid lists, back through the oldest generations. Anything with a
+    # digit is a product (series pages like "AORUS" or "All-Series" have
+    # none), and non-board pages that slip through self-filter because
+    # their support page has no F-version BIOS list to match.
+    $gigabyteBoards = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
+    if ($gigabyteBoards.Count -lt 50) {
+        throw "Only $($gigabyteBoards.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
+    }
+    Write-Host "Gigabyte: checking $($gigabyteBoards.Count) board pages..."
+
+    $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
+    $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $slug = $_
+        ${function:Get-BrowserDom} = $using:getBrowserDom
+        ${function:Get-GigabyteBios} = $using:getGigabyteBios
+        ${function:Format-BiosDate} = $using:formatBiosDate
+        $browserUa = $using:browserUa
         try {
-            $entry = Get-GigabyteBios $browser $name $gigabyteBoards[$name]
-            if ($entry) { $fetched[$name] = $entry }
-            else { Write-Warning "Gigabyte: no BIOS for $name." }
+            $entry = Get-GigabyteBios $using:browser $slug
+            if ($entry) { [pscustomobject]@{ Slug = $slug; Entry = $entry } } else { $null }
         }
         catch {
-            Write-Warning "Gigabyte '$name' failed: $($_.Exception.Message)"
+            Write-Warning "Gigabyte '$slug' failed: $($_.Exception.Message)"
+            $null
         }
     }
-    Write-Host 'Gigabyte: done.'
+
+    # Boards with several hardware revisions get one page (and BIOS train)
+    # per revision, while WMI only reports the marketing name - so revisions
+    # collapse onto that name and the newest-dated BIOS wins. The entry's
+    # url keeps pointing at the exact revision page the verdict came from.
+    $gigabyteByName = @{}
+    foreach ($result in $gigabyteResults | Where-Object { $_ }) {
+        $name = ($result.Slug -replace '-rev-[0-9a-zx-]+$', '') -replace '-', ' '
+        $existing = $gigabyteByName[$name]
+        if (-not $existing -or [string]::Compare($result.Entry.date, $existing.date) -gt 0) {
+            $gigabyteByName[$name] = $result.Entry
+        }
+    }
+    foreach ($name in $gigabyteByName.Keys) {
+        $fetched[$name] = $gigabyteByName[$name]
+    }
+    Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
 
     # ASRock: the motherboard index embeds the complete catalog as JS
     # arrays - "allmodels" holds every board ever made ([name, socket,
