@@ -10,10 +10,14 @@ on:
   schedule:
     # Every 6 hours: just the quick sections (AMD/NVIDIA/Intel/Windows) -
     # board entries carry forward untouched. BIOS releases are rare, so the
-    # ~2,900-page board sweep runs once nightly instead, which also keeps
-    # the vendor sites from seeing four full crawls a day.
-    - cron: "0 */6 * * *"
-    - cron: "30 3 * * *"
+    # ~2,900-page board sweep runs once daily instead, which also keeps
+    # the vendor sites from seeing four full crawls a day. The sweep runs
+    # at 10:37 UTC, right after the Taiwanese workday ends - all four
+    # board vendors publish from Taiwan - so each day's BIOS releases are
+    # in the feed before the European evening. Odd minutes on purpose:
+    # GitHub delays cron jobs scheduled at busy exact-hour marks.
+    - cron: "37 */6 * * *"
+    - cron: "37 10 * * *"
 
 permissions:
   contents: write
@@ -33,7 +37,7 @@ jobs:
         shell: pwsh
         run: |
           $vendors = '${{ inputs.board_vendors }}'
-          if ('${{ github.event.schedule }}' -eq '0 */6 * * *') {
+          if ('${{ github.event.schedule }}' -eq '37 */6 * * *') {
             $vendors = 'none'
           }
           if ($vendors) {

@@ -12,8 +12,9 @@ plus its release notes (chipset),
 (chipset INF utility and both graphics branches), and NVIDIA's driver-search
 endpoint (GeForce Game Ready), and commits `feed/updates.json` when a new
 release appears. The quick sections above refresh every six hours; the full
-motherboard sweep (~2,900 pages across four vendors) runs once nightly, with
-boards carrying forward between sweeps. A publish gate refuses a sweep whose
+motherboard sweep (~2,900 pages across four vendors) runs once daily at
+10:37 UTC - right after the Taiwanese workday, since all four board vendors
+publish from Taiwan - with boards carrying forward between sweeps. A publish gate refuses a sweep whose
 BIOS dates regress en masse (the signature of a vendor layout change parsing
 wrong-but-plausible values), transient fetch failures retry once before a
 board is left to carry forward, and each run writes a per-vendor summary to
