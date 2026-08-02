@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T02:57:43Z",
+  "updated": "2026-08-02T15:16:42Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -294,6 +294,11 @@
       "date": "2026-07-22",
       "url": "https://www.asrock.com/mb/AMD/A620M%20Pro%20RS%20WiFi/BIOS.html"
     },
+    "A620M-AYW WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/A620M-AYW%20WIFI/helpdesk_bios/"
+    },
     "A620M-C R2.0": {
       "bios": "4.43",
       "date": "2026-07-29",
@@ -418,6 +423,11 @@
     "B450M-A PRO MAX II": {
       "bios": "7C52vA62",
       "date": "2026-07-27"
+    },
+    "B450M-DRAGON": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/B450M-DRAGON/helpdesk_bios/"
     },
     "B450M-HDV": {
       "bios": "10.60",
@@ -774,6 +784,11 @@
       "date": "2022-04-14",
       "url": "https://www.asrock.com/mb/Intel/B560M-ITXac/BIOS.html"
     },
+    "B560M-P": {
+      "bios": "2803",
+      "date": "2026-01-06",
+      "url": "https://www.asus.com/supportonly/B560M-P/helpdesk_bios/"
+    },
     "B650 AORUS ELITE AX": {
       "bios": "F42c",
       "date": "2026-07-21",
@@ -822,6 +837,16 @@
       "date": "2026-06-23",
       "url": "https://www.asrock.com/mb/AMD/B650%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "B650E MAX GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B650E%20MAX%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "B650E MAX GAMING WIFI W": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B650E%20MAX%20GAMING%20WIFI%20W/helpdesk_bios/"
+    },
     "B650E PG Riptide WiFi": {
       "bios": "4.43",
       "date": "2026-07-17",
@@ -846,6 +871,11 @@
       "bios": "4.43",
       "date": "2026-07-22",
       "url": "https://www.asrock.com/mb/AMD/B650E%20Taichi%20Lite/BIOS.html"
+    },
+    "B650EM MAX GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B650EM%20MAX%20GAMING%20WIFI/helpdesk_bios/"
     },
     "B650I Lightning WiFi": {
       "bios": "4.43",
@@ -917,6 +947,16 @@
     "B650M PROJECT ZERO": {
       "bios": "7E09v1I2",
       "date": "2026-07-06"
+    },
+    "B650M-AYW WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B650M-AYW%20WIFI/helpdesk_bios/"
+    },
+    "B650M-AYW WIFI-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B650M-AYW%20WIFI-CSM/helpdesk_bios/"
     },
     "B650M-H/M.2+": {
       "bios": "4.43",
@@ -1013,7 +1053,7 @@
     },
     "B760 GAMING X AX": {
       "bios": "F18a",
-      "date": "2026-07-31",
+      "date": "2026-07-30",
       "url": "https://www.gigabyte.com/Motherboard/B760-GAMING-X-AX-rev-1x/support#support-dl-bios"
     },
     "B760 Pro RS": {
@@ -1079,6 +1119,11 @@
     "B760M GAMING WIFI": {
       "bios": "7D90vH9",
       "date": "2026-04-07"
+    },
+    "B760M MAX GAMING WIFI": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/B760M%20MAX%20GAMING%20WIFI/helpdesk_bios/"
     },
     "B760M PG Lightning": {
       "bios": "11.01",
@@ -1164,6 +1209,36 @@
       "date": "2026-07-07",
       "url": "https://www.asrock.com/mb/Intel/B760M%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "B760M-AYW PRO WIFI": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/B760M-AYW%20PRO%20WIFI/helpdesk_bios/"
+    },
+    "B760M-AYW PRO WIFI-CSM": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/B760M-AYW%20PRO%20WIFI-CSM/helpdesk_bios/"
+    },
+    "B760M-AYW WIFI": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/B760M-AYW%20WIFI/helpdesk_bios/"
+    },
+    "B760M-AYW WIFI D4": {
+      "bios": "1838",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/B760M-AYW%20WIFI%20D4/helpdesk_bios/"
+    },
+    "B760M-AYW WIFI D4 II": {
+      "bios": "1837",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/B760M-AYW%20WIFI%20D4%20II/helpdesk_bios/"
+    },
+    "B760M-AYW WIFI II": {
+      "bios": "1837",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/B760M-AYW%20WIFI%20II/helpdesk_bios/"
+    },
     "B760M-H/M.2": {
       "bios": "11.02",
       "date": "2026-07-15",
@@ -1208,6 +1283,11 @@
       "bios": "7E57v2A72",
       "date": "2026-06-26"
     },
+    "B840M AYW GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B840M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
     "B840M GAMING PLUS WIFI6E": {
       "bios": "7E77v1A42",
       "date": "2026-06-26"
@@ -1215,6 +1295,11 @@
     "B840M GAMING WIFI6E": {
       "bios": "7E76v1A42",
       "date": "2026-07-01"
+    },
+    "B840M MAX GAMING AX": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B840M%20MAX%20GAMING%20AX/helpdesk_bios/"
     },
     "B840M-HVS": {
       "bios": "4.43",
@@ -1262,6 +1347,21 @@
       "date": "2026-07-02",
       "url": "https://www.asrock.com/mb/AMD/B850%20LiveMixer%20WiFi/BIOS.html"
     },
+    "B850 MAX GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850%20MAX%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "B850 MAX GAMING WIFI W": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850%20MAX%20GAMING%20WIFI%20W/helpdesk_bios/"
+    },
+    "B850 MAX GAMING WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850%20MAX%20GAMING%20WIFI-CSM/helpdesk_bios/"
+    },
     "B850 MLG EDITION": {
       "bios": "7E62v3A32",
       "date": "2026-06-30"
@@ -1306,6 +1406,16 @@
       "date": "2026-07-07",
       "url": "https://pg.asrock.com/mb/AMD/B850I%20Lightning%20WiFi/BIOS.html"
     },
+    "B850M AYW GAMING OC WIFI7 W": {
+      "bios": "1688",
+      "date": "2026-07-28",
+      "url": "https://www.asus.com/supportonly/B850M%20AYW%20GAMING%20OC%20WIFI7%20W/helpdesk_bios/"
+    },
+    "B850M AYW GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
     "B850M Challenger": {
       "bios": "4.43",
       "date": "2026-07-03",
@@ -1340,6 +1450,11 @@
     "B850M GAMING WIFI6E": {
       "bios": "7E87v1A33",
       "date": "2026-06-26"
+    },
+    "B850M MAX GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850M%20MAX%20GAMING%20WIFI/helpdesk_bios/"
     },
     "B850M Pro Plus WiFi": {
       "bios": "4.43",
@@ -1390,6 +1505,16 @@
       "bios": "4.43",
       "date": "2026-07-13",
       "url": "https://www.asrock.com/mb/AMD/B850M-A/BIOS.html"
+    },
+    "B850M-E AYW GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850M-E%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "B850M-E AYW GAMING WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/B850M-E%20AYW%20GAMING%20WIFI-CSM/helpdesk_bios/"
     },
     "B850M-X": {
       "bios": "4.43",
@@ -1479,6 +1604,11 @@
       "date": "2026-07-15",
       "url": "https://www.asrock.com/mb/Intel/B860I%20WiFi/BIOS.html"
     },
+    "B860M AYW GAMING WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/B860M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
     "B860M Challenger WiFi": {
       "bios": "3.31",
       "date": "2026-07-20",
@@ -1511,6 +1641,11 @@
       "date": "2026-07-20",
       "url": "https://www.asrock.com/mb/Intel/B860M%20LiveMixer%20WiFi/BIOS.html"
     },
+    "B860M MAX GAMING AX": {
+      "bios": "3021",
+      "date": "2026-05-28",
+      "url": "https://www.asus.com/supportonly/B860M%20MAX%20GAMING%20AX/helpdesk_bios/"
+    },
     "B860M Pro RS": {
       "bios": "3.31",
       "date": "2026-07-20",
@@ -1540,6 +1675,26 @@
       "bios": "3.31",
       "date": "2026-07-20",
       "url": "https://www.asrock.com/mb/Intel/B860M%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B860M-BRO": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/B860M-BRO/helpdesk_bios/"
+    },
+    "B860M-BRO-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/B860M-BRO-CSM/helpdesk_bios/"
+    },
+    "B860M-E": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/B860M-E/helpdesk_bios/"
+    },
+    "B860M-E-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/B860M-E-CSM/helpdesk_bios/"
     },
     "B860M-H2": {
       "bios": "3.32",
@@ -1583,6 +1738,161 @@
     "Creator X299": {
       "bios": "7B96v14",
       "date": "2022-07-19"
+    },
+    "EX-A320M-GAMING": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/EX-A320M-GAMING/helpdesk_bios/"
+    },
+    "EX-B460M-V5": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/EX-B460M-V5/helpdesk_bios/"
+    },
+    "EX-B560M-V5": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/EX-B560M-V5/helpdesk_bios/"
+    },
+    "EX-B650EM-V7 PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B650EM-V7%20PLUS/helpdesk_bios/"
+    },
+    "EX-B650EM-V7 PLUS-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B650EM-V7%20PLUS-CSM/helpdesk_bios/"
+    },
+    "EX-B650M-V7": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B650M-V7/helpdesk_bios/"
+    },
+    "EX-B650M-V7 PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B650M-V7%20PLUS/helpdesk_bios/"
+    },
+    "EX-B660M-V5 D4": {
+      "bios": "4004",
+      "date": "2026-06-29",
+      "url": "https://www.asus.com/supportonly/EX-B660M-V5%20D4/helpdesk_bios/"
+    },
+    "EX-B660M-V5 PRO D4": {
+      "bios": "4004",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/EX-B660M-V5%20PRO%20D4/helpdesk_bios/"
+    },
+    "EX-B760M-V5": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V5/helpdesk_bios/"
+    },
+    "EX-B760M-V5 D4": {
+      "bios": "1838",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V5%20D4/helpdesk_bios/"
+    },
+    "EX-B760M-V5 D4-CSM": {
+      "bios": "1838",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V5%20D4-CSM/helpdesk_bios/"
+    },
+    "EX-B760M-V5 PLUS": {
+      "bios": "1838",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V5%20PLUS/helpdesk_bios/"
+    },
+    "EX-B760M-V5-CSM": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V5-CSM/helpdesk_bios/"
+    },
+    "EX-B760M-V7": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V7/helpdesk_bios/"
+    },
+    "EX-B760M-V7 II": {
+      "bios": "1836",
+      "date": "2026-05-18",
+      "url": "https://www.asus.com/supportonly/EX-B760M-V7%20II/helpdesk_bios/"
+    },
+    "EX-B850M-V7": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B850M-V7/helpdesk_bios/"
+    },
+    "EX-B850M-V7-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B850M-V7-CSM/helpdesk_bios/"
+    },
+    "EX-B850M-V9": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B850M-V9/helpdesk_bios/"
+    },
+    "EX-B850M-V9-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/EX-B850M-V9-CSM/helpdesk_bios/"
+    },
+    "EX-B860M-V5": {
+      "bios": "3021",
+      "date": "2026-05-27",
+      "url": "https://www.asus.com/supportonly/EX-B860M-V5/helpdesk_bios/"
+    },
+    "EX-B860M-V5 PLUS": {
+      "bios": "0402",
+      "date": "2026-07-13",
+      "url": "https://www.asus.com/supportonly/EX-B860M-V5%20PLUS/helpdesk_bios/"
+    },
+    "EX-B860M-V5-CSM": {
+      "bios": "3021",
+      "date": "2026-05-27",
+      "url": "https://www.asus.com/supportonly/EX-B860M-V5-CSM/helpdesk_bios/"
+    },
+    "EX-H310M-V3 R2.0": {
+      "bios": "2208",
+      "date": "2021-08-05",
+      "url": "https://www.asus.com/supportonly/EX-H310M-V3%20R2.0/helpdesk_bios/"
+    },
+    "EX-H310M-V3 R2.0/CSM": {
+      "bios": "2208",
+      "date": "2021-08-05",
+      "url": "https://www.asus.com/supportonly/EX-H310M-V3%20R2.0%2FCSM/helpdesk_bios/"
+    },
+    "EX-H410M-V3": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/EX-H410M-V3/helpdesk_bios/"
+    },
+    "EX-H410M-V3/CSM": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/EX-H410M-V3%2FCSM/helpdesk_bios/"
+    },
+    "EX-H510M-V3": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/EX-H510M-V3/helpdesk_bios/"
+    },
+    "EX-H510M-V3/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/EX-H510M-V3%2FCSM/helpdesk_bios/"
+    },
+    "EX-H610M-V3 D4": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/EX-H610M-V3%20D4/helpdesk_bios/"
+    },
+    "EX-H610M-V3 D4-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/EX-H610M-V3%20D4-CSM/helpdesk_bios/"
     },
     "Fatal1ty AB350 Gaming K4": {
       "bios": "10.50",
@@ -1896,6 +2206,11 @@
       "date": "2026-03-05",
       "url": "https://www.asrock.com/mb/Intel/H610M%20COMBO%20II/BIOS.html"
     },
+    "H610M-AYW D4": {
+      "bios": "4003",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/H610M-AYW%20D4/helpdesk_bios/"
+    },
     "H610M-H2/M.2": {
       "bios": "6.01",
       "date": "2025-10-08",
@@ -2019,6 +2334,16 @@
       "bios": "3.01",
       "date": "2025-10-30",
       "url": "https://www.asrock.com/mb/Intel/H670M-ITXax%20R2.0/BIOS.html"
+    },
+    "H810M AYW GAMING WIFI": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/H810M%20AYW%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "H810M AYW GAMING WIFI-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/H810M%20AYW%20GAMING%20WIFI-CSM/helpdesk_bios/"
     },
     "H810M GAMING WIFI6E": {
       "bios": "7E64v2A60",
@@ -2748,9 +3073,1684 @@
       "bios": "7E33v1A90",
       "date": "2026-04-07"
     },
+    "PRIME A320I-K": {
+      "bios": "6254",
+      "date": "2026-01-23",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320I-K/helpdesk_bios/"
+    },
+    "PRIME A320M-A": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-A/helpdesk_bios/"
+    },
+    "PRIME A320M-A/CSM": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME A320M-C R2.0": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-C%20R2.0/helpdesk_bios/"
+    },
+    "PRIME A320M-E": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-E/helpdesk_bios/"
+    },
+    "PRIME A320M-F": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-F/helpdesk_bios/"
+    },
+    "PRIME A320M-K": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-K/helpdesk_bios/"
+    },
+    "PRIME A320M-K/CSM": {
+      "bios": "6254",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20A320M-K%2FCSM/helpdesk_bios/"
+    },
+    "PRIME A520M-A": {
+      "bios": "3636",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-A/helpdesk_bios/"
+    },
+    "PRIME A520M-A II": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-A%20II/helpdesk_bios/"
+    },
+    "PRIME A520M-A II/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-A%20II%2FCSM/helpdesk_bios/"
+    },
+    "PRIME A520M-A/CSM": {
+      "bios": "3636",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME A520M-E": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-E/helpdesk_bios/"
+    },
+    "PRIME A520M-E/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-E%2FCSM/helpdesk_bios/"
+    },
+    "PRIME A520M-K": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-K/helpdesk_bios/"
+    },
+    "PRIME A520M-K ARGB": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-K%20ARGB/helpdesk_bios/"
+    },
+    "PRIME A520M-K ARGB-CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-K%20ARGB-CSM/helpdesk_bios/"
+    },
+    "PRIME A520M-K/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-K%2FCSM/helpdesk_bios/"
+    },
+    "PRIME A520M-R": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-R/helpdesk_bios/"
+    },
+    "PRIME A520M-R-CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20A520M-R-CSM/helpdesk_bios/"
+    },
+    "PRIME A620-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME A620-PLUS WIFI6": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620-PLUS%20WIFI6/helpdesk_bios/"
+    },
+    "PRIME A620A-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620A-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME A620AM-A": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620AM-A/helpdesk_bios/"
+    },
+    "PRIME A620AM-A-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620AM-A-CSM/helpdesk_bios/"
+    },
+    "PRIME A620AM-K": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620AM-K/helpdesk_bios/"
+    },
+    "PRIME A620AM-K-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620AM-K-CSM/helpdesk_bios/"
+    },
+    "PRIME A620M-A": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620M-A/helpdesk_bios/"
+    },
+    "PRIME A620M-A-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME A620M-E": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620M-E/helpdesk_bios/"
+    },
+    "PRIME A620M-E-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620M-E-CSM/helpdesk_bios/"
+    },
+    "PRIME A620M-K": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620M-K/helpdesk_bios/"
+    },
+    "PRIME A620M-K-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20A620M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME B450-PLUS": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450-PLUS/helpdesk_bios/"
+    },
+    "PRIME B450M-A": {
+      "bios": "4645",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450M-A/helpdesk_bios/"
+    },
+    "PRIME B450M-A II": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450M-A%20II/helpdesk_bios/"
+    },
+    "PRIME B450M-A II/CSM": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450M-A%20II%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B450M-A/CSM": {
+      "bios": "4645",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B450M-K": {
+      "bios": "4645",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450M-K/helpdesk_bios/"
+    },
+    "PRIME B450M-K II": {
+      "bios": "4651",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B450M-K%20II/helpdesk_bios/"
+    },
+    "PRIME B460-PLUS": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460-PLUS/helpdesk_bios/"
+    },
+    "PRIME B460I-PLUS": {
+      "bios": "2003",
+      "date": "2026-03-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460I-PLUS/helpdesk_bios/"
+    },
+    "PRIME B460M-A": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460M-A/helpdesk_bios/"
+    },
+    "PRIME B460M-A R2.0": {
+      "bios": "3005",
+      "date": "2026-01-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460M-A%20R2.0/helpdesk_bios/"
+    },
+    "PRIME B460M-A/CSM": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B460M-K": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460M-K/helpdesk_bios/"
+    },
+    "PRIME B460M-K/CSM": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20B460M-K%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B550-PLUS": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550-PLUS/helpdesk_bios/"
+    },
+    "PRIME B550-PLUS AC-HES": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550-PLUS%20AC-HES/helpdesk_bios/"
+    },
+    "PRIME B550M-A": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A/helpdesk_bios/"
+    },
+    "PRIME B550M-A (WI-FI)": {
+      "bios": "3636",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "PRIME B550M-A (WI-FI)/CSM": {
+      "bios": "3636",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A%20%28WI-FI%29%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B550M-A AC": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A%20AC/helpdesk_bios/"
+    },
+    "PRIME B550M-A WIFI II": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A%20WIFI%20II/helpdesk_bios/"
+    },
+    "PRIME B550M-A WIFI II-CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A%20WIFI%20II-CSM/helpdesk_bios/"
+    },
+    "PRIME B550M-A/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B550M-K": {
+      "bios": "4201",
+      "date": "2026-07-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-K/helpdesk_bios/"
+    },
+    "PRIME B550M-K ARGB": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-K%20ARGB/helpdesk_bios/"
+    },
+    "PRIME B550M-K ARGB-CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-K%20ARGB-CSM/helpdesk_bios/"
+    },
+    "PRIME B550M-K WIFI": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-K%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B550M-K WIFI-CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-K%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B550M-K/CSM": {
+      "bios": "4201",
+      "date": "2026-07-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20B550M-K%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B560-PLUS": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560-PLUS/helpdesk_bios/"
+    },
+    "PRIME B560-PLUS AC-HES": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560-PLUS%20AC-HES/helpdesk_bios/"
+    },
+    "PRIME B560M-A": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560M-A/helpdesk_bios/"
+    },
+    "PRIME B560M-A AC": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560M-A%20AC/helpdesk_bios/"
+    },
+    "PRIME B560M-A/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B560M-K": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560M-K/helpdesk_bios/"
+    },
+    "PRIME B560M-K/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B560M-K%2FCSM/helpdesk_bios/"
+    },
+    "PRIME B650-PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650-PLUS/helpdesk_bios/"
+    },
+    "PRIME B650-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B650-PLUS WIFI-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650-PLUS%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B650-PLUS-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME B650EM-A": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650EM-A/helpdesk_bios/"
+    },
+    "PRIME B650EM-A WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650EM-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B650EM-A WIFI-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650EM-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B650EM-A-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650EM-A-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-A": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A/helpdesk_bios/"
+    },
+    "PRIME B650M-A AX": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20AX/helpdesk_bios/"
+    },
+    "PRIME B650M-A AX II": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20AX%20II/helpdesk_bios/"
+    },
+    "PRIME B650M-A AX6": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20AX6/helpdesk_bios/"
+    },
+    "PRIME B650M-A AX6 II": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20AX6%20II/helpdesk_bios/"
+    },
+    "PRIME B650M-A AX6 II-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20AX6%20II-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-A AX6-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20AX6-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-A II": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20II/helpdesk_bios/"
+    },
+    "PRIME B650M-A II-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20II-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-A WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B650M-A WIFI II": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20WIFI%20II/helpdesk_bios/"
+    },
+    "PRIME B650M-A WIFI II-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20WIFI%20II-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-A WIFI-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-A-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-F": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-F/helpdesk_bios/"
+    },
+    "PRIME B650M-F-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-F-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-K": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-K/helpdesk_bios/"
+    },
+    "PRIME B650M-K-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME B650M-R": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-R/helpdesk_bios/"
+    },
+    "PRIME B650M-R-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B650M-R-CSM/helpdesk_bios/"
+    },
+    "PRIME B660-PLUS D4": {
+      "bios": "4003",
+      "date": "2026-05-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME B660-PLUS D4-CSM": {
+      "bios": "4003",
+      "date": "2026-05-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B660M-A D4": {
+      "bios": "4003",
+      "date": "2026-06-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660M-A%20D4/helpdesk_bios/"
+    },
+    "PRIME B660M-A D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660M-A%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B660M-A WIFI D4": {
+      "bios": "4003",
+      "date": "2026-06-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660M-A%20WIFI%20D4/helpdesk_bios/"
+    },
+    "PRIME B660M-A WIFI D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660M-A%20WIFI%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B660M-K D4": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660M-K%20D4/helpdesk_bios/"
+    },
+    "PRIME B660M-K D4-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20B660M-K%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B760-PLUS": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760-PLUS/helpdesk_bios/"
+    },
+    "PRIME B760-PLUS D4": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME B760-PLUS D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B760-PLUS-CSM": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-A": {
+      "bios": "1836",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A/helpdesk_bios/"
+    },
+    "PRIME B760M-A AX6": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20AX6/helpdesk_bios/"
+    },
+    "PRIME B760M-A AX6 II": {
+      "bios": "1836",
+      "date": "2026-05-18",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20AX6%20II/helpdesk_bios/"
+    },
+    "PRIME B760M-A D4": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20D4/helpdesk_bios/"
+    },
+    "PRIME B760M-A D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-A II": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20II/helpdesk_bios/"
+    },
+    "PRIME B760M-A II-CSM": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20II-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-A WIFI": {
+      "bios": "1836",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B760M-A WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-18",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20WIFI%20D4/helpdesk_bios/"
+    },
+    "PRIME B760M-A WIFI D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-18",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20WIFI%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-A WIFI II": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20WIFI%20II/helpdesk_bios/"
+    },
+    "PRIME B760M-A WIFI II-CSM": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20WIFI%20II-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-A WIFI-CSM": {
+      "bios": "1836",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-A-CSM": {
+      "bios": "1836",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-F": {
+      "bios": "1838",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-F/helpdesk_bios/"
+    },
+    "PRIME B760M-F D4": {
+      "bios": "1838",
+      "date": "2026-07-03",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-F%20D4/helpdesk_bios/"
+    },
+    "PRIME B760M-F D4-CSM": {
+      "bios": "1838",
+      "date": "2026-07-03",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-F%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-F WIFI": {
+      "bios": "1838",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-F%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B760M-F WIFI-CSM": {
+      "bios": "1838",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-F%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-F-CSM": {
+      "bios": "1838",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-F-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-K": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-K/helpdesk_bios/"
+    },
+    "PRIME B760M-K D4": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-K%20D4/helpdesk_bios/"
+    },
+    "PRIME B760M-K D4-CSM": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-K%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-K-CSM": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-PLUS": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-PLUS/helpdesk_bios/"
+    },
+    "PRIME B760M-PLUS-CSM": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME B760M-R D4": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-R%20D4/helpdesk_bios/"
+    },
+    "PRIME B760M-R D4-CSM": {
+      "bios": "1838",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B760M-R%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME B840-PLUS WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B840-PLUS WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840-PLUS%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B840M-A": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-A/helpdesk_bios/"
+    },
+    "PRIME B840M-A WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B840M-A WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B840M-A-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME B840M-K": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-K/helpdesk_bios/"
+    },
+    "PRIME B840M-K-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME B840M-R": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-R/helpdesk_bios/"
+    },
+    "PRIME B840M-R-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B840M-R-CSM/helpdesk_bios/"
+    },
+    "PRIME B850-PLUS": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850-PLUS/helpdesk_bios/"
+    },
+    "PRIME B850-PLUS WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B850-PLUS WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850-PLUS%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B850-PLUS-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME B850M-A": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850M-A/helpdesk_bios/"
+    },
+    "PRIME B850M-A WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B850M-A WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B850M-A-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME B850M-K": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850M-K/helpdesk_bios/"
+    },
+    "PRIME B850M-K-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20B850M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME B860-PLUS": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860-PLUS/helpdesk_bios/"
+    },
+    "PRIME B860-PLUS WIFI": {
+      "bios": "3022",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B860-PLUS WIFI-CSM": {
+      "bios": "3022",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860-PLUS%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B860-PLUS-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME B860M-A": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860M-A/helpdesk_bios/"
+    },
+    "PRIME B860M-A WIFI": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME B860M-A WIFI-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME B860M-A-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME B860M-K": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860M-K/helpdesk_bios/"
+    },
+    "PRIME B860M-K-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20B860M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME H310I-PLUS R2.0": {
+      "bios": "2208",
+      "date": "2021-08-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310I-PLUS%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H310I-PLUS R2.0/CSM": {
+      "bios": "2208",
+      "date": "2021-08-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310I-PLUS%20R2.0%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H310M-C/PS R2.0": {
+      "bios": "2208",
+      "date": "2021-08-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-C%2FPS%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H310M-DASH R2.0": {
+      "bios": "2209",
+      "date": "2022-09-13",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-DASH%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H310M-E R2.0/CSM": {
+      "bios": "2209",
+      "date": "2022-06-22",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-E%20R2.0%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H310M-E/CSM": {
+      "bios": "3202",
+      "date": "2021-07-22",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-E%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H310M-F": {
+      "bios": "0404",
+      "date": "2024-01-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-F/helpdesk_bios/"
+    },
+    "PRIME H310M-K": {
+      "bios": "3204",
+      "date": "2024-01-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-K/helpdesk_bios/"
+    },
+    "PRIME H310M-K R2.0": {
+      "bios": "2208",
+      "date": "2021-08-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310M-K%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H310T R2.0": {
+      "bios": "2208",
+      "date": "2021-08-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310T%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H310T R2.0/CSM": {
+      "bios": "2208",
+      "date": "2021-08-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H310T%20R2.0%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H410I-PLUS": {
+      "bios": "2003",
+      "date": "2026-03-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410I-PLUS/helpdesk_bios/"
+    },
+    "PRIME H410I-PLUS/CSM": {
+      "bios": "2003",
+      "date": "2026-03-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410I-PLUS%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H410M-A": {
+      "bios": "1807",
+      "date": "2026-07-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-A/helpdesk_bios/"
+    },
+    "PRIME H410M-A/CSM": {
+      "bios": "1807",
+      "date": "2026-07-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H410M-D": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-D/helpdesk_bios/"
+    },
+    "PRIME H410M-D/CSM": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-D%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H410M-E": {
+      "bios": "1806",
+      "date": "2026-01-13",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-E/helpdesk_bios/"
+    },
+    "PRIME H410M-E/CSM": {
+      "bios": "1806",
+      "date": "2026-01-13",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-E%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H410M-F": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-F/helpdesk_bios/"
+    },
+    "PRIME H410M-K": {
+      "bios": "1809",
+      "date": "2026-07-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-K/helpdesk_bios/"
+    },
+    "PRIME H410M-K R2.0": {
+      "bios": "3005",
+      "date": "2026-01-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-K%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H410M-K R3.0": {
+      "bios": "3005",
+      "date": "2026-01-16",
+      "url": "https://www.asus.com/supportonly/PRIME%20H410M-K%20R3.0/helpdesk_bios/"
+    },
+    "PRIME H510M-A": {
+      "bios": "3002",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-A/helpdesk_bios/"
+    },
+    "PRIME H510M-A R2.0": {
+      "bios": "3006",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-A%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H510M-A R2.0-CSM": {
+      "bios": "3006",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-A%20R2.0-CSM/helpdesk_bios/"
+    },
+    "PRIME H510M-A WIFI": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME H510M-A WIFI/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-A%20WIFI%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H510M-A/CSM": {
+      "bios": "3002",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-A%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H510M-D": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-D/helpdesk_bios/"
+    },
+    "PRIME H510M-D/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-D%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H510M-E": {
+      "bios": "3002",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-E/helpdesk_bios/"
+    },
+    "PRIME H510M-E R2.0": {
+      "bios": "3006",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-E%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H510M-E R2.0-CSM": {
+      "bios": "3006",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-E%20R2.0-CSM/helpdesk_bios/"
+    },
+    "PRIME H510M-E/CSM": {
+      "bios": "3002",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-E%2FCSM/helpdesk_bios/"
+    },
+    "PRIME H510M-F": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-F/helpdesk_bios/"
+    },
+    "PRIME H510M-F R2.0": {
+      "bios": "3005",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-F%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H510M-F R3.0": {
+      "bios": "3006",
+      "date": "2026-06-24",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-F%20R3.0/helpdesk_bios/"
+    },
+    "PRIME H510M-F R3.0-CSM": {
+      "bios": "3006",
+      "date": "2026-06-24",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-F%20R3.0-CSM/helpdesk_bios/"
+    },
+    "PRIME H510M-K": {
+      "bios": "3002",
+      "date": "2026-06-25",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-K/helpdesk_bios/"
+    },
+    "PRIME H510M-K R2.0": {
+      "bios": "3006",
+      "date": "2026-06-25",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-K%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H510M-K R2.0-CSM": {
+      "bios": "3006",
+      "date": "2026-06-25",
+      "url": "https://www.asus.com/supportonly/PRIME%20H510M-K%20R2.0-CSM/helpdesk_bios/"
+    },
+    "PRIME H610I-PLUS": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610I-PLUS/helpdesk_bios/"
+    },
+    "PRIME H610I-PLUS D4": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610I-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME H610I-PLUS D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610I-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610I-PLUS-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610I-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-A": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A/helpdesk_bios/"
+    },
+    "PRIME H610M-A D4": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-A D4-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-A WIFI": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME H610M-A WIFI D4": {
+      "bios": "4004",
+      "date": "2026-06-25",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A%20WIFI%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-A WIFI D4-CSM": {
+      "bios": "4004",
+      "date": "2026-06-25",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A%20WIFI%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-A WIFI-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-A-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-D": {
+      "bios": "4004",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-D/helpdesk_bios/"
+    },
+    "PRIME H610M-D D4": {
+      "bios": "4004",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-D%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-D D4-CSM": {
+      "bios": "4004",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-D%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-D-CSM": {
+      "bios": "4004",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-D-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-E": {
+      "bios": "4004",
+      "date": "2026-07-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-E/helpdesk_bios/"
+    },
+    "PRIME H610M-E D4": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-E%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-E D4-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-E%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-E-CSM": {
+      "bios": "4004",
+      "date": "2026-07-09",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-E-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-F": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F/helpdesk_bios/"
+    },
+    "PRIME H610M-F D4": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-F D4 R2.0": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20D4%20R2.0/helpdesk_bios/"
+    },
+    "PRIME H610M-F D4 R2.0-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20D4%20R2.0-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-F D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-F WIFI": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20WIFI/helpdesk_bios/"
+    },
+    "PRIME H610M-F WIFI D4": {
+      "bios": "4003",
+      "date": "2026-06-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20WIFI%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-F WIFI D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-05",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20WIFI%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-F WIFI-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-F-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-F-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-K": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K/helpdesk_bios/"
+    },
+    "PRIME H610M-K ARGB": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K%20ARGB/helpdesk_bios/"
+    },
+    "PRIME H610M-K ARGB-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K%20ARGB-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-K D4": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K%20D4/helpdesk_bios/"
+    },
+    "PRIME H610M-K D4 ARGB": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K%20D4%20ARGB/helpdesk_bios/"
+    },
+    "PRIME H610M-K D4 ARGB-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K%20D4%20ARGB-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-K D4-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-K-CSM": {
+      "bios": "4004",
+      "date": "2026-07-07",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-R": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-R/helpdesk_bios/"
+    },
+    "PRIME H610M-R D4-CSM": {
+      "bios": "4004",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-R%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H610M-R-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20H610M-R-CSM/helpdesk_bios/"
+    },
+    "PRIME H670-PLUS D4": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20H670-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME H670-PLUS D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20H670-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H770-PLUS": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20H770-PLUS/helpdesk_bios/"
+    },
+    "PRIME H770-PLUS D4": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20H770-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME H770-PLUS D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20H770-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME H770-PLUS-CSM": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20H770-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME H810M-A": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-A/helpdesk_bios/"
+    },
+    "PRIME H810M-A WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME H810M-A WIFI-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME H810M-A-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-A-CSM/helpdesk_bios/"
+    },
+    "PRIME H810M-E": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-E/helpdesk_bios/"
+    },
+    "PRIME H810M-E-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-E-CSM/helpdesk_bios/"
+    },
+    "PRIME H810M-K": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-K/helpdesk_bios/"
+    },
+    "PRIME H810M-K-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-K-CSM/helpdesk_bios/"
+    },
+    "PRIME H810M-X 2.5G": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-X%202.5G/helpdesk_bios/"
+    },
+    "PRIME H810M-X 2.5G-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20H810M-X%202.5G-CSM/helpdesk_bios/"
+    },
+    "Prime TRX40-Pro": {
+      "bios": "2502",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/Prime%20TRX40-Pro/helpdesk_bios/"
+    },
+    "PRIME TRX40-PRO S": {
+      "bios": "2502",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20TRX40-PRO%20S/helpdesk_bios/"
+    },
+    "Prime X299 Edition 30": {
+      "bios": "2101",
+      "date": "2026-04-01",
+      "url": "https://www.asus.com/supportonly/Prime%20X299%20Edition%2030/helpdesk_bios/"
+    },
+    "PRIME X299-A": {
+      "bios": "4301",
+      "date": "2026-04-01",
+      "url": "https://www.asus.com/supportonly/PRIME%20X299-A/helpdesk_bios/"
+    },
+    "Prime X299-A II": {
+      "bios": "2104",
+      "date": "2026-05-04",
+      "url": "https://www.asus.com/supportonly/Prime%20X299-A%20II/helpdesk_bios/"
+    },
+    "PRIME X299-DELUXE": {
+      "bios": "4301",
+      "date": "2026-04-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X299-DELUXE/helpdesk_bios/"
+    },
+    "PRIME X299-DELUXE II": {
+      "bios": "4301",
+      "date": "2026-03-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20X299-DELUXE%20II/helpdesk_bios/"
+    },
+    "PRIME X570-P": {
+      "bios": "5044",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20X570-P/helpdesk_bios/"
+    },
+    "PRIME X570-P/CSM": {
+      "bios": "5044",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20X570-P%2FCSM/helpdesk_bios/"
+    },
+    "PRIME X570-PRO": {
+      "bios": "5044",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20X570-PRO/helpdesk_bios/"
+    },
+    "PRIME X570-PRO/CSM": {
+      "bios": "5044",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/PRIME%20X570-PRO%2FCSM/helpdesk_bios/"
+    },
+    "PRIME X670-P": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X670-P/helpdesk_bios/"
+    },
+    "PRIME X670-P WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X670-P%20WIFI/helpdesk_bios/"
+    },
+    "PRIME X670-P WIFI-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X670-P%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME X670-P-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X670-P-CSM/helpdesk_bios/"
+    },
+    "PRIME X670E-PRO WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X670E-PRO%20WIFI/helpdesk_bios/"
+    },
+    "PRIME X670E-PRO WIFI-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X670E-PRO%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME X870-P": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X870-P/helpdesk_bios/"
+    },
+    "PRIME X870-P WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X870-P%20WIFI/helpdesk_bios/"
+    },
+    "PRIME X870-P WIFI-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X870-P%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME X870-P-CSM": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/PRIME%20X870-P-CSM/helpdesk_bios/"
+    },
+    "PRIME Z490-A": {
+      "bios": "3302",
+      "date": "2026-03-24",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z490-A/helpdesk_bios/"
+    },
+    "PRIME Z490M-PLUS": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z490M-PLUS/helpdesk_bios/"
+    },
+    "PRIME Z490M-PLUS/CSM": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z490M-PLUS%2FCSM/helpdesk_bios/"
+    },
+    "PRIME Z590-A": {
+      "bios": "2405",
+      "date": "2026-01-12",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z590-A/helpdesk_bios/"
+    },
+    "PRIME Z590-P": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z590-P/helpdesk_bios/"
+    },
+    "PRIME Z590-P WIFI": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z590-P%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z590-P/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z590-P%2FCSM/helpdesk_bios/"
+    },
+    "PRIME Z590-V": {
+      "bios": "2803",
+      "date": "2026-01-06",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z590-V/helpdesk_bios/"
+    },
+    "PRIME Z590M-PLUS": {
+      "bios": "2803",
+      "date": "2026-01-06",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z590M-PLUS/helpdesk_bios/"
+    },
+    "PRIME Z690-A": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-A/helpdesk_bios/"
+    },
+    "PRIME Z690-A-CSM": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-A-CSM/helpdesk_bios/"
+    },
+    "PRIME Z690-P": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P/helpdesk_bios/"
+    },
+    "PRIME Z690-P D4": {
+      "bios": "4003",
+      "date": "2026-06-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P%20D4/helpdesk_bios/"
+    },
+    "PRIME Z690-P D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME Z690-P WIFI": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z690-P WIFI D4": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P%20WIFI%20D4/helpdesk_bios/"
+    },
+    "PRIME Z690-P WIFI D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P%20WIFI%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME Z690-P WIFI-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME Z690-P-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690-P-CSM/helpdesk_bios/"
+    },
+    "PRIME Z690M-PLUS D4": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690M-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME Z690M-PLUS D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z690M-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-A WIFI": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-A%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z790-A WIFI-CSM": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-A%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-P": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P/helpdesk_bios/"
+    },
+    "PRIME Z790-P D4": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P%20D4/helpdesk_bios/"
+    },
+    "PRIME Z790-P D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-P WIFI": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z790-P WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P%20WIFI%20D4/helpdesk_bios/"
+    },
+    "PRIME Z790-P WIFI D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P%20WIFI%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-P WIFI-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-P-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-P-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-V AX": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-V%20AX/helpdesk_bios/"
+    },
+    "PRIME Z790-V AX-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-V%20AX-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790-V WIFI": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-V%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z790-V WIFI-CSM": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790-V%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790M-PLUS": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790M-PLUS/helpdesk_bios/"
+    },
+    "PRIME Z790M-PLUS D4": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790M-PLUS%20D4/helpdesk_bios/"
+    },
+    "PRIME Z790M-PLUS D4-CSM": {
+      "bios": "1836",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790M-PLUS%20D4-CSM/helpdesk_bios/"
+    },
+    "PRIME Z790M-PLUS-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z790M-PLUS-CSM/helpdesk_bios/"
+    },
+    "PRIME Z890-P": {
+      "bios": "3022",
+      "date": "2026-06-17",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z890-P/helpdesk_bios/"
+    },
+    "PRIME Z890-P WIFI": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z890-P%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z890-P WIFI-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z890-P%20WIFI-CSM/helpdesk_bios/"
+    },
+    "PRIME Z890-P-CSM": {
+      "bios": "3022",
+      "date": "2026-06-17",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z890-P-CSM/helpdesk_bios/"
+    },
+    "PRIME Z890M-PLUS WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z890M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "PRIME Z890M-PLUS WIFI-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/PRIME%20Z890M-PLUS%20WIFI-CSM/helpdesk_bios/"
+    },
     "PRO A320M-B": {
       "bios": "7C52v436",
       "date": "2026-07-29"
+    },
+    "PRO A320M-R WI-FI": {
+      "bios": "6254",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/PRO%20A320M-R%20WI-FI/helpdesk_bios/"
+    },
+    "Pro A520M-C II/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/Pro%20A520M-C%20II%2FCSM/helpdesk_bios/"
+    },
+    "Pro A520M-C/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/Pro%20A520M-C%2FCSM/helpdesk_bios/"
     },
     "PRO A520M-S": {
       "bios": "7C96vH11",
@@ -2764,6 +4764,11 @@
       "bios": "7E96v1A42",
       "date": "2026-07-06"
     },
+    "Pro A620AT-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/Pro%20A620AT-CSM/helpdesk_bios/"
+    },
     "PRO A620M-B": {
       "bios": "7E28vB62",
       "date": "2026-07-06"
@@ -2772,9 +4777,24 @@
       "bios": "7E15v1B2",
       "date": "2026-07-08"
     },
+    "Pro A620M-C-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/Pro%20A620M-C-CSM/helpdesk_bios/"
+    },
+    "Pro A620M-DASH-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/Pro%20A620M-DASH-CSM/helpdesk_bios/"
+    },
     "PRO A620M-E": {
       "bios": "7E28v1L2",
       "date": "2026-07-06"
+    },
+    "Pro B460M-C/CSM": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/Pro%20B460M-C%2FCSM/helpdesk_bios/"
     },
     "PRO B550-P GEN3": {
       "bios": "7B86v8B2",
@@ -2796,6 +4816,11 @@
       "bios": "7D14vH1",
       "date": "2026-07-30"
     },
+    "Pro B550M-C/CSM": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/Pro%20B550M-C%2FCSM/helpdesk_bios/"
+    },
     "PRO B550M-P": {
       "bios": "7C95vM12",
       "date": "2026-07-24"
@@ -2811,6 +4836,16 @@
     "PRO B550M-VC WIFI": {
       "bios": "7C95vHG1",
       "date": "2026-07-24"
+    },
+    "Pro B560M-C/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/Pro%20B560M-C%2FCSM/helpdesk_bios/"
+    },
+    "Pro B560M-CT/CSM": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/Pro%20B560M-CT%2FCSM/helpdesk_bios/"
     },
     "PRO B650-A WIFI": {
       "bios": "7D75vA92",
@@ -2847,6 +4882,11 @@
     "PRO B650M-B": {
       "bios": "7E28vAJ2",
       "date": "2026-07-06"
+    },
+    "Pro B650M-CT-CSM": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/Pro%20B650M-CT-CSM/helpdesk_bios/"
     },
     "PRO B650M-E": {
       "bios": "7E28v2F2",
@@ -2895,6 +4935,16 @@
     "PRO B660M-B DDR4": {
       "bios": "7D45v1P",
       "date": "2026-03-31"
+    },
+    "Pro B660M-C D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/Pro%20B660M-C%20D4-CSM/helpdesk_bios/"
+    },
+    "Pro B660M-C-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/Pro%20B660M-C-CSM/helpdesk_bios/"
     },
     "PRO B660M-E DDR4": {
       "bios": "7D46v2P",
@@ -2975,6 +5025,16 @@
     "PRO B760M-B": {
       "bios": "7D90vAG",
       "date": "2026-05-22"
+    },
+    "Pro B760M-C-CSM": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/Pro%20B760M-C-CSM/helpdesk_bios/"
+    },
+    "Pro B760M-CT-CSM": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/Pro%20B760M-CT-CSM/helpdesk_bios/"
     },
     "PRO B760M-E": {
       "bios": "7D48vHD",
@@ -3132,6 +5192,16 @@
       "bios": "7E35v1A80",
       "date": "2026-07-02"
     },
+    "Pro B860M-C-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/Pro%20B860M-C-CSM/helpdesk_bios/"
+    },
+    "Pro B860M-CT-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/Pro%20B860M-CT-CSM/helpdesk_bios/"
+    },
     "PRO B860M-E": {
       "bios": "7E45v1B50",
       "date": "2026-07-09"
@@ -3156,9 +5226,19 @@
       "bios": "7E68v3A60",
       "date": "2026-07-06"
     },
+    "PRO H310M-R R2.0 WI-FI": {
+      "bios": "2208",
+      "date": "2021-08-09",
+      "url": "https://www.asus.com/supportonly/PRO%20H310M-R%20R2.0%20WI-FI/helpdesk_bios/"
+    },
     "PRO H410M-B": {
       "bios": "7D82v171",
       "date": "2026-04-09"
+    },
+    "Pro H410T/CSM": {
+      "bios": "1806",
+      "date": "2026-01-12",
+      "url": "https://www.asus.com/supportonly/Pro%20H410T%2FCSM/helpdesk_bios/"
     },
     "PRO H510M-B": {
       "bios": "7E05vA42",
@@ -3167,6 +5247,16 @@
     "PRO H510M-B II": {
       "bios": "7E05v222",
       "date": "2026-07-01"
+    },
+    "Pro H510M-C/CSM": {
+      "bios": "2405",
+      "date": "2026-01-21",
+      "url": "https://www.asus.com/supportonly/Pro%20H510M-C%2FCSM/helpdesk_bios/"
+    },
+    "Pro H510M-CT/CSM": {
+      "bios": "2405",
+      "date": "2026-01-21",
+      "url": "https://www.asus.com/supportonly/Pro%20H510M-CT%2FCSM/helpdesk_bios/"
     },
     "PRO H610M 12VO": {
       "bios": "7D84v1J",
@@ -3188,6 +5278,11 @@
       "bios": "7D46v1Q",
       "date": "2026-06-16"
     },
+    "Pro H610M-C D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/Pro%20H610M-C%20D4-CSM/helpdesk_bios/"
+    },
     "PRO H610M-C EX": {
       "bios": "7D56v1O",
       "date": "2026-04-07"
@@ -3195,6 +5290,21 @@
     "PRO H610M-C EX DDR4": {
       "bios": "7D56vAO",
       "date": "2026-06-10"
+    },
+    "Pro H610M-C-CSM": {
+      "bios": "4003",
+      "date": "2026-06-01",
+      "url": "https://www.asus.com/supportonly/Pro%20H610M-C-CSM/helpdesk_bios/"
+    },
+    "Pro H610M-CT D4-CSM": {
+      "bios": "4003",
+      "date": "2026-05-28",
+      "url": "https://www.asus.com/supportonly/Pro%20H610M-CT%20D4-CSM/helpdesk_bios/"
+    },
+    "Pro H610M-CT2 D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/Pro%20H610M-CT2%20D4-CSM/helpdesk_bios/"
     },
     "PRO H610M-E": {
       "bios": "7D48vIE",
@@ -3248,6 +5358,16 @@
       "bios": "7E44v31",
       "date": "2026-06-09"
     },
+    "Pro H610T D4-CSM": {
+      "bios": "4003",
+      "date": "2026-06-09",
+      "url": "https://www.asus.com/supportonly/Pro%20H610T%20D4-CSM/helpdesk_bios/"
+    },
+    "Pro H610T-CSM": {
+      "bios": "4003",
+      "date": "2026-06-17",
+      "url": "https://www.asus.com/supportonly/Pro%20H610T-CSM/helpdesk_bios/"
+    },
     "PRO H810I WIFI": {
       "bios": "7E65v2A70",
       "date": "2026-07-22"
@@ -3264,9 +5384,64 @@
       "bios": "7E38v1A80",
       "date": "2026-07-08"
     },
+    "Pro H810M-C II-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/Pro%20H810M-C%20II-CSM/helpdesk_bios/"
+    },
+    "Pro H810M-C-CSM": {
+      "bios": "3023",
+      "date": "2026-06-05",
+      "url": "https://www.asus.com/supportonly/Pro%20H810M-C-CSM/helpdesk_bios/"
+    },
+    "Pro H810M-CT-CSM": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/Pro%20H810M-CT-CSM/helpdesk_bios/"
+    },
     "PRO H810M-E": {
       "bios": "7E72v1A40",
       "date": "2026-07-23"
+    },
+    "Pro H810T-CSM": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/Pro%20H810T-CSM/helpdesk_bios/"
+    },
+    "Pro WS B850M-ACE SE": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20B850M-ACE%20SE/helpdesk_bios/"
+    },
+    "Pro WS TRX50-SAGE WIFI": {
+      "bios": "1317",
+      "date": "2026-02-13",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20TRX50-SAGE%20WIFI/helpdesk_bios/"
+    },
+    "Pro WS TRX50-SAGE WIFI A": {
+      "bios": "0617",
+      "date": "2026-02-13",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20TRX50-SAGE%20WIFI%20A/helpdesk_bios/"
+    },
+    "Pro WS WRX90E-SAGE SE": {
+      "bios": "1317",
+      "date": "2026-02-13",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20WRX90E-SAGE%20SE/helpdesk_bios/"
+    },
+    "Pro WS X299 SAGE II": {
+      "bios": "2101",
+      "date": "2026-03-30",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20X299%20SAGE%20II/helpdesk_bios/"
+    },
+    "Pro WS X570-ACE": {
+      "bios": "5503",
+      "date": "2026-07-22",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20X570-ACE/helpdesk_bios/"
+    },
+    "Pro WS Z890-ACE SE": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/Pro%20WS%20Z890-ACE%20SE/helpdesk_bios/"
     },
     "PRO X670-P WIFI": {
       "bios": "7D67v1O2",
@@ -3392,10 +5567,740 @@
       "bios": "7E54v1AD0",
       "date": "2026-07-21"
     },
+    "ProArt B550-CREATOR": {
+      "bios": "4201",
+      "date": "2026-06-25",
+      "url": "https://www.asus.com/supportonly/ProArt%20B550-CREATOR/helpdesk_bios/"
+    },
+    "ProArt B650-CREATOR": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ProArt%20B650-CREATOR/helpdesk_bios/"
+    },
+    "ProArt B660-CREATOR D4": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20B660-CREATOR%20D4/helpdesk_bios/"
+    },
+    "ProArt B760-CREATOR": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20B760-CREATOR/helpdesk_bios/"
+    },
+    "ProArt B760-CREATOR D4": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20B760-CREATOR%20D4/helpdesk_bios/"
+    },
+    "ProArt B760-CREATOR WIFI": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20B760-CREATOR%20WIFI/helpdesk_bios/"
+    },
+    "ProArt B850-CREATOR WIFI NEO": {
+      "bios": "1002",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20B850-CREATOR%20WIFI%20NEO/helpdesk_bios/"
+    },
+    "ProArt X570-CREATOR WIFI": {
+      "bios": "2203",
+      "date": "2026-07-22",
+      "url": "https://www.asus.com/supportonly/ProArt%20X570-CREATOR%20WIFI/helpdesk_bios/"
+    },
+    "ProArt X670E-CREATOR WIFI": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ProArt%20X670E-CREATOR%20WIFI/helpdesk_bios/"
+    },
+    "ProArt X870E-CREATOR WIFI": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20X870E-CREATOR%20WIFI/helpdesk_bios/"
+    },
+    "ProArt Z690-CREATOR WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20Z690-CREATOR%20WIFI/helpdesk_bios/"
+    },
+    "ProArt Z790-CREATOR WIFI": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ProArt%20Z790-CREATOR%20WIFI/helpdesk_bios/"
+    },
+    "ProArt Z890-CREATOR WIFI": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ProArt%20Z890-CREATOR%20WIFI/helpdesk_bios/"
+    },
     "Q670M vPro": {
       "bios": "2.05",
       "date": "2025-02-25",
       "url": "https://www.asrock.com/mb/Intel/Q670M%20vPro/BIOS.html"
+    },
+    "ROG CROSSHAIR X670E EXTREME": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X670E%20EXTREME/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X670E GENE": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X670E%20GENE/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X670E HERO": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X670E%20HERO/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E APEX": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20APEX/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E DARK HERO": {
+      "bios": "1002",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20DARK%20HERO/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E EDITION 20": {
+      "bios": "1002",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20EDITION%2020/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E EXTREME": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20EXTREME/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E GLACIAL": {
+      "bios": "1002",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20GLACIAL/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E HERO": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20HERO/helpdesk_bios/"
+    },
+    "ROG CROSSHAIR X870E HERO BTF": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20CROSSHAIR%20X870E%20HERO%20BTF/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z690 APEX": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z690%20APEX/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z690 EXTREME": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z690%20EXTREME/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z690 EXTREME GLACIAL": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z690%20EXTREME%20GLACIAL/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z690 FORMULA": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z690%20FORMULA/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z690 HERO": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z690%20HERO/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 APEX": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20APEX/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 APEX ENCORE": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20APEX%20ENCORE/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 DARK HERO": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20DARK%20HERO/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 EXTREME": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20EXTREME/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 FORMULA": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20FORMULA/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 HERO": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20HERO/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z790 HERO BTF": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z790%20HERO%20BTF/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z890 APEX": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z890%20APEX/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z890 EXTREME": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z890%20EXTREME/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z890 HERO": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z890%20HERO/helpdesk_bios/"
+    },
+    "ROG MAXIMUS Z890 HERO BTF": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20MAXIMUS%20Z890%20HERO%20BTF/helpdesk_bios/"
+    },
+    "ROG STRIX B350-F GAMING": {
+      "bios": "6254",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B350-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B350-I GAMING": {
+      "bios": "6254",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B350-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B450-E GAMING": {
+      "bios": "6001",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B450-E%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B450-F GAMING": {
+      "bios": "6001",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B450-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B450-F GAMING II": {
+      "bios": "6001",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B450-F%20GAMING%20II/helpdesk_bios/"
+    },
+    "ROG STRIX B450-I GAMING": {
+      "bios": "6001",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B450-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B460-F GAMING": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B460-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B460-G GAMING": {
+      "bios": "2003",
+      "date": "2026-03-27",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B460-G%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B460-H GAMING": {
+      "bios": "1806",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B460-H%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B460-I GAMING": {
+      "bios": "2003",
+      "date": "2026-03-06",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B460-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B550-A GAMING": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-A%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B550-E GAMING": {
+      "bios": "3636",
+      "date": "2026-01-30",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-E%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B550-F GAMING": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B550-F GAMING (WI-FI)": {
+      "bios": "3636",
+      "date": "2026-03-10",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-F%20GAMING%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "ROG STRIX B550-F GAMING WIFI II": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-F%20GAMING%20WIFI%20II/helpdesk_bios/"
+    },
+    "ROG STRIX B550-I GAMING": {
+      "bios": "4201",
+      "date": "2026-07-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX B550-XE GAMING WIFI": {
+      "bios": "3636",
+      "date": "2026-01-30",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B550-XE%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B560-A GAMING WIFI": {
+      "bios": "2803",
+      "date": "2025-12-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B560-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B560-E GAMING WIFI": {
+      "bios": "2803",
+      "date": "2025-12-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B560-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B560-F GAMING WIFI": {
+      "bios": "2803",
+      "date": "2025-12-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B560-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B560-G GAMING WIFI": {
+      "bios": "2405",
+      "date": "2026-01-05",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B560-G%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B560-I GAMING WIFI": {
+      "bios": "2405",
+      "date": "2025-12-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B560-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B650-A GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B650-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B650E-E GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B650E-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B650E-F GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B650E-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B650E-I GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B650E-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B660-A GAMING WIFI": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B660-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B660-A GAMING WIFI D4": {
+      "bios": "4003",
+      "date": "2026-06-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B660-A%20GAMING%20WIFI%20D4/helpdesk_bios/"
+    },
+    "ROG STRIX B660-F GAMING WIFI": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B660-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B660-G GAMING WIFI": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B660-G%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B660-I GAMING WIFI": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B660-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B760-A GAMING WIFI": {
+      "bios": "1836",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B760-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B760-A GAMING WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B760-A%20GAMING%20WIFI%20D4/helpdesk_bios/"
+    },
+    "ROG STRIX B760-F GAMING WIFI": {
+      "bios": "1836",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B760-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B760-G GAMING WIFI": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B760-G%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B760-G GAMING WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B760-G%20GAMING%20WIFI%20D4/helpdesk_bios/"
+    },
+    "ROG STRIX B760-I GAMING WIFI": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B760-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B850-A GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B850-A GAMING WIFI7 NEO": {
+      "bios": "1688",
+      "date": "2026-07-28",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-A%20GAMING%20WIFI7%20NEO/helpdesk_bios/"
+    },
+    "ROG STRIX B850-E GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B850-F GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B850-F GAMING WIFI7 NEO": {
+      "bios": "1688",
+      "date": "2026-07-28",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-F%20GAMING%20WIFI7%20NEO/helpdesk_bios/"
+    },
+    "ROG STRIX B850-G GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-G%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B850-I GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B850-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG Strix B850-I Gaming WiFi7 W": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20B850-I%20Gaming%20WiFi7%20W/helpdesk_bios/"
+    },
+    "ROG STRIX B860-A GAMING WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B860-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B860-F GAMING WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B860-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B860-G GAMING WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B860-G%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX B860-I GAMING WIFI": {
+      "bios": "3022",
+      "date": "2026-06-12",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20B860-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG Strix TRX40-E Gaming": {
+      "bios": "2502",
+      "date": "2026-02-25",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20TRX40-E%20Gaming/helpdesk_bios/"
+    },
+    "ROG STRIX TRX40-XE GAMING": {
+      "bios": "2502",
+      "date": "2026-02-13",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20TRX40-XE%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX X299-E GAMING": {
+      "bios": "4301",
+      "date": "2026-04-01",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X299-E%20GAMING/helpdesk_bios/"
+    },
+    "ROG Strix X299-E Gaming II": {
+      "bios": "2103",
+      "date": "2026-04-09",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20X299-E%20Gaming%20II/helpdesk_bios/"
+    },
+    "ROG STRIX X299-XE GAMING": {
+      "bios": "4301",
+      "date": "2026-04-01",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X299-XE%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX X370-F GAMING": {
+      "bios": "6254",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X370-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX X370-I GAMING": {
+      "bios": "6254",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X370-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX X399-E GAMING": {
+      "bios": "1602",
+      "date": "2024-03-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X399-E%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX X470-F GAMING": {
+      "bios": "6254",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X470-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX X470-I GAMING": {
+      "bios": "6001",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X470-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG Strix X570-E Gaming": {
+      "bios": "5051",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20X570-E%20Gaming/helpdesk_bios/"
+    },
+    "ROG STRIX X570-E GAMING WIFI II": {
+      "bios": "5044",
+      "date": "2026-01-30",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X570-E%20GAMING%20WIFI%20II/helpdesk_bios/"
+    },
+    "ROG Strix X570-F Gaming": {
+      "bios": "5044",
+      "date": "2026-01-30",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20X570-F%20Gaming/helpdesk_bios/"
+    },
+    "ROG Strix X570-I Gaming": {
+      "bios": "5044",
+      "date": "2026-01-30",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20X570-I%20Gaming/helpdesk_bios/"
+    },
+    "ROG STRIX X670E-A GAMING WIFI": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X670E-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X670E-E GAMING WIFI": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X670E-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X670E-F GAMING WIFI": {
+      "bios": "3902",
+      "date": "2026-07-16",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X670E-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X670E-I GAMING WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X670E-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X870-A GAMING WIFI": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X870-F GAMING WIFI": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X870-I GAMING WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X870E-A GAMING WIFI7 NEO": {
+      "bios": "1002",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870E-A%20GAMING%20WIFI7%20NEO/helpdesk_bios/"
+    },
+    "ROG STRIX X870E-E GAMING WIFI": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870E-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX X870E-E GAMING WIFI7 NEO": {
+      "bios": "1002",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870E-E%20GAMING%20WIFI7%20NEO/helpdesk_bios/"
+    },
+    "ROG STRIX X870E-H GAMING WIFI7": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870E-H%20GAMING%20WIFI7/helpdesk_bios/"
+    },
+    "ROG STRIX X870E-H GAMING WIFI7 HATSUNE MIKU EDITION": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20X870E-H%20GAMING%20WIFI7%20HATSUNE%20MIKU%20EDITION/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-A GAMING": {
+      "bios": "3302",
+      "date": "2026-03-27",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-A%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-E GAMING": {
+      "bios": "3302",
+      "date": "2026-03-24",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-E%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-F GAMING": {
+      "bios": "3302",
+      "date": "2026-03-24",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-F%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-G GAMING": {
+      "bios": "3302",
+      "date": "2026-03-24",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-G%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-G GAMING (WI-FI)": {
+      "bios": "3302",
+      "date": "2026-03-24",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-G%20GAMING%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-H GAMING": {
+      "bios": "3302",
+      "date": "2026-03-27",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-H%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX Z490-I GAMING": {
+      "bios": "3302",
+      "date": "2026-03-24",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z490-I%20GAMING/helpdesk_bios/"
+    },
+    "ROG STRIX Z590-A GAMING WIFI": {
+      "bios": "2405",
+      "date": "2026-01-12",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z590-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z590-A GAMING WIFI II": {
+      "bios": "2405",
+      "date": "2026-01-12",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z590-A%20GAMING%20WIFI%20II/helpdesk_bios/"
+    },
+    "ROG STRIX Z590-E GAMING WIFI": {
+      "bios": "2405",
+      "date": "2025-12-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z590-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z590-F GAMING WIFI": {
+      "bios": "2405",
+      "date": "2025-12-29",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z590-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z590-I GAMING WIFI": {
+      "bios": "2405",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z590-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z690-A GAMING WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z690-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z690-A GAMING WIFI D4": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z690-A%20GAMING%20WIFI%20D4/helpdesk_bios/"
+    },
+    "ROG STRIX Z690-E GAMING WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z690-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z690-F GAMING WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z690-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z690-G GAMING WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z690-G%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z690-I GAMING WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z690-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-A GAMING WIFI": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-A GAMING WIFI D4": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-A%20GAMING%20WIFI%20D4/helpdesk_bios/"
+    },
+    "ROG Strix Z790-A Gaming WiFi II": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20Strix%20Z790-A%20Gaming%20WiFi%20II/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-E GAMING WIFI": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-E GAMING WIFI II": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-E%20GAMING%20WIFI%20II/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-F GAMING WIFI": {
+      "bios": "3201",
+      "date": "2026-03-09",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-F GAMING WIFI II": {
+      "bios": "2107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-F%20GAMING%20WIFI%20II/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-H GAMING WIFI": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-H%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z790-I GAMING WIFI": {
+      "bios": "3107",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z790-I%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z890-A GAMING WIFI": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z890-A%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z890-E GAMING WIFI": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z890-E%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z890-F GAMING WIFI": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z890-F%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z890-H GAMING WIFI": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z890-H%20GAMING%20WIFI/helpdesk_bios/"
+    },
+    "ROG STRIX Z890-I GAMING WIFI": {
+      "bios": "3202",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/ROG%20STRIX%20Z890-I%20GAMING%20WIFI/helpdesk_bios/"
     },
     "TRX40 Creator": {
       "bios": "1.86",
@@ -3424,6 +6329,521 @@
       "date": "2026-02-11",
       "url": "https://www.asrock.com/mb/AMD/TRX50%20WS/BIOS.html"
     },
+    "TUF B450-PLUS GAMING": {
+      "bios": "4645",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/TUF%20B450-PLUS%20GAMING/helpdesk_bios/"
+    },
+    "TUF B450-PRO GAMING": {
+      "bios": "4645",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/TUF%20B450-PRO%20GAMING/helpdesk_bios/"
+    },
+    "TUF B450M-PLUS GAMING": {
+      "bios": "4645",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/TUF%20B450M-PLUS%20GAMING/helpdesk_bios/"
+    },
+    "TUF B450M-PRO GAMING": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20B450M-PRO%20GAMING/helpdesk_bios/"
+    },
+    "TUF GAMING A520M-PLUS": {
+      "bios": "3636",
+      "date": "2026-01-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A520M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING A520M-PLUS II": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A520M-PLUS%20II/helpdesk_bios/"
+    },
+    "TUF GAMING A520M-PLUS WIFI": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A520M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING A620-PRO WIFI": {
+      "bios": "3881",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A620-PRO%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING A620AM-PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A620AM-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING A620AM-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A620AM-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING A620M-PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A620M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING A620M-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20A620M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B450-PLUS II": {
+      "bios": "4651",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B450-PLUS%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B450M-PLUS II": {
+      "bios": "4645",
+      "date": "2026-02-03",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B450M-PLUS%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B450M-PRO II": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B450M-PRO%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B450M-PRO S": {
+      "bios": "4645",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B450M-PRO%20S/helpdesk_bios/"
+    },
+    "TUF GAMING B460-PLUS": {
+      "bios": "1806",
+      "date": "2026-01-13",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B460-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B460M-PLUS": {
+      "bios": "2003",
+      "date": "2026-03-16",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B460M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B460M-PLUS (WI-FI)": {
+      "bios": "2003",
+      "date": "2026-03-19",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B460M-PLUS%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "TUF GAMING B460M-PRO": {
+      "bios": "2003",
+      "date": "2026-03-19",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B460M-PRO/helpdesk_bios/"
+    },
+    "TUF GAMING B550-PLUS": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B550-PLUS (WI-FI)": {
+      "bios": "3636",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550-PLUS%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "TUF GAMING B550-PLUS WIFI II": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550-PLUS%20WIFI%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B550-PRO": {
+      "bios": "3636",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550-PRO/helpdesk_bios/"
+    },
+    "TUF GAMING B550M-E": {
+      "bios": "4201",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550M-E/helpdesk_bios/"
+    },
+    "TUF GAMING B550M-E WIFI": {
+      "bios": "4201",
+      "date": "2026-06-26",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550M-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B550M-PLUS": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B550M-PLUS (WI-FI)": {
+      "bios": "3641",
+      "date": "2026-07-01",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550M-PLUS%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "TUF GAMING B550M-PLUS WIFI II": {
+      "bios": "3641",
+      "date": "2026-06-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B550M-PLUS%20WIFI%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B560-PLUS WIFI": {
+      "bios": "2803",
+      "date": "2025-12-26",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B560-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B560M-E": {
+      "bios": "2803",
+      "date": "2026-01-06",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B560M-E/helpdesk_bios/"
+    },
+    "TUF GAMING B560M-PLUS": {
+      "bios": "2803",
+      "date": "2025-12-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B560M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B560M-PLUS WIFI": {
+      "bios": "2803",
+      "date": "2025-12-31",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B560M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650-E WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650-PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B650-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650E-E WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650E-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650E-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650E-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650EM-E WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650EM-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650EM-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650EM-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650M-E": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650M-E/helpdesk_bios/"
+    },
+    "TUF GAMING B650M-E WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650M-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B650M-PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B650M-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B650M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B660-PLUS WIFI D4": {
+      "bios": "4003",
+      "date": "2026-06-09",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B660-PLUS%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B660M-E D4": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B660M-E%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B660M-PLUS D4": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B660M-PLUS%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B660M-PLUS WIFI": {
+      "bios": "4003",
+      "date": "2026-06-09",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B660M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B660M-PLUS WIFI D4": {
+      "bios": "4003",
+      "date": "2026-06-10",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B660M-PLUS%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B760-PLUS WIFI": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B760-PLUS WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-26",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760-PLUS%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-BTF WIFI": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-BTF%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-BTF WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-BTF%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-E D4": {
+      "bios": "1836",
+      "date": "2026-05-18",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-E%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-PLUS": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-PLUS D4": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-PLUS%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-PLUS II": {
+      "bios": "1836",
+      "date": "2026-05-18",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-PLUS%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-PLUS WIFI": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-PLUS WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-21",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-PLUS%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING B760M-PLUS WIFI II": {
+      "bios": "1836",
+      "date": "2026-05-19",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B760M-PLUS%20WIFI%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B850-BTF WIFI W": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850-BTF%20WIFI%20W/helpdesk_bios/"
+    },
+    "TUF GAMING B850-E WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B850-PLUS WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B850-PRO WIFI7 W NEO": {
+      "bios": "1688",
+      "date": "2026-07-28",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850-PRO%20WIFI7%20W%20NEO/helpdesk_bios/"
+    },
+    "TUF GAMING B850I WIFI NEO": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850I%20WIFI%20NEO/helpdesk_bios/"
+    },
+    "TUF GAMING B850M-E WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850M-E%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B850M-PLUS": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B850M-PLUS II": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850M-PLUS%20II/helpdesk_bios/"
+    },
+    "TUF GAMING B850M-PLUS WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B850M-PLUS WIFI7": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850M-PLUS%20WIFI7/helpdesk_bios/"
+    },
+    "TUF GAMING B850M-PLUS WIFI7 W": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B850M-PLUS%20WIFI7%20W/helpdesk_bios/"
+    },
+    "TUF GAMING B860-PLUS WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B860-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING B860M-PLUS": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B860M-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING B860M-PLUS WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20B860M-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING H670-PRO WIFI D4": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20H670-PRO%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING H770-PRO WIFI": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20H770-PRO%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING X570-PLUS": {
+      "bios": "5044",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X570-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING X570-PLUS (WI-FI)": {
+      "bios": "5044",
+      "date": "2026-02-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X570-PLUS%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "TUF GAMING X570-PRO (WI-FI)": {
+      "bios": "5044",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X570-PRO%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "TUF GAMING X570-PRO WIFI II": {
+      "bios": "5044",
+      "date": "2026-01-27",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X570-PRO%20WIFI%20II/helpdesk_bios/"
+    },
+    "TUF GAMING X670E-PLUS": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X670E-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING X670E-PLUS WIFI": {
+      "bios": "3886",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X670E-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING X870-PLUS WIFI": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X870-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING X870-PRO WIFI7 W NEO": {
+      "bios": "1688",
+      "date": "2026-07-28",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X870-PRO%20WIFI7%20W%20NEO/helpdesk_bios/"
+    },
+    "TUF GAMING X870E-PLUS WIFI7": {
+      "bios": "2402",
+      "date": "2026-07-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20X870E-PLUS%20WIFI7/helpdesk_bios/"
+    },
+    "TUF GAMING Z490-PLUS": {
+      "bios": "3005",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z490-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING Z490-PLUS (WI-FI)": {
+      "bios": "3005",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z490-PLUS%20%28WI-FI%29/helpdesk_bios/"
+    },
+    "TUF GAMING Z590-PLUS": {
+      "bios": "2803",
+      "date": "2025-12-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z590-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING Z590-PLUS WIFI": {
+      "bios": "2803",
+      "date": "2025-12-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z590-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING Z690-PLUS": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z690-PLUS/helpdesk_bios/"
+    },
+    "TUF GAMING Z690-PLUS D4": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z690-PLUS%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING Z690-PLUS WIFI": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z690-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING Z690-PLUS WIFI D4": {
+      "bios": "4505",
+      "date": "2025-12-15",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z690-PLUS%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING Z790-BTF WIFI": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z790-BTF%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING Z790-PLUS D4": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z790-PLUS%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING Z790-PLUS WIFI": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z790-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING Z790-PLUS WIFI D4": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z790-PLUS%20WIFI%20D4/helpdesk_bios/"
+    },
+    "TUF GAMING Z790-PRO WIFI": {
+      "bios": "1836",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z790-PRO%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING Z890-PLUS WIFI": {
+      "bios": "3020",
+      "date": "2026-04-29",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z890-PLUS%20WIFI/helpdesk_bios/"
+    },
+    "TUF GAMING Z890-PRO WIFI": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/TUF%20GAMING%20Z890-PRO%20WIFI/helpdesk_bios/"
+    },
+    "TUF H310M-PLUS GAMING R2.0": {
+      "bios": "2208",
+      "date": "2021-08-05",
+      "url": "https://www.asus.com/supportonly/TUF%20H310M-PLUS%20GAMING%20R2.0/helpdesk_bios/"
+    },
+    "TUF X299 MARK 1": {
+      "bios": "4301",
+      "date": "2026-04-08",
+      "url": "https://www.asus.com/supportonly/TUF%20X299%20MARK%201/helpdesk_bios/"
+    },
+    "TUF X299 MARK 2": {
+      "bios": "4301",
+      "date": "2026-04-01",
+      "url": "https://www.asus.com/supportonly/TUF%20X299%20MARK%202/helpdesk_bios/"
+    },
     "W480 Creator": {
       "bios": "1.50",
       "date": "2021-08-10",
@@ -3443,6 +6863,26 @@
       "bios": "12.09",
       "date": "2026-02-12",
       "url": "https://www.asrock.com/mb/AMD/WRX90%20WS%20EVO/BIOS.html"
+    },
+    "WS X299 PRO": {
+      "bios": "4803",
+      "date": "2026-04-14",
+      "url": "https://www.asus.com/supportonly/WS%20X299%20PRO/helpdesk_bios/"
+    },
+    "WS X299 PRO/SE": {
+      "bios": "4803",
+      "date": "2026-04-09",
+      "url": "https://www.asus.com/supportonly/WS%20X299%20PRO%2FSE/helpdesk_bios/"
+    },
+    "WS X299 SAGE": {
+      "bios": "4803",
+      "date": "2026-04-09",
+      "url": "https://www.asus.com/supportonly/WS%20X299%20SAGE/helpdesk_bios/"
+    },
+    "WS X299 SAGE/10G": {
+      "bios": "4801",
+      "date": "2026-05-22",
+      "url": "https://www.asus.com/supportonly/WS%20X299%20SAGE%2F10G/helpdesk_bios/"
     },
     "X299 Creator": {
       "bios": "1.50",
@@ -3745,6 +7185,11 @@
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-rev-10-11/support#support-dl-bios"
     },
+    "X870 AYW GAMING WIFI W": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/X870%20AYW%20GAMING%20WIFI%20W/helpdesk_bios/"
+    },
     "X870 Challenger WiFi": {
       "bios": "4.43",
       "date": "2026-07-01",
@@ -3761,13 +7206,23 @@
     },
     "X870 GAMING X WIFI7": {
       "bios": "F13c",
-      "date": "2026-07-21",
+      "date": "2026-07-20",
       "url": "https://www.gigabyte.com/Motherboard/X870-GAMING-X-WIFI7-rev-1x/support#support-dl-bios"
     },
     "X870 LiveMixer WiFi": {
       "bios": "4.43",
       "date": "2026-07-02",
       "url": "https://www.asrock.com/mb/AMD/X870%20LiveMixer%20WiFi/BIOS.html"
+    },
+    "X870 MAX GAMING WIFI7": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/X870%20MAX%20GAMING%20WIFI7/helpdesk_bios/"
+    },
+    "X870 MAX GAMING WIFI7 W": {
+      "bios": "1686",
+      "date": "2026-07-02",
+      "url": "https://www.asus.com/supportonly/X870%20MAX%20GAMING%20WIFI7%20W/helpdesk_bios/"
     },
     "X870 Nova WiFi": {
       "bios": "4.43",
@@ -3911,6 +7366,11 @@
       "bios": "7C75v2H1",
       "date": "2026-04-16"
     },
+    "Z490-GUNDAM (WI-FI)": {
+      "bios": "3005",
+      "date": "2026-01-15",
+      "url": "https://www.asus.com/supportonly/Z490-GUNDAM%20%28WI-FI%29/helpdesk_bios/"
+    },
     "Z490M Pro4": {
       "bios": "1.60",
       "date": "2020-05-22",
@@ -3992,6 +7452,11 @@
       "bios": "2.30",
       "date": "2022-04-14",
       "url": "https://www.asrock.com/mb/Intel/Z590%20Taichi/BIOS.html"
+    },
+    "Z590 WIFI GUNDAM EDITION": {
+      "bios": "2803",
+      "date": "2026-01-06",
+      "url": "https://www.asus.com/supportonly/Z590%20WIFI%20GUNDAM%20EDITION/helpdesk_bios/"
     },
     "Z590-A PRO": {
       "bios": "7D09v1B1",
@@ -4132,6 +7597,11 @@
       "bios": "7D94v1C",
       "date": "2026-03-18"
     },
+    "Z790 GAMING WIFI7": {
+      "bios": "1837",
+      "date": "2026-05-12",
+      "url": "https://www.asus.com/supportonly/Z790%20GAMING%20WIFI7/helpdesk_bios/"
+    },
     "Z790 Lightning WiFi": {
       "bios": "13.02",
       "date": "2026-06-29",
@@ -4141,6 +7611,11 @@
       "bios": "24.02",
       "date": "2026-06-29",
       "url": "https://www.asrock.com/mb/Intel/Z790%20LiveMixer/BIOS.html"
+    },
+    "Z790 MAX GAMING WIFI7": {
+      "bios": "1837",
+      "date": "2026-05-08",
+      "url": "https://www.asus.com/supportonly/Z790%20MAX%20GAMING%20WIFI7/helpdesk_bios/"
     },
     "Z790 Nova WiFi": {
       "bios": "11.01",
@@ -4216,6 +7691,36 @@
       "date": "2026-06-26",
       "url": "https://www.asrock.com/mb/Intel/Z790%20Taichi%20Lite/BIOS.html"
     },
+    "Z790-AYW OC WIFI": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/Z790-AYW%20OC%20WIFI/helpdesk_bios/"
+    },
+    "Z790-AYW OC WIFI-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/Z790-AYW%20OC%20WIFI-CSM/helpdesk_bios/"
+    },
+    "Z790-AYW WIFI W": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/Z790-AYW%20WIFI%20W/helpdesk_bios/"
+    },
+    "Z790-AYW WIFI W II": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/Z790-AYW%20WIFI%20W%20II/helpdesk_bios/"
+    },
+    "Z790-AYW WIFI W II-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/Z790-AYW%20WIFI%20W%20II-CSM/helpdesk_bios/"
+    },
+    "Z790-AYW WIFI W-CSM": {
+      "bios": "1836",
+      "date": "2026-05-14",
+      "url": "https://www.asus.com/supportonly/Z790-AYW%20WIFI%20W-CSM/helpdesk_bios/"
+    },
     "Z790-S01": {
       "bios": "7D88v1H",
       "date": "2026-03-31"
@@ -4244,6 +7749,11 @@
       "date": "2026-06-11",
       "url": "https://www.gigabyte.com/Motherboard/Z890-AORUS-ELITE-WIFI7/support#support-dl-bios"
     },
+    "Z890 AYW GAMING WIFI W": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/Z890%20AYW%20GAMING%20WIFI%20W/helpdesk_bios/"
+    },
     "Z890 GAMING PLUS WIFI": {
       "bios": "7E34v2AB0",
       "date": "2026-07-14"
@@ -4269,6 +7779,11 @@
       "bios": "3.31",
       "date": "2026-07-14",
       "url": "https://www.asrock.com/mb/Intel/Z890%20LiveMixer%20WiFi/BIOS.html"
+    },
+    "Z890 MAX GAMING WIFI7": {
+      "bios": "3020",
+      "date": "2026-04-30",
+      "url": "https://www.asus.com/supportonly/Z890%20MAX%20GAMING%20WIFI7/helpdesk_bios/"
     },
     "Z890 Nova WiFi": {
       "bios": "3.31",

@@ -301,10 +301,11 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # what Config X reads from WMI once it strips the "(MS-7E51)"-style suffix -
 # alongside its BIOS downloads.
 #
-# ASUS is not here - it exposes a public API the app queries live for any
-# board. Gigabyte and ASRock are covered further down with curated board
-# lists (Gigabyte's pages are server-rendered but only exist at canonical
-# revision URLs; ASRock's derive from the model name).
+# Gigabyte and ASRock are covered further down with curated board lists
+# (Gigabyte's pages are server-rendered but only exist at canonical
+# revision URLs; ASRock's derive from the model name). ASUS is swept last,
+# through its public APIs - the app checks ASUS live first and uses those
+# feed entries as the offline fallback.
 $msiSitemapUrl = 'https://www.msi.com/sitemap-products-001.xml'
 $msiChipsetFilter = '\b(X870|X670|B850|B840|B650|A620|X570|B550|A520|B450|X470|X370|B350|A320' +
     '|Z890|B860|H810|Z790|B760|H770|Z690|B660|H670|H610|Z590|B560|H510|Z490|B460|H410|H310' +
@@ -570,6 +571,66 @@ try {
         $asrockResolved++
     }
     Write-Host "ASRock: $asrockResolved boards resolved."
+
+    # ASUS: their support API answers plain requests, so the app checks ASUS
+    # boards live - this sweep bundles the same answers into the feed as the
+    # offline fallback. The board list comes from the JSON API behind
+    # asus.com's own product grid (~900 boards), filtered to the same
+    # sockets as the other vendors via the shared chipset pattern. No
+    # headless browser needed for any of it.
+    $asusNames = [System.Collections.Generic.List[string]]::new()
+    $pageIndex = 1
+    do {
+        $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
+            'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
+            '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
+            "&PageSize=100&PageIndex=$pageIndex" +
+            '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
+        foreach ($product in $page.Result.ProductList) {
+            $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
+            if ($name) { $asusNames.Add($name) }
+        }
+        $pageIndex++
+    } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
+
+    $asusBoards = @($asusNames | Sort-Object -Unique | Where-Object { $_ -match $msiChipsetFilter })
+    if ($asusBoards.Count -lt 50) {
+        throw "Only $($asusBoards.Count) ASUS boards enumerated - the listing API may have changed."
+    }
+    Write-Host "ASUS: checking $($asusBoards.Count) boards..."
+
+    $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 8 -Parallel {
+        $name = $_
+        try {
+            $response = Invoke-RestMethod -UserAgent $using:userAgent -TimeoutSec 30 -Uri (
+                'https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global' +
+                "&model=$([uri]::EscapeDataString($name))&cpu=")
+            $biosGroup = $response.Result.Obj | Where-Object { $_.Name -eq 'BIOS' } | Select-Object -First 1
+            $newest = if ($biosGroup) { $biosGroup.Files | Select-Object -First 1 } else { $null }
+            if ($newest -and $newest.Version) {
+                [pscustomobject]@{
+                    Name  = $name
+                    Entry = [ordered]@{
+                        bios = "$($newest.Version)"
+                        date = "$($newest.ReleaseDate)".Replace('/', '-')
+                        url  = "https://www.asus.com/supportonly/$([uri]::EscapeDataString($name))/helpdesk_bios/"
+                    }
+                }
+            }
+            else { $null }
+        }
+        catch {
+            Write-Warning "ASUS '$name' failed: $($_.Exception.Message)"
+            $null
+        }
+    }
+
+    $asusResolved = 0
+    foreach ($result in $asusResults | Where-Object { $_ }) {
+        $fetched[$result.Name] = $result.Entry
+        $asusResolved++
+    }
+    Write-Host "ASUS: $asusResolved boards resolved."
 
     # Boards that dropped out of this sweep (a transient API failure, or a
     # vendor delisting an older product) keep their previously published

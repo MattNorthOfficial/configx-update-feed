@@ -88,9 +88,11 @@ endpoint (GeForce Game Ready) every six hours, and commits
   canonical revision slugs (their server-rendered pages only exist at those
   addresses, so entries also carry a `url` the app links to). All of it
   goes through a headless Chrome/Edge since these sites reject plain HTTP
-  clients. Boards that drop out of a sweep keep their last published entry.
-  ASUS is handled entirely in the app, which queries ASUS's public BIOS API
-  live for any board, so ASUS boards never need a feed entry.
+  clients. ASUS boards (~600 on the same sockets, enumerated from the JSON
+  API behind asus.com's product grid) are swept through ASUS's public
+  GetPDBIOS API with plain requests; the app still checks ASUS live first
+  and uses these entries as the offline fallback. Boards that drop out of
+  a sweep keep their last published entry.
 - `intel` holds the chipset INF utility version plus the two graphics-driver
   branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
   Ultra iGPUs) and `xe` (the legacy-support package for 11th-14th gen
