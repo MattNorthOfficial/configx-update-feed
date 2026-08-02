@@ -470,9 +470,15 @@ function Get-AsrockBios([string] $browser, [string] $url) {
 }
 
 $motherboards = $null
+$sweepCounts = [ordered]@{}
 try {
+    $sweepVendors = @(@('msi', 'gigabyte', 'asrock', 'asus') | Where-Object { $BoardVendors -contains $_ })
+
+    # ASUS sweeps through plain API calls; only the other vendors need the
+    # headless browser, so a quick sections-only or ASUS-only run works
+    # without one.
     $browser = Find-HeadlessBrowser
-    if (-not $browser) {
+    if (-not $browser -and @($sweepVendors | Where-Object { $_ -ne 'asus' }).Count -gt 0) {
         throw 'No Chrome or Edge available for the BIOS sweep.'
     }
 
@@ -503,7 +509,18 @@ try {
             ${function:Format-BiosDate} = $using:formatBiosDate
             $browserUa = $using:browserUa
             try {
-                Get-MsiBios $using:browser $slug
+                # One retry: a transient hiccup (a garbled response, a blip)
+                # shouldn't age a board's entry until the next sweep.
+                foreach ($attempt in 1, 2) {
+                    try {
+                        Get-MsiBios $using:browser $slug
+                        break
+                    }
+                    catch {
+                        if ($attempt -eq 2) { throw }
+                        Start-Sleep 2
+                    }
+                }
             }
             catch {
                 Write-Warning "MSI '$slug' failed: $($_.Exception.Message)"
@@ -514,6 +531,7 @@ try {
         foreach ($result in $results | Where-Object { $_ }) {
             $fetched[$result.Name] = $result.Entry
         }
+        $sweepCounts['MSI'] = $fetched.Count
         Write-Host "MSI: $($fetched.Count) boards resolved."
     }
 
@@ -560,7 +578,22 @@ try {
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
             $browserUa = $using:browserUa
             try {
-                Get-GigabyteBios $using:browser $slug
+                # One retry, including on an empty result: a rate-limited
+                # fetch that hit the browser timeout dumps a challenge shell
+                # with no BIOS section, which looks identical to a board
+                # that simply lists none.
+                $result = $null
+                foreach ($attempt in 1, 2) {
+                    try {
+                        $result = Get-GigabyteBios $using:browser $slug
+                        if ($result) { break }
+                    }
+                    catch {
+                        if ($attempt -eq 2) { throw }
+                    }
+                    if ($attempt -eq 1) { Start-Sleep 2 }
+                }
+                $result
             }
             catch {
                 Write-Warning "Gigabyte '$slug' failed: $($_.Exception.Message)"
@@ -583,6 +616,7 @@ try {
         foreach ($name in $gigabyteByName.Keys) {
             $fetched[$name] = $gigabyteByName[$name]
         }
+        $sweepCounts['Gigabyte'] = $gigabyteByName.Count
         Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
     }
 
@@ -631,20 +665,34 @@ try {
             $site = if ($using:asrockPgNames -contains $name) { 'pg.asrock.com' } else { 'www.asrock.com' }
             $slug = [uri]::EscapeDataString($name.Replace('/', ''))
             try {
-                $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS.html"
-                if (-not $entry) {
-                    # Some lines sit on the other subdomain than the catalog
-                    # claims (the Lightning boards live on pg without being
-                    # in pgmodels); product pages redirect across but
-                    # BIOS.html doesn't, so a miss retries on the other side.
-                    $other = if ($site -eq 'www.asrock.com') { 'pg.asrock.com' } else { 'www.asrock.com' }
-                    $entry = Get-AsrockBios $using:browser "https://$other/mb/$vendor/$slug/BIOS.html"
-                }
-                if (-not $entry) {
-                    # Boards sold in multiple editions (B450M Steel Legend
-                    # and its Pink Edition share one page) number their
-                    # fragments: BIOS1.html is the base edition's list.
-                    $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS1.html"
+                # One retry around the whole URL cascade, so a transient
+                # hiccup doesn't age this board until the next sweep.
+                $entry = $null
+                foreach ($attempt in 1, 2) {
+                    try {
+                        $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS.html"
+                        if (-not $entry) {
+                            # Some lines sit on the other subdomain than the
+                            # catalog claims (the Lightning boards live on pg
+                            # without being in pgmodels); product pages
+                            # redirect across but BIOS.html doesn't, so a
+                            # miss retries on the other side.
+                            $other = if ($site -eq 'www.asrock.com') { 'pg.asrock.com' } else { 'www.asrock.com' }
+                            $entry = Get-AsrockBios $using:browser "https://$other/mb/$vendor/$slug/BIOS.html"
+                        }
+                        if (-not $entry) {
+                            # Boards sold in multiple editions (B450M Steel
+                            # Legend and its Pink Edition share one page)
+                            # number their fragments: BIOS1.html is the base
+                            # edition's list.
+                            $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS1.html"
+                        }
+                        break
+                    }
+                    catch {
+                        if ($attempt -eq 2) { throw }
+                        Start-Sleep 2
+                    }
                 }
 
                 if ($entry) { [pscustomobject]@{ Name = $name; Entry = $entry } }
@@ -661,6 +709,7 @@ try {
             $fetched[$result.Name] = $result.Entry
             $asrockResolved++
         }
+        $sweepCounts['ASRock'] = $asrockResolved
         Write-Host "ASRock: $asrockResolved boards resolved."
     }
 
@@ -668,9 +717,10 @@ try {
         # ASUS: their support API answers plain requests, so the app checks
         # ASUS boards live - this sweep bundles the same answers into the
         # feed as the offline fallback. The board list comes from the JSON
-        # API behind asus.com's own product grid (~900 boards), filtered to
-        # the same sockets as the other vendors via the shared chipset
-        # pattern. No headless browser needed for any of it.
+        # API behind asus.com's own product grid and is swept unfiltered
+        # (~900 boards; the API costs nothing, so every generation gets the
+        # same coverage as Gigabyte). No headless browser needed for any
+        # of it.
         $asusNames = [System.Collections.Generic.List[string]]::new()
         $pageIndex = 1
         do {
@@ -686,18 +736,33 @@ try {
             $pageIndex++
         } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
 
-        $asusBoards = @($asusNames | Sort-Object -Unique | Where-Object { $_ -match $msiChipsetFilter })
+        $asusBoards = @($asusNames | Sort-Object -Unique)
         if ($asusBoards.Count -lt 50) {
             throw "Only $($asusBoards.Count) ASUS boards enumerated - the listing API may have changed."
         }
         Write-Host "ASUS: checking $($asusBoards.Count) boards..."
 
-        $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 8 -Parallel {
+        # Paced at 4: bursting ~900 calls at full speed can trip ASUS's rate
+        # limiter (HTTP 451), and the retry backs off long enough to ride
+        # out a momentary throttle. Boards that still fail carry forward.
+        $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 4 -Parallel {
             $name = $_
             try {
-                $response = Invoke-RestMethod -UserAgent $using:userAgent -TimeoutSec 30 -Uri (
-                    'https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global' +
-                    "&model=$([uri]::EscapeDataString($name))&cpu=")
+                # One retry, so a transient API hiccup doesn't age this
+                # board until the next sweep.
+                $response = $null
+                foreach ($attempt in 1, 2) {
+                    try {
+                        $response = Invoke-RestMethod -UserAgent $using:userAgent -TimeoutSec 30 -Uri (
+                            'https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global' +
+                            "&model=$([uri]::EscapeDataString($name))&cpu=")
+                        break
+                    }
+                    catch {
+                        if ($attempt -eq 2) { throw }
+                        Start-Sleep 10
+                    }
+                }
                 $biosGroup = $response.Result.Obj | Where-Object { $_.Name -eq 'BIOS' } | Select-Object -First 1
                 $newest = if ($biosGroup) { $biosGroup.Files | Select-Object -First 1 } else { $null }
                 if ($newest -and $newest.Version) {
@@ -723,19 +788,53 @@ try {
             $fetched[$result.Name] = $result.Entry
             $asusResolved++
         }
+        $sweepCounts['ASUS'] = $asusResolved
         Write-Host "ASUS: $asusResolved boards resolved."
     }
 
-    if ($fetched.Count -eq 0) {
+    foreach ($vendor in $sweepCounts.Keys) {
+        if ($sweepCounts[$vendor] -eq 0) {
+            Write-Warning "$vendor resolved nothing this run; its previous entries carry forward."
+        }
+    }
+    if ($sweepVendors.Count -gt 0 -and $fetched.Count -eq 0) {
         throw 'No BIOS versions could be fetched.'
     }
 
-    # Boards that dropped out of this sweep (a transient API failure, or a
-    # vendor delisting an older product) keep their previously published
-    # entry: the last-known BIOS remains the newest one there is. Vendors
-    # excluded by -BoardVendors carry forward wholesale the same way.
-    if (Test-Path $outputPath) {
-        $previousBoards = (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
+    $freshCount = $fetched.Count
+    $previousBoards = if (Test-Path $outputPath) {
+        (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
+    }
+    else { $null }
+
+    if ($previousBoards) {
+        # Publish gate: a vendor layout change can parse wrong-but-plausible
+        # values (ASRock's stale mirror pages once served years-old
+        # versions). One board's date moving backward is legitimate -
+        # vendors do pull bad BIOSes - but many at once means this sweep is
+        # lying, so the previous snapshot stays published instead.
+        $comparable = 0
+        $regressed = 0
+        foreach ($name in $fetched.Keys) {
+            $previous = $previousBoards.PSObject.Properties[$name]
+            if (-not $previous) { continue }
+            $newDate = [datetime]::MinValue
+            $oldDate = [datetime]::MinValue
+            if ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
+                [datetime]::TryParse("$($previous.Value.date)", [ref] $oldDate)) {
+                $comparable++
+                if ($newDate -lt $oldDate) { $regressed++ }
+            }
+        }
+        if ($comparable -ge 50 -and $regressed -gt [Math]::Max(10, [int]($comparable * 0.05))) {
+            throw "Publish gate: $regressed of $comparable re-checked boards regressed their BIOS date - refusing to publish this sweep's board data."
+        }
+
+        # Boards that dropped out of this sweep (a transient failure that
+        # survived the retry, or a vendor delisting an older product) keep
+        # their previously published entry: the last-known BIOS remains the
+        # newest one there is. Vendors excluded by -BoardVendors carry
+        # forward wholesale the same way.
         foreach ($prop in @($previousBoards.PSObject.Properties)) {
             if ($prop.Value.bios -and -not $fetched.ContainsKey($prop.Name)) {
                 $carried = [ordered]@{ bios = $prop.Value.bios; date = "$($prop.Value.date)" }
@@ -751,10 +850,12 @@ try {
     foreach ($name in ($fetched.Keys | Sort-Object)) {
         $boards[$name] = $fetched[$name]
     }
+    $sweepCounts['carried forward'] = $boards.Count - $freshCount
     $motherboards = $boards
 }
 catch {
     Write-Warning "Motherboard BIOS scrape failed: $($_.Exception.Message)"
+    $sweepCounts['sweep failed'] = "$($_.Exception.Message)"
 }
 
 if (-not $motherboards -and (Test-Path $outputPath)) {
@@ -891,6 +992,37 @@ if ($chipset) {
     $amd.chipset = $chipset
 }
 
+# One glanceable table per run - echoed to the console, and into the
+# workflow's step summary when running in GitHub Actions.
+function Write-RunSummary([string] $outcome) {
+    $lines = @('## Feed run', '', "Outcome: $outcome", '', '| Part | Result |', '|---|---|')
+    foreach ($vendor in @('msi', 'gigabyte', 'asrock', 'asus')) {
+        $label = switch ($vendor) { 'msi' { 'MSI' } 'gigabyte' { 'Gigabyte' } 'asrock' { 'ASRock' } 'asus' { 'ASUS' } }
+        $lines += if ($BoardVendors -contains $vendor -and $sweepCounts.Contains($label)) {
+            "| $label | $($sweepCounts[$label]) boards resolved |"
+        }
+        else { "| $label | skipped (carried forward) |" }
+    }
+    if ($sweepCounts.Contains('carried forward')) {
+        $lines += "| Carried forward | $($sweepCounts['carried forward']) boards |"
+    }
+    if ($sweepCounts.Contains('sweep failed')) {
+        $lines += "| Board sweep | FAILED: $($sweepCounts['sweep failed']) |"
+    }
+    if ($motherboards) {
+        # A fresh sweep builds an ordered hashtable; the reuse-previous path
+        # hands back the parsed JSON object.
+        $total = if ($motherboards -is [System.Collections.IDictionary]) { $motherboards.Count }
+        else { @($motherboards.PSObject.Properties).Count }
+        $lines += "| Boards total | $total |"
+    }
+    $text = ($lines | Where-Object { $null -ne $_ }) -join "`n"
+    Write-Host $text
+    if ($env:GITHUB_STEP_SUMMARY) {
+        Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ($text + "`n")
+    }
+}
+
 # Leave the file untouched when the data hasn't changed, so the scheduled
 # workflow only commits on actual releases.
 if (Test-Path $outputPath) {
@@ -898,7 +1030,7 @@ if (Test-Path $outputPath) {
     $existingData = @($existing.amd, $existing.windowsBuilds, $existing.windows10, $existing.motherboards, $existing.intel, $existing.nvidia) | ConvertTo-Json -Depth 5
     $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
-        Write-Host 'Driver data unchanged; feed not rewritten.'
+        Write-RunSummary 'unchanged - feed not rewritten'
         return
     }
 }
@@ -926,4 +1058,4 @@ if ($nvidia) {
 
 $json = $feed | ConvertTo-Json -Depth 5
 Set-Content -Path $outputPath -Value $json -Encoding utf8
-Write-Host "Wrote $((Resolve-Path $outputPath).Path):`n$json"
+Write-RunSummary "wrote $((Resolve-Path $outputPath).Path) ($([Math]::Round($json.Length / 1KB)) KB)"

@@ -4,14 +4,24 @@ on:
   workflow_dispatch:
     inputs:
       board_vendors:
-        description: "Motherboard vendors to sweep (comma-separated: msi,gigabyte,asrock,asus). Empty = all; others carry forward."
+        description: "Motherboard vendors to sweep (comma-separated: msi,gigabyte,asrock,asus; 'none' skips all). Empty = all; skipped vendors carry forward."
         required: false
         default: ""
   schedule:
+    # Every 6 hours: just the quick sections (AMD/NVIDIA/Intel/Windows) -
+    # board entries carry forward untouched. BIOS releases are rare, so the
+    # ~2,900-page board sweep runs once nightly instead, which also keeps
+    # the vendor sites from seeing four full crawls a day.
     - cron: "0 */6 * * *"
+    - cron: "30 3 * * *"
 
 permissions:
   contents: write
+
+# Overlapping runs would race the feed commit; queue instead.
+concurrency:
+  group: update-feed
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -23,6 +33,9 @@ jobs:
         shell: pwsh
         run: |
           $vendors = '${{ inputs.board_vendors }}'
+          if ('${{ github.event.schedule }}' -eq '0 */6 * * *') {
+            $vendors = 'none'
+          }
           if ($vendors) {
             ./scripts/Update-Feed.ps1 -BoardVendors ($vendors -split ',')
           }

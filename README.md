@@ -10,8 +10,14 @@ plus its release notes (chipset),
 [Microsoft's Windows 11 release information](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information)
 (OS builds), MSI's product support API (BIOS), Intel's download-center pages
 (chipset INF utility and both graphics branches), and NVIDIA's driver-search
-endpoint (GeForce Game Ready) every six hours, and commits
-`feed/updates.json` when a new release appears.
+endpoint (GeForce Game Ready), and commits `feed/updates.json` when a new
+release appears. The quick sections above refresh every six hours; the full
+motherboard sweep (~2,900 pages across four vendors) runs once nightly, with
+boards carrying forward between sweeps. A publish gate refuses a sweep whose
+BIOS dates regress en masse (the signature of a vendor layout change parsing
+wrong-but-plausible values), transient fetch failures retry once before a
+board is left to carry forward, and each run writes a per-vendor summary to
+the workflow's step summary.
 
 ## Feed format
 
@@ -93,11 +99,12 @@ endpoint (GeForce Game Ready) every six hours, and commits
   page's own title, multi-revision boards collapse onto that name keeping
   whichever revision published the newest BIOS, and entries carry a `url`
   the app links to. All of it goes through a headless Chrome/Edge since
-  these sites reject plain HTTP clients. ASUS boards (~600 on the same sockets, enumerated from the JSON
-  API behind asus.com's product grid) are swept through ASUS's public
-  GetPDBIOS API with plain requests; the app still checks ASUS live first
-  and uses these entries as the offline fallback. Boards that drop out of
-  a sweep keep their last published entry.
+  these sites reject plain HTTP clients. ASUS boards (~900, every board the
+  catalog lists, enumerated from the JSON API behind asus.com's product
+  grid) are swept through ASUS's public GetPDBIOS API with plain requests;
+  the app still checks ASUS live first and uses these entries as the
+  offline fallback. Boards that drop out of a sweep keep their last
+  published entry.
 - `intel` holds the chipset INF utility version plus the two graphics-driver
   branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
   Ultra iGPUs) and `xe` (the legacy-support package for 11th-14th gen
