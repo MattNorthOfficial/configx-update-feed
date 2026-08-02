@@ -5,7 +5,8 @@
 # - AMD chipset: AMD's chipset driver page (the package is identical across
 #   AM4/AM5 chipsets) plus its release notes with the component versions.
 # - Windows builds: Microsoft's release information page.
-# - Motherboard BIOS: MSI's product support API.
+# - Motherboard BIOS: full catalog sweeps of MSI, Gigabyte, ASRock, and ASUS
+#   (each vendor's section below explains its source and quirks).
 # - Intel: the chipset INF utility and both graphics-driver download pages.
 # - NVIDIA: the driver-search endpoint behind NVIDIA's own download page.
 #
@@ -32,6 +33,14 @@ $ErrorActionPreference = 'Stop'
 
 $userAgent = 'Mozilla/5.0 configx-update-feed/1.0'
 $outputPath = Join-Path $PSScriptRoot '..\feed\updates.json'
+
+# The previously published feed, read once: every section's reuse-on-failure
+# fallback, the boards carry-forward, the publish gate, and the final
+# unchanged check all compare against it.
+$previousFeed = if (Test-Path $outputPath) {
+    Get-Content $outputPath -Raw | ConvertFrom-Json
+}
+else { $null }
 
 function Get-CellText([string] $cell) {
     $text = $cell -replace '<[^>]+>', ''
@@ -155,12 +164,9 @@ catch {
     Write-Warning "Chipset scrape failed: $($_.Exception.Message)"
 }
 
-if (-not $chipset -and (Test-Path $outputPath)) {
-    $previous = (Get-Content $outputPath -Raw | ConvertFrom-Json).amd.chipset
-    if ($previous) {
-        Write-Warning 'Reusing previously published chipset data.'
-        $chipset = $previous
-    }
+if (-not $chipset -and $previousFeed.amd.chipset) {
+    Write-Warning 'Reusing previously published chipset data.'
+    $chipset = $previousFeed.amd.chipset
 }
 
 # --- Windows builds (Microsoft's release information page) ------------------
@@ -291,20 +297,14 @@ catch {
     Write-Warning "Windows 10 lifecycle scrape failed: $($_.Exception.Message)"
 }
 
-if (-not $windows10 -and (Test-Path $outputPath)) {
-    $previousWin10 = (Get-Content $outputPath -Raw | ConvertFrom-Json).windows10
-    if ($previousWin10) {
-        Write-Warning 'Reusing previously published Windows 10 data.'
-        $windows10 = $previousWin10
-    }
+if (-not $windows10 -and $previousFeed.windows10) {
+    Write-Warning 'Reusing previously published Windows 10 data.'
+    $windows10 = $previousFeed.windows10
 }
 
-if (-not $windowsBuilds -and (Test-Path $outputPath)) {
-    $previousBuilds = (Get-Content $outputPath -Raw | ConvertFrom-Json).windowsBuilds
-    if ($previousBuilds) {
-        Write-Warning 'Reusing previously published Windows build data.'
-        $windowsBuilds = $previousBuilds
-    }
+if (-not $windowsBuilds -and $previousFeed.windowsBuilds) {
+    Write-Warning 'Reusing previously published Windows build data.'
+    $windowsBuilds = $previousFeed.windowsBuilds
 }
 
 # --- Motherboard BIOS versions (MSI product API) -----------------------------
@@ -364,9 +364,9 @@ function Get-BrowserDom([string] $browser, [string] $url) {
     return $dom
 }
 
-# Normalizes a release date to yyyy-MM-dd where parseable. Invariant culture,
-# so "Jul 20, 2026" (Gigabyte) and "2026/7/2" (ASRock) parse the same way
-# regardless of the machine's locale.
+# Normalizes MSI's release dates to yyyy-MM-dd where parseable. Invariant
+# culture, so parsing works the same regardless of the machine's locale.
+# (Gigabyte and ASRock parse their dates inline, picking newest-by-date.)
 function Format-BiosDate([string] $raw) {
     if (-not $raw) { return '' }
     $parsed = [datetime]::MinValue
@@ -802,10 +802,7 @@ try {
     }
 
     $freshCount = $fetched.Count
-    $previousBoards = if (Test-Path $outputPath) {
-        (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
-    }
-    else { $null }
+    $previousBoards = $previousFeed.motherboards
 
     if ($previousBoards) {
         # Publish gate: a vendor layout change can parse wrong-but-plausible
@@ -858,12 +855,9 @@ catch {
     $sweepCounts['sweep failed'] = "$($_.Exception.Message)"
 }
 
-if (-not $motherboards -and (Test-Path $outputPath)) {
-    $previousBoards = (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
-    if ($previousBoards) {
-        Write-Warning 'Reusing previously published motherboard data.'
-        $motherboards = $previousBoards
-    }
+if (-not $motherboards -and $previousFeed.motherboards) {
+    Write-Warning 'Reusing previously published motherboard data.'
+    $motherboards = $previousFeed.motherboards
 }
 
 # --- Intel drivers (Intel download-center pages) ------------------------------
@@ -928,12 +922,9 @@ catch {
     Write-Warning "Intel scrape failed: $($_.Exception.Message)"
 }
 
-if (-not $intel -and (Test-Path $outputPath)) {
-    $previousIntel = (Get-Content $outputPath -Raw | ConvertFrom-Json).intel
-    if ($previousIntel) {
-        Write-Warning 'Reusing previously published Intel data.'
-        $intel = $previousIntel
-    }
+if (-not $intel -and $previousFeed.intel) {
+    Write-Warning 'Reusing previously published Intel data.'
+    $intel = $previousFeed.intel
 }
 
 # --- NVIDIA GeForce driver (NVIDIA's driver-search endpoint) ------------------
@@ -977,12 +968,9 @@ catch {
     Write-Warning "NVIDIA lookup failed: $($_.Exception.Message)"
 }
 
-if (-not $nvidia -and (Test-Path $outputPath)) {
-    $previousNvidia = (Get-Content $outputPath -Raw | ConvertFrom-Json).nvidia
-    if ($previousNvidia) {
-        Write-Warning 'Reusing previously published NVIDIA data.'
-        $nvidia = $previousNvidia
-    }
+if (-not $nvidia -and $previousFeed.nvidia) {
+    Write-Warning 'Reusing previously published NVIDIA data.'
+    $nvidia = $previousFeed.nvidia
 }
 
 # --- Write the feed ----------------------------------------------------------
@@ -1025,9 +1013,8 @@ function Write-RunSummary([string] $outcome) {
 
 # Leave the file untouched when the data hasn't changed, so the scheduled
 # workflow only commits on actual releases.
-if (Test-Path $outputPath) {
-    $existing = Get-Content $outputPath -Raw | ConvertFrom-Json
-    $existingData = @($existing.amd, $existing.windowsBuilds, $existing.windows10, $existing.motherboards, $existing.intel, $existing.nvidia) | ConvertTo-Json -Depth 5
+if ($previousFeed) {
+    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
     $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-RunSummary 'unchanged - feed not rewritten'
