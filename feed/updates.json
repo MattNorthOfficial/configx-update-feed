@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01T20:47:48Z",
+  "updated": "2026-08-02T02:57:43Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -98,6 +98,11 @@
     }
   },
   "motherboards": {
+    "A320M": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/A320M/BIOS.html"
+    },
     "A320M PRO-C": {
       "bios": "7C58v274",
       "date": "2026-07-29"
@@ -106,9 +111,64 @@
       "bios": "7C52v1B7",
       "date": "2026-07-29"
     },
+    "A320M Pro4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/A320M%20Pro4/BIOS.html"
+    },
+    "A320M Pro4 R2.0": {
+      "bios": "10.50",
+      "date": "2026-04-10",
+      "url": "https://www.asrock.com/mb/AMD/A320M%20Pro4%20R2.0/BIOS.html"
+    },
+    "A320M Pro4-F": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/A320M%20Pro4-F/BIOS.html"
+    },
     "A320M-A PRO MAX": {
       "bios": "7C52v2H4",
       "date": "2026-07-29"
+    },
+    "A320M-DGS": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/A320M-DGS/BIOS.html"
+    },
+    "A320M-DVS R3.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/A320M-DVS%20R3.0/BIOS.html"
+    },
+    "A320M-DVS R4.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/A320M-DVS%20R4.0/BIOS.html"
+    },
+    "A320M-HDV": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/A320M-HDV/BIOS.html"
+    },
+    "A320M-HDV R3.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/A320M-HDV%20R3.0/BIOS.html"
+    },
+    "A320M-HDV R4.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/A320M-HDV%20R4.0/BIOS.html"
+    },
+    "A320M-ITX": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/A320M-ITX/BIOS.html"
+    },
+    "A520M Phantom Gaming 4": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://pg.asrock.com/mb/AMD/A520M%20Phantom%20Gaming%204/BIOS.html"
     },
     "A520M PRO": {
       "bios": "7D14v1O1",
@@ -126,17 +186,197 @@
       "bios": "7C96vAH5",
       "date": "2026-07-22"
     },
+    "A520M Pro4": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/A520M%20Pro4/BIOS.html"
+    },
     "A520M-A PRO": {
       "bios": "7C96v1L8",
       "date": "2026-07-22"
+    },
+    "A520M-HDV": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/A520M-HDV/BIOS.html"
+    },
+    "A520M-HDVP": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/A520M-HDVP/BIOS.html"
+    },
+    "A520M-HDVP R2.0": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/A520M-HDVP%20R2.0/BIOS.html"
+    },
+    "A520M-HDVP/DASH": {
+      "bios": "1.90",
+      "date": "2022-11-07",
+      "url": "https://www.asrock.com/mb/AMD/A520M-HDVPDASH/BIOS.html"
+    },
+    "A520M-HVS": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/A520M-HVS/BIOS.html"
+    },
+    "A520M-ITX/ac": {
+      "bios": "4.00",
+      "date": "2026-06-01",
+      "url": "https://www.asrock.com/mb/AMD/A520M-ITXac/BIOS.html"
+    },
+    "A520M/ac": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/A520Mac/BIOS.html"
+    },
+    "A620AI WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/AMD/A620AI%20WiFi/BIOS.html"
+    },
+    "A620AM Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/A620AM%20Pro%20RS/BIOS.html"
+    },
+    "A620AM Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/A620AM%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "A620AM Pro-A": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/A620AM%20Pro-A/BIOS.html"
+    },
+    "A620AM Pro-A WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/A620AM%20Pro-A%20WiFi/BIOS.html"
+    },
+    "A620AM-HVS": {
+      "bios": "4.43",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/AMD/A620AM-HVS/BIOS.html"
+    },
+    "A620AM-P": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/A620AM-P/BIOS.html"
+    },
+    "A620AM-X": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/A620AM-X/BIOS.html"
+    },
+    "A620AM-X WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/A620AM-X%20WiFi/BIOS.html"
+    },
+    "A620I Lightning WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://pg.asrock.com/mb/AMD/A620I%20Lightning%20WiFi/BIOS.html"
     },
     "A620M GAMING": {
       "bios": "7E30vAD2",
       "date": "2026-07-06"
     },
+    "A620M Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-22",
+      "url": "https://www.asrock.com/mb/AMD/A620M%20Pro%20RS/BIOS.html"
+    },
+    "A620M Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-22",
+      "url": "https://www.asrock.com/mb/AMD/A620M%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "A620M-C R2.0": {
+      "bios": "4.43",
+      "date": "2026-07-29",
+      "url": "https://www.asrock.com/mb/AMD/A620M-C%20R2.0/BIOS.html"
+    },
+    "A620M-HDV/M.2": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://www.asrock.com/mb/AMD/A620M-HDVM.2/BIOS.html"
+    },
+    "A620M-HDV/M.2+": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/A620M-HDVM.2%2B/BIOS.html"
+    },
+    "A620M-HDVP": {
+      "bios": "4.43",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/AMD/A620M-HDVP/BIOS.html"
+    },
+    "AB350 Pro4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/AB350%20Pro4/BIOS.html"
+    },
+    "AB350M": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/AB350M/BIOS.html"
+    },
+    "AB350M Pro4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/AB350M%20Pro4/BIOS.html"
+    },
+    "AB350M Pro4 R2.0": {
+      "bios": "10.50",
+      "date": "2026-04-10",
+      "url": "https://www.asrock.com/mb/AMD/AB350M%20Pro4%20R2.0/BIOS.html"
+    },
+    "AB350M Pro4-F": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/AB350M%20Pro4-F/BIOS.html"
+    },
+    "AB350M Pro4/DASH": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/AB350M%20Pro4DASH/BIOS.html"
+    },
+    "AB350M-HDV": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/AB350M-HDV/BIOS.html"
+    },
+    "AB350M-HDV R3.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/AB350M-HDV%20R3.0/BIOS.html"
+    },
+    "AB350M-HDV R4.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/AB350M-HDV%20R4.0/BIOS.html"
+    },
     "B450 GAMING PRO CARBON MAX WIFI": {
       "bios": "7B85v2I2",
       "date": "2026-07-24"
+    },
+    "B450 Pro4": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450%20Pro4/BIOS.html"
+    },
+    "B450 Pro4 R2.0": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450%20Pro4%20R2.0/BIOS.html"
+    },
+    "B450 Steel Legend": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450%20Steel%20Legend/BIOS.html"
     },
     "B450 TOMAHAWK MAX II": {
       "bios": "7C02vHG4",
@@ -160,9 +400,59 @@
       "date": "2026-04-22",
       "url": "https://www.asrock.com/mb/AMD/B450M%20Pro4/BIOS.html"
     },
+    "B450M Pro4 R2.0": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450M%20Pro4%20R2.0/BIOS.html"
+    },
+    "B450M Pro4-F": {
+      "bios": "10.60",
+      "date": "2026-05-08",
+      "url": "https://www.asrock.com/mb/AMD/B450M%20Pro4-F/BIOS.html"
+    },
+    "B450M Steel Legend": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450M%20Steel%20Legend/BIOS1.html"
+    },
     "B450M-A PRO MAX II": {
       "bios": "7C52vA62",
       "date": "2026-07-27"
+    },
+    "B450M-HDV": {
+      "bios": "10.60",
+      "date": "2026-05-08",
+      "url": "https://www.asrock.com/mb/AMD/B450M-HDV/BIOS.html"
+    },
+    "B450M-HDV R4.0": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/B450M-HDV%20R4.0/BIOS.html"
+    },
+    "B450M/ac": {
+      "bios": "10.60",
+      "date": "2026-05-08",
+      "url": "https://www.asrock.com/mb/AMD/B450Mac/BIOS.html"
+    },
+    "B450M/ac R2.0": {
+      "bios": "10.60",
+      "date": "2026-05-08",
+      "url": "https://www.asrock.com/mb/AMD/B450Mac%20R2.0/BIOS.html"
+    },
+    "B460 Phantom Gaming 4": {
+      "bios": "1.70",
+      "date": "2020-09-09",
+      "url": "https://pg.asrock.com/mb/Intel/B460%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "B460 Pro4": {
+      "bios": "1.60",
+      "date": "2020-09-09",
+      "url": "https://www.asrock.com/mb/Intel/B460%20Pro4/BIOS.html"
+    },
+    "B460 Steel Legend": {
+      "bios": "1.50",
+      "date": "2020-09-09",
+      "url": "https://www.asrock.com/mb/Intel/B460%20Steel%20Legend/BIOS.html"
     },
     "B460M PRO": {
       "bios": "7C88v1B2",
@@ -176,14 +466,44 @@
       "bios": "7C83v192",
       "date": "2026-07-01"
     },
+    "B460M Pro4": {
+      "bios": "1.60",
+      "date": "2021-08-05",
+      "url": "https://www.asrock.com/mb/Intel/B460M%20Pro4/BIOS.html"
+    },
+    "B460M Pro4/ac": {
+      "bios": "1.30",
+      "date": "2020-09-09",
+      "url": "https://www.asrock.com/mb/Intel/B460M%20Pro4ac/BIOS.html"
+    },
+    "B460M Steel Legend": {
+      "bios": "1.60",
+      "date": "2020-09-09",
+      "url": "https://www.asrock.com/mb/Intel/B460M%20Steel%20Legend/BIOS.html"
+    },
     "B460M-A PRO": {
       "bios": "7C88v1B2",
       "date": "2026-07-01"
+    },
+    "B460M-HDV": {
+      "bios": "1.60",
+      "date": "2020-07-28",
+      "url": "https://www.asrock.com/mb/Intel/B460M-HDV/BIOS.html"
+    },
+    "B460M-ITX/ac": {
+      "bios": "1.60",
+      "date": "2021-04-07",
+      "url": "https://www.asrock.com/mb/Intel/B460M-ITXac/BIOS.html"
     },
     "B550 AORUS ELITE V2": {
       "bios": "F20a",
       "date": "2026-04-14",
       "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-ELITE-V2-rev-10-11/support#support-dl-bios"
+    },
+    "B550 Extreme4": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/B550%20Extreme4/BIOS.html"
     },
     "B550 GAMING": {
       "bios": "7C56vW11",
@@ -201,10 +521,55 @@
       "bios": "7C56vW11",
       "date": "2026-07-27"
     },
+    "B550 PG Riptide": {
+      "bios": "3.90",
+      "date": "2025-10-16",
+      "url": "https://pg.asrock.com/mb/AMD/B550%20PG%20Riptide/BIOS.html"
+    },
+    "B550 PG Velocita": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://pg.asrock.com/mb/AMD/B550%20PG%20Velocita/BIOS.html"
+    },
+    "B550 Phantom Gaming 4": {
+      "bios": "3.90",
+      "date": "2025-10-13",
+      "url": "https://pg.asrock.com/mb/AMD/B550%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "B550 Phantom Gaming 4/ac": {
+      "bios": "3.90",
+      "date": "2025-10-13",
+      "url": "https://pg.asrock.com/mb/AMD/B550%20Phantom%20Gaming%204ac/BIOS.html"
+    },
+    "B550 Phantom Gaming-ITX/ax": {
+      "bios": "3.90",
+      "date": "2025-10-16",
+      "url": "https://pg.asrock.com/mb/AMD/B550%20Phantom%20Gaming-ITXax/BIOS.html"
+    },
+    "B550 Pro4": {
+      "bios": "3.90",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/AMD/B550%20Pro4/BIOS.html"
+    },
+    "B550 Rock WiFi": {
+      "bios": "1.30",
+      "date": "2026-06-10",
+      "url": "https://www.asrock.com/mb/AMD/B550%20Rock%20WiFi/BIOS.html"
+    },
     "B550 Steel Legend": {
       "bios": "3.90",
       "date": "2025-10-15",
       "url": "https://www.asrock.com/mb/AMD/B550%20Steel%20Legend/BIOS.html"
+    },
+    "B550 Taichi": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/B550%20Taichi/BIOS.html"
+    },
+    "B550 Taichi Razer Edition": {
+      "bios": "3.90",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/AMD/B550%20Taichi%20Razer%20Edition/BIOS.html"
     },
     "B550-A PRO": {
       "bios": "7C56vAM1",
@@ -218,9 +583,34 @@
       "bios": "7C95vN11",
       "date": "2026-07-24"
     },
+    "B550M PG Riptide": {
+      "bios": "3.90",
+      "date": "2025-10-16",
+      "url": "https://pg.asrock.com/mb/AMD/B550M%20PG%20Riptide/BIOS.html"
+    },
+    "B550M Phantom Gaming 4": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://pg.asrock.com/mb/AMD/B550M%20Phantom%20Gaming%204/BIOS.html"
+    },
     "B550M PRO": {
       "bios": "7D14v2J1",
       "date": "2026-07-30"
+    },
+    "B550M Pro RS": {
+      "bios": "3.90",
+      "date": "2025-10-16",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20Pro%20RS/BIOS.html"
+    },
+    "B550M Pro SE": {
+      "bios": "3.90",
+      "date": "2025-10-16",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20Pro%20SE/BIOS.html"
+    },
+    "B550M Pro-A": {
+      "bios": "1.00",
+      "date": "2026-03-09",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20Pro-A/BIOS.html"
     },
     "B550M PRO-DASH": {
       "bios": "7C95v3K1",
@@ -243,9 +633,59 @@
       "date": "2025-10-09",
       "url": "https://www.asrock.com/mb/AMD/B550M%20Pro4/BIOS.html"
     },
+    "B550M Steel Legend": {
+      "bios": "3.90",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20Steel%20Legend/BIOS.html"
+    },
+    "B550M WiFi": {
+      "bios": "3.90",
+      "date": "2025-10-16",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20WiFi/BIOS.html"
+    },
+    "B550M WiFi SE": {
+      "bios": "3.90",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/AMD/B550M%20WiFi%20SE/BIOS.html"
+    },
     "B550M-A PRO": {
       "bios": "7C96v2J3",
       "date": "2026-07-22"
+    },
+    "B550M-HDV": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/B550M-HDV/BIOS.html"
+    },
+    "B550M-HVS SE": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/B550M-HVS%20SE/BIOS.html"
+    },
+    "B550M-ITX/ac": {
+      "bios": "4.00",
+      "date": "2026-06-01",
+      "url": "https://www.asrock.com/mb/AMD/B550M-ITXac/BIOS.html"
+    },
+    "B550M-P": {
+      "bios": "1.10",
+      "date": "2026-06-10",
+      "url": "https://www.asrock.com/mb/AMD/B550M-P/BIOS.html"
+    },
+    "B550M/ac": {
+      "bios": "3.90",
+      "date": "2025-10-09",
+      "url": "https://www.asrock.com/mb/AMD/B550Mac/BIOS.html"
+    },
+    "B560 Pro4": {
+      "bios": "2.30",
+      "date": "2022-01-27",
+      "url": "https://www.asrock.com/mb/Intel/B560%20Pro4/BIOS.html"
+    },
+    "B560 Steel Legend": {
+      "bios": "2.20",
+      "date": "2022-04-14",
+      "url": "https://www.asrock.com/mb/Intel/B560%20Steel%20Legend/BIOS.html"
     },
     "B560-A PRO": {
       "bios": "7D15vH91",
@@ -275,9 +715,64 @@
       "bios": "7D18vH81",
       "date": "2026-04-09"
     },
+    "B560M Pro4": {
+      "bios": "2.30",
+      "date": "2023-01-16",
+      "url": "https://www.asrock.com/mb/Intel/B560M%20Pro4/BIOS.html"
+    },
+    "B560M Pro4/ac": {
+      "bios": "2.10",
+      "date": "2023-01-16",
+      "url": "https://www.asrock.com/mb/Intel/B560M%20Pro4ac/BIOS.html"
+    },
+    "B560M Pro4/ac+": {
+      "bios": "1.60",
+      "date": "2023-01-13",
+      "url": "https://www.asrock.com/mb/Intel/B560M%20Pro4ac%2B/BIOS.html"
+    },
+    "B560M Steel Legend": {
+      "bios": "1.90",
+      "date": "2023-01-13",
+      "url": "https://www.asrock.com/mb/Intel/B560M%20Steel%20Legend/BIOS.html"
+    },
     "B560M-A PRO": {
       "bios": "7D20v2A1",
       "date": "2026-04-09"
+    },
+    "B560M-HDV": {
+      "bios": "2.70",
+      "date": "2023-05-11",
+      "url": "https://www.asrock.com/mb/Intel/B560M-HDV/BIOS.html"
+    },
+    "B560M-HDV R2.0": {
+      "bios": "1.60",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/B560M-HDV%20R2.0/BIOS.html"
+    },
+    "B560M-HDV R3.0": {
+      "bios": "1.10",
+      "date": "2023-01-06",
+      "url": "https://www.asrock.com/mb/Intel/B560M-HDV%20R3.0/BIOS.html"
+    },
+    "B560M-HDV-A": {
+      "bios": "2.20",
+      "date": "2022-05-26",
+      "url": "https://www.asrock.com/mb/Intel/B560M-HDV-A/BIOS.html"
+    },
+    "B560M-HDV-A R2.0": {
+      "bios": "1.70",
+      "date": "2022-05-26",
+      "url": "https://www.asrock.com/mb/Intel/B560M-HDV-A%20R2.0/BIOS.html"
+    },
+    "B560M-HDV/M.2": {
+      "bios": "1.20",
+      "date": "2023-01-06",
+      "url": "https://www.asrock.com/mb/Intel/B560M-HDVM.2/BIOS.html"
+    },
+    "B560M-ITX/ac": {
+      "bios": "2.00",
+      "date": "2022-04-14",
+      "url": "https://www.asrock.com/mb/Intel/B560M-ITXac/BIOS.html"
     },
     "B650 AORUS ELITE AX": {
       "bios": "F42c",
@@ -292,20 +787,70 @@
       "bios": "7E26v1O2",
       "date": "2026-07-08"
     },
+    "B650 LiveMixer": {
+      "bios": "4.43",
+      "date": "2026-07-16",
+      "url": "https://www.asrock.com/mb/AMD/B650%20LiveMixer/BIOS.html"
+    },
+    "B650 PG Lightning": {
+      "bios": "4.43",
+      "date": "2026-07-17",
+      "url": "https://pg.asrock.com/mb/AMD/B650%20PG%20Lightning/BIOS.html"
+    },
+    "B650 PG Lightning WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-17",
+      "url": "https://pg.asrock.com/mb/AMD/B650%20PG%20Lightning%20WiFi/BIOS.html"
+    },
     "B650 Pro RS": {
       "bios": "4.43",
       "date": "2026-07-08",
       "url": "https://www.asrock.com/mb/AMD/B650%20Pro%20RS/BIOS.html"
+    },
+    "B650 Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/B650%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B650 Rock WiFi 7": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/B650%20Rock%20WiFi%207/BIOS.html"
+    },
+    "B650 Steel Legend WiFi": {
+      "bios": "4.41",
+      "date": "2026-06-23",
+      "url": "https://www.asrock.com/mb/AMD/B650%20Steel%20Legend%20WiFi/BIOS.html"
     },
     "B650E PG Riptide WiFi": {
       "bios": "4.43",
       "date": "2026-07-17",
       "url": "https://pg.asrock.com/mb/AMD/B650E%20PG%20Riptide%20WiFi/BIOS.html"
     },
+    "B650E PG-ITX WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://pg.asrock.com/mb/AMD/B650E%20PG-ITX%20WiFi/BIOS.html"
+    },
     "B650E Steel Legend WiFi": {
       "bios": "4.43",
       "date": "2026-07-20",
       "url": "https://www.asrock.com/mb/AMD/B650E%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B650E Taichi": {
+      "bios": "4.43",
+      "date": "2026-07-22",
+      "url": "https://www.asrock.com/mb/AMD/B650E%20Taichi/BIOS.html"
+    },
+    "B650E Taichi Lite": {
+      "bios": "4.43",
+      "date": "2026-07-22",
+      "url": "https://www.asrock.com/mb/AMD/B650E%20Taichi%20Lite/BIOS.html"
+    },
+    "B650I Lightning WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://pg.asrock.com/mb/AMD/B650I%20Lightning%20WiFi/BIOS.html"
     },
     "B650M BOMBER WIFI": {
       "bios": "7E30v272",
@@ -319,14 +864,144 @@
       "bios": "7E30v1F2",
       "date": "2026-07-06"
     },
+    "B650M PG Lightning": {
+      "bios": "4.44",
+      "date": "2026-07-08",
+      "url": "https://pg.asrock.com/mb/AMD/B650M%20PG%20Lightning/BIOS.html"
+    },
+    "B650M PG Lightning WiFi": {
+      "bios": "4.44",
+      "date": "2026-07-08",
+      "url": "https://pg.asrock.com/mb/AMD/B650M%20PG%20Lightning%20WiFi/BIOS.html"
+    },
+    "B650M PG Riptide": {
+      "bios": "4.43",
+      "date": "2026-07-16",
+      "url": "https://pg.asrock.com/mb/AMD/B650M%20PG%20Riptide/BIOS.html"
+    },
+    "B650M PG Riptide WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-16",
+      "url": "https://pg.asrock.com/mb/AMD/B650M%20PG%20Riptide%20WiFi/BIOS.html"
+    },
+    "B650M PG Riptide WiFi White": {
+      "bios": "4.43",
+      "date": "2026-07-16",
+      "url": "https://pg.asrock.com/mb/AMD/B650M%20PG%20Riptide%20WiFi%20White/BIOS.html"
+    },
     "B650M Pro RS": {
       "bios": "4.43",
       "date": "2026-07-09",
       "url": "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/BIOS.html"
     },
+    "B650M Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/B650M%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B650M Pro X3D": {
+      "bios": "4.41",
+      "date": "2026-06-23",
+      "url": "https://www.asrock.com/mb/AMD/B650M%20Pro%20X3D/BIOS.html"
+    },
+    "B650M Pro X3D WiFi": {
+      "bios": "4.41",
+      "date": "2026-06-23",
+      "url": "https://www.asrock.com/mb/AMD/B650M%20Pro%20X3D%20WiFi/BIOS.html"
+    },
+    "B650M Pro-A Gen5": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/B650M%20Pro-A%20Gen5/BIOS.html"
+    },
     "B650M PROJECT ZERO": {
       "bios": "7E09v1I2",
       "date": "2026-07-06"
+    },
+    "B650M-H/M.2+": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/B650M-HM.2%2B/BIOS.html"
+    },
+    "B650M-H/M.2+ WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/AMD/B650M-HM.2%2B%20WiFi/BIOS.html"
+    },
+    "B650M-HDV/M.2": {
+      "bios": "4.43",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/AMD/B650M-HDVM.2/BIOS.html"
+    },
+    "B650M-HDV/M.2 White": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://www.asrock.com/mb/AMD/B650M-HDVM.2%20White/BIOS.html"
+    },
+    "B660 Pro RS": {
+      "bios": "20.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660%20Pro%20RS/BIOS.html"
+    },
+    "B660 Steel Legend": {
+      "bios": "15.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660%20Steel%20Legend/BIOS.html"
+    },
+    "B660M PG Riptide": {
+      "bios": "13.01",
+      "date": "2025-10-30",
+      "url": "https://pg.asrock.com/mb/Intel/B660M%20PG%20Riptide/BIOS.html"
+    },
+    "B660M Phantom Gaming 4": {
+      "bios": "14.01",
+      "date": "2025-10-30",
+      "url": "https://pg.asrock.com/mb/Intel/B660M%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "B660M Pro RS": {
+      "bios": "16.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660M%20Pro%20RS/BIOS.html"
+    },
+    "B660M Pro RS/ax": {
+      "bios": "12.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660M%20Pro%20RSax/BIOS.html"
+    },
+    "B660M Pro RS/D5": {
+      "bios": "13.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660M%20Pro%20RSD5/BIOS.html"
+    },
+    "B660M Steel Legend": {
+      "bios": "16.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660M%20Steel%20Legend/BIOS.html"
+    },
+    "B660M-HDV": {
+      "bios": "20.01",
+      "date": "2025-11-28",
+      "url": "https://www.asrock.com/mb/Intel/B660M-HDV/BIOS.html"
+    },
+    "B660M-HDVP/D5": {
+      "bios": "15.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660M-HDVPD5/BIOS.html"
+    },
+    "B660M-HDVP/D5 R2.0": {
+      "bios": "15.01",
+      "date": "2025-12-09",
+      "url": "https://www.asrock.com/mb/Intel/B660M-HDVPD5%20R2.0/BIOS.html"
+    },
+    "B660M-ITX/ac": {
+      "bios": "13.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/B660M-ITXac/BIOS.html"
+    },
+    "B660M-ITX/eDP": {
+      "bios": "13.01",
+      "date": "2025-12-09",
+      "url": "https://www.asrock.com/mb/Intel/B660M-ITXeDP/BIOS.html"
     },
     "B760 GAMING PLUS WIFI": {
       "bios": "7D98vHD",
@@ -345,6 +1020,36 @@
       "bios": "14.02",
       "date": "2026-07-07",
       "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RS/BIOS.html"
+    },
+    "B760 Pro RS WiFi": {
+      "bios": "12.02",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B760 Pro RS WiFi White": {
+      "bios": "6.02",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RS%20WiFi%20White/BIOS.html"
+    },
+    "B760 Pro RS/D4": {
+      "bios": "14.03",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RSD4/BIOS.html"
+    },
+    "B760 Pro RS/D4 WiFi": {
+      "bios": "10.03",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RSD4%20WiFi/BIOS.html"
+    },
+    "B760 Pro RS/D4 WiFi White": {
+      "bios": "7.03",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760%20Pro%20RSD4%20WiFi%20White/BIOS.html"
+    },
+    "B760I Lightning WiFi": {
+      "bios": "8.02",
+      "date": "2026-07-14",
+      "url": "https://pg.asrock.com/mb/Intel/B760I%20Lightning%20WiFi/BIOS.html"
     },
     "B760M DS3H AX": {
       "bios": "F24",
@@ -375,9 +1080,129 @@
       "bios": "7D90vH9",
       "date": "2026-04-07"
     },
+    "B760M PG Lightning": {
+      "bios": "11.01",
+      "date": "2026-07-06",
+      "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20Lightning/BIOS.html"
+    },
+    "B760M PG Lightning WiFi": {
+      "bios": "11.01",
+      "date": "2026-07-06",
+      "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20Lightning%20WiFi/BIOS.html"
+    },
+    "B760M PG Lightning/D4": {
+      "bios": "13.02",
+      "date": "2026-07-15",
+      "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20LightningD4/BIOS.html"
+    },
+    "B760M PG Riptide": {
+      "bios": "15.02",
+      "date": "2026-07-06",
+      "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20Riptide/BIOS.html"
+    },
+    "B760M PG Riptide WiFi": {
+      "bios": "9.02",
+      "date": "2026-07-06",
+      "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20Riptide%20WiFi/BIOS.html"
+    },
+    "B760M PG SONIC WiFi": {
+      "bios": "14.02",
+      "date": "2026-07-07",
+      "url": "https://pg.asrock.com/mb/Intel/B760M%20PG%20SONIC%20WiFi/BIOS.html"
+    },
+    "B760M Pro RS": {
+      "bios": "13.01",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RS/BIOS.html"
+    },
+    "B760M Pro RS WiFi": {
+      "bios": "9.01",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B760M Pro RS WiFi White": {
+      "bios": "7.01",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RS%20WiFi%20White/BIOS.html"
+    },
+    "B760M Pro RS/D4": {
+      "bios": "12.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RSD4/BIOS.html"
+    },
+    "B760M Pro RS/D4 WiFi": {
+      "bios": "12.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro%20RSD4%20WiFi/BIOS.html"
+    },
+    "B760M Pro-A": {
+      "bios": "9.01",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro-A/BIOS.html"
+    },
+    "B760M Pro-A WiFi": {
+      "bios": "9.01",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro-A%20WiFi/BIOS.html"
+    },
+    "B760M Pro-A/D4": {
+      "bios": "9.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro-AD4/BIOS.html"
+    },
+    "B760M Pro-A/D4 WiFi": {
+      "bios": "9.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Pro-AD4%20WiFi/BIOS.html"
+    },
     "B760M PROJECT ZERO": {
       "bios": "7E14v19",
       "date": "2026-04-07"
+    },
+    "B760M Steel Legend WiFi": {
+      "bios": "14.02",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/Intel/B760M%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B760M-H/M.2": {
+      "bios": "11.02",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B760M-HM.2/BIOS.html"
+    },
+    "B760M-H2/M.2": {
+      "bios": "10.02",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B760M-H2M.2/BIOS.html"
+    },
+    "B760M-HDV/M.2": {
+      "bios": "12.02",
+      "date": "2026-07-08",
+      "url": "https://www.asrock.com/mb/Intel/B760M-HDVM.2/BIOS.html"
+    },
+    "B760M-HDV/M.2 D4": {
+      "bios": "11.01",
+      "date": "2025-10-03",
+      "url": "https://www.asrock.com/mb/Intel/B760M-HDVM.2%20D4/BIOS.html"
+    },
+    "B760M-HDVP": {
+      "bios": "14.02",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B760M-HDVP/BIOS.html"
+    },
+    "B760M-ITX Gen5 WiFi": {
+      "bios": "2.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M-ITX%20Gen5%20WiFi/BIOS.html"
+    },
+    "B760M-ITX/D4 WiFi": {
+      "bios": "12.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M-ITXD4%20WiFi/BIOS.html"
+    },
+    "B760M-X Gen5": {
+      "bios": "3.02",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/B760M-X%20Gen5/BIOS.html"
     },
     "B840 GAMING PLUS WIFI": {
       "bios": "7E57v2A72",
@@ -391,10 +1216,25 @@
       "bios": "7E76v1A42",
       "date": "2026-07-01"
     },
+    "B840M-HVS": {
+      "bios": "4.43",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/AMD/B840M-HVS/BIOS.html"
+    },
     "B850 AORUS ELITE WIFI7": {
       "bios": "F12c",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/B850-AORUS-ELITE-WIFI7-rev-1x/support#support-dl-bios"
+    },
+    "B850 Challenger WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Challenger%20WiFi/BIOS.html"
+    },
+    "B850 Challenger WiFi White": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Challenger%20WiFi%20White/BIOS.html"
     },
     "B850 GAMING PLUS WIFI": {
       "bios": "7E56v1AA2",
@@ -417,6 +1257,11 @@
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/B850-GAMING-X-WIFI6E-rev-1x/support#support-dl-bios"
     },
+    "B850 LiveMixer WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/B850%20LiveMixer%20WiFi/BIOS.html"
+    },
     "B850 MLG EDITION": {
       "bios": "7E62v3A32",
       "date": "2026-06-30"
@@ -426,10 +1271,55 @@
       "date": "2026-07-03",
       "url": "https://www.asrock.com/mb/AMD/B850%20Pro%20RS/BIOS.html"
     },
+    "B850 Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B850 Pro-A": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Pro-A/BIOS.html"
+    },
+    "B850 Pro-A WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Pro-A%20WiFi/BIOS.html"
+    },
+    "B850 Riptide WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://pg.asrock.com/mb/AMD/B850%20Riptide%20WiFi/BIOS.html"
+    },
+    "B850 Rock WiFi 7": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850%20Rock%20WiFi%207/BIOS.html"
+    },
     "B850 Steel Legend WiFi": {
       "bios": "4.43",
       "date": "2026-07-03",
       "url": "https://www.asrock.com/mb/AMD/B850%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B850I Lightning WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-07",
+      "url": "https://pg.asrock.com/mb/AMD/B850I%20Lightning%20WiFi/BIOS.html"
+    },
+    "B850M Challenger": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Challenger/BIOS.html"
+    },
+    "B850M Challenger WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Challenger%20WiFi/BIOS.html"
+    },
+    "B850M Challenger WiFi White": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Challenger%20WiFi%20White/BIOS.html"
     },
     "B850M GAMING PLUS WIFI": {
       "bios": "7E66v1A43",
@@ -451,18 +1341,153 @@
       "bios": "7E87v1A33",
       "date": "2026-06-26"
     },
+    "B850M Pro Plus WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20Plus%20WiFi/BIOS.html"
+    },
+    "B850M Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS/BIOS.html"
+    },
+    "B850M Pro RS WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B850M Pro RS WiFi White": {
+      "bios": "4.43",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro%20RS%20WiFi%20White/BIOS.html"
+    },
+    "B850M Pro-A": {
+      "bios": "4.43",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro-A/BIOS.html"
+    },
+    "B850M Pro-A WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-07",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Pro-A%20WiFi/BIOS.html"
+    },
+    "B850M Riptide WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-06",
+      "url": "https://pg.asrock.com/mb/AMD/B850M%20Riptide%20WiFi/BIOS.html"
+    },
+    "B850M Rock WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-06",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Rock%20WiFi/BIOS.html"
+    },
+    "B850M Steel Legend WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-06",
+      "url": "https://www.asrock.com/mb/AMD/B850M%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B850M-A": {
+      "bios": "4.43",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/AMD/B850M-A/BIOS.html"
+    },
+    "B850M-X": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://www.asrock.com/mb/AMD/B850M-X/BIOS.html"
+    },
+    "B850M-X R2.0": {
+      "bios": "4.43",
+      "date": "2026-07-06",
+      "url": "https://www.asrock.com/mb/AMD/B850M-X%20R2.0/BIOS.html"
+    },
+    "B850M-X WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-23",
+      "url": "https://www.asrock.com/mb/AMD/B850M-X%20WiFi/BIOS.html"
+    },
+    "B850M-X WiFi R2.0": {
+      "bios": "4.43",
+      "date": "2026-07-06",
+      "url": "https://www.asrock.com/mb/AMD/B850M-X%20WiFi%20R2.0/BIOS.html"
+    },
     "B850MPOWER": {
       "bios": "7E83v1A36",
       "date": "2026-07-16"
+    },
+    "B860 Challenger WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Challenger%20WiFi/BIOS.html"
+    },
+    "B860 Challenger WiFi White": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Challenger%20WiFi%20White/BIOS.html"
     },
     "B860 GAMING PLUS WIFI": {
       "bios": "7E41v2A90",
       "date": "2026-07-24"
     },
+    "B860 Lightning WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://pg.asrock.com/mb/Intel/B860%20Lightning%20WiFi/BIOS.html"
+    },
+    "B860 LiveMixer WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B860%20LiveMixer%20WiFi/BIOS.html"
+    },
+    "B860 Pro RS": {
+      "bios": "3.32",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Pro%20RS/BIOS.html"
+    },
+    "B860 Pro RS WiFi": {
+      "bios": "3.32",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B860 Pro-A": {
+      "bios": "3.32",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Pro-A/BIOS.html"
+    },
+    "B860 Pro-A WiFi": {
+      "bios": "3.32",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Pro-A%20WiFi/BIOS.html"
+    },
+    "B860 Rock WiFi 7": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860%20Rock%20WiFi%207/BIOS.html"
+    },
     "B860 Steel Legend WiFi": {
       "bios": "3.31",
       "date": "2026-07-15",
       "url": "https://www.asrock.com/mb/Intel/B860%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B860I Lightning WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://pg.asrock.com/mb/Intel/B860I%20Lightning%20WiFi/BIOS.html"
+    },
+    "B860I WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B860I%20WiFi/BIOS.html"
+    },
+    "B860M Challenger WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Challenger%20WiFi/BIOS.html"
+    },
+    "B860M Challenger WiFi White": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Challenger%20WiFi%20White/BIOS.html"
     },
     "B860M GAMING PLUS WIFI": {
       "bios": "7E42v2A9",
@@ -476,6 +1501,81 @@
       "bios": "7E68v2A60",
       "date": "2026-07-07"
     },
+    "B860M Lightning WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://pg.asrock.com/mb/Intel/B860M%20Lightning%20WiFi/BIOS.html"
+    },
+    "B860M LiveMixer WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20LiveMixer%20WiFi/BIOS.html"
+    },
+    "B860M Pro RS": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Pro%20RS/BIOS.html"
+    },
+    "B860M Pro RS WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "B860M Pro-A": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Pro-A/BIOS.html"
+    },
+    "B860M Pro-A WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Pro-A%20WiFi/BIOS.html"
+    },
+    "B860M Rock WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-17",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Rock%20WiFi/BIOS.html"
+    },
+    "B860M Steel Legend WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-20",
+      "url": "https://www.asrock.com/mb/Intel/B860M%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "B860M-H2": {
+      "bios": "3.32",
+      "date": "2026-07-17",
+      "url": "https://www.asrock.com/mb/Intel/B860M-H2/BIOS.html"
+    },
+    "B860M-HDVP": {
+      "bios": "1.42",
+      "date": "2026-07-15",
+      "url": "https://www.asrock.com/mb/Intel/B860M-HDVP/BIOS.html"
+    },
+    "B860M-STX": {
+      "bios": "5.01",
+      "date": "2026-01-05",
+      "url": "https://www.asrock.com/mb/Intel/B860M-STX/BIOS.html"
+    },
+    "B860M-X": {
+      "bios": "3.31",
+      "date": "2026-07-17",
+      "url": "https://www.asrock.com/mb/Intel/B860M-X/BIOS.html"
+    },
+    "B860M-X Gen5": {
+      "bios": "3.31",
+      "date": "2026-07-17",
+      "url": "https://www.asrock.com/mb/Intel/B860M-X%20Gen5/BIOS.html"
+    },
+    "B860M-X Gen5 WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-17",
+      "url": "https://www.asrock.com/mb/Intel/B860M-X%20Gen5%20WiFi/BIOS.html"
+    },
+    "B860M-X WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-17",
+      "url": "https://www.asrock.com/mb/Intel/B860M-X%20WiFi/BIOS.html"
+    },
     "Creator TRX40": {
       "bios": "7C59v198",
       "date": "2026-06-23"
@@ -483,6 +1583,76 @@
     "Creator X299": {
       "bios": "7B96v14",
       "date": "2022-07-19"
+    },
+    "Fatal1ty AB350 Gaming K4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20AB350%20Gaming%20K4/BIOS.html"
+    },
+    "Fatal1ty AB350 Gaming-ITX/ac": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20AB350%20Gaming-ITXac/BIOS.html"
+    },
+    "Fatal1ty B450 Gaming K4": {
+      "bios": "10.60",
+      "date": "2026-04-22",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20B450%20Gaming%20K4/BIOS.html"
+    },
+    "Fatal1ty B450 Gaming-ITX/ac": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20B450%20Gaming-ITXac/BIOS.html"
+    },
+    "Fatal1ty X299 Gaming K6": {
+      "bios": "2.00",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/Fatal1ty%20X299%20Gaming%20K6/BIOS.html"
+    },
+    "Fatal1ty X299 Professional Gaming i9": {
+      "bios": "2.30",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/Fatal1ty%20X299%20Professional%20Gaming%20i9/BIOS.html"
+    },
+    "Fatal1ty X299 Professional Gaming i9 XE": {
+      "bios": "1.90",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/Fatal1ty%20X299%20Professional%20Gaming%20i9%20XE/BIOS.html"
+    },
+    "Fatal1ty X370 Gaming K4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X370%20Gaming%20K4/BIOS.html"
+    },
+    "Fatal1ty X370 Gaming X": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X370%20Gaming%20X/BIOS.html"
+    },
+    "Fatal1ty X370 Gaming-ITX/ac": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X370%20Gaming-ITXac/BIOS.html"
+    },
+    "Fatal1ty X370 Professional Gaming": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X370%20Professional%20Gaming/BIOS.html"
+    },
+    "Fatal1ty X399 Professional Gaming": {
+      "bios": "4.03",
+      "date": "2024-01-26",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X399%20Professional%20Gaming/BIOS.html"
+    },
+    "Fatal1ty X470 Gaming K4": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X470%20Gaming%20K4/BIOS.html"
+    },
+    "Fatal1ty X470 Gaming-ITX/ac": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/Fatal1ty%20X470%20Gaming-ITXac/BIOS.html"
     },
     "H310M PRO-C": {
       "bios": "7D02v13",
@@ -512,6 +1682,111 @@
       "bios": "7C89v1F1",
       "date": "2026-07-01"
     },
+    "H410M-H/M.2 SE": {
+      "bios": "1.00",
+      "date": "2023-07-14",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HM.2%20SE/BIOS.html"
+    },
+    "H410M-HDV": {
+      "bios": "1.30",
+      "date": "2020-08-17",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HDV/BIOS.html"
+    },
+    "H410M-HDV R2.0": {
+      "bios": "1.10",
+      "date": "2021-08-05",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HDV%20R2.0/BIOS.html"
+    },
+    "H410M-HDV/M.2": {
+      "bios": "1.30",
+      "date": "2021-01-13",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HDVM.2/BIOS.html"
+    },
+    "H410M-HDVP": {
+      "bios": "1.40",
+      "date": "2021-08-06",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HDVP/BIOS.html"
+    },
+    "H410M-HDVP2": {
+      "bios": "1.40",
+      "date": "2021-08-06",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HDVP2/BIOS.html"
+    },
+    "H410M-HVS": {
+      "bios": "1.30",
+      "date": "2020-08-17",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HVS/BIOS.html"
+    },
+    "H410M-HVS R2.0": {
+      "bios": "1.10",
+      "date": "2021-08-05",
+      "url": "https://www.asrock.com/mb/Intel/H410M-HVS%20R2.0/BIOS.html"
+    },
+    "H410M-ITX/ac": {
+      "bios": "1.50",
+      "date": "2021-08-06",
+      "url": "https://www.asrock.com/mb/Intel/H410M-ITXac/BIOS.html"
+    },
+    "H410M/ac": {
+      "bios": "1.30",
+      "date": "2021-01-13",
+      "url": "https://www.asrock.com/mb/Intel/H410Mac/BIOS.html"
+    },
+    "H410TM-ITX": {
+      "bios": "1.50",
+      "date": "2021-09-06",
+      "url": "https://www.asrock.com/mb/Intel/H410TM-ITX/BIOS.html"
+    },
+    "H470 Phantom Gaming 4": {
+      "bios": "1.10",
+      "date": "2020-06-12",
+      "url": "https://pg.asrock.com/mb/Intel/H470%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "H470 Steel Legend": {
+      "bios": "1.60",
+      "date": "2021-03-24",
+      "url": "https://www.asrock.com/mb/Intel/H470%20Steel%20Legend/BIOS.html"
+    },
+    "H470M Pro4": {
+      "bios": "1.30",
+      "date": "2022-06-09",
+      "url": "https://www.asrock.com/mb/Intel/H470M%20Pro4/BIOS.html"
+    },
+    "H470M-HDV": {
+      "bios": "1.30",
+      "date": "2021-07-29",
+      "url": "https://www.asrock.com/mb/Intel/H470M-HDV/BIOS.html"
+    },
+    "H470M-HDV/M.2": {
+      "bios": "1.40",
+      "date": "2021-07-29",
+      "url": "https://www.asrock.com/mb/Intel/H470M-HDVM.2/BIOS.html"
+    },
+    "H470M-HVS": {
+      "bios": "1.30",
+      "date": "2021-07-29",
+      "url": "https://www.asrock.com/mb/Intel/H470M-HVS/BIOS.html"
+    },
+    "H470M-HVS R2.0": {
+      "bios": "1.10",
+      "date": "2022-12-16",
+      "url": "https://www.asrock.com/mb/Intel/H470M-HVS%20R2.0/BIOS.html"
+    },
+    "H470M-ITX/ac": {
+      "bios": "1.20",
+      "date": "2020-06-12",
+      "url": "https://www.asrock.com/mb/Intel/H470M-ITXac/BIOS.html"
+    },
+    "H470M-STX": {
+      "bios": "2.20",
+      "date": "2021-08-10",
+      "url": "https://www.asrock.com/mb/Intel/H470M-STX/BIOS.html"
+    },
+    "H510 Pro BTC+": {
+      "bios": "1.50",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/H510%20Pro%20BTC%2B/BIOS.html"
+    },
     "H510I PRO WIFI": {
       "bios": "7D16v1A1",
       "date": "2026-04-09"
@@ -532,17 +1807,262 @@
       "bios": "7D22v3E1",
       "date": "2026-04-09"
     },
+    "H510M-A/M.2 SE": {
+      "bios": "1.00",
+      "date": "2024-08-15",
+      "url": "https://www.asrock.com/mb/Intel/H510M-AM.2%20SE/BIOS.html"
+    },
+    "H510M-H2/M.2 SE": {
+      "bios": "1.10",
+      "date": "2023-08-17",
+      "url": "https://www.asrock.com/mb/Intel/H510M-H2M.2%20SE/BIOS.html"
+    },
+    "H510M-HDV": {
+      "bios": "1.90",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/H510M-HDV/BIOS.html"
+    },
+    "H510M-HDV R2.0": {
+      "bios": "1.50",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/H510M-HDV%20R2.0/BIOS.html"
+    },
+    "H510M-HDV/M.2": {
+      "bios": "2.20",
+      "date": "2022-06-09",
+      "url": "https://www.asrock.com/mb/Intel/H510M-HDVM.2/BIOS.html"
+    },
+    "H510M-HDV/M.2 SE": {
+      "bios": "1.60",
+      "date": "2023-05-05",
+      "url": "https://www.asrock.com/mb/Intel/H510M-HDVM.2%20SE/BIOS.html"
+    },
+    "H510M-HVS": {
+      "bios": "1.90",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/H510M-HVS/BIOS.html"
+    },
+    "H510M-HVS R2.0": {
+      "bios": "1.50",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/H510M-HVS%20R2.0/BIOS.html"
+    },
+    "H510M-ITX/ac": {
+      "bios": "2.00",
+      "date": "2021-12-14",
+      "url": "https://www.asrock.com/mb/Intel/H510M-ITXac/BIOS.html"
+    },
+    "H510M/ac": {
+      "bios": "2.10",
+      "date": "2022-05-18",
+      "url": "https://www.asrock.com/mb/Intel/H510Mac/BIOS.html"
+    },
     "H510TI-S01": {
       "bios": "7D35v181",
       "date": "2026-04-09"
+    },
+    "H510TM-ITX": {
+      "bios": "1.20",
+      "date": "2022-05-05",
+      "url": "https://www.asrock.com/mb/Intel/H510TM-ITX/BIOS.html"
+    },
+    "H570 Phantom Gaming 4": {
+      "bios": "2.20",
+      "date": "2022-04-14",
+      "url": "https://pg.asrock.com/mb/Intel/H570%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "H570 Steel Legend": {
+      "bios": "2.20",
+      "date": "2022-04-14",
+      "url": "https://www.asrock.com/mb/Intel/H570%20Steel%20Legend/BIOS.html"
+    },
+    "H570M Pro4": {
+      "bios": "2.00",
+      "date": "2022-06-09",
+      "url": "https://www.asrock.com/mb/Intel/H570M%20Pro4/BIOS.html"
+    },
+    "H570M-ITX/ac": {
+      "bios": "1.70",
+      "date": "2022-03-08",
+      "url": "https://www.asrock.com/mb/Intel/H570M-ITXac/BIOS.html"
+    },
+    "H610M COMBO": {
+      "bios": "2.08",
+      "date": "2025-12-12",
+      "url": "https://www.asrock.com/mb/Intel/H610M%20COMBO/BIOS.html"
+    },
+    "H610M COMBO II": {
+      "bios": "1.08",
+      "date": "2026-03-05",
+      "url": "https://www.asrock.com/mb/Intel/H610M%20COMBO%20II/BIOS.html"
+    },
+    "H610M-H2/M.2": {
+      "bios": "6.01",
+      "date": "2025-10-08",
+      "url": "https://www.asrock.com/mb/Intel/H610M-H2M.2/BIOS.html"
+    },
+    "H610M-H2/M.2 D5": {
+      "bios": "5.02",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/Intel/H610M-H2M.2%20D5/BIOS.html"
+    },
+    "H610M-HDV": {
+      "bios": "18.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDV/BIOS.html"
+    },
+    "H610M-HDV/M.2": {
+      "bios": "20.02",
+      "date": "2025-10-14",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDVM.2/BIOS.html"
+    },
+    "H610M-HDV/M.2 D5 Gen5": {
+      "bios": "1.10",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDVM.2%20D5%20Gen5/BIOS.html"
+    },
+    "H610M-HDV/M.2 R2.0": {
+      "bios": "11.01",
+      "date": "2025-10-07",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDVM.2%20R2.0/BIOS.html"
+    },
+    "H610M-HDV/M.2+ D5": {
+      "bios": "5.02",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDVM.2%2B%20D5/BIOS.html"
+    },
+    "H610M-HDVP/D5": {
+      "bios": "16.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDVPD5/BIOS.html"
+    },
+    "H610M-HDVP/D5 R2.0": {
+      "bios": "16.01",
+      "date": "2025-12-09",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HDVPD5%20R2.0/BIOS.html"
+    },
+    "H610M-HVS": {
+      "bios": "18.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HVS/BIOS.html"
+    },
+    "H610M-HVS/M.2 D5 Gen5": {
+      "bios": "1.10",
+      "date": "2025-12-09",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HVSM.2%20D5%20Gen5/BIOS.html"
+    },
+    "H610M-HVS/M.2 R2.0": {
+      "bios": "11.01",
+      "date": "2025-10-07",
+      "url": "https://www.asrock.com/mb/Intel/H610M-HVSM.2%20R2.0/BIOS.html"
+    },
+    "H610M-ITX/ac": {
+      "bios": "13.02",
+      "date": "2025-11-28",
+      "url": "https://www.asrock.com/mb/Intel/H610M-ITXac/BIOS.html"
+    },
+    "H610M-ITX/eDP": {
+      "bios": "12.02",
+      "date": "2025-10-15",
+      "url": "https://www.asrock.com/mb/Intel/H610M-ITXeDP/BIOS.html"
+    },
+    "H610M-X D5": {
+      "bios": "5.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/H610M-X%20D5/BIOS.html"
+    },
+    "H610M-X D5 Gen5": {
+      "bios": "1.11",
+      "date": "2025-10-13",
+      "url": "https://www.asrock.com/mb/Intel/H610M-X%20D5%20Gen5/BIOS.html"
+    },
+    "H610M-X D5 Gen5 WiFi": {
+      "bios": "1.11",
+      "date": "2025-12-09",
+      "url": "https://www.asrock.com/mb/Intel/H610M-X%20D5%20Gen5%20WiFi/BIOS.html"
+    },
+    "H610M/ac": {
+      "bios": "20.02",
+      "date": "2025-10-14",
+      "url": "https://www.asrock.com/mb/Intel/H610Mac/BIOS.html"
     },
     "H610TI-S01": {
       "bios": "7D83v2I",
       "date": "2026-05-08"
     },
+    "H610TM-ITX": {
+      "bios": "8.01",
+      "date": "2025-10-28",
+      "url": "https://www.asrock.com/mb/Intel/H610TM-ITX/BIOS.html"
+    },
+    "H670 PG Riptide": {
+      "bios": "18.01",
+      "date": "2025-10-28",
+      "url": "https://pg.asrock.com/mb/Intel/H670%20PG%20Riptide/BIOS.html"
+    },
+    "H670 Steel Legend": {
+      "bios": "18.01",
+      "date": "2025-10-28",
+      "url": "https://www.asrock.com/mb/Intel/H670%20Steel%20Legend/BIOS.html"
+    },
+    "H670M Pro RS": {
+      "bios": "18.01",
+      "date": "2025-11-28",
+      "url": "https://www.asrock.com/mb/Intel/H670M%20Pro%20RS/BIOS.html"
+    },
+    "H670M-ITX/ax": {
+      "bios": "20.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/H670M-ITXax/BIOS.html"
+    },
+    "H670M-ITX/ax R2.0": {
+      "bios": "3.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/H670M-ITXax%20R2.0/BIOS.html"
+    },
     "H810M GAMING WIFI6E": {
       "bios": "7E64v2A60",
       "date": "2026-06-18"
+    },
+    "H810M-H": {
+      "bios": "3.31",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-H/BIOS.html"
+    },
+    "H810M-HDVP": {
+      "bios": "1.42",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-HDVP/BIOS.html"
+    },
+    "H810M-P Gen5": {
+      "bios": "3.31",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-P%20Gen5/BIOS.html"
+    },
+    "H810M-X": {
+      "bios": "3.31",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-X/BIOS.html"
+    },
+    "H810M-X Gen5": {
+      "bios": "3.31",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-X%20Gen5/BIOS.html"
+    },
+    "H810M-X Gen5 WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-X%20Gen5%20WiFi/BIOS.html"
+    },
+    "H810M-X WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-21",
+      "url": "https://www.asrock.com/mb/Intel/H810M-X%20WiFi/BIOS.html"
+    },
+    "H810TM-ITX": {
+      "bios": "1.00",
+      "date": "2026-06-01",
+      "url": "https://www.asrock.com/mb/Intel/H810TM-ITX/BIOS.html"
     },
     "MAG A520M BAZOOKA WIFI": {
       "bios": "7D49vA2",
@@ -1872,6 +3392,16 @@
       "bios": "7E54v1AD0",
       "date": "2026-07-21"
     },
+    "Q670M vPro": {
+      "bios": "2.05",
+      "date": "2025-02-25",
+      "url": "https://www.asrock.com/mb/Intel/Q670M%20vPro/BIOS.html"
+    },
+    "TRX40 Creator": {
+      "bios": "1.86",
+      "date": "2024-01-26",
+      "url": "https://www.asrock.com/mb/AMD/TRX40%20Creator/BIOS.html"
+    },
     "TRX40 PRO 10G": {
       "bios": "7C60v1A4",
       "date": "2026-06-23"
@@ -1880,9 +3410,59 @@
       "bios": "7C60v294",
       "date": "2026-06-23"
     },
+    "TRX40 Taichi": {
+      "bios": "1.86",
+      "date": "2024-01-26",
+      "url": "https://www.asrock.com/mb/AMD/TRX40%20Taichi/BIOS.html"
+    },
     "TRX40-A PRO": {
       "bios": "7C60v1A4",
       "date": "2026-06-23"
+    },
+    "TRX50 WS": {
+      "bios": "14.10",
+      "date": "2026-02-11",
+      "url": "https://www.asrock.com/mb/AMD/TRX50%20WS/BIOS.html"
+    },
+    "W480 Creator": {
+      "bios": "1.50",
+      "date": "2021-08-10",
+      "url": "https://www.asrock.com/mb/Intel/W480%20Creator/BIOS.html"
+    },
+    "WRX80 Creator": {
+      "bios": "10.03",
+      "date": "2025-12-23",
+      "url": "https://www.asrock.com/mb/AMD/WRX80%20Creator/BIOS.html"
+    },
+    "WRX80 Creator R2.0": {
+      "bios": "10.03",
+      "date": "2025-12-23",
+      "url": "https://www.asrock.com/mb/AMD/WRX80%20Creator%20R2.0/BIOS.html"
+    },
+    "WRX90 WS EVO": {
+      "bios": "12.09",
+      "date": "2026-02-12",
+      "url": "https://www.asrock.com/mb/AMD/WRX90%20WS%20EVO/BIOS.html"
+    },
+    "X299 Creator": {
+      "bios": "1.50",
+      "date": "2021-08-05",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Creator/BIOS.html"
+    },
+    "X299 Extreme4": {
+      "bios": "2.00",
+      "date": "2021-08-05",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Extreme4/BIOS.html"
+    },
+    "X299 Killer SLI/ac": {
+      "bios": "2.00",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Killer%20SLIac/BIOS.html"
+    },
+    "X299 OC Formula": {
+      "bios": "1.90",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/X299%20OC%20Formula/BIOS.html"
     },
     "X299 PRO": {
       "bios": "7B94v14",
@@ -1892,24 +3472,239 @@
       "bios": "7B94v14",
       "date": "2022-09-22"
     },
+    "X299 Steel Legend": {
+      "bios": "1.50",
+      "date": "2021-08-02",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Steel%20Legend/BIOS.html"
+    },
+    "X299 Taichi": {
+      "bios": "2.50",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Taichi/BIOS.html"
+    },
+    "X299 Taichi CLX": {
+      "bios": "1.70",
+      "date": "2021-08-02",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Taichi%20CLX/BIOS.html"
+    },
+    "X299 Taichi XE": {
+      "bios": "1.90",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/X299%20Taichi%20XE/BIOS.html"
+    },
     "X299-A PRO": {
       "bios": "7A94vA2",
       "date": "2022-09-20"
+    },
+    "X299E-ITX/ac": {
+      "bios": "2.20",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/X299E-ITXac/BIOS.html"
+    },
+    "X299M Extreme4": {
+      "bios": "1.50",
+      "date": "2019-11-29",
+      "url": "https://www.asrock.com/mb/Intel/X299M%20Extreme4/BIOS.html"
+    },
+    "X300M-STX": {
+      "bios": "2.20",
+      "date": "2026-01-16",
+      "url": "https://www.asrock.com/mb/AMD/X300M-STX/BIOS.html"
+    },
+    "X300TM-ITX": {
+      "bios": "1.20",
+      "date": "2021-08-10",
+      "url": "https://www.asrock.com/mb/AMD/X300TM-ITX/BIOS.html"
+    },
+    "X370 Killer SLI": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370%20Killer%20SLI/BIOS.html"
+    },
+    "X370 Killer SLI/ac": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370%20Killer%20SLIac/BIOS.html"
+    },
+    "X370 Pro BTC+": {
+      "bios": "2.10",
+      "date": "2019-12-10",
+      "url": "https://www.asrock.com/mb/AMD/X370%20Pro%20BTC%2B/BIOS.html"
+    },
+    "X370 Pro4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370%20Pro4/BIOS.html"
+    },
+    "X370 Taichi": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370%20Taichi/BIOS.html"
+    },
+    "X370M": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370M/BIOS.html"
+    },
+    "X370M Pro4": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370M%20Pro4/BIOS.html"
+    },
+    "X370M Pro4 R2.0": {
+      "bios": "10.50",
+      "date": "2026-04-10",
+      "url": "https://www.asrock.com/mb/AMD/X370M%20Pro4%20R2.0/BIOS.html"
+    },
+    "X370M Pro4-F": {
+      "bios": "10.50",
+      "date": "2026-04-08",
+      "url": "https://www.asrock.com/mb/AMD/X370M%20Pro4-F/BIOS.html"
+    },
+    "X370M-HDV": {
+      "bios": "10.50",
+      "date": "2026-04-01",
+      "url": "https://www.asrock.com/mb/AMD/X370M-HDV/BIOS.html"
+    },
+    "X370M-HDV R4.0": {
+      "bios": "10.50",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/X370M-HDV%20R4.0/BIOS.html"
+    },
+    "X399 Phantom Gaming 6": {
+      "bios": "4.03",
+      "date": "2024-01-26",
+      "url": "https://pg.asrock.com/mb/AMD/X399%20Phantom%20Gaming%206/BIOS.html"
+    },
+    "X399 Taichi": {
+      "bios": "4.03",
+      "date": "2024-01-26",
+      "url": "https://www.asrock.com/mb/AMD/X399%20Taichi/BIOS.html"
+    },
+    "X399M Taichi": {
+      "bios": "4.03",
+      "date": "2024-01-26",
+      "url": "https://www.asrock.com/mb/AMD/X399M%20Taichi/BIOS.html"
+    },
+    "X470 Master SLI": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/X470%20Master%20SLI/BIOS.html"
+    },
+    "X470 Master SLI/ac": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/X470%20Master%20SLIac/BIOS.html"
+    },
+    "X470 Taichi": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/X470%20Taichi/BIOS.html"
+    },
+    "X470 Taichi Ultimate": {
+      "bios": "10.60",
+      "date": "2026-05-11",
+      "url": "https://www.asrock.com/mb/AMD/X470%20Taichi%20Ultimate/BIOS.html"
     },
     "X570 AORUS ELITE": {
       "bios": "F41a",
       "date": "2026-04-14",
       "url": "https://www.gigabyte.com/Motherboard/X570-AORUS-ELITE-rev-10/support#support-dl-bios"
     },
+    "X570 AQUA": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20AQUA/BIOS.html"
+    },
+    "X570 Creator": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Creator/BIOS.html"
+    },
+    "X570 Extreme4": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Extreme4/BIOS.html"
+    },
+    "X570 Extreme4 WiFi ax": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Extreme4%20WiFi%20ax/BIOS.html"
+    },
+    "X570 PG Velocita": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://pg.asrock.com/mb/AMD/X570%20PG%20Velocita/BIOS.html"
+    },
     "X570 Phantom Gaming 4": {
       "bios": "5.80",
       "date": "2026-03-31",
       "url": "https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%204/BIOS.html"
     },
+    "X570 Phantom Gaming 4 WiFi ax": {
+      "bios": "5.80",
+      "date": "2026-03-31",
+      "url": "https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%204%20WiFi%20ax/BIOS.html"
+    },
+    "X570 Phantom Gaming 4S": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%204S/BIOS.html"
+    },
+    "X570 Phantom Gaming X": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%20X/BIOS.html"
+    },
+    "X570 Phantom Gaming-ITX/TB3": {
+      "bios": "5.80",
+      "date": "2026-04-07",
+      "url": "https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming-ITXTB3/BIOS.html"
+    },
+    "X570 Pro4": {
+      "bios": "5.80",
+      "date": "2026-03-31",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Pro4/BIOS.html"
+    },
     "X570 Steel Legend": {
       "bios": "5.80",
       "date": "2026-04-02",
       "url": "https://www.asrock.com/mb/AMD/X570%20Steel%20Legend/BIOS.html"
+    },
+    "X570 Steel Legend WiFi ax": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Steel%20Legend%20WiFi%20ax/BIOS.html"
+    },
+    "X570 Taichi": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Taichi/BIOS.html"
+    },
+    "X570 Taichi Razer Edition": {
+      "bios": "5.80",
+      "date": "2026-04-02",
+      "url": "https://www.asrock.com/mb/AMD/X570%20Taichi%20Razer%20Edition/BIOS.html"
+    },
+    "X570M Pro4": {
+      "bios": "5.80",
+      "date": "2026-04-07",
+      "url": "https://www.asrock.com/mb/AMD/X570M%20Pro4/BIOS.html"
+    },
+    "X570S PG Riptide": {
+      "bios": "5.80",
+      "date": "2026-03-31",
+      "url": "https://pg.asrock.com/mb/AMD/X570S%20PG%20Riptide/BIOS.html"
+    },
+    "X600M-STX R2.0": {
+      "bios": "1.23",
+      "date": "2025-11-06",
+      "url": "https://www.asrock.com/mb/AMD/X600M-STX%20R2.0/BIOS.html"
+    },
+    "X600TM-ITX": {
+      "bios": "4.02",
+      "date": "2025-11-06",
+      "url": "https://www.asrock.com/mb/AMD/X600TM-ITX/BIOS.html"
     },
     "X670 AORUS ELITE AX": {
       "bios": "F42d",
@@ -1920,15 +3715,45 @@
       "bios": "7E16v1D2",
       "date": "2026-07-06"
     },
+    "X670E PG Lightning": {
+      "bios": "4.43",
+      "date": "2026-07-16",
+      "url": "https://pg.asrock.com/mb/AMD/X670E%20PG%20Lightning/BIOS.html"
+    },
+    "X670E Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-16",
+      "url": "https://www.asrock.com/mb/AMD/X670E%20Pro%20RS/BIOS.html"
+    },
     "X670E Steel Legend": {
       "bios": "4.43",
       "date": "2026-07-15",
       "url": "https://www.asrock.com/mb/AMD/X670E%20Steel%20Legend/BIOS.html"
     },
+    "X670E Taichi": {
+      "bios": "4.43",
+      "date": "2026-06-30",
+      "url": "https://www.asrock.com/mb/AMD/X670E%20Taichi/BIOS.html"
+    },
+    "X670E Taichi Carrara": {
+      "bios": "4.43",
+      "date": "2026-06-30",
+      "url": "https://www.asrock.com/mb/AMD/X670E%20Taichi%20Carrara/BIOS.html"
+    },
     "X870 AORUS ELITE WIFI7": {
       "bios": "F13d",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870-AORUS-ELITE-WIFI7-rev-10-11/support#support-dl-bios"
+    },
+    "X870 Challenger WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Challenger%20WiFi/BIOS.html"
+    },
+    "X870 Challenger WiFi White": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Challenger%20WiFi%20White/BIOS.html"
     },
     "X870 GAMING PLUS WIFI": {
       "bios": "7E47v2A72",
@@ -1939,37 +3764,202 @@
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870-GAMING-X-WIFI7-rev-1x/support#support-dl-bios"
     },
+    "X870 LiveMixer WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/X870%20LiveMixer%20WiFi/BIOS.html"
+    },
+    "X870 Nova WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://pg.asrock.com/mb/AMD/X870%20Nova%20WiFi/BIOS.html"
+    },
+    "X870 Pro RS": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Pro%20RS/BIOS.html"
+    },
     "X870 Pro RS WiFi": {
       "bios": "4.43",
       "date": "2026-07-02",
       "url": "https://www.asrock.com/mb/AMD/X870%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "X870 Pro-A WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Pro-A%20WiFi/BIOS.html"
+    },
+    "X870 Riptide WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://pg.asrock.com/mb/AMD/X870%20Riptide%20WiFi/BIOS.html"
     },
     "X870 Steel Legend WiFi": {
       "bios": "4.43",
       "date": "2026-07-02",
       "url": "https://www.asrock.com/mb/AMD/X870%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "X870 Taichi Creator": {
+      "bios": "4.43",
+      "date": "2026-07-02",
+      "url": "https://www.asrock.com/mb/AMD/X870%20Taichi%20Creator/BIOS.html"
+    },
     "X870E AORUS MASTER": {
       "bios": "F14c",
       "date": "2026-07-21",
       "url": "https://www.gigabyte.com/Motherboard/X870E-AORUS-MASTER/support#support-dl-bios"
     },
+    "X870E Challenger WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870E%20Challenger%20WiFi/BIOS.html"
+    },
+    "X870E Challenger WiFi White": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870E%20Challenger%20WiFi%20White/BIOS.html"
+    },
     "X870E GAMING PLUS WIFI": {
       "bios": "7E70v1A62",
       "date": "2026-06-30"
+    },
+    "X870E Nova WiFi": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://pg.asrock.com/mb/AMD/X870E%20Nova%20WiFi/BIOS.html"
     },
     "X870E Taichi": {
       "bios": "4.43",
       "date": "2026-07-01",
       "url": "https://www.asrock.com/mb/AMD/X870E%20Taichi/BIOS.html"
     },
+    "X870E Taichi Lite": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870E%20Taichi%20Lite/BIOS.html"
+    },
+    "X870E Taichi OCF": {
+      "bios": "4.43",
+      "date": "2026-07-03",
+      "url": "https://www.asrock.com/mb/AMD/X870E%20Taichi%20OCF/BIOS.html"
+    },
+    "X870E Taichi White": {
+      "bios": "4.43",
+      "date": "2026-07-01",
+      "url": "https://www.asrock.com/mb/AMD/X870E%20Taichi%20White/BIOS.html"
+    },
+    "Z490 AQUA": {
+      "bios": "2.10",
+      "date": "2021-04-12",
+      "url": "https://www.asrock.com/mb/Intel/Z490%20AQUA/BIOS.html"
+    },
+    "Z490 Extreme4": {
+      "bios": "1.70",
+      "date": "2021-04-07",
+      "url": "https://www.asrock.com/mb/Intel/Z490%20Extreme4/BIOS.html"
+    },
+    "Z490 PG Velocita": {
+      "bios": "1.70",
+      "date": "2021-01-08",
+      "url": "https://pg.asrock.com/mb/Intel/Z490%20PG%20Velocita/BIOS.html"
+    },
+    "Z490 Phantom Gaming 4": {
+      "bios": "1.50",
+      "date": "2020-06-23",
+      "url": "https://pg.asrock.com/mb/Intel/Z490%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "Z490 Phantom Gaming 4/2.5G": {
+      "bios": "1.20",
+      "date": "2020-05-22",
+      "url": "https://pg.asrock.com/mb/Intel/Z490%20Phantom%20Gaming%2042.5G/BIOS.html"
+    },
+    "Z490 Phantom Gaming 4/ac": {
+      "bios": "1.20",
+      "date": "2020-05-22",
+      "url": "https://pg.asrock.com/mb/Intel/Z490%20Phantom%20Gaming%204ac/BIOS.html"
+    },
+    "Z490 Phantom Gaming 4/ax": {
+      "bios": "1.30",
+      "date": "2020-05-22",
+      "url": "https://pg.asrock.com/mb/Intel/Z490%20Phantom%20Gaming%204ax/BIOS.html"
+    },
+    "Z490 Phantom Gaming-ITX/TB3": {
+      "bios": "1.60",
+      "date": "2021-04-07",
+      "url": "https://pg.asrock.com/mb/Intel/Z490%20Phantom%20Gaming-ITXTB3/BIOS.html"
+    },
     "Z490 PLUS": {
       "bios": "7C98v1A2",
       "date": "2026-07-01"
     },
+    "Z490 Pro4": {
+      "bios": "1.50",
+      "date": "2020-06-23",
+      "url": "https://www.asrock.com/mb/Intel/Z490%20Pro4/BIOS.html"
+    },
+    "Z490 Steel Legend": {
+      "bios": "1.90",
+      "date": "2021-04-07",
+      "url": "https://www.asrock.com/mb/Intel/Z490%20Steel%20Legend/BIOS.html"
+    },
+    "Z490 Taichi": {
+      "bios": "1.90",
+      "date": "2021-04-08",
+      "url": "https://www.asrock.com/mb/Intel/Z490%20Taichi/BIOS.html"
+    },
     "Z490-A PRO": {
       "bios": "7C75v2H1",
       "date": "2026-04-16"
+    },
+    "Z490M Pro4": {
+      "bios": "1.60",
+      "date": "2020-05-22",
+      "url": "https://www.asrock.com/mb/Intel/Z490M%20Pro4/BIOS.html"
+    },
+    "Z490M-ITX/ac": {
+      "bios": "1.30",
+      "date": "2020-07-09",
+      "url": "https://www.asrock.com/mb/Intel/Z490M-ITXac/BIOS.html"
+    },
+    "Z590 Extreme": {
+      "bios": "2.20",
+      "date": "2023-04-07",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20Extreme/BIOS.html"
+    },
+    "Z590 Extreme WiFi 6E": {
+      "bios": "2.20",
+      "date": "2023-04-07",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20Extreme%20WiFi%206E/BIOS.html"
+    },
+    "Z590 OC Formula": {
+      "bios": "1.40",
+      "date": "2021-07-30",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20OC%20Formula/BIOS.html"
+    },
+    "Z590 PG Velocita": {
+      "bios": "2.00",
+      "date": "2025-12-18",
+      "url": "https://pg.asrock.com/mb/Intel/Z590%20PG%20Velocita/BIOS.html"
+    },
+    "Z590 Phantom Gaming 4": {
+      "bios": "2.10",
+      "date": "2022-04-14",
+      "url": "https://pg.asrock.com/mb/Intel/Z590%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "Z590 Phantom Gaming 4/ac": {
+      "bios": "2.10",
+      "date": "2022-04-14",
+      "url": "https://pg.asrock.com/mb/Intel/Z590%20Phantom%20Gaming%204ac/BIOS.html"
+    },
+    "Z590 Phantom Gaming 4/ac+": {
+      "bios": "1.70",
+      "date": "2021-12-14",
+      "url": "https://pg.asrock.com/mb/Intel/Z590%20Phantom%20Gaming%204ac%2B/BIOS.html"
+    },
+    "Z590 Phantom Gaming-ITX/TB4": {
+      "bios": "1.70",
+      "date": "2021-07-30",
+      "url": "https://pg.asrock.com/mb/Intel/Z590%20Phantom%20Gaming-ITXTB4/BIOS.html"
     },
     "Z590 PLUS": {
       "bios": "7D11v19",
@@ -1983,18 +3973,143 @@
       "bios": "7D09vAA",
       "date": "2024-08-09"
     },
+    "Z590 Pro4": {
+      "bios": "2.00",
+      "date": "2022-04-14",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20Pro4/BIOS.html"
+    },
+    "Z590 Steel Legend": {
+      "bios": "2.10",
+      "date": "2023-04-07",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20Steel%20Legend/BIOS.html"
+    },
+    "Z590 Steel Legend WiFi 6E": {
+      "bios": "2.10",
+      "date": "2023-04-07",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20Steel%20Legend%20WiFi%206E/BIOS.html"
+    },
+    "Z590 Taichi": {
+      "bios": "2.30",
+      "date": "2022-04-14",
+      "url": "https://www.asrock.com/mb/Intel/Z590%20Taichi/BIOS.html"
+    },
     "Z590-A PRO": {
       "bios": "7D09v1B1",
       "date": "2026-04-14"
+    },
+    "Z590M Phantom Gaming 4": {
+      "bios": "2.00",
+      "date": "2022-11-17",
+      "url": "https://pg.asrock.com/mb/Intel/Z590M%20Phantom%20Gaming%204/BIOS.html"
     },
     "Z590M PRO": {
       "bios": "7D18v291",
       "date": "2026-04-09"
     },
+    "Z590M Pro4": {
+      "bios": "2.20",
+      "date": "2022-06-07",
+      "url": "https://www.asrock.com/mb/Intel/Z590M%20Pro4/BIOS.html"
+    },
+    "Z590M-ITX/ax": {
+      "bios": "1.60",
+      "date": "2022-04-14",
+      "url": "https://www.asrock.com/mb/Intel/Z590M-ITXax/BIOS.html"
+    },
+    "Z690 AQUA": {
+      "bios": "22.01",
+      "date": "2025-05-27",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20AQUA/BIOS.html"
+    },
+    "Z690 AQUA OC": {
+      "bios": "22.01",
+      "date": "2025-05-27",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20AQUA%20OC/BIOS.html"
+    },
+    "Z690 Extreme": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Extreme/BIOS.html"
+    },
+    "Z690 Extreme WiFi 6E": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Extreme%20WiFi%206E/BIOS.html"
+    },
+    "Z690 PG Riptide": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://pg.asrock.com/mb/Intel/Z690%20PG%20Riptide/BIOS.html"
+    },
+    "Z690 PG Velocita": {
+      "bios": "22.02",
+      "date": "2025-10-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z690%20PG%20Velocita/BIOS.html"
+    },
+    "Z690 Phantom Gaming 4": {
+      "bios": "21.01",
+      "date": "2025-10-28",
+      "url": "https://pg.asrock.com/mb/Intel/Z690%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "Z690 Phantom Gaming 4/D5": {
+      "bios": "18.01",
+      "date": "2025-10-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z690%20Phantom%20Gaming%204D5/BIOS.html"
+    },
+    "Z690 Phantom Gaming-ITX/TB4": {
+      "bios": "22.01",
+      "date": "2026-03-04",
+      "url": "https://pg.asrock.com/mb/Intel/Z690%20Phantom%20Gaming-ITXTB4/BIOS.html"
+    },
+    "Z690 Pro RS": {
+      "bios": "21.01",
+      "date": "2025-10-29",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Pro%20RS/BIOS.html"
+    },
     "Z690 Steel Legend": {
       "bios": "21.01",
       "date": "2025-10-30",
       "url": "https://www.asrock.com/mb/Intel/Z690%20Steel%20Legend/BIOS.html"
+    },
+    "Z690 Steel Legend WiFi 6E": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Steel%20Legend%20WiFi%206E/BIOS.html"
+    },
+    "Z690 Steel Legend WiFi 6E/D5": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Steel%20Legend%20WiFi%206ED5/BIOS.html"
+    },
+    "Z690 Steel Legend/D5": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Steel%20LegendD5/BIOS.html"
+    },
+    "Z690 Taichi": {
+      "bios": "22.01",
+      "date": "2025-10-28",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Taichi/BIOS.html"
+    },
+    "Z690 Taichi Razer Edition": {
+      "bios": "22.01",
+      "date": "2025-10-29",
+      "url": "https://www.asrock.com/mb/Intel/Z690%20Taichi%20Razer%20Edition/BIOS.html"
+    },
+    "Z690M PG Riptide/D5": {
+      "bios": "19.01",
+      "date": "2025-10-30",
+      "url": "https://pg.asrock.com/mb/Intel/Z690M%20PG%20RiptideD5/BIOS.html"
+    },
+    "Z690M Phantom Gaming 4": {
+      "bios": "19.01",
+      "date": "2025-10-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z690M%20Phantom%20Gaming%204/BIOS.html"
+    },
+    "Z690M-ITX/ax": {
+      "bios": "21.01",
+      "date": "2025-10-30",
+      "url": "https://www.asrock.com/mb/Intel/Z690M-ITXax/BIOS.html"
     },
     "Z790 AORUS ELITE AX": {
       "bios": "F16",
@@ -2017,22 +4132,112 @@
       "bios": "7D94v1C",
       "date": "2026-03-18"
     },
+    "Z790 Lightning WiFi": {
+      "bios": "13.02",
+      "date": "2026-06-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20Lightning%20WiFi/BIOS.html"
+    },
+    "Z790 LiveMixer": {
+      "bios": "24.02",
+      "date": "2026-06-29",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20LiveMixer/BIOS.html"
+    },
+    "Z790 Nova WiFi": {
+      "bios": "11.01",
+      "date": "2026-06-26",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20Nova%20WiFi/BIOS.html"
+    },
+    "Z790 PG Lightning": {
+      "bios": "19.02",
+      "date": "2026-06-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20PG%20Lightning/BIOS.html"
+    },
+    "Z790 PG Lightning/D4": {
+      "bios": "18.01",
+      "date": "2026-06-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20PG%20LightningD4/BIOS.html"
+    },
+    "Z790 PG Riptide": {
+      "bios": "21.01",
+      "date": "2026-06-24",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20PG%20Riptide/BIOS.html"
+    },
+    "Z790 PG SONIC": {
+      "bios": "20.01",
+      "date": "2026-06-24",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20PG%20SONIC/BIOS.html"
+    },
+    "Z790 PG-ITX/TB4": {
+      "bios": "19.01",
+      "date": "2026-06-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20PG-ITXTB4/BIOS.html"
+    },
+    "Z790 Pro RS": {
+      "bios": "19.03",
+      "date": "2026-06-22",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Pro%20RS/BIOS.html"
+    },
+    "Z790 Pro RS WiFi": {
+      "bios": "17.03",
+      "date": "2026-06-22",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "Z790 Pro RS/D4": {
+      "bios": "17.01",
+      "date": "2026-06-26",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Pro%20RSD4/BIOS.html"
+    },
     "Z790 PROJECT ZERO": {
       "bios": "7E23v1A",
       "date": "2026-04-07"
+    },
+    "Z790 Riptide WiFi": {
+      "bios": "15.02",
+      "date": "2026-06-24",
+      "url": "https://pg.asrock.com/mb/Intel/Z790%20Riptide%20WiFi/BIOS.html"
     },
     "Z790 Steel Legend WiFi": {
       "bios": "22.02",
       "date": "2026-06-29",
       "url": "https://www.asrock.com/mb/Intel/Z790%20Steel%20Legend%20WiFi/BIOS.html"
     },
+    "Z790 Taichi": {
+      "bios": "20.01",
+      "date": "2026-06-26",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Taichi/BIOS.html"
+    },
+    "Z790 Taichi Carrara": {
+      "bios": "20.01",
+      "date": "2026-06-26",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Taichi%20Carrara/BIOS.html"
+    },
+    "Z790 Taichi Lite": {
+      "bios": "13.01",
+      "date": "2026-06-26",
+      "url": "https://www.asrock.com/mb/Intel/Z790%20Taichi%20Lite/BIOS.html"
+    },
     "Z790-S01": {
       "bios": "7D88v1H",
       "date": "2026-03-31"
     },
+    "Z790I Lightning WiFi": {
+      "bios": "11.02",
+      "date": "2026-06-29",
+      "url": "https://pg.asrock.com/mb/Intel/Z790I%20Lightning%20WiFi/BIOS.html"
+    },
     "Z790M GAMING PLUS WIFI": {
       "bios": "7E11vA2",
       "date": "2026-04-07"
+    },
+    "Z790M PG Lightning/D4": {
+      "bios": "17.01",
+      "date": "2026-06-26",
+      "url": "https://pg.asrock.com/mb/Intel/Z790M%20PG%20LightningD4/BIOS.html"
+    },
+    "Z790M-ITX WiFi": {
+      "bios": "20.02",
+      "date": "2026-06-24",
+      "url": "https://www.asrock.com/mb/Intel/Z790M-ITX%20WiFi/BIOS.html"
     },
     "Z890 AORUS ELITE WIFI7": {
       "bios": "F20",
@@ -2055,10 +4260,85 @@
       "bios": "7E54v2B30",
       "date": "2026-07-21"
     },
+    "Z890 Lightning WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-13",
+      "url": "https://pg.asrock.com/mb/Intel/Z890%20Lightning%20WiFi/BIOS.html"
+    },
+    "Z890 LiveMixer WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20LiveMixer%20WiFi/BIOS.html"
+    },
+    "Z890 Nova WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-13",
+      "url": "https://pg.asrock.com/mb/Intel/Z890%20Nova%20WiFi/BIOS.html"
+    },
+    "Z890 Pro RS": {
+      "bios": "3.31",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Pro%20RS/BIOS.html"
+    },
+    "Z890 Pro RS WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Pro%20RS%20WiFi/BIOS.html"
+    },
+    "Z890 Pro RS WiFi White": {
+      "bios": "3.31",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Pro%20RS%20WiFi%20White/BIOS.html"
+    },
+    "Z890 Pro-A": {
+      "bios": "3.31",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Pro-A/BIOS.html"
+    },
+    "Z890 Pro-A WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-09",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Pro-A%20WiFi/BIOS.html"
+    },
+    "Z890 Riptide WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://pg.asrock.com/mb/Intel/Z890%20Riptide%20WiFi/BIOS.html"
+    },
     "Z890 Steel Legend WiFi": {
       "bios": "3.31",
       "date": "2026-07-13",
       "url": "https://www.asrock.com/mb/Intel/Z890%20Steel%20Legend%20WiFi/BIOS.html"
+    },
+    "Z890 Taichi": {
+      "bios": "3.31",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Taichi/BIOS.html"
+    },
+    "Z890 Taichi AQUA": {
+      "bios": "3.31",
+      "date": "2026-07-24",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Taichi%20AQUA/BIOS.html"
+    },
+    "Z890 Taichi Lite": {
+      "bios": "3.31",
+      "date": "2026-07-14",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Taichi%20Lite/BIOS.html"
+    },
+    "Z890 Taichi OCF": {
+      "bios": "3.32",
+      "date": "2026-07-13",
+      "url": "https://www.asrock.com/mb/Intel/Z890%20Taichi%20OCF/BIOS.html"
+    },
+    "Z890I Nova WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://pg.asrock.com/mb/Intel/Z890I%20Nova%20WiFi/BIOS.html"
+    },
+    "Z890M Riptide WiFi": {
+      "bios": "3.31",
+      "date": "2026-07-15",
+      "url": "https://pg.asrock.com/mb/Intel/Z890M%20Riptide%20WiFi/BIOS.html"
     }
   },
   "intel": {

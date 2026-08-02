@@ -497,42 +497,79 @@ try {
     }
     Write-Host 'Gigabyte: done.'
 
-    # ASRock boards with their probe-verified BIOS page. Phantom Gaming (PG)
-    # boards live on pg.asrock.com; everything else on www.
-    $asrockBoards = [ordered]@{
-        'X870E Taichi'            = 'https://www.asrock.com/mb/AMD/X870E%20Taichi/BIOS.html'
-        'X870 Steel Legend WiFi'  = 'https://www.asrock.com/mb/AMD/X870%20Steel%20Legend%20WiFi/BIOS.html'
-        'X870 Pro RS WiFi'        = 'https://www.asrock.com/mb/AMD/X870%20Pro%20RS%20WiFi/BIOS.html'
-        'B850 Steel Legend WiFi'  = 'https://www.asrock.com/mb/AMD/B850%20Steel%20Legend%20WiFi/BIOS.html'
-        'B850 Pro RS'             = 'https://www.asrock.com/mb/AMD/B850%20Pro%20RS/BIOS.html'
-        'B650E Steel Legend WiFi' = 'https://www.asrock.com/mb/AMD/B650E%20Steel%20Legend%20WiFi/BIOS.html'
-        'B650E PG Riptide WiFi'   = 'https://pg.asrock.com/mb/AMD/B650E%20PG%20Riptide%20WiFi/BIOS.html'
-        'B650 Pro RS'             = 'https://www.asrock.com/mb/AMD/B650%20Pro%20RS/BIOS.html'
-        'B650M Pro RS'            = 'https://www.asrock.com/mb/AMD/B650M%20Pro%20RS/BIOS.html'
-        'X670E Steel Legend'      = 'https://www.asrock.com/mb/AMD/X670E%20Steel%20Legend/BIOS.html'
-        'X570 Steel Legend'       = 'https://www.asrock.com/mb/AMD/X570%20Steel%20Legend/BIOS.html'
-        'X570 Phantom Gaming 4'   = 'https://pg.asrock.com/mb/AMD/X570%20Phantom%20Gaming%204/BIOS.html'
-        'B550 Steel Legend'       = 'https://www.asrock.com/mb/AMD/B550%20Steel%20Legend/BIOS.html'
-        'B550M Pro4'              = 'https://www.asrock.com/mb/AMD/B550M%20Pro4/BIOS.html'
-        'B450M Pro4'              = 'https://www.asrock.com/mb/AMD/B450M%20Pro4/BIOS.html'
-        'Z890 Steel Legend WiFi'  = 'https://www.asrock.com/mb/Intel/Z890%20Steel%20Legend%20WiFi/BIOS.html'
-        'B860 Steel Legend WiFi'  = 'https://www.asrock.com/mb/Intel/B860%20Steel%20Legend%20WiFi/BIOS.html'
-        'Z790 Steel Legend WiFi'  = 'https://www.asrock.com/mb/Intel/Z790%20Steel%20Legend%20WiFi/BIOS.html'
-        'B760 Pro RS'             = 'https://www.asrock.com/mb/Intel/B760%20Pro%20RS/BIOS.html'
-        'Z690 Steel Legend'       = 'https://www.asrock.com/mb/Intel/Z690%20Steel%20Legend/BIOS.html'
+    # ASRock: the motherboard index embeds the complete catalog as JS
+    # arrays - "allmodels" holds every board ever made ([name, socket,
+    # chipset, form factor], ~1300 entries back to socket 754) and
+    # "pgmodels" names the Phantom Gaming boards whose live pages sit on
+    # pg.asrock.com. One headless fetch enumerates everything; the sweep
+    # covers the sockets Rig X's audience runs, mirroring the MSI filter.
+    # BIOS page URLs drop the slashes some names carry ("Z790 Pro RS/D4"
+    # lives at ".../Z790 Pro RSD4/"; an encoded slash 404s).
+    $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
+
+    # The arrays are single-quoted JS literals, so entries parse by pattern
+    # rather than as JSON: ['name','socket','chipset','form factor'].
+    function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
+        $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
+        [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
+            ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
     }
 
-    foreach ($name in $asrockBoards.Keys) {
+    $asrockAll = @(Get-AsrockCatalog $asrockDom 'allmodels')
+    $asrockPgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
+
+    $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
+    $asrockBoards = @($asrockAll | Where-Object { $_[1] -in $asrockSockets })
+    if ($asrockBoards.Count -lt 50) {
+        throw "Only $($asrockBoards.Count) ASRock boards enumerated - the index layout may have changed."
+    }
+    Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
+
+    $getAsrockBios = ${function:Get-AsrockBios}.ToString()
+    $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $board = $_
+        ${function:Get-BrowserDom} = $using:getBrowserDom
+        ${function:Get-AsrockBios} = $using:getAsrockBios
+        $browserUa = $using:browserUa
+
+        # Vendor is the chipset field's first word and names drop their
+        # slashes - the same rules the page's own link-building code uses.
+        $name = $board[0]
+        $vendor = $board[2].Split(' ')[0]
+        $site = if ($using:asrockPgNames -contains $name) { 'pg.asrock.com' } else { 'www.asrock.com' }
+        $slug = [uri]::EscapeDataString($name.Replace('/', ''))
         try {
-            $entry = Get-AsrockBios $browser $asrockBoards[$name]
-            if ($entry) { $fetched[$name] = $entry }
-            else { Write-Warning "ASRock: no BIOS for $name." }
+            $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS.html"
+            if (-not $entry) {
+                # Some lines sit on the other subdomain than the catalog
+                # claims (the Lightning boards live on pg without being in
+                # pgmodels); product pages redirect across but BIOS.html
+                # doesn't, so a miss retries on the other side.
+                $other = if ($site -eq 'www.asrock.com') { 'pg.asrock.com' } else { 'www.asrock.com' }
+                $entry = Get-AsrockBios $using:browser "https://$other/mb/$vendor/$slug/BIOS.html"
+            }
+            if (-not $entry) {
+                # Boards sold in multiple editions (B450M Steel Legend and
+                # its Pink Edition share one page) number their fragments:
+                # BIOS1.html is the base edition's list.
+                $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS1.html"
+            }
+
+            if ($entry) { [pscustomobject]@{ Name = $name; Entry = $entry } }
+            else { Write-Warning "ASRock: no BIOS for $name."; $null }
         }
         catch {
             Write-Warning "ASRock '$name' failed: $($_.Exception.Message)"
+            $null
         }
     }
-    Write-Host 'ASRock: done.'
+
+    $asrockResolved = 0
+    foreach ($result in $asrockResults | Where-Object { $_ }) {
+        $fetched[$result.Name] = $result.Entry
+        $asrockResolved++
+    }
+    Write-Host "ASRock: $asrockResolved boards resolved."
 
     # Boards that dropped out of this sweep (a transient API failure, or a
     # vendor delisting an older product) keep their previously published

@@ -78,15 +78,19 @@ endpoint (GeForce Game Ready) every six hours, and commits
   non-beta BIOS on the manufacturer's support page. The MSI board list is
   enumerated from MSI's products sitemap (every desktop board on AM4/AM5,
   LGA1200/1700/1851, and HEDT sockets - about 450 models), then each board's
-  support panel supplies its official name and BIOS list. Gigabyte boards are
-  curated with their canonical revision slugs (their server-rendered pages
-  only exist at those addresses, so entries also carry a `url` the app links
-  to). ASRock boards are curated with their platform segment; their BIOS
-  pages derive from the model name. All of it goes through a headless
-  Chrome/Edge since these sites reject plain HTTP clients. Boards that drop
-  out of a sweep keep their last published entry. ASUS is handled entirely
-  in the app, which queries ASUS's public BIOS API live for any board, so
-  ASUS boards never need a feed entry.
+  support panel supplies its official name and BIOS list. The ASRock board
+  list is enumerated from the catalog ASRock's own motherboard index embeds
+  (every board on the same sockets - about 480 models); BIOS page URLs
+  derive from the model name (slashes dropped, "Z790 Pro RS/D4" lives at
+  "Z790 Pro RSD4"), Phantom Gaming-family boards resolve on pg.asrock.com,
+  and a miss on one subdomain retries on the other since some lines moved
+  without the catalog saying so. Gigabyte boards are curated with their
+  canonical revision slugs (their server-rendered pages only exist at those
+  addresses, so entries also carry a `url` the app links to). All of it
+  goes through a headless Chrome/Edge since these sites reject plain HTTP
+  clients. Boards that drop out of a sweep keep their last published entry.
+  ASUS is handled entirely in the app, which queries ASUS's public BIOS API
+  live for any board, so ASUS boards never need a feed entry.
 - `intel` holds the chipset INF utility version plus the two graphics-driver
   branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
   Ultra iGPUs) and `xe` (the legacy-support package for 11th-14th gen
