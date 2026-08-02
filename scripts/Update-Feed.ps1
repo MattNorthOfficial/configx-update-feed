@@ -10,6 +10,12 @@
 # - NVIDIA: the driver-search endpoint behind NVIDIA's own download page.
 #
 # Runs on PowerShell 7 (locally on Windows or in GitHub Actions on Linux).
+#
+# -BoardVendors narrows the motherboard sweep to selected vendors (msi,
+# gigabyte, asrock, asus). Anything not swept keeps its previously published
+# entry through the usual carry-forward, so a targeted re-sweep of one
+# vendor never loses the others' data.
+param([string[]] $BoardVendors = @('msi', 'gigabyte', 'asrock', 'asus'))
 
 $ErrorActionPreference = 'Stop'
 
@@ -424,251 +430,267 @@ $motherboards = $null
 try {
     $browser = Find-HeadlessBrowser
     if (-not $browser) {
-        throw 'No Chrome or Edge available for the MSI fetch.'
+        throw 'No Chrome or Edge available for the BIOS sweep.'
     }
 
-    $slugs = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
-            'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
-        ForEach-Object { $_.Groups[1].Value } |
-        Sort-Object -Unique |
-        Where-Object { $_ -match $msiChipsetFilter })
-    if ($slugs.Count -lt 50) {
-        throw "Only $($slugs.Count) boards enumerated - the sitemap layout may have changed."
-    }
-    Write-Host "MSI: checking $($slugs.Count) boards..."
-
-    # Each headless call takes a few seconds; a handful in flight keeps the
-    # full sweep to minutes without hammering MSI. The parallel runspaces
-    # don't inherit functions, so they are re-hydrated from their text.
+    # The parallel runspaces below don't inherit functions, so each vendor
+    # phase re-hydrates the ones it needs from their text.
     $getBrowserDom = ${function:Get-BrowserDom}.ToString()
-    $getMsiBios = ${function:Get-MsiBios}.ToString()
     $formatBiosDate = ${function:Format-BiosDate}.ToString()
-    $results = $slugs | ForEach-Object -ThrottleLimit 6 -Parallel {
-        $slug = $_
-        ${function:Get-BrowserDom} = $using:getBrowserDom
-        ${function:Get-MsiBios} = $using:getMsiBios
-        ${function:Format-BiosDate} = $using:formatBiosDate
-        $browserUa = $using:browserUa
-        try {
-            Get-MsiBios $using:browser $slug
+    $fetched = @{}
+
+    if ($BoardVendors -contains 'msi') {
+        $slugs = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
+                'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
+            ForEach-Object { $_.Groups[1].Value } |
+            Sort-Object -Unique |
+            Where-Object { $_ -match $msiChipsetFilter })
+        if ($slugs.Count -lt 50) {
+            throw "Only $($slugs.Count) boards enumerated - the sitemap layout may have changed."
         }
-        catch {
-            Write-Warning "MSI '$slug' failed: $($_.Exception.Message)"
-            $null
+        Write-Host "MSI: checking $($slugs.Count) boards..."
+
+        # Each headless call takes a few seconds; a handful in flight keeps
+        # the full sweep to minutes without hammering MSI.
+        $getMsiBios = ${function:Get-MsiBios}.ToString()
+        $results = $slugs | ForEach-Object -ThrottleLimit 6 -Parallel {
+            $slug = $_
+            ${function:Get-BrowserDom} = $using:getBrowserDom
+            ${function:Get-MsiBios} = $using:getMsiBios
+            ${function:Format-BiosDate} = $using:formatBiosDate
+            $browserUa = $using:browserUa
+            try {
+                Get-MsiBios $using:browser $slug
+            }
+            catch {
+                Write-Warning "MSI '$slug' failed: $($_.Exception.Message)"
+                $null
+            }
         }
+
+        foreach ($result in $results | Where-Object { $_ }) {
+            $fetched[$result.Name] = $result.Entry
+        }
+        Write-Host "MSI: $($fetched.Count) boards resolved."
     }
 
-    $fetched = @{}
-    foreach ($result in $results | Where-Object { $_ }) {
-        $fetched[$result.Name] = $result.Entry
+    if ($BoardVendors -contains 'gigabyte') {
+        # Gigabyte: the All-Series grid server-renders its catalog page by
+        # page (~14 products each), and its anchors carry the canonical
+        # revision slugs. Walking pages until no new slug appears enumerates
+        # every board ever listed; out-of-range pages just echo page 1,
+        # which that stop condition also catches.
+        $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+        $pageStart = 1
+        while ($pageStart -le 200) {
+            $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit 8 -Parallel {
+                ${function:Get-BrowserDom} = $using:getBrowserDom
+                $browserUa = $using:browserUa
+                $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
+                [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
+            }
+            $before = $gigabyteSlugs.Count
+            foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
+            if ($gigabyteSlugs.Count -eq $before) { break }
+            $pageStart += 8
+        }
+
+        # Unlike the other vendors, Gigabyte is swept unfiltered - every
+        # board the grid lists, back through the oldest generations.
+        # Anything with a digit is a product (series pages like "AORUS" or
+        # "All-Series" have none), and non-board pages that slip through
+        # self-filter because their support page has no F-version BIOS list
+        # to match.
+        $gigabyteBoards = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
+        if ($gigabyteBoards.Count -lt 50) {
+            throw "Only $($gigabyteBoards.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
+        }
+        Write-Host "Gigabyte: checking $($gigabyteBoards.Count) board pages..."
+
+        $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
+        $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
+            $slug = $_
+            ${function:Get-BrowserDom} = $using:getBrowserDom
+            ${function:Get-GigabyteBios} = $using:getGigabyteBios
+            ${function:Format-BiosDate} = $using:formatBiosDate
+            $browserUa = $using:browserUa
+            try {
+                $entry = Get-GigabyteBios $using:browser $slug
+                if ($entry) { [pscustomobject]@{ Slug = $slug; Entry = $entry } } else { $null }
+            }
+            catch {
+                Write-Warning "Gigabyte '$slug' failed: $($_.Exception.Message)"
+                $null
+            }
+        }
+
+        # Boards with several hardware revisions get one page (and BIOS
+        # train) per revision, while WMI only reports the marketing name -
+        # so revisions collapse onto that name and the newest-dated BIOS
+        # wins. The entry's url keeps pointing at the exact revision page
+        # the verdict came from.
+        $gigabyteByName = @{}
+        foreach ($result in $gigabyteResults | Where-Object { $_ }) {
+            $name = ($result.Slug -replace '-rev-[0-9a-zx-]+$', '') -replace '-', ' '
+            $existing = $gigabyteByName[$name]
+            if (-not $existing -or [string]::Compare($result.Entry.date, $existing.date) -gt 0) {
+                $gigabyteByName[$name] = $result.Entry
+            }
+        }
+        foreach ($name in $gigabyteByName.Keys) {
+            $fetched[$name] = $gigabyteByName[$name]
+        }
+        Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
     }
+
+    if ($BoardVendors -contains 'asrock') {
+        # ASRock: the motherboard index embeds the complete catalog as JS
+        # arrays - "allmodels" holds every board ever made ([name, socket,
+        # chipset, form factor], ~1300 entries back to socket 754) and
+        # "pgmodels" names the Phantom Gaming boards whose live pages sit on
+        # pg.asrock.com. One headless fetch enumerates everything; the sweep
+        # covers the sockets Config X's audience runs, mirroring the MSI
+        # filter. BIOS page URLs drop the slashes some names carry
+        # ("Z790 Pro RS/D4" lives at ".../Z790 Pro RSD4/"; an encoded
+        # slash 404s).
+        $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
+
+        # The arrays are single-quoted JS literals, so entries parse by
+        # pattern rather than as JSON: ['name','socket','chipset','form factor'].
+        function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
+            $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
+            [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
+                ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
+        }
+
+        $asrockAll = @(Get-AsrockCatalog $asrockDom 'allmodels')
+        $asrockPgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
+
+        $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
+        $asrockBoards = @($asrockAll | Where-Object { $_[1] -in $asrockSockets })
+        if ($asrockBoards.Count -lt 50) {
+            throw "Only $($asrockBoards.Count) ASRock boards enumerated - the index layout may have changed."
+        }
+        Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
+
+        $getAsrockBios = ${function:Get-AsrockBios}.ToString()
+        $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
+            $board = $_
+            ${function:Get-BrowserDom} = $using:getBrowserDom
+            ${function:Get-AsrockBios} = $using:getAsrockBios
+            $browserUa = $using:browserUa
+
+            # Vendor is the chipset field's first word and names drop their
+            # slashes - the same rules the page's own link-building code
+            # uses.
+            $name = $board[0]
+            $vendor = $board[2].Split(' ')[0]
+            $site = if ($using:asrockPgNames -contains $name) { 'pg.asrock.com' } else { 'www.asrock.com' }
+            $slug = [uri]::EscapeDataString($name.Replace('/', ''))
+            try {
+                $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS.html"
+                if (-not $entry) {
+                    # Some lines sit on the other subdomain than the catalog
+                    # claims (the Lightning boards live on pg without being
+                    # in pgmodels); product pages redirect across but
+                    # BIOS.html doesn't, so a miss retries on the other side.
+                    $other = if ($site -eq 'www.asrock.com') { 'pg.asrock.com' } else { 'www.asrock.com' }
+                    $entry = Get-AsrockBios $using:browser "https://$other/mb/$vendor/$slug/BIOS.html"
+                }
+                if (-not $entry) {
+                    # Boards sold in multiple editions (B450M Steel Legend
+                    # and its Pink Edition share one page) number their
+                    # fragments: BIOS1.html is the base edition's list.
+                    $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS1.html"
+                }
+
+                if ($entry) { [pscustomobject]@{ Name = $name; Entry = $entry } }
+                else { Write-Warning "ASRock: no BIOS for $name."; $null }
+            }
+            catch {
+                Write-Warning "ASRock '$name' failed: $($_.Exception.Message)"
+                $null
+            }
+        }
+
+        $asrockResolved = 0
+        foreach ($result in $asrockResults | Where-Object { $_ }) {
+            $fetched[$result.Name] = $result.Entry
+            $asrockResolved++
+        }
+        Write-Host "ASRock: $asrockResolved boards resolved."
+    }
+
+    if ($BoardVendors -contains 'asus') {
+        # ASUS: their support API answers plain requests, so the app checks
+        # ASUS boards live - this sweep bundles the same answers into the
+        # feed as the offline fallback. The board list comes from the JSON
+        # API behind asus.com's own product grid (~900 boards), filtered to
+        # the same sockets as the other vendors via the shared chipset
+        # pattern. No headless browser needed for any of it.
+        $asusNames = [System.Collections.Generic.List[string]]::new()
+        $pageIndex = 1
+        do {
+            $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
+                'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
+                '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
+                "&PageSize=100&PageIndex=$pageIndex" +
+                '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
+            foreach ($product in $page.Result.ProductList) {
+                $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
+                if ($name) { $asusNames.Add($name) }
+            }
+            $pageIndex++
+        } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
+
+        $asusBoards = @($asusNames | Sort-Object -Unique | Where-Object { $_ -match $msiChipsetFilter })
+        if ($asusBoards.Count -lt 50) {
+            throw "Only $($asusBoards.Count) ASUS boards enumerated - the listing API may have changed."
+        }
+        Write-Host "ASUS: checking $($asusBoards.Count) boards..."
+
+        $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 8 -Parallel {
+            $name = $_
+            try {
+                $response = Invoke-RestMethod -UserAgent $using:userAgent -TimeoutSec 30 -Uri (
+                    'https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global' +
+                    "&model=$([uri]::EscapeDataString($name))&cpu=")
+                $biosGroup = $response.Result.Obj | Where-Object { $_.Name -eq 'BIOS' } | Select-Object -First 1
+                $newest = if ($biosGroup) { $biosGroup.Files | Select-Object -First 1 } else { $null }
+                if ($newest -and $newest.Version) {
+                    [pscustomobject]@{
+                        Name  = $name
+                        Entry = [ordered]@{
+                            bios = "$($newest.Version)"
+                            date = "$($newest.ReleaseDate)".Replace('/', '-')
+                            url  = "https://www.asus.com/supportonly/$([uri]::EscapeDataString($name))/helpdesk_bios/"
+                        }
+                    }
+                }
+                else { $null }
+            }
+            catch {
+                Write-Warning "ASUS '$name' failed: $($_.Exception.Message)"
+                $null
+            }
+        }
+
+        $asusResolved = 0
+        foreach ($result in $asusResults | Where-Object { $_ }) {
+            $fetched[$result.Name] = $result.Entry
+            $asusResolved++
+        }
+        Write-Host "ASUS: $asusResolved boards resolved."
+    }
+
     if ($fetched.Count -eq 0) {
         throw 'No BIOS versions could be fetched.'
     }
-    Write-Host "MSI: $($fetched.Count) boards resolved."
-
-    # Gigabyte: the All-Series grid server-renders its catalog page by page
-    # (~14 products each), and its anchors carry the canonical revision
-    # slugs. Walking pages until no new slug appears enumerates every board
-    # ever listed; out-of-range pages just echo page 1, which that stop
-    # condition also catches.
-    $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-    $pageStart = 1
-    while ($pageStart -le 200) {
-        $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit 8 -Parallel {
-            ${function:Get-BrowserDom} = $using:getBrowserDom
-            $browserUa = $using:browserUa
-            $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
-            [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
-        }
-        $before = $gigabyteSlugs.Count
-        foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
-        if ($gigabyteSlugs.Count -eq $before) { break }
-        $pageStart += 8
-    }
-
-    # Unlike the other vendors, Gigabyte is swept unfiltered - every board
-    # the grid lists, back through the oldest generations. Anything with a
-    # digit is a product (series pages like "AORUS" or "All-Series" have
-    # none), and non-board pages that slip through self-filter because
-    # their support page has no F-version BIOS list to match.
-    $gigabyteBoards = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
-    if ($gigabyteBoards.Count -lt 50) {
-        throw "Only $($gigabyteBoards.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
-    }
-    Write-Host "Gigabyte: checking $($gigabyteBoards.Count) board pages..."
-
-    $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
-    $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
-        $slug = $_
-        ${function:Get-BrowserDom} = $using:getBrowserDom
-        ${function:Get-GigabyteBios} = $using:getGigabyteBios
-        ${function:Format-BiosDate} = $using:formatBiosDate
-        $browserUa = $using:browserUa
-        try {
-            $entry = Get-GigabyteBios $using:browser $slug
-            if ($entry) { [pscustomobject]@{ Slug = $slug; Entry = $entry } } else { $null }
-        }
-        catch {
-            Write-Warning "Gigabyte '$slug' failed: $($_.Exception.Message)"
-            $null
-        }
-    }
-
-    # Boards with several hardware revisions get one page (and BIOS train)
-    # per revision, while WMI only reports the marketing name - so revisions
-    # collapse onto that name and the newest-dated BIOS wins. The entry's
-    # url keeps pointing at the exact revision page the verdict came from.
-    $gigabyteByName = @{}
-    foreach ($result in $gigabyteResults | Where-Object { $_ }) {
-        $name = ($result.Slug -replace '-rev-[0-9a-zx-]+$', '') -replace '-', ' '
-        $existing = $gigabyteByName[$name]
-        if (-not $existing -or [string]::Compare($result.Entry.date, $existing.date) -gt 0) {
-            $gigabyteByName[$name] = $result.Entry
-        }
-    }
-    foreach ($name in $gigabyteByName.Keys) {
-        $fetched[$name] = $gigabyteByName[$name]
-    }
-    Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
-
-    # ASRock: the motherboard index embeds the complete catalog as JS
-    # arrays - "allmodels" holds every board ever made ([name, socket,
-    # chipset, form factor], ~1300 entries back to socket 754) and
-    # "pgmodels" names the Phantom Gaming boards whose live pages sit on
-    # pg.asrock.com. One headless fetch enumerates everything; the sweep
-    # covers the sockets Config X's audience runs, mirroring the MSI filter.
-    # BIOS page URLs drop the slashes some names carry ("Z790 Pro RS/D4"
-    # lives at ".../Z790 Pro RSD4/"; an encoded slash 404s).
-    $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
-
-    # The arrays are single-quoted JS literals, so entries parse by pattern
-    # rather than as JSON: ['name','socket','chipset','form factor'].
-    function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
-        $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
-        [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
-            ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
-    }
-
-    $asrockAll = @(Get-AsrockCatalog $asrockDom 'allmodels')
-    $asrockPgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
-
-    $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
-    $asrockBoards = @($asrockAll | Where-Object { $_[1] -in $asrockSockets })
-    if ($asrockBoards.Count -lt 50) {
-        throw "Only $($asrockBoards.Count) ASRock boards enumerated - the index layout may have changed."
-    }
-    Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
-
-    $getAsrockBios = ${function:Get-AsrockBios}.ToString()
-    $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
-        $board = $_
-        ${function:Get-BrowserDom} = $using:getBrowserDom
-        ${function:Get-AsrockBios} = $using:getAsrockBios
-        $browserUa = $using:browserUa
-
-        # Vendor is the chipset field's first word and names drop their
-        # slashes - the same rules the page's own link-building code uses.
-        $name = $board[0]
-        $vendor = $board[2].Split(' ')[0]
-        $site = if ($using:asrockPgNames -contains $name) { 'pg.asrock.com' } else { 'www.asrock.com' }
-        $slug = [uri]::EscapeDataString($name.Replace('/', ''))
-        try {
-            $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS.html"
-            if (-not $entry) {
-                # Some lines sit on the other subdomain than the catalog
-                # claims (the Lightning boards live on pg without being in
-                # pgmodels); product pages redirect across but BIOS.html
-                # doesn't, so a miss retries on the other side.
-                $other = if ($site -eq 'www.asrock.com') { 'pg.asrock.com' } else { 'www.asrock.com' }
-                $entry = Get-AsrockBios $using:browser "https://$other/mb/$vendor/$slug/BIOS.html"
-            }
-            if (-not $entry) {
-                # Boards sold in multiple editions (B450M Steel Legend and
-                # its Pink Edition share one page) number their fragments:
-                # BIOS1.html is the base edition's list.
-                $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS1.html"
-            }
-
-            if ($entry) { [pscustomobject]@{ Name = $name; Entry = $entry } }
-            else { Write-Warning "ASRock: no BIOS for $name."; $null }
-        }
-        catch {
-            Write-Warning "ASRock '$name' failed: $($_.Exception.Message)"
-            $null
-        }
-    }
-
-    $asrockResolved = 0
-    foreach ($result in $asrockResults | Where-Object { $_ }) {
-        $fetched[$result.Name] = $result.Entry
-        $asrockResolved++
-    }
-    Write-Host "ASRock: $asrockResolved boards resolved."
-
-    # ASUS: their support API answers plain requests, so the app checks ASUS
-    # boards live - this sweep bundles the same answers into the feed as the
-    # offline fallback. The board list comes from the JSON API behind
-    # asus.com's own product grid (~900 boards), filtered to the same
-    # sockets as the other vendors via the shared chipset pattern. No
-    # headless browser needed for any of it.
-    $asusNames = [System.Collections.Generic.List[string]]::new()
-    $pageIndex = 1
-    do {
-        $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
-            'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
-            '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
-            "&PageSize=100&PageIndex=$pageIndex" +
-            '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
-        foreach ($product in $page.Result.ProductList) {
-            $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
-            if ($name) { $asusNames.Add($name) }
-        }
-        $pageIndex++
-    } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
-
-    $asusBoards = @($asusNames | Sort-Object -Unique | Where-Object { $_ -match $msiChipsetFilter })
-    if ($asusBoards.Count -lt 50) {
-        throw "Only $($asusBoards.Count) ASUS boards enumerated - the listing API may have changed."
-    }
-    Write-Host "ASUS: checking $($asusBoards.Count) boards..."
-
-    $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 8 -Parallel {
-        $name = $_
-        try {
-            $response = Invoke-RestMethod -UserAgent $using:userAgent -TimeoutSec 30 -Uri (
-                'https://www.asus.com/support/api/product.asmx/GetPDBIOS?website=global' +
-                "&model=$([uri]::EscapeDataString($name))&cpu=")
-            $biosGroup = $response.Result.Obj | Where-Object { $_.Name -eq 'BIOS' } | Select-Object -First 1
-            $newest = if ($biosGroup) { $biosGroup.Files | Select-Object -First 1 } else { $null }
-            if ($newest -and $newest.Version) {
-                [pscustomobject]@{
-                    Name  = $name
-                    Entry = [ordered]@{
-                        bios = "$($newest.Version)"
-                        date = "$($newest.ReleaseDate)".Replace('/', '-')
-                        url  = "https://www.asus.com/supportonly/$([uri]::EscapeDataString($name))/helpdesk_bios/"
-                    }
-                }
-            }
-            else { $null }
-        }
-        catch {
-            Write-Warning "ASUS '$name' failed: $($_.Exception.Message)"
-            $null
-        }
-    }
-
-    $asusResolved = 0
-    foreach ($result in $asusResults | Where-Object { $_ }) {
-        $fetched[$result.Name] = $result.Entry
-        $asusResolved++
-    }
-    Write-Host "ASUS: $asusResolved boards resolved."
 
     # Boards that dropped out of this sweep (a transient API failure, or a
     # vendor delisting an older product) keep their previously published
-    # entry: the last-known BIOS remains the newest one there is.
+    # entry: the last-known BIOS remains the newest one there is. Vendors
+    # excluded by -BoardVendors carry forward wholesale the same way.
     if (Test-Path $outputPath) {
         $previousBoards = (Get-Content $outputPath -Raw | ConvertFrom-Json).motherboards
         foreach ($prop in @($previousBoards.PSObject.Properties)) {

@@ -2,6 +2,11 @@ name: Update feed
 
 on:
   workflow_dispatch:
+    inputs:
+      board_vendors:
+        description: "Motherboard vendors to sweep (comma-separated: msi,gigabyte,asrock,asus). Empty = all; others carry forward."
+        required: false
+        default: ""
   schedule:
     - cron: "0 */6 * * *"
 
@@ -16,7 +21,14 @@ jobs:
 
       - name: Scrape latest driver versions
         shell: pwsh
-        run: ./scripts/Update-Feed.ps1
+        run: |
+          $vendors = '${{ inputs.board_vendors }}'
+          if ($vendors) {
+            ./scripts/Update-Feed.ps1 -BoardVendors ($vendors -split ',')
+          }
+          else {
+            ./scripts/Update-Feed.ps1
+          }
 
       - name: Commit feed if changed
         run: |
