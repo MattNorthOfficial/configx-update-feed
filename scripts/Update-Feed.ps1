@@ -343,7 +343,12 @@ function Get-BrowserDom([string] $browser, [string] $url) {
     # terminating errors under $ErrorActionPreference = 'Stop'.
     $previousPreference = $script:ErrorActionPreference
     $script:ErrorActionPreference = 'Continue'
-    $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --dump-dom $url 2>$null | Out-String
+    # --timeout dumps whatever has rendered once the budget runs out. Without
+    # it, a page that never finishes loading (rate-limited requests get
+    # served challenge loops after a few hundred rapid hits) parks its
+    # browser - and the worker running it - forever, silently stalling a
+    # whole sweep phase.
+    $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --timeout=30000 --dump-dom $url 2>$null | Out-String
     $script:ErrorActionPreference = $previousPreference
     return $dom
 }
@@ -507,8 +512,11 @@ try {
         }
         Write-Host "Gigabyte: checking $($gigabyteBoards.Count) board pages..."
 
+        # Gentler than the other vendors' 6: at ~1100 pages, gigabyte.com's
+        # rate control starts slow-walking rapid requests from one address,
+        # which stalled full-throttle sweeps.
         $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
-        $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit 6 -Parallel {
+        $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit 4 -Parallel {
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
