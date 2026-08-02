@@ -437,7 +437,8 @@ function Get-GigabyteBios([string] $browser, [string] $slug) {
     }
     if (-not $best) { return $null }
 
-    $title = [regex]::Match($dom, '<title>\s*([^<]+?)\s*(?:\(Rev\.[^)]*\)\s*)?Motherboard Support').Groups[1].Value.Trim()
+    $title = [System.Net.WebUtility]::HtmlDecode(
+        [regex]::Match($dom, '<title>\s*([^<]+?)\s*(?:\([Rr]ev\.[^)]*\)\s*)?Motherboard Support').Groups[1].Value.Trim())
     return [pscustomobject]@{
         Name  = if ($title) { $title } else { ($slug -replace '-rev-[0-9a-zx-]+$', '') -replace '-', ' ' }
         Entry = $best
@@ -469,6 +470,21 @@ function Get-AsrockBios([string] $browser, [string] $url) {
     return $best
 }
 
+# Runs one vendor's phase with its own containment: a hard failure there
+# (enumeration API down, a layout-change sanity throw) warns, marks the
+# run summary, and leaves that vendor's boards to carry forward - without
+# discarding the other vendors' completed work the way a shared catch
+# would.
+function Invoke-VendorSweep([string] $label, [scriptblock] $phase) {
+    try {
+        & $phase
+    }
+    catch {
+        Write-Warning "$label sweep failed: $($_.Exception.Message)"
+        $sweepCounts[$label] = "failed, carried forward ($($_.Exception.Message))"
+    }
+}
+
 $motherboards = $null
 $sweepCounts = [ordered]@{}
 try {
@@ -488,7 +504,7 @@ try {
     $formatBiosDate = ${function:Format-BiosDate}.ToString()
     $fetched = @{}
 
-    if ($BoardVendors -contains 'msi') {
+    if ($BoardVendors -contains 'msi') { Invoke-VendorSweep 'MSI' {
         $slugs = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
                 'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
             ForEach-Object { $_.Groups[1].Value } |
@@ -533,9 +549,9 @@ try {
         }
         $sweepCounts['MSI'] = $fetched.Count
         Write-Host "MSI: $($fetched.Count) boards resolved."
-    }
+    } }
 
-    if ($BoardVendors -contains 'gigabyte') {
+    if ($BoardVendors -contains 'gigabyte') { Invoke-VendorSweep 'Gigabyte' {
         # Gigabyte: the All-Series grid server-renders its catalog page by
         # page (~14 products each), and its anchors carry the canonical
         # revision slugs. Walking pages until no new slug appears enumerates
@@ -618,9 +634,9 @@ try {
         }
         $sweepCounts['Gigabyte'] = $gigabyteByName.Count
         Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
-    }
+    } }
 
-    if ($BoardVendors -contains 'asrock') {
+    if ($BoardVendors -contains 'asrock') { Invoke-VendorSweep 'ASRock' {
         # ASRock: the motherboard index embeds the complete catalog as JS
         # arrays - "allmodels" holds every board ever made ([name, socket,
         # chipset, form factor], ~1300 entries back to socket 754) and
@@ -711,9 +727,9 @@ try {
         }
         $sweepCounts['ASRock'] = $asrockResolved
         Write-Host "ASRock: $asrockResolved boards resolved."
-    }
+    } }
 
-    if ($BoardVendors -contains 'asus') {
+    if ($BoardVendors -contains 'asus') { Invoke-VendorSweep 'ASUS' {
         # ASUS: their support API answers plain requests, so the app checks
         # ASUS boards live - this sweep bundles the same answers into the
         # feed as the offline fallback. The board list comes from the JSON
@@ -790,7 +806,7 @@ try {
         }
         $sweepCounts['ASUS'] = $asusResolved
         Write-Host "ASUS: $asusResolved boards resolved."
-    }
+    } }
 
     foreach ($vendor in $sweepCounts.Keys) {
         if ($sweepCounts[$vendor] -eq 0) {
@@ -987,7 +1003,10 @@ function Write-RunSummary([string] $outcome) {
     foreach ($vendor in @('msi', 'gigabyte', 'asrock', 'asus')) {
         $label = switch ($vendor) { 'msi' { 'MSI' } 'gigabyte' { 'Gigabyte' } 'asrock' { 'ASRock' } 'asus' { 'ASUS' } }
         $lines += if ($BoardVendors -contains $vendor -and $sweepCounts.Contains($label)) {
-            "| $label | $($sweepCounts[$label]) boards resolved |"
+            # An int is a resolve count; a vendor whose phase failed hard
+            # carries a message string instead.
+            $value = $sweepCounts[$label]
+            if ($value -is [int]) { "| $label | $value boards resolved |" } else { "| $label | $value |" }
         }
         else { "| $label | skipped (carried forward) |" }
     }
