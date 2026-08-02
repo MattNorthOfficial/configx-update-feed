@@ -13,7 +13,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$userAgent = 'Mozilla/5.0 rigx-update-feed/1.0'
+$userAgent = 'Mozilla/5.0 configx-update-feed/1.0'
 $outputPath = Join-Path $PSScriptRoot '..\feed\updates.json'
 
 function Get-CellText([string] $cell) {
@@ -103,7 +103,7 @@ try {
         # regardless of the PowerShell version running this script.
         $notesText = $notesText -replace [char]0x00C2, ' ' -replace [char]0x00A0, ' '
 
-        # Only the components Rig X displays. The SMBus PnP device runs two
+        # Only the components Config X displays. The SMBus PnP device runs two
         # different driver families: "AMD Interface Driver" (2.x) on AM5 and
         # the legacy "AMD SMBUS Driver" (5.12.x) on AM4 - the notes list
         # both, and the app picks the entry matching the installed family.
@@ -298,7 +298,7 @@ if (-not $windowsBuilds -and (Test-Path $outputPath)) {
 # sitemap enumerates every motherboard slug, filtered to desktop chipsets
 # (AM4/AM5, LGA1200/1700/1851, HEDT). Each board's support panel then reports
 # its official marketing name ("PRO X870-P WIFI") - the feed key, matching
-# what Rig X reads from WMI once it strips the "(MS-7E51)"-style suffix -
+# what Config X reads from WMI once it strips the "(MS-7E51)"-style suffix -
 # alongside its BIOS downloads.
 #
 # ASUS is not here - it exposes a public API the app queries live for any
@@ -502,7 +502,7 @@ try {
     # chipset, form factor], ~1300 entries back to socket 754) and
     # "pgmodels" names the Phantom Gaming boards whose live pages sit on
     # pg.asrock.com. One headless fetch enumerates everything; the sweep
-    # covers the sockets Rig X's audience runs, mirroring the MSI filter.
+    # covers the sockets Config X's audience runs, mirroring the MSI filter.
     # BIOS page URLs drop the slashes some names carry ("Z790 Pro RS/D4"
     # lives at ".../Z790 Pro RSD4/"; an encoded slash 404s).
     $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
