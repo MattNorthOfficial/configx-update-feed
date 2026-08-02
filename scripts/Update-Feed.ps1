@@ -392,17 +392,44 @@ function Get-MsiBios([string] $browser, [string] $slug) {
 # cannot be derived from a board name - so slugs come from enumerating the
 # All-Series grid. The entry's url rides into the feed so the app can link
 # the exact page (pattern-built Gigabyte links would land on an error shell).
+#
+# The page is one semantic table per download section, each headed by an
+# <h2>; rows tag their cells with item-version/item-date classes. Reading
+# the BIOS section's rows structurally handles every version scheme
+# Gigabyte uses ("F42c" on mainstream boards, "FA2" on TRX50) instead of
+# guessing at text shapes, and the newest row is picked by date since
+# that's what the page presents as latest. The board is named from the
+# page's own title ("TRX50 AERO D (Rev. 1.1) Motherboard Support - ..."),
+# the vendor's marketing name as WMI-adjacent as it gets - slug-derived
+# names would strip the hyphen "GA-" era boards keep.
 function Get-GigabyteBios([string] $browser, [string] $slug) {
     $url = "https://www.gigabyte.com/Motherboard/$slug/support"
     $dom = Get-BrowserDom $browser $url
-    # First version cell ("F42c") with its date cell nearby = newest BIOS.
-    $m = [regex]::Match($dom, '(?s)>(F\d{1,2}[a-z]?)<.{0,400}?>([A-Z][a-z]{2} \d{1,2}, \d{4})<')
-    if (-not $m.Success) { return $null }
 
-    return [ordered]@{
-        bios = $m.Groups[1].Value
-        date = Format-BiosDate $m.Groups[2].Value
-        url  = "$url#support-dl-bios"
+    $bios = [regex]::Match($dom, '(?s)<h2>\s*BIOS\s*</h2>(.*?)(?:<h2>|</html>|$)').Groups[1].Value
+    if (-not $bios) { return $null }
+
+    $best = $null
+    $bestDate = [datetime]::MinValue
+    foreach ($m in [regex]::Matches($bios,
+            '(?s)class="item-version"[^>]*>\s*([^<]+?)\s*<.*?class="item-date"[^>]*>\s*([^<]+?)\s*<')) {
+        $date = [datetime]::MinValue
+        if ([datetime]::TryParse($m.Groups[2].Value.Trim(), [cultureinfo]::InvariantCulture,
+                [System.Globalization.DateTimeStyles]::None, [ref] $date) -and $date -gt $bestDate) {
+            $bestDate = $date
+            $best = [ordered]@{
+                bios = [System.Net.WebUtility]::HtmlDecode($m.Groups[1].Value.Trim())
+                date = $date.ToString('yyyy-MM-dd')
+                url  = "$url#support-dl-bios"
+            }
+        }
+    }
+    if (-not $best) { return $null }
+
+    $title = [regex]::Match($dom, '<title>\s*([^<]+?)\s*(?:\(Rev\.[^)]*\)\s*)?Motherboard Support').Groups[1].Value.Trim()
+    return [pscustomobject]@{
+        Name  = if ($title) { $title } else { ($slug -replace '-rev-[0-9a-zx-]+$', '') -replace '-', ' ' }
+        Entry = $best
     }
 }
 
@@ -520,11 +547,9 @@ try {
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
-            ${function:Format-BiosDate} = $using:formatBiosDate
             $browserUa = $using:browserUa
             try {
-                $entry = Get-GigabyteBios $using:browser $slug
-                if ($entry) { [pscustomobject]@{ Slug = $slug; Entry = $entry } } else { $null }
+                Get-GigabyteBios $using:browser $slug
             }
             catch {
                 Write-Warning "Gigabyte '$slug' failed: $($_.Exception.Message)"
@@ -539,10 +564,9 @@ try {
         # the verdict came from.
         $gigabyteByName = @{}
         foreach ($result in $gigabyteResults | Where-Object { $_ }) {
-            $name = ($result.Slug -replace '-rev-[0-9a-zx-]+$', '') -replace '-', ' '
-            $existing = $gigabyteByName[$name]
+            $existing = $gigabyteByName[$result.Name]
             if (-not $existing -or [string]::Compare($result.Entry.date, $existing.date) -gt 0) {
-                $gigabyteByName[$name] = $result.Entry
+                $gigabyteByName[$result.Name] = $result.Entry
             }
         }
         foreach ($name in $gigabyteByName.Keys) {
