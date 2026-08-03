@@ -7,6 +7,8 @@
 # - Windows builds: Microsoft's release information page.
 # - Motherboard BIOS: full catalog sweeps of MSI, Gigabyte, ASRock, and ASUS
 #   (each vendor's section below explains its source and quirks).
+# - Dell BIOS: the machine-readable catalog Dell Command Update reads,
+#   keyed by the system id every Dell (and Alienware) reports as its SKU.
 # - Intel: the chipset INF utility and both graphics-driver download pages.
 # - NVIDIA: the driver-search endpoint behind NVIDIA's own download page.
 #
@@ -876,6 +878,109 @@ if (-not $motherboards -and $previousFeed.motherboards) {
     $motherboards = $previousFeed.motherboards
 }
 
+# --- Dell BIOS catalog (CatalogPC.cab) -----------------------------------------
+
+# Dell publishes the machine-readable catalog its own Dell Command Update
+# reads: every update package for every client system, keyed by the 4-hex
+# system id each Dell reports as its SKU. One plain download covers all
+# ~700 systems (Alienware included), so Dell machines get real BIOS
+# verdicts the way Lenovo machines do - but through the feed, working
+# offline too. Systems with several published BIOS packages keep the
+# newest-dated one.
+$dell = $null
+try {
+    $dellWork = Join-Path ([System.IO.Path]::GetTempPath()) "dell-catalog-$([guid]::NewGuid())"
+    New-Item -ItemType Directory -Path $dellWork -Force | Out-Null
+    try {
+        $cab = Join-Path $dellWork 'CatalogPC.cab'
+        $xml = Join-Path $dellWork 'CatalogPC.xml'
+        Invoke-WebRequest -Uri 'https://downloads.dell.com/catalog/CatalogPC.cab' `
+            -OutFile $cab -UserAgent $userAgent -TimeoutSec 120 | Out-Null
+
+        # expand.exe on Windows; the GitHub runner's 7z otherwise (the cab
+        # holds a single CatalogPC.xml).
+        if (Get-Command expand.exe -ErrorAction SilentlyContinue) {
+            expand.exe $cab $xml | Out-Null
+        }
+        elseif (Get-Command 7z -ErrorAction SilentlyContinue) {
+            7z e $cab "-o$dellWork" -y | Out-Null
+        }
+        else {
+            throw 'No cab extractor available (expand.exe or 7z).'
+        }
+        if (-not (Test-Path $xml)) {
+            throw 'CatalogPC.xml did not extract.'
+        }
+
+        # ~55 MB of UTF-16 XML: streamed, never loaded as one document.
+        $settings = [System.Xml.XmlReaderSettings]::new()
+        $settings.IgnoreWhitespace = $true
+        $catalogReader = [System.Xml.XmlReader]::Create($xml, $settings)
+        $newestPerSystem = @{}
+        try {
+            while ($catalogReader.Read()) {
+                if ($catalogReader.NodeType -ne [System.Xml.XmlNodeType]::Element -or
+                    $catalogReader.Name -ne 'SoftwareComponent') {
+                    continue
+                }
+
+                $component = [System.Xml.Linq.XElement]::Load($catalogReader.ReadSubtree())
+                if ("$($component.Element('ComponentType').Attribute('value').Value)" -ne 'BIOS') {
+                    continue
+                }
+
+                $version = "$($component.Attribute('dellVersion').Value)".Trim()
+                $date = [datetime]::MinValue
+                [void][datetime]::TryParse("$($component.Attribute('releaseDate').Value)",
+                    [cultureinfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $date)
+                if (-not $version -or $date -eq [datetime]::MinValue) {
+                    continue
+                }
+
+                $entry = [ordered]@{
+                    bios = $version
+                    date = $date.ToString('yyyy-MM-dd')
+                    url  = "https://downloads.dell.com/$($component.Attribute('path').Value)"
+                }
+                foreach ($model in $component.Descendants('Model')) {
+                    $systemId = "$($model.Attribute('systemID').Value)".Trim().ToUpperInvariant()
+                    if (-not $systemId) { continue }
+                    $existing = $newestPerSystem[$systemId]
+                    if (-not $existing -or [string]::Compare($entry.date, $existing.date) -gt 0) {
+                        $newestPerSystem[$systemId] = $entry
+                    }
+                }
+            }
+        }
+        finally {
+            $catalogReader.Close()
+        }
+
+        if ($newestPerSystem.Count -lt 100) {
+            throw "Only $($newestPerSystem.Count) Dell systems parsed - the catalog layout may have changed."
+        }
+
+        $sorted = [ordered]@{}
+        foreach ($systemId in ($newestPerSystem.Keys | Sort-Object)) {
+            $sorted[$systemId] = $newestPerSystem[$systemId]
+        }
+        $dell = $sorted
+        $sweepCounts['Dell systems'] = $dell.Count
+        Write-Host "Dell: $($dell.Count) systems resolved."
+    }
+    finally {
+        Remove-Item $dellWork -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+catch {
+    Write-Warning "Dell catalog scrape failed: $($_.Exception.Message)"
+}
+
+if (-not $dell -and $previousFeed.dell) {
+    Write-Warning 'Reusing previously published Dell data.'
+    $dell = $previousFeed.dell
+}
+
 # --- Intel drivers (Intel download-center pages) ------------------------------
 
 # Each download page states its latest version in the short-description text.
@@ -1013,6 +1118,9 @@ function Write-RunSummary([string] $outcome) {
     if ($sweepCounts.Contains('carried forward')) {
         $lines += "| Carried forward | $($sweepCounts['carried forward']) boards |"
     }
+    if ($sweepCounts.Contains('Dell systems')) {
+        $lines += "| Dell systems | $($sweepCounts['Dell systems']) |"
+    }
     if ($sweepCounts.Contains('sweep failed')) {
         $lines += "| Board sweep | FAILED: $($sweepCounts['sweep failed']) |"
     }
@@ -1033,8 +1141,8 @@ function Write-RunSummary([string] $outcome) {
 # Leave the file untouched when the data hasn't changed, so the scheduled
 # workflow only commits on actual releases.
 if ($previousFeed) {
-    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $intel, $nvidia) | ConvertTo-Json -Depth 5
+    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-RunSummary 'unchanged - feed not rewritten'
         return
@@ -1054,6 +1162,9 @@ if ($windows10) {
 }
 if ($motherboards) {
     $feed.motherboards = $motherboards
+}
+if ($dell) {
+    $feed.dell = $dell
 }
 if ($intel) {
     $feed.intel = $intel

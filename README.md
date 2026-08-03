@@ -106,6 +106,11 @@ the workflow's step summary.
   the app still checks ASUS live first and uses these entries as the
   offline fallback. Boards that drop out of a sweep keep their last
   published entry.
+- `dell` maps Dell system ids (the 4-hex code every Dell and Alienware
+  reports as its SKU) to the newest BIOS in Dell's own update catalog
+  (`CatalogPC.cab`, the machine-readable source Dell Command Update reads;
+  ~700 systems). Entries carry the version, date, and the official
+  installer's download URL.
 - `intel` holds the chipset INF utility version plus the two graphics-driver
   branches Intel maintains since their 2025 split: `arc` (Arc cards and Core
   Ultra iGPUs) and `xe` (the legacy-support package for 11th-14th gen
