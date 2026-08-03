@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T18:17:28Z",
+  "updated": "2026-08-03T04:19:36Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -12103,9 +12103,9 @@
   },
   "intel": {
     "chipset": {
-      "version": "10.1.20398.8776",
+      "version": "10.1.20658.8883",
       "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html",
-      "download": "https://downloadmirror.intel.com/872506/SetupChipset.exe"
+      "download": "https://downloadmirror.intel.com/925343/SetupChipset.exe"
     },
     "arc": {
       "version": "32.0.101.8864",
