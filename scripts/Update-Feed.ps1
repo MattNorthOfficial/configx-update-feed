@@ -989,13 +989,16 @@ try {
     $vendorPrecedence = @('msi', 'gigabyte', 'asrock', 'asus')
     $previousConflicts = $previousFeed.motherboardConflicts
     if ($previousConflicts) {
-        # A vendor that sat out this run keeps the claim the last feed recorded
-        # for it, so sweeping one vendor on its own cannot hand that vendor a
-        # name belonging to one nobody looked at.
+        # A vendor that did not claim the name this run - it sat out, or its
+        # page simply missed enumeration - keeps the claim the last feed
+        # recorded, the same way boards themselves carry forward. Without that
+        # a single-vendor sweep could hand itself a name belonging to a vendor
+        # nobody looked at, and one missed page would drop and re-add the
+        # record night after night.
         foreach ($prop in $previousConflicts.PSObject.Properties) {
             if (-not $boardClaims.ContainsKey($prop.Name)) { continue }
             foreach ($claim in $prop.Value.PSObject.Properties) {
-                if ($sweepVendors -contains $claim.Name -or $boardClaims[$prop.Name].Contains($claim.Name)) { continue }
+                if ($boardClaims[$prop.Name].Contains($claim.Name)) { continue }
                 $carriedClaim = [ordered]@{ bios = "$($claim.Value.bios)"; date = "$($claim.Value.date)" }
                 if ($claim.Value.url) { $carriedClaim.url = "$($claim.Value.url)" }
                 $boardClaims[$prop.Name][$claim.Name] = $carriedClaim
@@ -1015,13 +1018,11 @@ try {
         }
     }
     if ($previousConflicts) {
+        # Names no vendor claimed at all this run keep their record too.
         foreach ($prop in $previousConflicts.PSObject.Properties) {
-            if ($boardConflicts.Contains($prop.Name)) { continue }
-            # Only a run that swept every vendor named in the old record is
-            # entitled to say the clash is gone; anything narrower carries it.
-            $recorded = @($prop.Value.PSObject.Properties.Name)
-            if (@($recorded | Where-Object { $sweepVendors -notcontains $_ }).Count -eq 0) { continue }
-            $boardConflicts[$prop.Name] = $prop.Value
+            if (-not $boardConflicts.Contains($prop.Name)) {
+                $boardConflicts[$prop.Name] = $prop.Value
+            }
         }
     }
     if ($boardConflicts.Count -gt 0) {
