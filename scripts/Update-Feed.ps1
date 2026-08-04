@@ -667,11 +667,16 @@ try {
             }
         }
 
+        # Counted from what this phase actually claimed. It used to read
+        # $fetched.Count, which only matched while MSI happened to be the
+        # first phase writing into it.
+        $msiNames = @{}
         foreach ($result in $results | Where-Object { $_ }) {
             Add-BoardClaim $result.Name $result.Entry 'msi'
+            $msiNames[$result.Name] = $true
         }
-        $sweepCounts['MSI'] = $fetched.Count
-        Write-Host "MSI: $($fetched.Count) boards resolved."
+        $sweepCounts['MSI'] = $msiNames.Count
+        Write-Host "MSI: $($msiNames.Count) boards resolved."
     } }
 
     if ($BoardVendors -contains 'gigabyte') { Invoke-VendorSweep 'Gigabyte' {
