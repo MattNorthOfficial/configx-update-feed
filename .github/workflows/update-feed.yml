@@ -16,20 +16,34 @@ on:
     # board vendors publish from Taiwan - so each day's BIOS releases are
     # in the feed before the European evening. Odd minutes on purpose:
     # GitHub delays cron jobs scheduled at busy exact-hour marks.
+    #
+    # The 6-hourly expression is matched literally below, both to give the
+    # quick run its own queue and to drop the board sweep from it, so those
+    # copies have to move together if it ever changes.
     - cron: "37 */6 * * *"
     - cron: "37 10 * * *"
 
 permissions:
   contents: write
 
-# Overlapping runs would race the feed commit; queue instead.
+# The quick refresh and the full sweep queue independently. Sharing one group
+# meant a slow sweep parked the 6-hourly run behind it for hours, and a third
+# run joining the group evicted whichever was already waiting - the 6-hourly
+# run was dropped without running at all more than once. The two can now
+# overlap, so the publish step below settles the rare collision rather than
+# the queue doing it by starving one side.
 concurrency:
-  group: update-feed
+  group: "update-feed-${{ github.event.schedule == '37 */6 * * *' && 'quick' || 'full' }}"
   cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    # A backstop, not a target: the script budgets each vendor phase, so even
+    # a badly rate-limited sweep gives up and publishes what it has. Reaching
+    # the runner's own six-hour ceiling only ever meant a stalled run sitting
+    # on the slot and publishing nothing.
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v5
 
@@ -40,6 +54,12 @@ jobs:
           if ('${{ github.event.schedule }}' -eq '37 */6 * * *') {
             $vendors = 'none'
           }
+          # Only a run that swept every vendor holds a complete feed, which
+          # decides whether it may republish over a run that landed while it
+          # worked. Recorded from what was actually swept rather than from
+          # which schedule fired, so a hand-triggered partial run is judged
+          # the same way a 6-hourly one is.
+          "FULL_SWEEP=$((-not $vendors).ToString().ToLower())" | Out-File $env:GITHUB_ENV -Append
           if ($vendors) {
             ./scripts/Update-Feed.ps1 -BoardVendors ($vendors -split ',')
           }
@@ -47,14 +67,43 @@ jobs:
             ./scripts/Update-Feed.ps1
           }
 
+      # Now that the two run types can overlap, one can publish while the other
+      # is still working. A full sweep refreshes every section, so its feed
+      # supersedes a partial run's and is safe to replay on top of whatever
+      # landed first. A run that carried boards forward must not replay - that
+      # would undo a sweep's work - so it yields and lets the next run carry
+      # its change instead, which costs at most one 6-hourly refresh.
       - name: Commit feed if changed
         run: |
           if git diff --quiet -- feed/updates.json; then
             echo "Feed unchanged."
             exit 0
           fi
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feed/updates.json
-          git commit -m "Update feed"
-          git push
+          cp feed/updates.json "$RUNNER_TEMP/updates.json"
+
+          for attempt in 1 2 3; do
+            git add feed/updates.json
+            git commit -m "Update feed"
+            if git push; then
+              exit 0
+            fi
+
+            git fetch origin "$GITHUB_REF_NAME"
+            if [ "$FULL_SWEEP" != "true" ]; then
+              echo "Another run published while this refresh ran; yielding to it."
+              exit 0
+            fi
+
+            git reset --hard "origin/$GITHUB_REF_NAME"
+            cp "$RUNNER_TEMP/updates.json" feed/updates.json
+            if git diff --quiet -- feed/updates.json; then
+              echo "Feed already current."
+              exit 0
+            fi
+          done
+
+          echo "Could not publish after 3 attempts." >&2
+          exit 1

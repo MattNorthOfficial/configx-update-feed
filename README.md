@@ -18,7 +18,10 @@ publish from Taiwan - with boards carrying forward between sweeps. A publish gat
 BIOS dates regress en masse (the signature of a vendor layout change parsing
 wrong-but-plausible values), transient fetch failures retry once before a
 board is left to carry forward, and each run writes a per-vendor summary to
-the workflow's step summary.
+the workflow's step summary. Every headless fetch is killed at its own
+deadline and every vendor phase runs against a time budget, so a vendor that
+starts stonewalling mid-sweep costs its own boards a carry-forward rather
+than stalling the run.
 
 ## Feed format
 

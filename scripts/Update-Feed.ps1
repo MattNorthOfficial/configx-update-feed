@@ -22,9 +22,18 @@
 # -MaxParallel caps how many headless browsers run at once (0 = each
 # phase's tuned default). Sustained 6-8 concurrent browser launches are a
 # heavy load; a cap of 2-3 lets the sweep run gently on a workstation.
+#
+# -VendorBudgetMinutes bounds how long any one vendor's phase may spend
+# before its remaining boards are left to carry forward. A vendor that
+# starts rate-limiting mid-sweep (gigabyte.com does this to datacenter
+# addresses, so GitHub's runners get it far worse than a home connection)
+# would otherwise stretch its phase past the job's own limit and publish
+# nothing at all. Healthy phases finish well inside this; it only bites
+# when a vendor is stonewalling.
 param(
     [string[]] $BoardVendors = @('msi', 'gigabyte', 'asrock', 'asus'),
-    [int] $MaxParallel = 0
+    [int] $MaxParallel = 0,
+    [int] $VendorBudgetMinutes = 45
 )
 
 function Get-Throttle([int] $tuned) {
@@ -351,19 +360,91 @@ $browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 # Runs a URL through headless Chrome/Edge and returns the page DOM. Bypasses
 # the TLS-fingerprinting bot protection (Akamai) that MSI and Intel use, which
 # rejects plain HTTP clients but serves a real browser engine unchallenged.
-function Get-BrowserDom([string] $browser, [string] $url) {
-    # The browser logs harmless warnings to stderr, which would become
-    # terminating errors under $ErrorActionPreference = 'Stop'.
-    $previousPreference = $script:ErrorActionPreference
-    $script:ErrorActionPreference = 'Continue'
-    # --timeout dumps whatever has rendered once the budget runs out. Without
-    # it, a page that never finishes loading (rate-limited requests get
-    # served challenge loops after a few hundred rapid hits) parks its
-    # browser - and the worker running it - forever, silently stalling a
-    # whole sweep phase.
-    $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --timeout=30000 --dump-dom $url 2>$null | Out-String
-    $script:ErrorActionPreference = $previousPreference
-    return $dom
+function Get-BrowserDom([string] $browser, [string] $url, [int] $timeoutSeconds = 30) {
+    # The deadline is enforced by killing the process rather than by Chrome's
+    # own --timeout: that flag belonged to the old headless implementation and
+    # is silently ignored under --headless=new, so it never fired. A page that
+    # never finishes loading (rate-limited requests get served challenge loops
+    # after a few hundred rapid hits) then parks its browser - and the worker
+    # running it - forever, stalling a whole sweep phase; a full Gigabyte
+    # sweep froze this way six minutes in and burned the job's six-hour limit
+    # without resolving a board. A timed-out fetch returns empty, which reads
+    # as a miss and leaves that board to carry forward.
+    #
+    # Output goes to files so the browser's chatter on stderr can't surface as
+    # a terminating error under $ErrorActionPreference = 'Stop'.
+    $stdout = [System.IO.Path]::GetTempFileName()
+    $stderr = [System.IO.Path]::GetTempFileName()
+    # A killed browser can leave a lock behind in its profile that makes the
+    # next launch hang too, so each fetch gets a throwaway profile - one stuck
+    # page can't poison the fetches after it.
+    $profileDir = Join-Path ([System.IO.Path]::GetTempPath()) "chrome-dom-$([guid]::NewGuid())"
+    try {
+        # Start-Process flattens its argument list into one command line
+        # without quoting anything, so a value carrying a space - the
+        # user-agent string, or a Windows temp path - would arrive as extra
+        # arguments, which Chrome reads as additional targets and refuses to
+        # start on. None of these can contain a quote, so wrapping each is
+        # enough.
+        $browserArgs = @(
+            '--headless=new'
+            '--disable-gpu'
+            '--no-sandbox'
+            # Renderers share memory through /dev/shm, which a container caps
+            # at 64 MB - small enough that a handful of concurrent heavy pages
+            # exhaust it and their renderers die producing no output at all.
+            # Gigabyte's 1.1 MB catalog pages hit this at the enumeration's
+            # throttle of 8: one page returned, seven came back empty, and the
+            # phase gave up with nothing to sweep. Falling back to a temp file
+            # costs nothing where /dev/shm is already ample.
+            '--disable-dev-shm-usage'
+            "--user-agent=$browserUa"
+            "--user-data-dir=$profileDir"
+            '--dump-dom'
+            $url
+        ) | ForEach-Object { '"' + $_ + '"' }
+
+        $process = Start-Process -FilePath $browser -PassThru -NoNewWindow `
+            -RedirectStandardOutput $stdout -RedirectStandardError $stderr `
+            -ArgumentList $browserArgs
+
+        $expiry = [datetime]::UtcNow.AddSeconds($timeoutSeconds)
+        $lastSize = -1L
+        $settledAt = [datetime]::MaxValue
+        while (-not $process.HasExited) {
+            if ([datetime]::UtcNow -ge $expiry) { break }
+            $size = (Get-Item -LiteralPath $stdout -ErrorAction SilentlyContinue).Length
+            if ($size -gt 0 -and $size -eq $lastSize) {
+                # --dump-dom writes the page in one burst, so output that has
+                # stopped growing means the fetch is done even when the
+                # browser hasn't exited to say so - some builds sit there
+                # afterwards, and waiting on exit alone would spend the whole
+                # budget on every page.
+                if ($settledAt -eq [datetime]::MaxValue) { $settledAt = [datetime]::UtcNow }
+                elseif (([datetime]::UtcNow - $settledAt).TotalSeconds -ge 2) { break }
+            }
+            else {
+                $lastSize = $size
+                $settledAt = [datetime]::MaxValue
+            }
+            Start-Sleep -Milliseconds 100
+        }
+
+        if (-not $process.HasExited) {
+            # The renderer children outlive the launcher and hold the output
+            # handles open, so the whole tree goes.
+            try { $process.Kill($true) } catch { }
+            $process.WaitForExit(5000) | Out-Null
+        }
+        return [string](Get-Content -LiteralPath $stdout -Raw -ErrorAction SilentlyContinue)
+    }
+    catch {
+        return ''
+    }
+    finally {
+        Remove-Item $stdout, $stderr -Force -ErrorAction SilentlyContinue
+        Remove-Item $profileDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
 }
 
 # Normalizes MSI's release dates to yyyy-MM-dd where parseable. Invariant
@@ -487,8 +568,29 @@ function Invoke-VendorSweep([string] $label, [scriptblock] $phase) {
     }
 }
 
+# Enumeration is each vendor's single point of failure: every per-board fetch
+# below retries, but the one call that produces the board list does not, so a
+# momentary bad response costs that vendor its entire catalog for the run. One
+# transient 400 from ASUS's listing API - healthy again minutes later - lost
+# all 900 of its boards that way. The layout-change sanity checks live inside
+# the retried block on purpose, so an empty or truncated response is retried
+# rather than reported as a vendor changing their markup.
+function Invoke-WithRetry([string] $label, [scriptblock] $action, [int] $attempts = 3, [int] $delaySeconds = 5) {
+    for ($attempt = 1; $attempt -le $attempts; $attempt++) {
+        try {
+            return & $action
+        }
+        catch {
+            if ($attempt -eq $attempts) { throw }
+            Write-Warning "$label enumeration attempt $attempt failed ($($_.Exception.Message)); retrying in ${delaySeconds}s."
+            Start-Sleep $delaySeconds
+        }
+    }
+}
+
 $motherboards = $null
 $sweepCounts = [ordered]@{}
+$boardConflicts = [ordered]@{}
 try {
     $sweepVendors = @(@('msi', 'gigabyte', 'asrock', 'asus') | Where-Object { $BoardVendors -contains $_ })
 
@@ -506,21 +608,40 @@ try {
     $formatBiosDate = ${function:Format-BiosDate}.ToString()
     $fetched = @{}
 
+    # Two vendors can ship boards under the same marketing name - both MSI and
+    # Gigabyte sell a "B650M GAMING PLUS WIFI" - and the feed keys boards by
+    # that name alone, so the published entry used to be whichever phase
+    # happened to write last. That made the value depend on how complete each
+    # sweep was rather than on anything real: once Gigabyte's catalog resolved
+    # in full it silently took five names off MSI, offering their owners a
+    # Gigabyte BIOS version. Every phase records a claim instead, and one
+    # precedence decides the winner afterwards.
+    $boardClaims = @{}
+    function Add-BoardClaim([string] $name, $entry, [string] $vendor) {
+        if (-not $boardClaims.ContainsKey($name)) { $boardClaims[$name] = [ordered]@{} }
+        $boardClaims[$name][$vendor] = $entry
+    }
+
     if ($BoardVendors -contains 'msi') { Invoke-VendorSweep 'MSI' {
-        $slugs = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
-                'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
-            ForEach-Object { $_.Groups[1].Value } |
-            Sort-Object -Unique |
-            Where-Object { $_ -match $msiChipsetFilter })
-        if ($slugs.Count -lt 50) {
-            throw "Only $($slugs.Count) boards enumerated - the sitemap layout may have changed."
+        $slugs = Invoke-WithRetry 'MSI' {
+            $found = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
+                    'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
+                ForEach-Object { $_.Groups[1].Value } |
+                Sort-Object -Unique |
+                Where-Object { $_ -match $msiChipsetFilter })
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) boards enumerated - the sitemap layout may have changed."
+            }
+            , $found
         }
         Write-Host "MSI: checking $($slugs.Count) boards..."
 
         # Each headless call takes a few seconds; a handful in flight keeps
         # the full sweep to minutes without hammering MSI.
         $getMsiBios = ${function:Get-MsiBios}.ToString()
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $results = $slugs | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-MsiBios} = $using:getMsiBios
@@ -546,11 +667,16 @@ try {
             }
         }
 
+        # Counted from what this phase actually claimed. It used to read
+        # $fetched.Count, which only matched while MSI happened to be the
+        # first phase writing into it.
+        $msiNames = @{}
         foreach ($result in $results | Where-Object { $_ }) {
-            $fetched[$result.Name] = $result.Entry
+            Add-BoardClaim $result.Name $result.Entry 'msi'
+            $msiNames[$result.Name] = $true
         }
-        $sweepCounts['MSI'] = $fetched.Count
-        Write-Host "MSI: $($fetched.Count) boards resolved."
+        $sweepCounts['MSI'] = $msiNames.Count
+        Write-Host "MSI: $($msiNames.Count) boards resolved."
     } }
 
     if ($BoardVendors -contains 'gigabyte') { Invoke-VendorSweep 'Gigabyte' {
@@ -559,30 +685,47 @@ try {
         # revision slugs. Walking pages until no new slug appears enumerates
         # every board ever listed; out-of-range pages just echo page 1,
         # which that stop condition also catches.
-        $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-        $pageStart = 1
-        while ($pageStart -le 200) {
-            $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
-                ${function:Get-BrowserDom} = $using:getBrowserDom
-                $browserUa = $using:browserUa
-                $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
-                [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
+        $gigabyteBoards = Invoke-WithRetry 'Gigabyte' {
+            $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+            $pageStart = 1
+            $barrenBatches = 0
+            while ($pageStart -le 200) {
+                $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
+                    if ([datetime]::UtcNow -gt $using:deadline) { return }
+                    ${function:Get-BrowserDom} = $using:getBrowserDom
+                    $browserUa = $using:browserUa
+                    $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
+                    [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
+                }
+                $before = $gigabyteSlugs.Count
+                foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
+                if ($gigabyteSlugs.Count -eq $before) {
+                    # A batch that adds nothing is as easily eight fetches that
+                    # came back empty as it is the end of the catalog: two
+                    # sweeps half an hour apart walked 1085 and 1013 pages,
+                    # the shorter one leaving 46 boards to carry forward for
+                    # no reason. Past the real end every page echoes page 1,
+                    # so a second barren batch costs eight fetches and settles
+                    # which of the two it was.
+                    $barrenBatches++
+                    if ($barrenBatches -ge 2) { break }
+                }
+                else { $barrenBatches = 0 }
+                $pageStart += 8
             }
-            $before = $gigabyteSlugs.Count
-            foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
-            if ($gigabyteSlugs.Count -eq $before) { break }
-            $pageStart += 8
-        }
 
-        # Unlike the other vendors, Gigabyte is swept unfiltered - every
-        # board the grid lists, back through the oldest generations.
-        # Anything with a digit is a product (series pages like "AORUS" or
-        # "All-Series" have none), and non-board pages that slip through
-        # self-filter because their support page has no F-version BIOS list
-        # to match.
-        $gigabyteBoards = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
-        if ($gigabyteBoards.Count -lt 50) {
-            throw "Only $($gigabyteBoards.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
+            # Unlike the other vendors, Gigabyte is swept unfiltered - every
+            # board the grid lists, back through the oldest generations.
+            # Anything with a digit is a product (series pages like "AORUS" or
+            # "All-Series" have none), and non-board pages that slip through
+            # self-filter because their support page has no F-version BIOS list
+            # to match.
+            $found = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
+            }
+            , $found
         }
         Write-Host "Gigabyte: checking $($gigabyteBoards.Count) board pages..."
 
@@ -591,6 +734,7 @@ try {
         # which stalled full-throttle sweeps.
         $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
         $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit (Get-Throttle 4) -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
@@ -624,15 +768,30 @@ try {
         # so revisions collapse onto that name and the newest-dated BIOS
         # wins. The entry's url keeps pointing at the exact revision page
         # the verdict came from.
+        #
+        # Revisions of the same board often publish on the same day carrying
+        # different version strings (rev 1.0 of B650 GAMING X AX shipped F42c
+        # while rev 1.3 shipped FC4c, both on 2026-07-21), and keeping only
+        # the strictly-newer one leaves that tie to whichever worker happened
+        # to finish first. Consecutive sweeps disagreed on 40 boards that way,
+        # so a tie falls to the lowest revision: it is stable across runs, and
+        # its page covers the widest span of revisions (a rev-10-11-12-13 BIOS
+        # train serves four of them where rev-14 serves one).
         $gigabyteByName = @{}
         foreach ($result in $gigabyteResults | Where-Object { $_ }) {
             $existing = $gigabyteByName[$result.Name]
-            if (-not $existing -or [string]::Compare($result.Entry.date, $existing.date) -gt 0) {
+            $better = if (-not $existing) { $true }
+            else {
+                $byDate = [string]::Compare("$($result.Entry.date)", "$($existing.date)")
+                if ($byDate -ne 0) { $byDate -gt 0 }
+                else { [string]::Compare("$($result.Entry.url)", "$($existing.url)") -lt 0 }
+            }
+            if ($better) {
                 $gigabyteByName[$result.Name] = $result.Entry
             }
         }
         foreach ($name in $gigabyteByName.Keys) {
-            $fetched[$name] = $gigabyteByName[$name]
+            Add-BoardClaim $name $gigabyteByName[$name] 'gigabyte'
         }
         $sweepCounts['Gigabyte'] = $gigabyteByName.Count
         Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
@@ -648,28 +807,35 @@ try {
         # filter. BIOS page URLs drop the slashes some names carry
         # ("Z790 Pro RS/D4" lives at ".../Z790 Pro RSD4/"; an encoded
         # slash 404s).
-        $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
+        $asrockCatalog = Invoke-WithRetry 'ASRock' {
+            $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
 
-        # The arrays are single-quoted JS literals, so entries parse by
-        # pattern rather than as JSON: ['name','socket','chipset','form factor'].
-        function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
-            $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
-            [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
-                ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
+            # The arrays are single-quoted JS literals, so entries parse by
+            # pattern rather than as JSON: ['name','socket','chipset','form factor'].
+            function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
+                $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
+                [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
+                    ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
+            }
+
+            $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
+            $found = @(@(Get-AsrockCatalog $asrockDom 'allmodels') | Where-Object { $_[1] -in $asrockSockets })
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) ASRock boards enumerated - the index layout may have changed."
+            }
+            [pscustomobject]@{
+                Boards  = $found
+                PgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
+            }
         }
-
-        $asrockAll = @(Get-AsrockCatalog $asrockDom 'allmodels')
-        $asrockPgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
-
-        $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
-        $asrockBoards = @($asrockAll | Where-Object { $_[1] -in $asrockSockets })
-        if ($asrockBoards.Count -lt 50) {
-            throw "Only $($asrockBoards.Count) ASRock boards enumerated - the index layout may have changed."
-        }
+        $asrockBoards = $asrockCatalog.Boards
+        $asrockPgNames = $asrockCatalog.PgNames
         Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
 
         $getAsrockBios = ${function:Get-AsrockBios}.ToString()
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $board = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-AsrockBios} = $using:getAsrockBios
@@ -724,7 +890,7 @@ try {
 
         $asrockResolved = 0
         foreach ($result in $asrockResults | Where-Object { $_ }) {
-            $fetched[$result.Name] = $result.Entry
+            Add-BoardClaim $result.Name $result.Entry 'asrock'
             $asrockResolved++
         }
         $sweepCounts['ASRock'] = $asrockResolved
@@ -739,31 +905,36 @@ try {
         # (~900 boards; the API costs nothing, so every generation gets the
         # same coverage as Gigabyte). No headless browser needed for any
         # of it.
-        $asusNames = [System.Collections.Generic.List[string]]::new()
-        $pageIndex = 1
-        do {
-            $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
-                'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
-                '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
-                "&PageSize=100&PageIndex=$pageIndex" +
-                '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
-            foreach ($product in $page.Result.ProductList) {
-                $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
-                if ($name) { $asusNames.Add($name) }
-            }
-            $pageIndex++
-        } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
+        $asusBoards = Invoke-WithRetry 'ASUS' {
+            $asusNames = [System.Collections.Generic.List[string]]::new()
+            $pageIndex = 1
+            do {
+                $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
+                    'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
+                    '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
+                    "&PageSize=100&PageIndex=$pageIndex" +
+                    '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
+                foreach ($product in $page.Result.ProductList) {
+                    $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
+                    if ($name) { $asusNames.Add($name) }
+                }
+                $pageIndex++
+            } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
 
-        $asusBoards = @($asusNames | Sort-Object -Unique)
-        if ($asusBoards.Count -lt 50) {
-            throw "Only $($asusBoards.Count) ASUS boards enumerated - the listing API may have changed."
+            $found = @($asusNames | Sort-Object -Unique)
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) ASUS boards enumerated - the listing API may have changed."
+            }
+            , $found
         }
         Write-Host "ASUS: checking $($asusBoards.Count) boards..."
 
         # Paced at 4: bursting ~900 calls at full speed can trip ASUS's rate
         # limiter (HTTP 451), and the retry backs off long enough to ride
         # out a momentary throttle. Boards that still fail carry forward.
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 4 -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $name = $_
             try {
                 # One retry, so a transient API hiccup doesn't age this
@@ -803,12 +974,61 @@ try {
 
         $asusResolved = 0
         foreach ($result in $asusResults | Where-Object { $_ }) {
-            $fetched[$result.Name] = $result.Entry
+            Add-BoardClaim $result.Name $result.Entry 'asus'
             $asusResolved++
         }
         $sweepCounts['ASUS'] = $asusResolved
         Write-Host "ASUS: $asusResolved boards resolved."
     } }
+
+    # Settle the contested names. Precedence rather than phase order, so the
+    # same claims always publish the same entry no matter which vendors ran or
+    # how much of each catalog resolved. MSI leads because that is who already
+    # holds every contested name in the published feed, so adding Gigabyte
+    # coverage does not rewrite boards that were never in question.
+    $vendorPrecedence = @('msi', 'gigabyte', 'asrock', 'asus')
+    $previousConflicts = $previousFeed.motherboardConflicts
+    if ($previousConflicts) {
+        # A vendor that did not claim the name this run - it sat out, or its
+        # page simply missed enumeration - keeps the claim the last feed
+        # recorded, the same way boards themselves carry forward. Without that
+        # a single-vendor sweep could hand itself a name belonging to a vendor
+        # nobody looked at, and one missed page would drop and re-add the
+        # record night after night.
+        foreach ($prop in $previousConflicts.PSObject.Properties) {
+            if (-not $boardClaims.ContainsKey($prop.Name)) { continue }
+            foreach ($claim in $prop.Value.PSObject.Properties) {
+                if ($boardClaims[$prop.Name].Contains($claim.Name)) { continue }
+                $carriedClaim = [ordered]@{ bios = "$($claim.Value.bios)"; date = "$($claim.Value.date)" }
+                if ($claim.Value.url) { $carriedClaim.url = "$($claim.Value.url)" }
+                $boardClaims[$prop.Name][$claim.Name] = $carriedClaim
+            }
+        }
+    }
+
+    foreach ($name in $boardClaims.Keys) {
+        $claims = $boardClaims[$name]
+        $winner = @($vendorPrecedence | Where-Object { $claims.Contains($_) }) | Select-Object -First 1
+        $fetched[$name] = $claims[$winner]
+        if ($claims.Count -gt 1) {
+            # Nothing here can tell two vendors' boards apart from the name, so
+            # both readings ride along under motherboardConflicts and the app
+            # can settle it against the manufacturer WMI reports.
+            $boardConflicts[$name] = $claims
+        }
+    }
+    if ($previousConflicts) {
+        # Names no vendor claimed at all this run keep their record too.
+        foreach ($prop in $previousConflicts.PSObject.Properties) {
+            if (-not $boardConflicts.Contains($prop.Name)) {
+                $boardConflicts[$prop.Name] = $prop.Value
+            }
+        }
+    }
+    if ($boardConflicts.Count -gt 0) {
+        $sweepCounts['name conflicts'] = $boardConflicts.Count
+        Write-Warning "$($boardConflicts.Count) board name(s) claimed by more than one vendor: $(($boardConflicts.Keys) -join ', ')"
+    }
 
     foreach ($vendor in $sweepCounts.Keys) {
         if ($sweepCounts[$vendor] -eq 0) {
@@ -823,6 +1043,80 @@ try {
     $previousBoards = $previousFeed.motherboards
 
     if ($previousBoards) {
+        # A published BIOS keeps the date it was published on, so the same
+        # version dated earlier than last time is the scrape misreading, not
+        # the vendor. Gigabyte renders its dates client-side and a long sweep
+        # catches a few pages a beat too early: a full run moved 33 of 784
+        # boards back exactly one day while leaving their versions alone,
+        # including boards whose BIOS has not changed since 2013. Keep the
+        # date already published in that case. A genuinely new version brings
+        # its own date and is left alone, so this cannot mask a vendor
+        # republishing.
+        foreach ($name in @($fetched.Keys)) {
+            $previous = $previousBoards.PSObject.Properties[$name]
+            if (-not $previous) { continue }
+
+            # A release's date is fixed once it ships, so the same version
+            # dated differently is the scrape, not the vendor. Gigabyte
+            # renders its dates client-side and a long sweep catches some
+            # pages a beat early: consecutive full runs drifted boards a day
+            # in both directions - 33 back on one run, 18 forward on the next
+            # - including boards whose BIOS has not shipped since 2013. Keep
+            # the date already published whenever the version is unchanged.
+            # The whole entry stands, url included. A board whose version is
+            # unchanged can still resolve against a different revision page
+            # from one run to the next, depending on which pages enumeration
+            # reached, and republishing the same BIOS under a different link
+            # is another nightly diff that says nothing.
+            if ($fetched[$name].bios -eq $previous.Value.bios) {
+                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
+                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
+                $fetched[$name] = $carried
+                continue
+            }
+
+            # A different version on the same date is not a release either.
+            # One marketing name covers every hardware revision of a board and
+            # they run separate BIOS trains that ship together - rev 1.0 of
+            # B650 GAMING X AX carries F42c where rev 1.3 carries FC4c, both
+            # dated 2026-07-21 - so which one a run publishes turns on which
+            # revision pages the enumeration happened to reach. Left alone
+            # that rewrites a few dozen boards every night between equally
+            # true answers. An entry moves when its date does.
+            if ("$($fetched[$name].date)" -eq "$($previous.Value.date)") {
+                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
+                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
+                $fetched[$name] = $carried
+                continue
+            }
+
+            $newDate = [datetime]::MinValue
+            $oldDate = [datetime]::MinValue
+            if (-not ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
+                    [datetime]::TryParse("$($previous.Value.date)", [ref] $oldDate)) -or
+                $newDate -ge $oldDate) {
+                continue
+            }
+
+            # An older BIOS arriving from a different page than last time is a
+            # sweep that landed somewhere staler, not a vendor withdrawing a
+            # release. Two shapes of it turned up in one run: ASRock's Phantom
+            # Gaming boards fall back to the www copies that froze around 2022
+            # when the catalog stops listing them as Phantom Gaming (Z690M PG
+            # Riptide/D5 offered 8.02 from 2022 over 19.01 from 2025), and a
+            # multi-revision Gigabyte board whose newer revision page missed
+            # enumeration collapses onto the older one (GA-C1037UN offered
+            # rev-10's F2 from 2013 over rev-20's FA from 2014). Neither is
+            # numerous enough for the publish gate to notice. A vendor really
+            # pulling a BIOS serves the replacement from the same page, so
+            # that still lands.
+            if ("$($fetched[$name].url)" -ne "$($previous.Value.url)") {
+                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
+                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
+                $fetched[$name] = $carried
+            }
+        }
+
         # Publish gate: a vendor layout change can parse wrong-but-plausible
         # values (ASRock's stale mirror pages once served years-old
         # versions). One board's date moving backward is legitimate -
@@ -876,6 +1170,12 @@ catch {
 if (-not $motherboards -and $previousFeed.motherboards) {
     Write-Warning 'Reusing previously published motherboard data.'
     $motherboards = $previousFeed.motherboards
+}
+
+# A sweep that fell over before settling the contested names knows nothing
+# about them either way, so the record already published stands.
+if ($boardConflicts.Count -eq 0 -and $previousFeed.motherboardConflicts) {
+    $boardConflicts = $previousFeed.motherboardConflicts
 }
 
 # --- Dell BIOS catalog (CatalogPC.cab) -----------------------------------------
@@ -1167,6 +1467,14 @@ if ($chipset) {
 
 # One glanceable table per run - echoed to the console, and into the
 # workflow's step summary when running in GitHub Actions.
+# Counts entries in either shape these sections take: an ordered hashtable
+# from a fresh run, or the parsed JSON object from a carry-forward.
+function Measure-Entries($section) {
+    if ($null -eq $section) { 0 }
+    elseif ($section -is [System.Collections.IDictionary]) { $section.Count }
+    else { @($section.PSObject.Properties).Count }
+}
+
 function Write-RunSummary([string] $outcome) {
     $lines = @('## Feed run', '', "Outcome: $outcome", '', '| Part | Result |', '|---|---|')
     foreach ($vendor in @('msi', 'gigabyte', 'asrock', 'asus')) {
@@ -1188,12 +1496,11 @@ function Write-RunSummary([string] $outcome) {
     if ($sweepCounts.Contains('sweep failed')) {
         $lines += "| Board sweep | FAILED: $($sweepCounts['sweep failed']) |"
     }
+    if ($sweepCounts.Contains('name conflicts')) {
+        $lines += "| Names claimed by two vendors | $($sweepCounts['name conflicts']) |"
+    }
     if ($motherboards) {
-        # A fresh sweep builds an ordered hashtable; the reuse-previous path
-        # hands back the parsed JSON object.
-        $total = if ($motherboards -is [System.Collections.IDictionary]) { $motherboards.Count }
-        else { @($motherboards.PSObject.Properties).Count }
-        $lines += "| Boards total | $total |"
+        $lines += "| Boards total | $(Measure-Entries $motherboards) |"
     }
     $text = ($lines | Where-Object { $null -ne $_ }) -join "`n"
     Write-Host $text
@@ -1202,11 +1509,16 @@ function Write-RunSummary([string] $outcome) {
     }
 }
 
+# Nothing contested means no section at all, which has to compare equal to a
+# feed that never had one - otherwise every quick refresh looks like a change
+# and commits a new file for nothing.
+$publishConflicts = if ((Measure-Entries $boardConflicts) -gt 0) { $boardConflicts } else { $null }
+
 # Leave the file untouched when the data hasn't changed, so the scheduled
 # workflow only commits on actual releases.
 if ($previousFeed) {
-    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
+    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.motherboardConflicts, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $publishConflicts, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-RunSummary 'unchanged - feed not rewritten'
         return
@@ -1226,6 +1538,12 @@ if ($windows10) {
 }
 if ($motherboards) {
     $feed.motherboards = $motherboards
+}
+# Purely additive: motherboards still holds one entry per name for readers
+# that key by name alone, and this records every vendor's reading of the
+# names two of them lay claim to.
+if ($publishConflicts) {
+    $feed.motherboardConflicts = $publishConflicts
 }
 if ($dell) {
     $feed.dell = $dell
