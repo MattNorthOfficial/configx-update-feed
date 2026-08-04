@@ -1063,8 +1063,15 @@ try {
             # in both directions - 33 back on one run, 18 forward on the next
             # - including boards whose BIOS has not shipped since 2013. Keep
             # the date already published whenever the version is unchanged.
+            # The whole entry stands, url included. A board whose version is
+            # unchanged can still resolve against a different revision page
+            # from one run to the next, depending on which pages enumeration
+            # reached, and republishing the same BIOS under a different link
+            # is another nightly diff that says nothing.
             if ($fetched[$name].bios -eq $previous.Value.bios) {
-                $fetched[$name].date = "$($previous.Value.date)"
+                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
+                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
+                $fetched[$name] = $carried
                 continue
             }
 
