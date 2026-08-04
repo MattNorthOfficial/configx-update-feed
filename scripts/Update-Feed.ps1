@@ -617,6 +617,10 @@ try {
     # Gigabyte BIOS version. Every phase records a claim instead, and one
     # precedence decides the winner afterwards.
     $boardClaims = @{}
+    # Named to stay clear of the $BoardVendors parameter: PowerShell variable
+    # names are case-insensitive, so a $boardVendors here would silently empty
+    # the list of vendors to sweep.
+    $vendorByBoard = @{}
     function Add-BoardClaim([string] $name, $entry, [string] $vendor) {
         if (-not $boardClaims.ContainsKey($name)) { $boardClaims[$name] = [ordered]@{} }
         $boardClaims[$name][$vendor] = $entry
@@ -1010,6 +1014,12 @@ try {
         $claims = $boardClaims[$name]
         $winner = @($vendorPrecedence | Where-Object { $claims.Contains($_) }) | Select-Object -First 1
         $fetched[$name] = $claims[$winner]
+
+        # Remembered rather than written onto the entry here: the churn-
+        # prevention rules below rebuild entries from their published fields,
+        # which would drop it. Stamped at the final assembly instead.
+        $vendorByBoard[$name] = $winner
+
         if ($claims.Count -gt 1) {
             # Nothing here can tell two vendors' boards apart from the name, so
             # both readings ride along under motherboardConflicts and the app
@@ -1157,7 +1167,33 @@ try {
     # order varies run to run).
     $boards = [ordered]@{}
     foreach ($name in ($fetched.Keys | Sort-Object)) {
-        $boards[$name] = $fetched[$name]
+        $entry = $fetched[$name]
+
+        # Name the vendor whose board this reading describes. The app matches
+        # WMI's board name against these keys with punctuation dropped, which
+        # collapses some different boards together - ASRock's "B860M-E" and
+        # Gigabyte's "B860M E" reduce alike, and their BIOS numbering doesn't
+        # even compare - so the entry has to say whose it is. Vendors this run
+        # skipped keep whatever the last feed recorded, like the boards
+        # themselves do.
+        $vendor = if ($vendorByBoard.ContainsKey($name)) { $vendorByBoard[$name] }
+        elseif ($previousBoards -and $previousBoards.$name.vendor) { "$($previousBoards.$name.vendor)" }
+        else { $null }
+
+        if ($vendor) {
+            $fields = if ($entry -is [System.Collections.IDictionary]) {
+                @($entry.Keys)
+            }
+            else {
+                @($entry.PSObject.Properties.Name)
+            }
+            $stamped = [ordered]@{}
+            foreach ($field in $fields) { $stamped[$field] = $entry.$field }
+            $stamped.vendor = $vendor
+            $entry = $stamped
+        }
+
+        $boards[$name] = $entry
     }
     $sweepCounts['carried forward'] = $boards.Count - $freshCount
     $motherboards = $boards
