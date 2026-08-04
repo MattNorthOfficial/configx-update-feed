@@ -1050,6 +1050,54 @@ try {
         }
     }
 
+    # Community-maintained Intel chipset INF database: every chipset hardware
+    # id (the 4-hex PCI "device" value) mapped to the latest INF version for
+    # its platform. Intel publishes no such per-device list, so this fills the
+    # gap that left "via Windows Update" chipset machines with no verdict - the
+    # app reads a device's id, looks it up here, and compares. Re-published
+    # into our feed so a bundled snapshot survives even if the upstream repo
+    # goes away, mirroring how we treat the community NVIDIA GPU map.
+    # Source: FirstEverTech/Universal-Intel-Chipset-Updater (MIT).
+    try {
+        $infMd = Invoke-RestMethod 'https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/main/data/intel-chipset-infs-latest.md' -UserAgent $userAgent
+        $infMap = [ordered]@{}
+        foreach ($line in ($infMd -split "`n")) {
+            # Data rows are markdown table rows; the version column is a real
+            # version (headers say "Version", separators say "---"), and the
+            # last column is the comma-separated hardware id list.
+            if ($line -notmatch '^\s*\|') { continue }
+            $cols = $line -split '\|'
+            if ($cols.Count -lt 7) { continue }
+            $ver = $cols[3].Trim()
+            if ($ver -notmatch '^\d+(\.\d+){2,3}$') { continue }
+            foreach ($id in ($cols[5] -split ',')) {
+                $hwid = $id.Trim().ToUpperInvariant()
+                if ($hwid -notmatch '^[0-9A-F]{4}$') { continue }
+                # A hardware id shared across platform sections keeps the
+                # newest version (defensive; chipset ids don't normally repeat).
+                if ($infMap.Contains($hwid)) {
+                    try { if ([version]$ver -le [version]$infMap[$hwid]) { continue } } catch { }
+                }
+                $infMap[$hwid] = $ver
+            }
+        }
+
+        if ($infMap.Count -gt 0) {
+            $entries['chipsetInf'] = $infMap
+            Write-Host "Intel chipset INF map: $($infMap.Count) hardware ids"
+        }
+        else {
+            throw 'Parsed no hardware ids from the INF database.'
+        }
+    }
+    catch {
+        Write-Warning "Intel INF database fetch failed: $($_.Exception.Message)"
+        # Keep the last-known map rather than dropping the feature for a run.
+        if ($previousFeed.intel.chipsetInf) {
+            $entries['chipsetInf'] = $previousFeed.intel.chipsetInf
+        }
+    }
+
     if ($entries.Count -eq 0) {
         throw 'No Intel versions could be fetched.'
     }
