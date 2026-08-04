@@ -436,7 +436,10 @@ function Get-BrowserDom([string] $browser, [string] $url, [int] $timeoutSeconds 
             try { $process.Kill($true) } catch { }
             $process.WaitForExit(5000) | Out-Null
         }
-        return [string](Get-Content -LiteralPath $stdout -Raw -ErrorAction SilentlyContinue)
+        # Chrome dumps the DOM as UTF-8. Naming it beats relying on the host's
+        # default: read as Windows-1252 instead, a page's accented characters
+        # arrive as mojibake and can end up published as a BIOS version.
+        return [string](Get-Content -LiteralPath $stdout -Raw -Encoding utf8 -ErrorAction SilentlyContinue)
     }
     catch {
         return ''
@@ -1165,9 +1168,24 @@ try {
 
     # Sorted keys keep the feed diff stable across runs (parallel completion
     # order varies run to run).
+    # Every vendor writes BIOS ids in plain ASCII - digits, letters, and the
+    # odd dot or dash. A value carrying anything else is a scrape artifact,
+    # and one already reached users: a Gigabyte page yielded "F19I?AA" (its
+    # UTF-8 bytes read as Windows-1252) and the churn rules then preserved it
+    # run after run, because a value that never changes is never re-examined.
+    # Such a board is better left unlisted - no verdict at all - than compared
+    # against a string its firmware can never match.
+    $droppedBios = 0
+
     $boards = [ordered]@{}
     foreach ($name in ($fetched.Keys | Sort-Object)) {
         $entry = $fetched[$name]
+
+        if ("$($entry.bios)" -notmatch '^[A-Za-z0-9][A-Za-z0-9._/+-]{0,19}$') {
+            Write-Warning "Dropping '$name': implausible BIOS value '$($entry.bios)'."
+            $droppedBios++
+            continue
+        }
 
         # Name the vendor whose board this reading describes. The app matches
         # WMI's board name against these keys with punctuation dropped, which
@@ -1196,6 +1214,9 @@ try {
         $boards[$name] = $entry
     }
     $sweepCounts['carried forward'] = $boards.Count - $freshCount
+    if ($droppedBios -gt 0) {
+        $sweepCounts['dropped, unreadable BIOS'] = $droppedBios
+    }
     $motherboards = $boards
 }
 catch {

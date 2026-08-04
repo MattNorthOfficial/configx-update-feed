@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04T22:18:20Z",
+  "updated": "2026-08-04T22:25:11Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -762,11 +762,6 @@
       "bios": "F20a",
       "date": "2026-04-14",
       "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-PRO-AX-rev-10/support#support-dl-bios"
-    },
-    "B550 AORUS PRO V2": {
-      "bios": "F19πäç",
-      "date": "2026-04-14",
-      "url": "https://www.gigabyte.com/Motherboard/B550-AORUS-PRO-V2-rev-10/support#support-dl-bios"
     },
     "B550 EAGLE": {
       "bios": "F4a",
