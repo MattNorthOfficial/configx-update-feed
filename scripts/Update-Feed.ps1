@@ -768,10 +768,25 @@ try {
         # so revisions collapse onto that name and the newest-dated BIOS
         # wins. The entry's url keeps pointing at the exact revision page
         # the verdict came from.
+        #
+        # Revisions of the same board often publish on the same day carrying
+        # different version strings (rev 1.0 of B650 GAMING X AX shipped F42c
+        # while rev 1.3 shipped FC4c, both on 2026-07-21), and keeping only
+        # the strictly-newer one leaves that tie to whichever worker happened
+        # to finish first. Consecutive sweeps disagreed on 40 boards that way,
+        # so a tie falls to the lowest revision: it is stable across runs, and
+        # its page covers the widest span of revisions (a rev-10-11-12-13 BIOS
+        # train serves four of them where rev-14 serves one).
         $gigabyteByName = @{}
         foreach ($result in $gigabyteResults | Where-Object { $_ }) {
             $existing = $gigabyteByName[$result.Name]
-            if (-not $existing -or [string]::Compare($result.Entry.date, $existing.date) -gt 0) {
+            $better = if (-not $existing) { $true }
+            else {
+                $byDate = [string]::Compare("$($result.Entry.date)", "$($existing.date)")
+                if ($byDate -ne 0) { $byDate -gt 0 }
+                else { [string]::Compare("$($result.Entry.url)", "$($existing.url)") -lt 0 }
+            }
+            if ($better) {
                 $gigabyteByName[$result.Name] = $result.Entry
             }
         }
