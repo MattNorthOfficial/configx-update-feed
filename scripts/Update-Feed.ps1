@@ -669,6 +669,7 @@ try {
         $gigabyteBoards = Invoke-WithRetry 'Gigabyte' {
             $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
             $pageStart = 1
+            $barrenBatches = 0
             while ($pageStart -le 200) {
                 $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
                     if ([datetime]::UtcNow -gt $using:deadline) { return }
@@ -679,7 +680,18 @@ try {
                 }
                 $before = $gigabyteSlugs.Count
                 foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
-                if ($gigabyteSlugs.Count -eq $before) { break }
+                if ($gigabyteSlugs.Count -eq $before) {
+                    # A batch that adds nothing is as easily eight fetches that
+                    # came back empty as it is the end of the catalog: two
+                    # sweeps half an hour apart walked 1085 and 1013 pages,
+                    # the shorter one leaving 46 boards to carry forward for
+                    # no reason. Past the real end every page echoes page 1,
+                    # so a second barren batch costs eight fetches and settles
+                    # which of the two it was.
+                    $barrenBatches++
+                    if ($barrenBatches -ge 2) { break }
+                }
+                else { $barrenBatches = 0 }
                 $pageStart += 8
             }
 
