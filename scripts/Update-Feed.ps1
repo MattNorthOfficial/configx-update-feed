@@ -22,9 +22,18 @@
 # -MaxParallel caps how many headless browsers run at once (0 = each
 # phase's tuned default). Sustained 6-8 concurrent browser launches are a
 # heavy load; a cap of 2-3 lets the sweep run gently on a workstation.
+#
+# -VendorBudgetMinutes bounds how long any one vendor's phase may spend
+# before its remaining boards are left to carry forward. A vendor that
+# starts rate-limiting mid-sweep (gigabyte.com does this to datacenter
+# addresses, so GitHub's runners get it far worse than a home connection)
+# would otherwise stretch its phase past the job's own limit and publish
+# nothing at all. Healthy phases finish well inside this; it only bites
+# when a vendor is stonewalling.
 param(
     [string[]] $BoardVendors = @('msi', 'gigabyte', 'asrock', 'asus'),
-    [int] $MaxParallel = 0
+    [int] $MaxParallel = 0,
+    [int] $VendorBudgetMinutes = 45
 )
 
 function Get-Throttle([int] $tuned) {
@@ -351,19 +360,83 @@ $browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 # Runs a URL through headless Chrome/Edge and returns the page DOM. Bypasses
 # the TLS-fingerprinting bot protection (Akamai) that MSI and Intel use, which
 # rejects plain HTTP clients but serves a real browser engine unchallenged.
-function Get-BrowserDom([string] $browser, [string] $url) {
-    # The browser logs harmless warnings to stderr, which would become
-    # terminating errors under $ErrorActionPreference = 'Stop'.
-    $previousPreference = $script:ErrorActionPreference
-    $script:ErrorActionPreference = 'Continue'
-    # --timeout dumps whatever has rendered once the budget runs out. Without
-    # it, a page that never finishes loading (rate-limited requests get
-    # served challenge loops after a few hundred rapid hits) parks its
-    # browser - and the worker running it - forever, silently stalling a
-    # whole sweep phase.
-    $dom = & $browser --headless=new --disable-gpu --no-sandbox --user-agent="$browserUa" --timeout=30000 --dump-dom $url 2>$null | Out-String
-    $script:ErrorActionPreference = $previousPreference
-    return $dom
+function Get-BrowserDom([string] $browser, [string] $url, [int] $timeoutSeconds = 30) {
+    # The deadline is enforced by killing the process rather than by Chrome's
+    # own --timeout: that flag belonged to the old headless implementation and
+    # is silently ignored under --headless=new, so it never fired. A page that
+    # never finishes loading (rate-limited requests get served challenge loops
+    # after a few hundred rapid hits) then parks its browser - and the worker
+    # running it - forever, stalling a whole sweep phase; a full Gigabyte
+    # sweep froze this way six minutes in and burned the job's six-hour limit
+    # without resolving a board. A timed-out fetch returns empty, which reads
+    # as a miss and leaves that board to carry forward.
+    #
+    # Output goes to files so the browser's chatter on stderr can't surface as
+    # a terminating error under $ErrorActionPreference = 'Stop'.
+    $stdout = [System.IO.Path]::GetTempFileName()
+    $stderr = [System.IO.Path]::GetTempFileName()
+    # A killed browser can leave a lock behind in its profile that makes the
+    # next launch hang too, so each fetch gets a throwaway profile - one stuck
+    # page can't poison the fetches after it.
+    $profileDir = Join-Path ([System.IO.Path]::GetTempPath()) "chrome-dom-$([guid]::NewGuid())"
+    try {
+        # Start-Process flattens its argument list into one command line
+        # without quoting anything, so a value carrying a space - the
+        # user-agent string, or a Windows temp path - would arrive as extra
+        # arguments, which Chrome reads as additional targets and refuses to
+        # start on. None of these can contain a quote, so wrapping each is
+        # enough.
+        $browserArgs = @(
+            '--headless=new'
+            '--disable-gpu'
+            '--no-sandbox'
+            "--user-agent=$browserUa"
+            "--user-data-dir=$profileDir"
+            '--dump-dom'
+            $url
+        ) | ForEach-Object { '"' + $_ + '"' }
+
+        $process = Start-Process -FilePath $browser -PassThru -NoNewWindow `
+            -RedirectStandardOutput $stdout -RedirectStandardError $stderr `
+            -ArgumentList $browserArgs
+
+        $expiry = [datetime]::UtcNow.AddSeconds($timeoutSeconds)
+        $lastSize = -1L
+        $settledAt = [datetime]::MaxValue
+        while (-not $process.HasExited) {
+            if ([datetime]::UtcNow -ge $expiry) { break }
+            $size = (Get-Item -LiteralPath $stdout -ErrorAction SilentlyContinue).Length
+            if ($size -gt 0 -and $size -eq $lastSize) {
+                # --dump-dom writes the page in one burst, so output that has
+                # stopped growing means the fetch is done even when the
+                # browser hasn't exited to say so - some builds sit there
+                # afterwards, and waiting on exit alone would spend the whole
+                # budget on every page.
+                if ($settledAt -eq [datetime]::MaxValue) { $settledAt = [datetime]::UtcNow }
+                elseif (([datetime]::UtcNow - $settledAt).TotalSeconds -ge 2) { break }
+            }
+            else {
+                $lastSize = $size
+                $settledAt = [datetime]::MaxValue
+            }
+            Start-Sleep -Milliseconds 100
+        }
+
+        if (-not $process.HasExited) {
+            # The renderer children outlive the launcher and hold the output
+            # handles open, so the whole tree goes.
+            try { $process.Kill($true) } catch { }
+            $process.WaitForExit(5000) | Out-Null
+        }
+        return [string](Get-Content -LiteralPath $stdout -Raw -ErrorAction SilentlyContinue)
+    }
+    catch {
+        return ''
+    }
+    finally {
+        Remove-Item $stdout, $stderr -Force -ErrorAction SilentlyContinue
+        Remove-Item $profileDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
 }
 
 # Normalizes MSI's release dates to yyyy-MM-dd where parseable. Invariant
@@ -520,7 +593,9 @@ try {
         # Each headless call takes a few seconds; a handful in flight keeps
         # the full sweep to minutes without hammering MSI.
         $getMsiBios = ${function:Get-MsiBios}.ToString()
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $results = $slugs | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-MsiBios} = $using:getMsiBios
@@ -561,8 +636,10 @@ try {
         # which that stop condition also catches.
         $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
         $pageStart = 1
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         while ($pageStart -le 200) {
             $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
+                if ([datetime]::UtcNow -gt $using:deadline) { return }
                 ${function:Get-BrowserDom} = $using:getBrowserDom
                 $browserUa = $using:browserUa
                 $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
@@ -591,6 +668,7 @@ try {
         # which stalled full-throttle sweeps.
         $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
         $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit (Get-Throttle 4) -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
@@ -669,7 +747,9 @@ try {
         Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
 
         $getAsrockBios = ${function:Get-AsrockBios}.ToString()
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $asrockResults = $asrockBoards | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $board = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-AsrockBios} = $using:getAsrockBios
@@ -763,7 +843,9 @@ try {
         # Paced at 4: bursting ~900 calls at full speed can trip ASUS's rate
         # limiter (HTTP 451), and the retry backs off long enough to ride
         # out a momentary throttle. Boards that still fail carry forward.
+        $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $asusResults = $asusBoards | ForEach-Object -ThrottleLimit 4 -Parallel {
+            if ([datetime]::UtcNow -gt $using:deadline) { return }
             $name = $_
             try {
                 # One retry, so a transient API hiccup doesn't age this
