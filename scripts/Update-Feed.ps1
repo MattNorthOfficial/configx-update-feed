@@ -968,15 +968,39 @@ try {
         # date already published in that case. A genuinely new version brings
         # its own date and is left alone, so this cannot mask a vendor
         # republishing.
+        function Get-UrlHost([string] $url) {
+            try { ([uri] $url).Host } catch { '' }
+        }
+
         foreach ($name in @($fetched.Keys)) {
             $previous = $previousBoards.PSObject.Properties[$name]
-            if (-not $previous -or $fetched[$name].bios -ne $previous.Value.bios) { continue }
+            if (-not $previous) { continue }
             $newDate = [datetime]::MinValue
             $oldDate = [datetime]::MinValue
-            if ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
-                [datetime]::TryParse("$($previous.Value.date)", [ref] $oldDate) -and
-                $newDate -lt $oldDate) {
+            if (-not ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
+                    [datetime]::TryParse("$($previous.Value.date)", [ref] $oldDate)) -or
+                $newDate -ge $oldDate) {
+                continue
+            }
+
+            if ($fetched[$name].bios -eq $previous.Value.bios) {
                 $fetched[$name].date = "$($previous.Value.date)"
+                continue
+            }
+
+            # An older BIOS coming from a different host than last time is the
+            # stale-mirror trap, not a vendor pulling a release: ASRock's
+            # Phantom Gaming pages moved to pg.asrock.com and the www copies
+            # froze around 2022, so a board the catalog stops listing as
+            # Phantom Gaming resolves against a years-old page that looks
+            # perfectly plausible. A sweep did exactly that to Z690M PG
+            # Riptide/D5, offering 8.02 from 2022 over the 19.01 from 2025
+            # already published. A vendor genuinely withdrawing a BIOS serves
+            # it from the same page, so that still comes through.
+            if ((Get-UrlHost "$($fetched[$name].url)") -ne (Get-UrlHost "$($previous.Value.url)")) {
+                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
+                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
+                $fetched[$name] = $carried
             }
         }
 
