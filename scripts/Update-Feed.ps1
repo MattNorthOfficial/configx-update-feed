@@ -986,7 +986,11 @@ if (-not $dell -and $previousFeed.dell) {
 # Each download page states its latest version in the short-description text.
 # Graphics has two branches since Intel's 2025 split: "arc" (Arc cards and
 # Core Ultra iGPUs) and "xe" (legacy-support package for 11th-14th gen
-# Iris Xe / UHD). Keys match the app's feed lookups.
+# Iris Xe / UHD). RST is branched per platform family too: the 20.x series
+# serves 12th-15th Gen, the 21.x series Core Ultra Series 3 - the app picks
+# the branch from the installed driver's major version (older families live
+# on closed branches and get no comparison). Keys match the app's feed
+# lookups.
 $intelPages = [ordered]@{
     chipset = @{
         url = 'https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html'
@@ -999,6 +1003,18 @@ $intelPages = [ordered]@{
     xe = @{
         url = 'https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html'
         pattern = 'Graphics Driver\s+(\d+(?:\.\d+)+)\s+for'
+    }
+    # The pages list every published build; "x.y.z.w (Latest)" marks the one
+    # Intel currently serves. RST installer versions carry a fifth packaging
+    # segment ("20.2.6.1025.3") the driver itself doesn't report - the app
+    # trims both sides to the four-segment core before comparing.
+    rst20 = @{
+        url = 'https://www.intel.com/content/www/us/en/download/849936/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-12th-to-15th-gen-platforms.html'
+        pattern = '(\d+(?:\.\d+){3,4})\s*\(Latest\)'
+    }
+    rst21 = @{
+        url = 'https://www.intel.com/content/www/us/en/download/920456/intel-rapid-storage-technology-driver-installation-software-for-intel-core-ultra-series-3-platforms.html'
+        pattern = '(\d+(?:\.\d+){3,4})\s*\(Latest\)'
     }
 }
 
