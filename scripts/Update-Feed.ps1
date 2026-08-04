@@ -1068,6 +1068,21 @@ try {
                 continue
             }
 
+            # A different version on the same date is not a release either.
+            # One marketing name covers every hardware revision of a board and
+            # they run separate BIOS trains that ship together - rev 1.0 of
+            # B650 GAMING X AX carries F42c where rev 1.3 carries FC4c, both
+            # dated 2026-07-21 - so which one a run publishes turns on which
+            # revision pages the enumeration happened to reach. Left alone
+            # that rewrites a few dozen boards every night between equally
+            # true answers. An entry moves when its date does.
+            if ("$($fetched[$name].date)" -eq "$($previous.Value.date)") {
+                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
+                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
+                $fetched[$name] = $carried
+                continue
+            }
+
             $newDate = [datetime]::MinValue
             $oldDate = [datetime]::MinValue
             if (-not ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
