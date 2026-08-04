@@ -390,6 +390,14 @@ function Get-BrowserDom([string] $browser, [string] $url, [int] $timeoutSeconds 
             '--headless=new'
             '--disable-gpu'
             '--no-sandbox'
+            # Renderers share memory through /dev/shm, which a container caps
+            # at 64 MB - small enough that a handful of concurrent heavy pages
+            # exhaust it and their renderers die producing no output at all.
+            # Gigabyte's 1.1 MB catalog pages hit this at the enumeration's
+            # throttle of 8: one page returned, seven came back empty, and the
+            # phase gave up with nothing to sweep. Falling back to a temp file
+            # costs nothing where /dev/shm is already ample.
+            '--disable-dev-shm-usage'
             "--user-agent=$browserUa"
             "--user-data-dir=$profileDir"
             '--dump-dom'
