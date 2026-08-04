@@ -568,6 +568,26 @@ function Invoke-VendorSweep([string] $label, [scriptblock] $phase) {
     }
 }
 
+# Enumeration is each vendor's single point of failure: every per-board fetch
+# below retries, but the one call that produces the board list does not, so a
+# momentary bad response costs that vendor its entire catalog for the run. One
+# transient 400 from ASUS's listing API - healthy again minutes later - lost
+# all 900 of its boards that way. The layout-change sanity checks live inside
+# the retried block on purpose, so an empty or truncated response is retried
+# rather than reported as a vendor changing their markup.
+function Invoke-WithRetry([string] $label, [scriptblock] $action, [int] $attempts = 3, [int] $delaySeconds = 5) {
+    for ($attempt = 1; $attempt -le $attempts; $attempt++) {
+        try {
+            return & $action
+        }
+        catch {
+            if ($attempt -eq $attempts) { throw }
+            Write-Warning "$label enumeration attempt $attempt failed ($($_.Exception.Message)); retrying in ${delaySeconds}s."
+            Start-Sleep $delaySeconds
+        }
+    }
+}
+
 $motherboards = $null
 $sweepCounts = [ordered]@{}
 try {
@@ -588,13 +608,16 @@ try {
     $fetched = @{}
 
     if ($BoardVendors -contains 'msi') { Invoke-VendorSweep 'MSI' {
-        $slugs = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
-                'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
-            ForEach-Object { $_.Groups[1].Value } |
-            Sort-Object -Unique |
-            Where-Object { $_ -match $msiChipsetFilter })
-        if ($slugs.Count -lt 50) {
-            throw "Only $($slugs.Count) boards enumerated - the sitemap layout may have changed."
+        $slugs = Invoke-WithRetry 'MSI' {
+            $found = @([regex]::Matches((Get-BrowserDom $browser $msiSitemapUrl),
+                    'https://www\.msi\.com/Motherboard/([^<\s"/]+)') |
+                ForEach-Object { $_.Groups[1].Value } |
+                Sort-Object -Unique |
+                Where-Object { $_ -match $msiChipsetFilter })
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) boards enumerated - the sitemap layout may have changed."
+            }
+            , $found
         }
         Write-Host "MSI: checking $($slugs.Count) boards..."
 
@@ -642,32 +665,35 @@ try {
         # revision slugs. Walking pages until no new slug appears enumerates
         # every board ever listed; out-of-range pages just echo page 1,
         # which that stop condition also catches.
-        $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-        $pageStart = 1
         $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
-        while ($pageStart -le 200) {
-            $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
-                if ([datetime]::UtcNow -gt $using:deadline) { return }
-                ${function:Get-BrowserDom} = $using:getBrowserDom
-                $browserUa = $using:browserUa
-                $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
-                [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
+        $gigabyteBoards = Invoke-WithRetry 'Gigabyte' {
+            $gigabyteSlugs = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+            $pageStart = 1
+            while ($pageStart -le 200) {
+                $batch = ($pageStart..($pageStart + 7)) | ForEach-Object -ThrottleLimit (Get-Throttle 8) -Parallel {
+                    if ([datetime]::UtcNow -gt $using:deadline) { return }
+                    ${function:Get-BrowserDom} = $using:getBrowserDom
+                    $browserUa = $using:browserUa
+                    $dom = Get-BrowserDom $using:browser "https://www.gigabyte.com/Motherboard/All-Series?page=$_"
+                    [regex]::Matches($dom, 'href="/Motherboard/([^"#?/]+)"') | ForEach-Object { $_.Groups[1].Value }
+                }
+                $before = $gigabyteSlugs.Count
+                foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
+                if ($gigabyteSlugs.Count -eq $before) { break }
+                $pageStart += 8
             }
-            $before = $gigabyteSlugs.Count
-            foreach ($slug in $batch) { [void]$gigabyteSlugs.Add($slug) }
-            if ($gigabyteSlugs.Count -eq $before) { break }
-            $pageStart += 8
-        }
 
-        # Unlike the other vendors, Gigabyte is swept unfiltered - every
-        # board the grid lists, back through the oldest generations.
-        # Anything with a digit is a product (series pages like "AORUS" or
-        # "All-Series" have none), and non-board pages that slip through
-        # self-filter because their support page has no F-version BIOS list
-        # to match.
-        $gigabyteBoards = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
-        if ($gigabyteBoards.Count -lt 50) {
-            throw "Only $($gigabyteBoards.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
+            # Unlike the other vendors, Gigabyte is swept unfiltered - every
+            # board the grid lists, back through the oldest generations.
+            # Anything with a digit is a product (series pages like "AORUS" or
+            # "All-Series" have none), and non-board pages that slip through
+            # self-filter because their support page has no F-version BIOS list
+            # to match.
+            $found = @($gigabyteSlugs | Where-Object { $_ -match '\d' } | Sort-Object)
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) Gigabyte boards enumerated - the All-Series layout may have changed."
+            }
+            , $found
         }
         Write-Host "Gigabyte: checking $($gigabyteBoards.Count) board pages..."
 
@@ -734,24 +760,29 @@ try {
         # filter. BIOS page URLs drop the slashes some names carry
         # ("Z790 Pro RS/D4" lives at ".../Z790 Pro RSD4/"; an encoded
         # slash 404s).
-        $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
+        $asrockCatalog = Invoke-WithRetry 'ASRock' {
+            $asrockDom = Get-BrowserDom $browser 'https://www.asrock.com/mb/index.asp'
 
-        # The arrays are single-quoted JS literals, so entries parse by
-        # pattern rather than as JSON: ['name','socket','chipset','form factor'].
-        function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
-            $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
-            [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
-                ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
+            # The arrays are single-quoted JS literals, so entries parse by
+            # pattern rather than as JSON: ['name','socket','chipset','form factor'].
+            function Get-AsrockCatalog([string] $dom, [string] $arrayName) {
+                $slice = [regex]::Match($dom, "(?s)$arrayName\s*=\s*\[(.*?)\]\s*;").Groups[1].Value
+                [regex]::Matches($slice, "\['([^']*)','([^']*)','([^']*)','([^']*)'\]") |
+                    ForEach-Object { , @($_.Groups[1].Value, $_.Groups[2].Value, $_.Groups[3].Value, $_.Groups[4].Value) }
+            }
+
+            $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
+            $found = @(@(Get-AsrockCatalog $asrockDom 'allmodels') | Where-Object { $_[1] -in $asrockSockets })
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) ASRock boards enumerated - the index layout may have changed."
+            }
+            [pscustomobject]@{
+                Boards  = $found
+                PgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
+            }
         }
-
-        $asrockAll = @(Get-AsrockCatalog $asrockDom 'allmodels')
-        $asrockPgNames = @(Get-AsrockCatalog $asrockDom 'pgmodels' | ForEach-Object { $_[0] })
-
-        $asrockSockets = 'AM4', 'AM5', 'sTR5', 'sWRX8', 'sTRX4', 'TR4', '1200', '1700', '1851', '2066'
-        $asrockBoards = @($asrockAll | Where-Object { $_[1] -in $asrockSockets })
-        if ($asrockBoards.Count -lt 50) {
-            throw "Only $($asrockBoards.Count) ASRock boards enumerated - the index layout may have changed."
-        }
+        $asrockBoards = $asrockCatalog.Boards
+        $asrockPgNames = $asrockCatalog.PgNames
         Write-Host "ASRock: checking $($asrockBoards.Count) boards..."
 
         $getAsrockBios = ${function:Get-AsrockBios}.ToString()
@@ -827,24 +858,27 @@ try {
         # (~900 boards; the API costs nothing, so every generation gets the
         # same coverage as Gigabyte). No headless browser needed for any
         # of it.
-        $asusNames = [System.Collections.Generic.List[string]]::new()
-        $pageIndex = 1
-        do {
-            $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
-                'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
-                '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
-                "&PageSize=100&PageIndex=$pageIndex" +
-                '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
-            foreach ($product in $page.Result.ProductList) {
-                $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
-                if ($name) { $asusNames.Add($name) }
-            }
-            $pageIndex++
-        } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
+        $asusBoards = Invoke-WithRetry 'ASUS' {
+            $asusNames = [System.Collections.Generic.List[string]]::new()
+            $pageIndex = 1
+            do {
+                $page = Invoke-RestMethod -UserAgent $userAgent -TimeoutSec 30 -Uri (
+                    'https://odinapi.asus.com/recent-data/apiv2/SeriesFilterResult?SystemCode=asus&WebsiteCode=global' +
+                    '&ProductLevel1Code=motherboards-components&ProductLevel2Code=motherboards' +
+                    "&PageSize=100&PageIndex=$pageIndex" +
+                    '&CategoryName=&SeriesName=&SubSeriesName=&Spec=&SubSpec=&PriceMin=&PriceMax=&Sort=Newsest&siteID=www')
+                foreach ($product in $page.Result.ProductList) {
+                    $name = [System.Net.WebUtility]::HtmlDecode(($product.Name -replace '<[^>]+>', '')).Trim()
+                    if ($name) { $asusNames.Add($name) }
+                }
+                $pageIndex++
+            } while ($asusNames.Count -lt $page.Result.TotalCount -and $page.Result.ProductList.Count -gt 0)
 
-        $asusBoards = @($asusNames | Sort-Object -Unique)
-        if ($asusBoards.Count -lt 50) {
-            throw "Only $($asusBoards.Count) ASUS boards enumerated - the listing API may have changed."
+            $found = @($asusNames | Sort-Object -Unique)
+            if ($found.Count -lt 50) {
+                throw "Only $($found.Count) ASUS boards enumerated - the listing API may have changed."
+            }
+            , $found
         }
         Write-Host "ASUS: checking $($asusBoards.Count) boards..."
 
