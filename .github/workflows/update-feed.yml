@@ -7,6 +7,11 @@ on:
         description: "Motherboard vendors to sweep (comma-separated: msi,gigabyte,asrock,asus; 'none' skips all). Empty = all; skipped vendors carry forward."
         required: false
         default: ""
+      accept_date_regressions:
+        description: "Publish even if many BIOS dates move backwards. Only for a deliberate change to what counts as the latest BIOS - the gate is right to refuse otherwise."
+        type: boolean
+        required: false
+        default: false
   schedule:
     # Every 6 hours: just the quick sections (AMD/NVIDIA/Intel/Windows) -
     # board entries carry forward untouched. BIOS releases are rare, so the
@@ -60,11 +65,14 @@ jobs:
           # which schedule fired, so a hand-triggered partial run is judged
           # the same way a 6-hourly one is.
           "FULL_SWEEP=$((-not $vendors).ToString().ToLower())" | Out-File $env:GITHUB_ENV -Append
+          # Scheduled runs never carry the override: it exists for a hand-
+          # triggered run that is landing a deliberate change.
+          $accept = '${{ inputs.accept_date_regressions }}' -eq 'true'
           if ($vendors) {
-            ./scripts/Update-Feed.ps1 -BoardVendors ($vendors -split ',')
+            ./scripts/Update-Feed.ps1 -BoardVendors ($vendors -split ',') -AcceptDateRegressions:$accept
           }
           else {
-            ./scripts/Update-Feed.ps1
+            ./scripts/Update-Feed.ps1 -AcceptDateRegressions:$accept
           }
 
       # Now that the two run types can overlap, one can publish while the other

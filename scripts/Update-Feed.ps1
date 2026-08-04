@@ -30,10 +30,19 @@
 # would otherwise stretch its phase past the job's own limit and publish
 # nothing at all. Healthy phases finish well inside this; it only bites
 # when a vendor is stonewalling.
+#
+# -AcceptDateRegressions publishes a sweep the gate below would reject for
+# moving too many BIOS dates backwards. That gate assumes a mass regression
+# means a degraded scrape, which is right for a mirror serving stale pages
+# and wrong for a deliberate change to what counts as the latest BIOS -
+# teaching the ASUS phase to skip unreleased builds moved 272 boards back to
+# their newest actual release, every one of them correctly. Set it only when
+# the regression is the point, and only for the run that lands the change.
 param(
     [string[]] $BoardVendors = @('msi', 'gigabyte', 'asrock', 'asus'),
     [int] $MaxParallel = 0,
-    [int] $VendorBudgetMinutes = 45
+    [int] $VendorBudgetMinutes = 45,
+    [switch] $AcceptDateRegressions
 )
 
 function Get-Throttle([int] $tuned) {
@@ -959,8 +968,20 @@ try {
                         Start-Sleep 10
                     }
                 }
+                # Newest first, but "newest" is not the same as released:
+                # each entry carries an IsRelease flag and ASUS routinely
+                # posts newer builds with it cleared. Five of ten sampled
+                # boards led with one - all showing 3886 while 3881 was the
+                # newest release - so taking the top entry published a BIOS
+                # ASUS doesn't consider released. A listing with the flag but
+                # nothing released yields nothing, and that board carries
+                # forward rather than advertising a beta.
                 $biosGroup = $response.Result.Obj | Where-Object { $_.Name -eq 'BIOS' } | Select-Object -First 1
-                $newest = if ($biosGroup) { $biosGroup.Files | Select-Object -First 1 } else { $null }
+                $newest = if (-not $biosGroup) { $null }
+                elseif ($biosGroup.Files | Where-Object { $null -ne $_.PSObject.Properties['IsRelease'] }) {
+                    $biosGroup.Files | Where-Object { "$($_.IsRelease)" -eq '1' } | Select-Object -First 1
+                }
+                else { $biosGroup.Files | Select-Object -First 1 }
                 if ($newest -and $newest.Version) {
                     [pscustomobject]@{
                         Name  = $name
@@ -1149,7 +1170,11 @@ try {
             }
         }
         if ($comparable -ge 50 -and $regressed -gt [Math]::Max(10, [int]($comparable * 0.05))) {
-            throw "Publish gate: $regressed of $comparable re-checked boards regressed their BIOS date - refusing to publish this sweep's board data."
+            if (-not $AcceptDateRegressions) {
+                throw "Publish gate: $regressed of $comparable re-checked boards regressed their BIOS date - refusing to publish this sweep's board data."
+            }
+            Write-Warning "Publish gate overridden: $regressed of $comparable re-checked boards moved their BIOS date backwards."
+            $sweepCounts['date regressions accepted'] = $regressed
         }
 
         # Boards that dropped out of this sweep (a transient failure that
