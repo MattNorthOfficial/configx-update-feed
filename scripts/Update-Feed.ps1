@@ -590,6 +590,7 @@ function Invoke-WithRetry([string] $label, [scriptblock] $action, [int] $attempt
 
 $motherboards = $null
 $sweepCounts = [ordered]@{}
+$boardConflicts = [ordered]@{}
 try {
     $sweepVendors = @(@('msi', 'gigabyte', 'asrock', 'asus') | Where-Object { $BoardVendors -contains $_ })
 
@@ -606,6 +607,20 @@ try {
     $getBrowserDom = ${function:Get-BrowserDom}.ToString()
     $formatBiosDate = ${function:Format-BiosDate}.ToString()
     $fetched = @{}
+
+    # Two vendors can ship boards under the same marketing name - both MSI and
+    # Gigabyte sell a "B650M GAMING PLUS WIFI" - and the feed keys boards by
+    # that name alone, so the published entry used to be whichever phase
+    # happened to write last. That made the value depend on how complete each
+    # sweep was rather than on anything real: once Gigabyte's catalog resolved
+    # in full it silently took five names off MSI, offering their owners a
+    # Gigabyte BIOS version. Every phase records a claim instead, and one
+    # precedence decides the winner afterwards.
+    $boardClaims = @{}
+    function Add-BoardClaim([string] $name, $entry, [string] $vendor) {
+        if (-not $boardClaims.ContainsKey($name)) { $boardClaims[$name] = [ordered]@{} }
+        $boardClaims[$name][$vendor] = $entry
+    }
 
     if ($BoardVendors -contains 'msi') { Invoke-VendorSweep 'MSI' {
         $slugs = Invoke-WithRetry 'MSI' {
@@ -653,7 +668,7 @@ try {
         }
 
         foreach ($result in $results | Where-Object { $_ }) {
-            $fetched[$result.Name] = $result.Entry
+            Add-BoardClaim $result.Name $result.Entry 'msi'
         }
         $sweepCounts['MSI'] = $fetched.Count
         Write-Host "MSI: $($fetched.Count) boards resolved."
@@ -756,7 +771,7 @@ try {
             }
         }
         foreach ($name in $gigabyteByName.Keys) {
-            $fetched[$name] = $gigabyteByName[$name]
+            Add-BoardClaim $name $gigabyteByName[$name] 'gigabyte'
         }
         $sweepCounts['Gigabyte'] = $gigabyteByName.Count
         Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
@@ -855,7 +870,7 @@ try {
 
         $asrockResolved = 0
         foreach ($result in $asrockResults | Where-Object { $_ }) {
-            $fetched[$result.Name] = $result.Entry
+            Add-BoardClaim $result.Name $result.Entry 'asrock'
             $asrockResolved++
         }
         $sweepCounts['ASRock'] = $asrockResolved
@@ -939,12 +954,60 @@ try {
 
         $asusResolved = 0
         foreach ($result in $asusResults | Where-Object { $_ }) {
-            $fetched[$result.Name] = $result.Entry
+            Add-BoardClaim $result.Name $result.Entry 'asus'
             $asusResolved++
         }
         $sweepCounts['ASUS'] = $asusResolved
         Write-Host "ASUS: $asusResolved boards resolved."
     } }
+
+    # Settle the contested names. Precedence rather than phase order, so the
+    # same claims always publish the same entry no matter which vendors ran or
+    # how much of each catalog resolved. MSI leads because that is who already
+    # holds every contested name in the published feed, so adding Gigabyte
+    # coverage does not rewrite boards that were never in question.
+    $vendorPrecedence = @('msi', 'gigabyte', 'asrock', 'asus')
+    $previousConflicts = $previousFeed.motherboardConflicts
+    if ($previousConflicts) {
+        # A vendor that sat out this run keeps the claim the last feed recorded
+        # for it, so sweeping one vendor on its own cannot hand that vendor a
+        # name belonging to one nobody looked at.
+        foreach ($prop in $previousConflicts.PSObject.Properties) {
+            if (-not $boardClaims.ContainsKey($prop.Name)) { continue }
+            foreach ($claim in $prop.Value.PSObject.Properties) {
+                if ($sweepVendors -contains $claim.Name -or $boardClaims[$prop.Name].Contains($claim.Name)) { continue }
+                $carriedClaim = [ordered]@{ bios = "$($claim.Value.bios)"; date = "$($claim.Value.date)" }
+                if ($claim.Value.url) { $carriedClaim.url = "$($claim.Value.url)" }
+                $boardClaims[$prop.Name][$claim.Name] = $carriedClaim
+            }
+        }
+    }
+
+    foreach ($name in $boardClaims.Keys) {
+        $claims = $boardClaims[$name]
+        $winner = @($vendorPrecedence | Where-Object { $claims.Contains($_) }) | Select-Object -First 1
+        $fetched[$name] = $claims[$winner]
+        if ($claims.Count -gt 1) {
+            # Nothing here can tell two vendors' boards apart from the name, so
+            # both readings ride along under motherboardConflicts and the app
+            # can settle it against the manufacturer WMI reports.
+            $boardConflicts[$name] = $claims
+        }
+    }
+    if ($previousConflicts) {
+        foreach ($prop in $previousConflicts.PSObject.Properties) {
+            if ($boardConflicts.Contains($prop.Name)) { continue }
+            # Only a run that swept every vendor named in the old record is
+            # entitled to say the clash is gone; anything narrower carries it.
+            $recorded = @($prop.Value.PSObject.Properties.Name)
+            if (@($recorded | Where-Object { $sweepVendors -notcontains $_ }).Count -eq 0) { continue }
+            $boardConflicts[$prop.Name] = $prop.Value
+        }
+    }
+    if ($boardConflicts.Count -gt 0) {
+        $sweepCounts['name conflicts'] = $boardConflicts.Count
+        Write-Warning "$($boardConflicts.Count) board name(s) claimed by more than one vendor: $(($boardConflicts.Keys) -join ', ')"
+    }
 
     foreach ($vendor in $sweepCounts.Keys) {
         if ($sweepCounts[$vendor] -eq 0) {
@@ -1064,6 +1127,12 @@ catch {
 if (-not $motherboards -and $previousFeed.motherboards) {
     Write-Warning 'Reusing previously published motherboard data.'
     $motherboards = $previousFeed.motherboards
+}
+
+# A sweep that fell over before settling the contested names knows nothing
+# about them either way, so the record already published stands.
+if ($boardConflicts.Count -eq 0 -and $previousFeed.motherboardConflicts) {
+    $boardConflicts = $previousFeed.motherboardConflicts
 }
 
 # --- Dell BIOS catalog (CatalogPC.cab) -----------------------------------------
@@ -1355,6 +1424,14 @@ if ($chipset) {
 
 # One glanceable table per run - echoed to the console, and into the
 # workflow's step summary when running in GitHub Actions.
+# Counts entries in either shape these sections take: an ordered hashtable
+# from a fresh run, or the parsed JSON object from a carry-forward.
+function Measure-Entries($section) {
+    if ($null -eq $section) { 0 }
+    elseif ($section -is [System.Collections.IDictionary]) { $section.Count }
+    else { @($section.PSObject.Properties).Count }
+}
+
 function Write-RunSummary([string] $outcome) {
     $lines = @('## Feed run', '', "Outcome: $outcome", '', '| Part | Result |', '|---|---|')
     foreach ($vendor in @('msi', 'gigabyte', 'asrock', 'asus')) {
@@ -1376,12 +1453,11 @@ function Write-RunSummary([string] $outcome) {
     if ($sweepCounts.Contains('sweep failed')) {
         $lines += "| Board sweep | FAILED: $($sweepCounts['sweep failed']) |"
     }
+    if ($sweepCounts.Contains('name conflicts')) {
+        $lines += "| Names claimed by two vendors | $($sweepCounts['name conflicts']) |"
+    }
     if ($motherboards) {
-        # A fresh sweep builds an ordered hashtable; the reuse-previous path
-        # hands back the parsed JSON object.
-        $total = if ($motherboards -is [System.Collections.IDictionary]) { $motherboards.Count }
-        else { @($motherboards.PSObject.Properties).Count }
-        $lines += "| Boards total | $total |"
+        $lines += "| Boards total | $(Measure-Entries $motherboards) |"
     }
     $text = ($lines | Where-Object { $null -ne $_ }) -join "`n"
     Write-Host $text
@@ -1390,11 +1466,16 @@ function Write-RunSummary([string] $outcome) {
     }
 }
 
+# Nothing contested means no section at all, which has to compare equal to a
+# feed that never had one - otherwise every quick refresh looks like a change
+# and commits a new file for nothing.
+$publishConflicts = if ((Measure-Entries $boardConflicts) -gt 0) { $boardConflicts } else { $null }
+
 # Leave the file untouched when the data hasn't changed, so the scheduled
 # workflow only commits on actual releases.
 if ($previousFeed) {
-    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
+    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.motherboardConflicts, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
+    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $publishConflicts, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-RunSummary 'unchanged - feed not rewritten'
         return
@@ -1414,6 +1495,12 @@ if ($windows10) {
 }
 if ($motherboards) {
     $feed.motherboards = $motherboards
+}
+# Purely additive: motherboards still holds one entry per name for readers
+# that key by name alone, and this records every vendor's reading of the
+# names two of them lay claim to.
+if ($publishConflicts) {
+    $feed.motherboardConflicts = $publishConflicts
 }
 if ($dell) {
     $feed.dell = $dell
