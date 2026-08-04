@@ -968,13 +968,22 @@ try {
         # date already published in that case. A genuinely new version brings
         # its own date and is left alone, so this cannot mask a vendor
         # republishing.
-        function Get-UrlHost([string] $url) {
-            try { ([uri] $url).Host } catch { '' }
-        }
-
         foreach ($name in @($fetched.Keys)) {
             $previous = $previousBoards.PSObject.Properties[$name]
             if (-not $previous) { continue }
+
+            # A release's date is fixed once it ships, so the same version
+            # dated differently is the scrape, not the vendor. Gigabyte
+            # renders its dates client-side and a long sweep catches some
+            # pages a beat early: consecutive full runs drifted boards a day
+            # in both directions - 33 back on one run, 18 forward on the next
+            # - including boards whose BIOS has not shipped since 2013. Keep
+            # the date already published whenever the version is unchanged.
+            if ($fetched[$name].bios -eq $previous.Value.bios) {
+                $fetched[$name].date = "$($previous.Value.date)"
+                continue
+            }
+
             $newDate = [datetime]::MinValue
             $oldDate = [datetime]::MinValue
             if (-not ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
@@ -983,21 +992,19 @@ try {
                 continue
             }
 
-            if ($fetched[$name].bios -eq $previous.Value.bios) {
-                $fetched[$name].date = "$($previous.Value.date)"
-                continue
-            }
-
-            # An older BIOS coming from a different host than last time is the
-            # stale-mirror trap, not a vendor pulling a release: ASRock's
-            # Phantom Gaming pages moved to pg.asrock.com and the www copies
-            # froze around 2022, so a board the catalog stops listing as
-            # Phantom Gaming resolves against a years-old page that looks
-            # perfectly plausible. A sweep did exactly that to Z690M PG
-            # Riptide/D5, offering 8.02 from 2022 over the 19.01 from 2025
-            # already published. A vendor genuinely withdrawing a BIOS serves
-            # it from the same page, so that still comes through.
-            if ((Get-UrlHost "$($fetched[$name].url)") -ne (Get-UrlHost "$($previous.Value.url)")) {
+            # An older BIOS arriving from a different page than last time is a
+            # sweep that landed somewhere staler, not a vendor withdrawing a
+            # release. Two shapes of it turned up in one run: ASRock's Phantom
+            # Gaming boards fall back to the www copies that froze around 2022
+            # when the catalog stops listing them as Phantom Gaming (Z690M PG
+            # Riptide/D5 offered 8.02 from 2022 over 19.01 from 2025), and a
+            # multi-revision Gigabyte board whose newer revision page missed
+            # enumeration collapses onto the older one (GA-C1037UN offered
+            # rev-10's F2 from 2013 over rev-20's FA from 2014). Neither is
+            # numerous enough for the publish gate to notice. A vendor really
+            # pulling a BIOS serves the replacement from the same page, so
+            # that still lands.
+            if ("$($fetched[$name].url)" -ne "$($previous.Value.url)") {
                 $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
                 if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
                 $fetched[$name] = $carried
