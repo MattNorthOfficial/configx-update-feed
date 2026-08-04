@@ -913,6 +913,27 @@ try {
     $previousBoards = $previousFeed.motherboards
 
     if ($previousBoards) {
+        # A published BIOS keeps the date it was published on, so the same
+        # version dated earlier than last time is the scrape misreading, not
+        # the vendor. Gigabyte renders its dates client-side and a long sweep
+        # catches a few pages a beat too early: a full run moved 33 of 784
+        # boards back exactly one day while leaving their versions alone,
+        # including boards whose BIOS has not changed since 2013. Keep the
+        # date already published in that case. A genuinely new version brings
+        # its own date and is left alone, so this cannot mask a vendor
+        # republishing.
+        foreach ($name in @($fetched.Keys)) {
+            $previous = $previousBoards.PSObject.Properties[$name]
+            if (-not $previous -or $fetched[$name].bios -ne $previous.Value.bios) { continue }
+            $newDate = [datetime]::MinValue
+            $oldDate = [datetime]::MinValue
+            if ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
+                [datetime]::TryParse("$($previous.Value.date)", [ref] $oldDate) -and
+                $newDate -lt $oldDate) {
+                $fetched[$name].date = "$($previous.Value.date)"
+            }
+        }
+
         # Publish gate: a vendor layout change can parse wrong-but-plausible
         # values (ASRock's stale mirror pages once served years-old
         # versions). One board's date moving backward is legitimate -
