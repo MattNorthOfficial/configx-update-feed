@@ -8,15 +8,45 @@
 $ErrorActionPreference = 'Stop'
 
 $browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
-$browser = @(
+$browser = @('google-chrome', 'chromium-browser', 'chromium') |
+    Where-Object { Get-Command $_ -ErrorAction SilentlyContinue } |
+    Select-Object -First 1
+if (-not $browser) {
+    $browser = @(
     "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe",
     "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe",
     "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"
 ) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+}
 if (-not $browser) { throw 'No browser.' }
 
 function Get-Dom([string] $url) {
-    & $script:browser --headless=new --disable-gpu --no-sandbox --user-agent="$script:browserUa" --timeout=20000 --dump-dom $url 2>$null | Out-String
+    $stdout = [System.IO.Path]::GetTempFileName()
+    $stderr = [System.IO.Path]::GetTempFileName()
+    $profile = Join-Path ([System.IO.Path]::GetTempPath()) "gb-parse-$([guid]::NewGuid())"
+    try {
+        $arguments = @(
+            '--headless=new'
+            '--disable-gpu'
+            '--disable-dev-shm-usage'
+            "--user-agent=$script:browserUa"
+            "--user-data-dir=$profile"
+            '--dump-dom'
+            $url
+        ) | ForEach-Object { '"' + $_ + '"' }
+        $process = Start-Process -FilePath $script:browser -PassThru -NoNewWindow `
+            -RedirectStandardOutput $stdout -RedirectStandardError $stderr `
+            -ArgumentList $arguments
+        if (-not $process.WaitForExit(30000)) {
+            try { $process.Kill($true) } catch { }
+            $process.WaitForExit(5000) | Out-Null
+        }
+        return [string](Get-Content -LiteralPath $stdout -Raw -Encoding utf8 -ErrorAction SilentlyContinue)
+    }
+    finally {
+        Remove-Item $stdout, $stderr -Force -ErrorAction SilentlyContinue
+        Remove-Item $profile -Recurse -Force -ErrorAction SilentlyContinue
+    }
 }
 $getDom = ${function:Get-Dom}.ToString()
 
@@ -67,12 +97,16 @@ $results = $sample | ForEach-Object -ThrottleLimit 2 -Parallel {
     if ($bios) {
         foreach ($m in [regex]::Matches($bios,
                 '(?s)class="item-version"[^>]*>\s*([^<]+?)\s*<.*?class="item-date"[^>]*>\s*([^<]+?)\s*<')) {
+            $version = [System.Net.WebUtility]::HtmlDecode($m.Groups[1].Value.Trim())
+            if ($version -cmatch '[a-z]$' -or $version -cmatch '\d[A-Z]$') {
+                continue
+            }
             $rowCount++
             $date = [datetime]::MinValue
             if ([datetime]::TryParse($m.Groups[2].Value.Trim(), [cultureinfo]::InvariantCulture,
                     [System.Globalization.DateTimeStyles]::None, [ref] $date) -and $date -gt $bestDate) {
                 $bestDate = $date
-                $bestVer = [System.Net.WebUtility]::HtmlDecode($m.Groups[1].Value.Trim())
+                $bestVer = $version
             }
         }
     }
@@ -101,3 +135,10 @@ Write-Host "Misses: $((@($results | Where-Object { -not $_.Version }) | ForEach-
 Write-Host "No page title: $((@($results | Where-Object { -not $_.Name }) | ForEach-Object Slug) -join ', ')"
 Write-Host '--- sample of extractions ---'
 $results | Where-Object Version | Select-Object -First 10 | ForEach-Object { Write-Host "  $($_.Slug) -> '$($_.Name)' $($_.Version) ($($_.Date))" }
+
+if ($parsed.Count -lt [Math]::Max(10, [int]($total * 0.5))) {
+    throw "Only $($parsed.Count) of $total sampled pages produced a stable BIOS."
+}
+if ($parsed | Where-Object { $_.Version -cmatch '[a-z]$' -or $_.Version -cmatch '\d[A-Z]$' }) {
+    throw 'A beta-style Gigabyte BIOS escaped the stable-release filter.'
+}

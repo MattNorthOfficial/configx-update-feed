@@ -27,50 +27,103 @@ than stalling the run.
 
 ```json
 {
-  "updated": "2026-07-27T02:13:29Z",
+  "schemaVersion": 1,
+  "updated": "2026-08-05T13:06:09Z",
   "source": "https://gpuopen.com/version-table/",
+  "communitySources": {
+    "intelChipsetInf": {
+      "repository": "FirstEverTech/Universal-Intel-Chipset-Updater",
+      "commit": "3ca0886aa5a60d58cd82c0e938028db9f131d840"
+    },
+    "nvidiaGpuMap": {
+      "repository": "ZenitH-AT/nvidia-data",
+      "commit": "a94a519be9ec15b972533e501e47d5e8d67100c5"
+    }
+  },
+  "freshness": {
+    "amd.windows": "2026-08-05T13:06:09Z",
+    "motherboards.gigabyte": "2026-08-04T10:37:00Z"
+  },
   "amd": {
     "windows": {
-      "current":      { "adrenalin": "26.6.4", "whql": true, "driverStore": "32.0.31021.5001" },
-      "rdna1-2":      { "adrenalin": "26.6.2", "whql": true, "driverStore": "32.0.21043.19003" },
+      "current":      { "adrenalin": "26.7.1", "whql": true, "driverStore": "32.0.31035.1003" },
+      "rdna1-2":      { "adrenalin": "26.7.1", "whql": true, "driverStore": "32.0.21045.1000" },
       "polaris-vega": { "adrenalin": "26.5.2", "whql": true, "driverStore": "31.0.21925.1001" }
     },
     "chipset": {
-      "revision": "8.05.04.516",
-      "date": "2026-05-18",
+      "revision": "8.07.16.1035",
+      "date": "2026-07-30",
       "components": {
-        "smbus": "2.0.0.26",
-        "psp": "5.44.0.0",
+        "smbus": "2.0.0.29",
+        "smbusAm4": "5.12.0.44",
+        "psp": "5.46.0.0",
         "ppm": "8.0.0.62",
         "vcache": "1.0.0.12",
         "gpio": "2.2.0.137",
-        "i2c": "1.2.0.126",
+        "i2c": "1.2.0.131",
         "ptgpio": "3.0.5.0",
         "compatdb": "1.0.0.3"
       }
     }
   },
   "windowsBuilds": {
-    "25H2": { "build": "26200.8894", "date": "2026-07-18", "kb": "KB5121767" },
-    "24H2": { "build": "26100.8894", "date": "2026-07-18", "kb": "KB5121767" }
+    "25H2": {
+      "build": "26200.8894",
+      "date": "2026-07-18",
+      "kb": "KB5121767",
+      "eosHome": "2027-10-12",
+      "eosEnterprise": "2028-10-10"
+    }
+  },
+  "windows10": {
+    "22H2": { "eosHome": "2025-10-14", "eosEnterprise": "2025-10-14" }
   },
   "motherboards": {
-    "MAG X870 TOMAHAWK WIFI": { "bios": "7E51v1A92", "date": "2026-07-01" },
-    "MAG Z890 TOMAHAWK WIFI": { "bios": "7E32v1AD0", "date": "2026-07-27" }
+    "B650 AORUS ELITE": {
+      "bios": "F41",
+      "date": "2026-05-21",
+      "url": "https://www.gigabyte.com/Motherboard/B650-AORUS-ELITE-rev-10/support#support-dl-bios",
+      "vendor": "gigabyte",
+      "revisionAmbiguous": true
+    }
+  },
+  "motherboardConflicts": {
+    "B650M GAMING PLUS WIFI": {
+      "msi": { "bios": "7E24v1E2", "date": "2026-07-06" },
+      "gigabyte": { "bios": "F41", "date": "2026-05-21" }
+    }
+  },
+  "dell": {
+    "0A5C": {
+      "bios": "1.15.0",
+      "date": "2026-07-15",
+      "url": "https://downloads.dell.com/FOLDER/example.exe"
+    }
   },
   "intel": {
     "chipset": { "version": "10.1.20398.8776", "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html", "download": "https://downloadmirror.intel.com/872506/SetupChipset.exe" },
     "arc":     { "version": "32.0.101.8864",   "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html", "download": "https://downloadmirror.intel.com/923907/gfx_win_101.8864.exe" },
-    "xe":      { "version": "32.0.101.7088",   "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html", "download": "https://downloadmirror.intel.com/922492/gfx_win_101.7088.exe" }
+    "xe":      { "version": "32.0.101.7088",   "url": "https://www.intel.com/content/www/us/en/download/864990/intel-11th-14th-gen-processor-graphics-windows.html", "download": "https://downloadmirror.intel.com/922492/gfx_win_101.7088.exe" },
+    "rst20":   { "version": "20.2.6.1025.3",   "url": "https://www.intel.com/content/www/us/en/download/849936/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-12th-to-15th-gen-platforms.html", "download": "https://downloadmirror.intel.com/example/rst20.exe" },
+    "rst21":   { "version": "21.1.0.1006.2",   "url": "https://www.intel.com/content/www/us/en/download/920456/intel-rapid-storage-technology-driver-installation-software-for-intel-core-ultra-series-3-platforms.html", "download": "https://downloadmirror.intel.com/example/rst21.exe" },
+    "chipsetInf": { "7A23": "10.1.46.5" }
   },
   "nvidia": {
-    "gameReady": "610.74",
-    "url": "https://www.nvidia.com/en-us/drivers/details/274187/",
-    "download": "https://us.download.nvidia.com/Windows/610.74/610.74-desktop-win10-win11-64bit-international-dch-whql.exe"
+    "gameReady": "610.88",
+    "url": "https://www.nvidia.com/en-us/drivers/",
+    "download": "https://us.download.nvidia.com/Windows/610.88/610.88-desktop-win10-win11-64bit-international-dch-whql.exe"
   }
 }
 ```
 
+- `schemaVersion` changes only when a consumer-facing breaking change is
+  introduced. Additive fields stay within the current version.
+- `communitySources` records the immutable commits used for the Intel INF and
+  NVIDIA product-ID maps. Runtime and scheduled jobs never consume moving
+  upstream branches.
+- `freshness` records the last successful check represented by each source
+  section. Skipped or failed vendor phases retain their previous timestamp,
+  so clients can distinguish a newly written feed from carried-forward data.
 - `adrenalin` is the marketing version (what AMD's site shows).
 - `driverStore` is the Windows driver-store version (what WMI / Device Manager
   reports), which lets a client match its installed driver to the right branch.
@@ -99,11 +152,13 @@ than stalling the run.
   which yields the canonical revision slugs their pages only exist at -
   swept unfiltered, every generation the grid lists (~780 boards resolve).
   Each board's BIOS list is read structurally from its support page
-  (version schemes vary: "F42c", "FA3h", "FIb"), boards are named from the
-  page's own title, multi-revision boards collapse onto that name keeping
-  whichever revision published the newest BIOS, and entries carry a `url`
-  the app links to. All of it goes through a headless Chrome/Edge since
-  these sites reject plain HTTP clients. ASUS boards (~900, every board the
+  (stable version schemes vary: "F41", "FA2"; trailing-letter beta builds
+  such as "F42c" are excluded), boards are named from the page's own title,
+  and entries carry a `url` the app links to. When several revision pages
+  share one marketing name, `revisionAmbiguous` is set and Config X withholds
+  the BIOS verdict/link rather than sending every revision to one file.
+  All of it goes through a headless Chrome/Edge since these sites reject
+  plain HTTP clients. ASUS boards (~900, every board the
   catalog lists, enumerated from the JSON API behind asus.com's product
   grid) are swept through ASUS's public GetPDBIOS API with plain requests;
   the app still checks ASUS live first and uses these entries as the
@@ -128,14 +183,55 @@ than stalling the run.
 
 ## Consuming
 
-Fetch the raw file:
+Fetch the raw file, detached signature, and pinned public key:
 
 ```
 https://raw.githubusercontent.com/MattNorthOfficial/configx-update-feed/main/feed/updates.json
+https://raw.githubusercontent.com/MattNorthOfficial/configx-update-feed/main/feed/updates.sig
+https://raw.githubusercontent.com/MattNorthOfficial/configx-update-feed/main/feed/public-key.txt
 ```
+
+`updates.sig` is a Base64 ECDSA P-256/SHA-256 signature in IEEE P1363 format.
+Config X verifies the exact response bytes before parsing or exposing any
+version/download data. Current public-key SHA-256 fingerprint:
+`5748dbf69e5a3fda65628b30aef1ea28972532285a296ccf491b0d6d39767f9d`.
 
 ## Running locally
 
+PowerShell 7 is required. Chrome or Edge is needed for MSI, Gigabyte, ASRock,
+and Intel; Dell catalog extraction also needs Windows `expand.exe` or `7z`.
+
 ```powershell
-pwsh ./scripts/Update-Feed.ps1
+pwsh ./scripts/Test-FeedContract.ps1                      # validate current JSON, no network
+pwsh ./scripts/Verify-FeedSignature.ps1                   # verify detached signature
+pwsh ./scripts/Test-FeedSigning.ps1                       # ephemeral signing round trip
+pwsh ./scripts/Test-FeedParsing.ps1                       # parser unit checks, no network
+pwsh ./scripts/Test-MergeFeedPublication.ps1              # verify overlap merge, no network
+pwsh ./scripts/Update-Feed.ps1 -BoardVendors none        # quick sections only
+pwsh ./scripts/Update-Feed.ps1 -BoardVendors asus        # targeted board refresh
+pwsh ./scripts/Update-Feed.ps1 -MaxParallel 3            # gentler full sweep
+pwsh ./scripts/Test-GigabyteParsing.ps1                  # live stratified parser smoke test
 ```
+
+## Updating community source pins
+
+Review the upstream diff first, then replace the full commit in
+`scripts/Update-Feed.ps1` (and the NVIDIA commit in Config X's
+`UpdateCheckService.cs`). Run the parser, contract, and Config X test suites
+before publishing. The chosen commits are written into `communitySources` so
+every feed snapshot remains attributable and reproducible.
+
+## Rotating the feed signing key
+
+Key rotation changes Config X's trust root and therefore requires an app
+release. After reviewing that coordinated change:
+
+```powershell
+pwsh ./scripts/Rotate-FeedSigningKey.ps1 `
+  -ConfigXRepository "C:\path\to\ConfigX" `
+  -ConfirmRotation
+```
+
+The private key is sent directly to the repository's
+`FEED_SIGNING_KEY_PEM` Actions secret and is never written to disk. Commit the
+new public-key files and signatures in both repositories together.

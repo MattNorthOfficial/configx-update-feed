@@ -50,40 +50,76 @@ jobs:
     # on the slot and publishing nothing.
     timeout-minutes: 240
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Test parser helpers
+        shell: pwsh
+        run: ./scripts/Test-FeedParsing.ps1
+
+      - name: Test feed signing
+        shell: pwsh
+        run: ./scripts/Test-FeedSigning.ps1
+
+      - name: Test publication merge
+        shell: pwsh
+        run: ./scripts/Test-MergeFeedPublication.ps1
 
       - name: Scrape latest driver versions
         shell: pwsh
+        env:
+          BOARD_VENDORS_INPUT: ${{ inputs.board_vendors }}
+          ACCEPT_DATE_REGRESSIONS_INPUT: ${{ inputs.accept_date_regressions }}
+          RUN_SCHEDULE: ${{ github.event.schedule }}
         run: |
-          $vendors = '${{ inputs.board_vendors }}'
-          if ('${{ github.event.schedule }}' -eq '37 */6 * * *') {
-            $vendors = 'none'
+          $vendors = @($env:BOARD_VENDORS_INPUT -split ',' |
+            ForEach-Object { $_.Trim().ToLowerInvariant() } |
+            Where-Object { $_ })
+          if ($env:RUN_SCHEDULE -eq '37 */6 * * *') {
+            $vendors = @('none')
+          }
+          elseif ($vendors.Count -eq 0) {
+            $vendors = @('msi', 'gigabyte', 'asrock', 'asus')
           }
           # Only a run that swept every vendor holds a complete feed, which
           # decides whether it may republish over a run that landed while it
           # worked. Recorded from what was actually swept rather than from
           # which schedule fired, so a hand-triggered partial run is judged
           # the same way a 6-hourly one is.
-          "FULL_SWEEP=$((-not $vendors).ToString().ToLower())" | Out-File $env:GITHUB_ENV -Append
+          $normalized = @($vendors | Sort-Object -Unique)
+          $fullSweep = $normalized.Count -eq 4 -and
+            -not (Compare-Object $normalized @('asrock', 'asus', 'gigabyte', 'msi'))
+          "FULL_SWEEP=$($fullSweep.ToString().ToLower())" | Out-File $env:GITHUB_ENV -Append
           # Scheduled runs never carry the override: it exists for a hand-
           # triggered run that is landing a deliberate change.
-          $accept = '${{ inputs.accept_date_regressions }}' -eq 'true'
-          if ($vendors) {
-            ./scripts/Update-Feed.ps1 -BoardVendors ($vendors -split ',') -AcceptDateRegressions:$accept
+          $accept = $env:ACCEPT_DATE_REGRESSIONS_INPUT -eq 'true'
+          ./scripts/Update-Feed.ps1 -BoardVendors $vendors -AcceptDateRegressions:$accept
+
+      - name: Validate consumer contract
+        shell: pwsh
+        run: ./scripts/Test-FeedContract.ps1 -SkipSignature
+
+      - name: Sign and verify feed
+        shell: pwsh
+        env:
+          FEED_SIGNING_KEY_PEM: ${{ secrets.FEED_SIGNING_KEY_PEM }}
+        run: |
+          git diff --quiet -- feed/updates.json
+          if ($LASTEXITCODE -ne 0 -or -not (Test-Path feed/updates.sig)) {
+            ./scripts/Sign-Feed.ps1
           }
-          else {
-            ./scripts/Update-Feed.ps1 -AcceptDateRegressions:$accept
-          }
+          ./scripts/Verify-FeedSignature.ps1
 
       # Now that the two run types can overlap, one can publish while the other
-      # is still working. A full sweep refreshes every section, so its feed
-      # supersedes a partial run's and is safe to replay on top of whatever
-      # landed first. A run that carried boards forward must not replay - that
-      # would undo a sweep's work - so it yields and lets the next run carry
-      # its change instead, which costs at most one 6-hourly refresh.
+      # is still working. A full sweep owns the motherboard sections, but a
+      # later quick run may have fresher driver/Windows data; the collision
+      # path merges those two sources. A run that carried boards forward must
+      # not replay - that would undo a sweep's work - so it yields and lets
+      # the next run carry its change instead.
       - name: Commit feed if changed
+        env:
+          FEED_SIGNING_KEY_PEM: ${{ secrets.FEED_SIGNING_KEY_PEM }}
         run: |
-          if git diff --quiet -- feed/updates.json; then
+          if git diff --quiet -- feed/updates.json feed/updates.sig; then
             echo "Feed unchanged."
             exit 0
           fi
@@ -93,7 +129,7 @@ jobs:
           cp feed/updates.json "$RUNNER_TEMP/updates.json"
 
           for attempt in 1 2 3; do
-            git add feed/updates.json
+            git add feed/updates.json feed/updates.sig
             git commit -m "Update feed"
             if git push; then
               exit 0
@@ -106,8 +142,14 @@ jobs:
             fi
 
             git reset --hard "origin/$GITHUB_REF_NAME"
-            cp "$RUNNER_TEMP/updates.json" feed/updates.json
-            if git diff --quiet -- feed/updates.json; then
+            pwsh ./scripts/Merge-FeedPublication.ps1 \
+              -BoardFeedPath "$RUNNER_TEMP/updates.json" \
+              -LatestFeedPath feed/updates.json \
+              -OutputPath feed/updates.json
+            pwsh ./scripts/Test-FeedContract.ps1 -SkipSignature
+            pwsh ./scripts/Sign-Feed.ps1
+            pwsh ./scripts/Verify-FeedSignature.ps1
+            if git diff --quiet -- feed/updates.json feed/updates.sig; then
               echo "Feed already current."
               exit 0
             fi

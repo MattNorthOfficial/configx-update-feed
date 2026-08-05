@@ -1,6 +1,35 @@
 {
+  "schemaVersion": 1,
   "updated": "2026-08-05T13:06:09Z",
   "source": "https://gpuopen.com/version-table/",
+  "communitySources": {
+    "intelChipsetInf": {
+      "repository": "FirstEverTech/Universal-Intel-Chipset-Updater",
+      "commit": "3ca0886aa5a60d58cd82c0e938028db9f131d840"
+    },
+    "nvidiaGpuMap": {
+      "repository": "ZenitH-AT/nvidia-data",
+      "commit": "a94a519be9ec15b972533e501e47d5e8d67100c5"
+    }
+  },
+  "freshness": {
+    "amd.windows": "2026-08-05T13:06:09Z",
+    "amd.chipset": "2026-08-05T13:06:09Z",
+    "windowsBuilds": "2026-08-05T13:06:09Z",
+    "windows10": "2026-08-05T13:06:09Z",
+    "motherboards.msi": "2026-08-05T13:06:09Z",
+    "motherboards.gigabyte": "2026-08-05T13:06:09Z",
+    "motherboards.asrock": "2026-08-05T13:06:09Z",
+    "motherboards.asus": "2026-08-05T13:06:09Z",
+    "dell": "2026-08-05T13:06:09Z",
+    "intel.chipset": "2026-08-05T13:06:09Z",
+    "intel.arc": "2026-08-05T13:06:09Z",
+    "intel.xe": "2026-08-05T13:06:09Z",
+    "intel.rst20": "2026-08-05T13:06:09Z",
+    "intel.rst21": "2026-08-05T13:06:09Z",
+    "intel.chipsetInf": "2026-08-05T13:06:09Z",
+    "nvidia": "2026-08-05T13:06:09Z"
+  },
   "amd": {
     "windows": {
       "current": {

@@ -51,8 +51,49 @@ function Get-Throttle([int] $tuned) {
 
 $ErrorActionPreference = 'Stop'
 
+Import-Module (Join-Path $PSScriptRoot 'FeedContract.psm1') -Force
+
+$requestedVendors = @($BoardVendors |
+    ForEach-Object { $_.Trim().ToLowerInvariant() } |
+    Where-Object { $_ })
+if ($requestedVendors -contains 'none') {
+    if ($requestedVendors.Count -ne 1) {
+        throw "'none' cannot be combined with motherboard vendor names."
+    }
+    $BoardVendors = @()
+}
+else {
+    $unknownVendors = @($requestedVendors | Where-Object { $_ -notin @('msi', 'gigabyte', 'asrock', 'asus') })
+    if ($unknownVendors.Count -gt 0) {
+        throw "Unknown motherboard vendor(s): $($unknownVendors -join ', ')."
+    }
+    $BoardVendors = $requestedVendors
+}
+
 $userAgent = 'Mozilla/5.0 configx-update-feed/1.0'
 $outputPath = Join-Path $PSScriptRoot '..\feed\updates.json'
+$intelInfSourceCommit = '3ca0886aa5a60d58cd82c0e938028db9f131d840'
+$nvidiaDataSourceCommit = 'a94a519be9ec15b972533e501e47d5e8d67100c5'
+
+function Get-WebContent(
+    [string] $url,
+    [int] $timeoutSeconds = 60,
+    [int] $attempts = 2
+) {
+    for ($attempt = 1; $attempt -le $attempts; $attempt++) {
+        try {
+            return (Invoke-WebRequest $url -UserAgent $userAgent -UseBasicParsing `
+                -TimeoutSec $timeoutSeconds).Content
+        }
+        catch {
+            if ($attempt -eq $attempts) {
+                throw
+            }
+            Write-Warning "Request to '$url' failed ($($_.Exception.Message)); retrying."
+            Start-Sleep 3
+        }
+    }
+}
 
 # The previously published feed, read once: every section's reuse-on-failure
 # fallback, the boards carry-forward, the publish gate, and the final
@@ -62,6 +103,29 @@ $previousFeed = if (Test-Path $outputPath) {
 }
 else { $null }
 
+$runTimestamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+$freshness = [ordered]@{}
+if ($previousFeed.freshness) {
+    foreach ($entry in $previousFeed.freshness.PSObject.Properties) {
+        $freshness[$entry.Name] = "$($entry.Value)"
+    }
+}
+elseif ($previousFeed.updated) {
+    # One-time migration: the old feed had only a global timestamp. Use it as
+    # the conservative baseline until each source succeeds again.
+    foreach ($key in @(
+            'amd.windows', 'amd.chipset', 'windowsBuilds', 'windows10',
+            'motherboards.msi', 'motherboards.gigabyte',
+            'motherboards.asrock', 'motherboards.asus',
+            'dell', 'intel.chipset', 'intel.arc', 'intel.xe',
+            'intel.rst20', 'intel.rst21', 'intel.chipsetInf', 'nvidia')) {
+        $freshness[$key] = "$($previousFeed.updated)"
+    }
+}
+function Mark-Fresh([string] $key) {
+    $freshness[$key] = $runTimestamp
+}
+
 function Get-CellText([string] $cell) {
     $text = $cell -replace '<[^>]+>', ''
     return [System.Net.WebUtility]::HtmlDecode($text).Trim()
@@ -70,51 +134,77 @@ function Get-CellText([string] $cell) {
 # --- Graphics drivers (GPUOpen version table) -------------------------------
 
 $gpuSourceUrl = 'https://gpuopen.com/version-table/'
-$html = (Invoke-WebRequest $gpuSourceUrl -UserAgent $userAgent -UseBasicParsing).Content
+$latestPerBranch = [ordered]@{}
+$amdGraphicsSucceeded = $false
+try {
+    $html = Get-WebContent $gpuSourceUrl
 
-# Rows look like: Adrenalin Release | WHQL or Optional | Internal Driver | Driver Store Version | Vulkan Version
-$rowPattern = '<tr[^>]*>\s*<td[^>]*>(?<release>.*?)</td>\s*<td[^>]*>(?<whql>.*?)</td>\s*<td[^>]*>(?<internal>.*?)</td>\s*<td[^>]*>(?<store>.*?)</td>'
-$rows = [regex]::Matches($html, $rowPattern, 'Singleline')
+    # Rows look like: Adrenalin Release | WHQL or Optional | Internal Driver | Driver Store Version | Vulkan Version
+    $rowPattern = '<tr[^>]*>\s*<td[^>]*>(?<release>.*?)</td>\s*<td[^>]*>(?<whql>.*?)</td>\s*<td[^>]*>(?<internal>.*?)</td>\s*<td[^>]*>(?<store>.*?)</td>'
+    $rows = [regex]::Matches($html, $rowPattern, 'Singleline')
 
-if ($rows.Count -eq 0) {
-    throw "No table rows found at $gpuSourceUrl - the page layout may have changed."
+    if ($rows.Count -eq 0) {
+        throw "No table rows found at $gpuSourceUrl - the page layout may have changed."
+    }
+
+    # The table is newest-first, so the first row seen per branch is its latest release.
+    foreach ($row in $rows) {
+        $release = Get-CellText $row.Groups['release'].Value
+        $store = Get-CellText $row.Groups['store'].Value
+
+        if ($store -notmatch '^\d+(\.\d+)+$') {
+            continue  # header or malformed row
+        }
+
+        # "26.6.2 for RDNA1 and RDNA2" -> version "26.6.2", branch "for RDNA1 and RDNA2"
+        if ($release -notmatch '^(?<version>\d+\.\d+(\.\d+)?)\s*(?<rest>.*)$') {
+            continue
+        }
+        $adrenalin = $Matches['version']
+        $rest = $Matches['rest'].Trim()
+
+        $branch = switch -Regex ($rest) {
+            'RDNA1 and RDNA2' { 'rdna1-2'; break }
+            'Polaris and Vega' { 'polaris-vega'; break }
+            default { 'current' }
+        }
+
+        if (-not $latestPerBranch.Contains($branch)) {
+            $latestPerBranch[$branch] = [ordered]@{
+                adrenalin = $adrenalin
+                whql = (Get-CellText $row.Groups['whql'].Value) -eq 'WHQL'
+                driverStore = $store
+            }
+        }
+    }
+
+    if (-not $latestPerBranch.Contains('current')) {
+        throw 'Could not find the latest mainline release - the page layout may have changed.'
+    }
+    $amdGraphicsSucceeded = $true
+}
+catch {
+    Write-Warning "AMD graphics scrape failed: $($_.Exception.Message)"
+    if (-not $previousFeed.amd.windows) {
+        throw
+    }
+    Write-Warning 'Reusing previously published AMD graphics data.'
+    foreach ($branch in $previousFeed.amd.windows.PSObject.Properties) {
+        $latestPerBranch[$branch.Name] = $branch.Value
+    }
 }
 
-# The table is newest-first, so the first row seen per branch is its latest release.
-$latestPerBranch = [ordered]@{}
-
-foreach ($row in $rows) {
-    $release = Get-CellText $row.Groups['release'].Value
-    $store = Get-CellText $row.Groups['store'].Value
-
-    if ($store -notmatch '^\d+(\.\d+)+$') {
-        continue  # header or malformed row
-    }
-
-    # "26.6.2 for RDNA1 and RDNA2" -> version "26.6.2", branch "for RDNA1 and RDNA2"
-    if ($release -notmatch '^(?<version>\d+\.\d+(\.\d+)?)\s*(?<rest>.*)$') {
-        continue
-    }
-    $adrenalin = $Matches['version']
-    $rest = $Matches['rest'].Trim()
-
-    $branch = switch -Regex ($rest) {
-        'RDNA1 and RDNA2' { 'rdna1-2'; break }
-        'Polaris and Vega' { 'polaris-vega'; break }
-        default { 'current' }
-    }
-
-    if (-not $latestPerBranch.Contains($branch)) {
-        $latestPerBranch[$branch] = [ordered]@{
-            adrenalin = $adrenalin
-            whql = (Get-CellText $row.Groups['whql'].Value) -eq 'WHQL'
-            driverStore = $store
+# A transient miss of one maintenance branch must not remove that branch from
+# the feed while the successfully parsed mainline branch advances.
+if ($previousFeed.amd.windows) {
+    foreach ($branch in $previousFeed.amd.windows.PSObject.Properties) {
+        if (-not $latestPerBranch.Contains($branch.Name)) {
+            $latestPerBranch[$branch.Name] = $branch.Value
         }
     }
 }
-
-if (-not $latestPerBranch.Contains('current')) {
-    throw 'Could not find the latest mainline release - the page layout may have changed.'
+if ($amdGraphicsSucceeded) {
+    Mark-Fresh 'amd.windows'
 }
 
 # --- Chipset drivers (AMD chipset page + release notes) ---------------------
@@ -127,22 +217,22 @@ $chipsetSourceUrl = 'https://www.amd.com/en/support/downloads/drivers.html/chips
 # fall back to the previously published chipset data.
 $chipset = $null
 try {
-    $chipsetHtml = (Invoke-WebRequest $chipsetSourceUrl -UserAgent $userAgent -UseBasicParsing).Content
+    $chipsetHtml = Get-WebContent $chipsetSourceUrl
     $chipsetText = $chipsetHtml -replace '<[^>]+>', ' '
 
     if ($chipsetText -notmatch 'Revision Number\s*([\d.]+)') {
         throw 'Revision number not found on the chipset page.'
     }
-    $chipset = [ordered]@{ revision = $Matches[1] }
+    $candidateChipset = [ordered]@{ revision = $Matches[1] }
     if ($chipsetText -match 'Release Date\s*([\d/.-]+)') {
-        $chipset.date = $Matches[1]
+        $candidateChipset.date = $Matches[1]
     }
 
     # The release notes list every bundled component driver and its version.
     $notesLink = [regex]::Match($chipsetHtml, 'href="([^"]*RN-RYZEN-CHIPSET[^"]*)"').Groups[1].Value
     if ($notesLink) {
         if ($notesLink -notmatch '^https?:') { $notesLink = "https://www.amd.com$notesLink" }
-        $notesText = ((Invoke-WebRequest $notesLink -UserAgent $userAgent -UseBasicParsing).Content) -replace '<[^>]+>', ' '
+        $notesText = (Get-WebContent $notesLink) -replace '<[^>]+>', ' '
 
         # The notes use non-breaking spaces; Windows PowerShell 5.1 additionally
         # mis-decodes them as "Â ". Normalize both so \s+ in the patterns works
@@ -176,9 +266,14 @@ try {
             }
         }
         if ($components.Count -gt 0) {
-            $chipset.components = $components
+            $candidateChipset.components = $components
         }
     }
+    if (-not $candidateChipset.components) {
+        throw 'No component versions found in the chipset release notes.'
+    }
+    $chipset = $candidateChipset
+    Mark-Fresh 'amd.chipset'
 }
 catch {
     Write-Warning "Chipset scrape failed: $($_.Exception.Message)"
@@ -197,7 +292,7 @@ if (-not $chipset -and $previousFeed.amd.chipset) {
 $windowsSourceUrl = 'https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information'
 $windowsBuilds = $null
 try {
-    $winHtml = (Invoke-WebRequest $windowsSourceUrl -UserAgent $userAgent -UseBasicParsing).Content
+    $winHtml = Get-WebContent $windowsSourceUrl
 
     $versionPattern = 'Version (?<version>\d\dH\d) \(OS build \d+\)'
     $winRowPattern = '<tr>\s*<td[^>]*>(?<opt>.*?)</td>\s*<td[^>]*>(?<type>.*?)</td>\s*<td[^>]*>(?<date>.*?)</td>\s*<td[^>]*>(?<build>.*?)</td>\s*<td[^>]*>(?<kb>.*?)</td>'
@@ -255,7 +350,7 @@ try {
     )
     foreach ($tier in $lifecycleTiers) {
         try {
-            $lifecycleHtml = (Invoke-WebRequest $tier.Url -UserAgent $userAgent -UseBasicParsing).Content
+            $lifecycleHtml = Get-WebContent $tier.Url
             foreach ($version in @($builds.Keys)) {
                 # Each version's row holds two ISO timestamps - availability,
                 # then retirement - but the HTML repeats each one (a machine-
@@ -275,7 +370,17 @@ try {
         }
     }
 
+    # A temporary omission on Microsoft's summary page must not erase an
+    # older Windows version that the app still needs to identify as retired.
+    if ($previousFeed.windowsBuilds) {
+        foreach ($version in $previousFeed.windowsBuilds.PSObject.Properties) {
+            if (-not $builds.Contains($version.Name)) {
+                $builds[$version.Name] = $version.Value
+            }
+        }
+    }
     $windowsBuilds = $builds
+    Mark-Fresh 'windowsBuilds'
 }
 catch {
     Write-Warning "Windows builds scrape failed: $($_.Exception.Message)"
@@ -295,7 +400,7 @@ try {
     )
     $win10 = [ordered]@{}
     foreach ($tier in $win10Tiers) {
-        $lifecycleHtml = (Invoke-WebRequest $tier.Url -UserAgent $userAgent -UseBasicParsing).Content
+        $lifecycleHtml = Get-WebContent $tier.Url
         foreach ($row in [regex]::Matches($lifecycleHtml, '(?s)<tr[^>]*>\s*<td[^>]*>\s*Version\s+(\d\dH\d)\s*</td>.*?</tr>')) {
             # Same layout as the Windows 11 pages: two ISO timestamps per row
             # (each duplicated by the HTML), retirement always last.
@@ -309,8 +414,16 @@ try {
             }
         }
     }
+    if ($previousFeed.windows10) {
+        foreach ($version in $previousFeed.windows10.PSObject.Properties) {
+            if (-not $win10.Contains($version.Name)) {
+                $win10[$version.Name] = $version.Value
+            }
+        }
+    }
     if ($win10.Count -gt 0) {
         $windows10 = $win10
+        Mark-Fresh 'windows10'
     }
 }
 catch {
@@ -398,7 +511,6 @@ function Get-BrowserDom([string] $browser, [string] $url, [int] $timeoutSeconds 
         $browserArgs = @(
             '--headless=new'
             '--disable-gpu'
-            '--no-sandbox'
             # Renderers share memory through /dev/shm, which a container caps
             # at 64 MB - small enough that a handful of concurrent heavy pages
             # exhaust it and their renderers die producing no output at all.
@@ -409,9 +521,15 @@ function Get-BrowserDom([string] $browser, [string] $url, [int] $timeoutSeconds 
             '--disable-dev-shm-usage'
             "--user-agent=$browserUa"
             "--user-data-dir=$profileDir"
-            '--dump-dom'
-            $url
-        ) | ForEach-Object { '"' + $_ + '"' }
+        )
+        # A disposable Linux Actions runner may need this when its Chrome
+        # sandbox cannot initialize. Never drop the browser sandbox on a
+        # developer workstation.
+        if ($env:GITHUB_ACTIONS -eq 'true' -and $IsLinux) {
+            $browserArgs += '--no-sandbox'
+        }
+        $browserArgs += '--dump-dom', $url
+        $browserArgs = $browserArgs | ForEach-Object { '"' + $_ + '"' }
 
         $process = Start-Process -FilePath $browser -PassThru -NoNewWindow `
             -RedirectStandardOutput $stdout -RedirectStandardError $stderr `
@@ -472,18 +590,56 @@ function Format-BiosDate([string] $raw) {
     return $raw.Trim()
 }
 
+function Read-JsonFromBrowserDom([string] $dom) {
+    if (-not $dom) {
+        return $null
+    }
+
+    # Chrome wraps JSON responses in a <pre> inside its dumped DOM. Parse that
+    # exact payload instead of greedily taking everything between the first
+    # and last brace in the page (which can absorb unrelated script objects).
+    $candidates = [System.Collections.Generic.List[string]]::new()
+    foreach ($pre in [regex]::Matches($dom, '(?s)<pre[^>]*>(.*?)</pre>')) {
+        $candidates.Add($pre.Groups[1].Value)
+    }
+    $trimmed = $dom.Trim()
+    if ($trimmed.StartsWith('{')) {
+        $candidates.Add($trimmed)
+    }
+
+    foreach ($candidate in $candidates) {
+        $decoded = [System.Net.WebUtility]::HtmlDecode(
+            ($candidate -replace '<[^>]+>', '')).Trim()
+        if (-not $decoded.StartsWith('{')) {
+            continue
+        }
+        try {
+            return $decoded | ConvertFrom-Json -ErrorAction Stop
+        }
+        catch {
+            # Try the next explicit JSON container, if one exists.
+        }
+    }
+
+    return $null
+}
+
 # MSI: JSON support panel via headless browser (Akamai-protected). Returns the
 # board's official name alongside its newest non-beta BIOS, or $null when the
 # slug doesn't resolve or lists no BIOS.
 function Get-MsiBios([string] $browser, [string] $slug) {
     $dom = Get-BrowserDom $browser "https://www.msi.com/api/v1/product/support/panel?product=$slug&type=bios"
-    $json = [regex]::Match($dom, '(?s)\{.*\}').Value
-    if (-not $json) { return $null }
-
-    $data = [System.Net.WebUtility]::HtmlDecode($json) | ConvertFrom-Json
+    $data = Read-JsonFromBrowserDom $dom
+    if (-not $data) { return $null }
     $name = "$($data.result.title)".Trim()
     $latest = @($data.result.downloads.'AMI BIOS') |
         Where-Object { $_.download_version -and "$($_.download_version) $($_.download_title)" -notmatch 'beta' } |
+        Sort-Object {
+            $date = [datetime]::MinValue
+            [void][datetime]::TryParse("$($_.download_release)", [cultureinfo]::InvariantCulture,
+                [System.Globalization.DateTimeStyles]::None, [ref] $date)
+            $date
+        } -Descending |
         Select-Object -First 1
     if (-not $name -or -not $latest) { return $null }
 
@@ -501,13 +657,33 @@ function Get-MsiBios([string] $browser, [string] $slug) {
 #
 # The page is one semantic table per download section, each headed by an
 # <h2>; rows tag their cells with item-version/item-date classes. Reading
-# the BIOS section's rows structurally handles every version scheme
-# Gigabyte uses ("F42c" on mainstream boards, "FA2" on TRX50) instead of
-# guessing at text shapes, and the newest row is picked by date since
-# that's what the page presents as latest. The board is named from the
+# the BIOS section's rows structurally handles every stable version scheme
+# Gigabyte uses ("F41" on mainstream boards, "FA2" on TRX50). Gigabyte marks
+# beta builds with a trailing letter ("F42c", "FA3h", "FIb"; old pages also
+# use uppercase suffixes such as "F9A"), so those are skipped before the
+# newest stable row is picked by date. The board is named from the
 # page's own title ("TRX50 AERO D (Rev. 1.1) Motherboard Support - ..."),
 # the vendor's marketing name as WMI-adjacent as it gets - slug-derived
 # names would strip the hyphen "GA-" era boards keep.
+function Test-GigabyteBetaBios([string] $version) {
+    $trimmed = $version.Trim()
+    return $trimmed -cmatch '[a-z]$' -or $trimmed -cmatch '\d[A-Z]$'
+}
+
+function Copy-BoardEntry($entry) {
+    $copy = [ordered]@{}
+    $fields = if ($entry -is [System.Collections.IDictionary]) {
+        @($entry.Keys)
+    }
+    else {
+        @($entry.PSObject.Properties.Name)
+    }
+    foreach ($field in $fields) {
+        $copy[$field] = $entry.$field
+    }
+    return $copy
+}
+
 function Get-GigabyteBios([string] $browser, [string] $slug) {
     $url = "https://www.gigabyte.com/Motherboard/$slug/support"
     $dom = Get-BrowserDom $browser $url
@@ -519,12 +695,16 @@ function Get-GigabyteBios([string] $browser, [string] $slug) {
     $bestDate = [datetime]::MinValue
     foreach ($m in [regex]::Matches($bios,
             '(?s)class="item-version"[^>]*>\s*([^<]+?)\s*<.*?class="item-date"[^>]*>\s*([^<]+?)\s*<')) {
+        $version = [System.Net.WebUtility]::HtmlDecode($m.Groups[1].Value.Trim())
+        if (Test-GigabyteBetaBios $version) {
+            continue
+        }
         $date = [datetime]::MinValue
         if ([datetime]::TryParse($m.Groups[2].Value.Trim(), [cultureinfo]::InvariantCulture,
                 [System.Globalization.DateTimeStyles]::None, [ref] $date) -and $date -gt $bestDate) {
             $bestDate = $date
             $best = [ordered]@{
-                bios = [System.Net.WebUtility]::HtmlDecode($m.Groups[1].Value.Trim())
+                bios = $version
                 date = $date.ToString('yyyy-MM-dd')
                 url  = "$url#support-dl-bios"
             }
@@ -655,27 +835,31 @@ try {
         # Each headless call takes a few seconds; a handful in flight keeps
         # the full sweep to minutes without hammering MSI.
         $getMsiBios = ${function:Get-MsiBios}.ToString()
+        $readJsonFromBrowserDom = ${function:Read-JsonFromBrowserDom}.ToString()
         $deadline = [datetime]::UtcNow.AddMinutes($VendorBudgetMinutes)
         $results = $slugs | ForEach-Object -ThrottleLimit (Get-Throttle 6) -Parallel {
             if ([datetime]::UtcNow -gt $using:deadline) { return }
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-MsiBios} = $using:getMsiBios
+            ${function:Read-JsonFromBrowserDom} = $using:readJsonFromBrowserDom
             ${function:Format-BiosDate} = $using:formatBiosDate
             $browserUa = $using:browserUa
             try {
                 # One retry: a transient hiccup (a garbled response, a blip)
                 # shouldn't age a board's entry until the next sweep.
+                $result = $null
                 foreach ($attempt in 1, 2) {
                     try {
-                        Get-MsiBios $using:browser $slug
-                        break
+                        $result = Get-MsiBios $using:browser $slug
+                        if ($result) { break }
                     }
                     catch {
                         if ($attempt -eq 2) { throw }
-                        Start-Sleep 2
                     }
+                    if ($attempt -eq 1) { Start-Sleep 2 }
                 }
+                $result
             }
             catch {
                 Write-Warning "MSI '$slug' failed: $($_.Exception.Message)"
@@ -749,11 +933,13 @@ try {
         # rate control starts slow-walking rapid requests from one address,
         # which stalled full-throttle sweeps.
         $getGigabyteBios = ${function:Get-GigabyteBios}.ToString()
+        $testGigabyteBetaBios = ${function:Test-GigabyteBetaBios}.ToString()
         $gigabyteResults = $gigabyteBoards | ForEach-Object -ThrottleLimit (Get-Throttle 4) -Parallel {
             if ([datetime]::UtcNow -gt $using:deadline) { return }
             $slug = $_
             ${function:Get-BrowserDom} = $using:getBrowserDom
             ${function:Get-GigabyteBios} = $using:getGigabyteBios
+            ${function:Test-GigabyteBetaBios} = $using:testGigabyteBetaBios
             $browserUa = $using:browserUa
             try {
                 # One retry, including on an empty result: a rate-limited
@@ -794,7 +980,14 @@ try {
         # its page covers the widest span of revisions (a rev-10-11-12-13 BIOS
         # train serves four of them where rev-14 serves one).
         $gigabyteByName = @{}
+        $gigabyteUrlsByName = @{}
         foreach ($result in $gigabyteResults | Where-Object { $_ }) {
+            if (-not $gigabyteUrlsByName.ContainsKey($result.Name)) {
+                $gigabyteUrlsByName[$result.Name] =
+                    [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+            }
+            [void]$gigabyteUrlsByName[$result.Name].Add("$($result.Entry.url)")
+
             $existing = $gigabyteByName[$result.Name]
             $better = if (-not $existing) { $true }
             else {
@@ -806,10 +999,22 @@ try {
                 $gigabyteByName[$result.Name] = $result.Entry
             }
         }
+        $gigabyteRevisionAmbiguous = 0
         foreach ($name in $gigabyteByName.Keys) {
-            Add-BoardClaim $name $gigabyteByName[$name] 'gigabyte'
+            $entry = Copy-BoardEntry $gigabyteByName[$name]
+            if ($gigabyteUrlsByName[$name].Count -gt 1) {
+                # WMI normally reports only the marketing name (and often the
+                # placeholder revision "x.x"). Different revision pages can
+                # carry incompatible BIOS files even when their version text
+                # happens to match, so the app must not issue one verdict/link
+                # for every revision.
+                $entry.revisionAmbiguous = $true
+                $gigabyteRevisionAmbiguous++
+            }
+            Add-BoardClaim $name $entry 'gigabyte'
         }
         $sweepCounts['Gigabyte'] = $gigabyteByName.Count
+        $sweepCounts['Gigabyte revision-ambiguous'] = $gigabyteRevisionAmbiguous
         Write-Host "Gigabyte: $($gigabyteByName.Count) boards resolved."
     } }
 
@@ -887,12 +1092,12 @@ try {
                             # edition's list.
                             $entry = Get-AsrockBios $using:browser "https://$site/mb/$vendor/$slug/BIOS1.html"
                         }
-                        break
+                        if ($entry) { break }
                     }
                     catch {
                         if ($attempt -eq 2) { throw }
-                        Start-Sleep 2
                     }
+                    if ($attempt -eq 1) { Start-Sleep 2 }
                 }
 
                 if ($entry) { [pscustomobject]@{ Name = $name; Entry = $entry } }
@@ -1027,9 +1232,7 @@ try {
             if (-not $boardClaims.ContainsKey($prop.Name)) { continue }
             foreach ($claim in $prop.Value.PSObject.Properties) {
                 if ($boardClaims[$prop.Name].Contains($claim.Name)) { continue }
-                $carriedClaim = [ordered]@{ bios = "$($claim.Value.bios)"; date = "$($claim.Value.date)" }
-                if ($claim.Value.url) { $carriedClaim.url = "$($claim.Value.url)" }
-                $boardClaims[$prop.Name][$claim.Name] = $carriedClaim
+                $boardClaims[$prop.Name][$claim.Name] = Copy-BoardEntry $claim.Value
             }
         }
     }
@@ -1073,6 +1276,19 @@ try {
         throw 'No BIOS versions could be fetched.'
     }
 
+    foreach ($vendor in @{
+            msi = 'MSI'
+            gigabyte = 'Gigabyte'
+            asrock = 'ASRock'
+            asus = 'ASUS'
+        }.GetEnumerator()) {
+        if ($BoardVendors -contains $vendor.Key -and
+            $sweepCounts[$vendor.Value] -is [int] -and
+            $sweepCounts[$vendor.Value] -gt 0) {
+            Mark-Fresh "motherboards.$($vendor.Key)"
+        }
+    }
+
     $freshCount = $fetched.Count
     $previousBoards = $previousFeed.motherboards
 
@@ -1089,6 +1305,10 @@ try {
         foreach ($name in @($fetched.Keys)) {
             $previous = $previousBoards.PSObject.Properties[$name]
             if (-not $previous) { continue }
+            $replacingGigabyteBeta =
+                "$($previous.Value.vendor)" -eq 'gigabyte' -and
+                (Test-GigabyteBetaBios "$($previous.Value.bios)") -and
+                -not (Test-GigabyteBetaBios "$($fetched[$name].bios)")
 
             # A release's date is fixed once it ships, so the same version
             # dated differently is the scrape, not the vendor. Gigabyte
@@ -1103,9 +1323,7 @@ try {
             # reached, and republishing the same BIOS under a different link
             # is another nightly diff that says nothing.
             if ($fetched[$name].bios -eq $previous.Value.bios) {
-                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
-                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
-                $fetched[$name] = $carried
+                $fetched[$name] = Copy-BoardEntry $previous.Value
                 continue
             }
 
@@ -1117,10 +1335,9 @@ try {
             # revision pages the enumeration happened to reach. Left alone
             # that rewrites a few dozen boards every night between equally
             # true answers. An entry moves when its date does.
-            if ("$($fetched[$name].date)" -eq "$($previous.Value.date)") {
-                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
-                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
-                $fetched[$name] = $carried
+            if (-not $replacingGigabyteBeta -and
+                "$($fetched[$name].date)" -eq "$($previous.Value.date)") {
+                $fetched[$name] = Copy-BoardEntry $previous.Value
                 continue
             }
 
@@ -1144,10 +1361,9 @@ try {
             # numerous enough for the publish gate to notice. A vendor really
             # pulling a BIOS serves the replacement from the same page, so
             # that still lands.
-            if ("$($fetched[$name].url)" -ne "$($previous.Value.url)") {
-                $carried = [ordered]@{ bios = "$($previous.Value.bios)"; date = "$($previous.Value.date)" }
-                if ($previous.Value.url) { $carried.url = "$($previous.Value.url)" }
-                $fetched[$name] = $carried
+            if (-not $replacingGigabyteBeta -and
+                "$($fetched[$name].url)" -ne "$($previous.Value.url)") {
+                $fetched[$name] = Copy-BoardEntry $previous.Value
             }
         }
 
@@ -1158,6 +1374,7 @@ try {
         # lying, so the previous snapshot stays published instead.
         $comparable = 0
         $regressed = 0
+        $stableReplacements = 0
         foreach ($name in $fetched.Keys) {
             $previous = $previousBoards.PSObject.Properties[$name]
             if (-not $previous) { continue }
@@ -1166,8 +1383,22 @@ try {
             if ([datetime]::TryParse("$($fetched[$name].date)", [ref] $newDate) -and
                 [datetime]::TryParse("$($previous.Value.date)", [ref] $oldDate)) {
                 $comparable++
-                if ($newDate -lt $oldDate) { $regressed++ }
+                if ($newDate -lt $oldDate) {
+                    $replacingGigabyteBeta =
+                        "$($previous.Value.vendor)" -eq 'gigabyte' -and
+                        (Test-GigabyteBetaBios "$($previous.Value.bios)") -and
+                        -not (Test-GigabyteBetaBios "$($fetched[$name].bios)")
+                    if ($replacingGigabyteBeta) {
+                        $stableReplacements++
+                    }
+                    else {
+                        $regressed++
+                    }
+                }
             }
+        }
+        if ($stableReplacements -gt 0) {
+            $sweepCounts['Gigabyte beta entries replaced'] = $stableReplacements
         }
         if ($comparable -ge 50 -and $regressed -gt [Math]::Max(10, [int]($comparable * 0.05))) {
             if (-not $AcceptDateRegressions) {
@@ -1184,9 +1415,7 @@ try {
         # forward wholesale the same way.
         foreach ($prop in @($previousBoards.PSObject.Properties)) {
             if ($prop.Value.bios -and -not $fetched.ContainsKey($prop.Name)) {
-                $carried = [ordered]@{ bios = $prop.Value.bios; date = "$($prop.Value.date)" }
-                if ($prop.Value.url) { $carried.url = $prop.Value.url }
-                $fetched[$prop.Name] = $carried
+                $fetched[$prop.Name] = Copy-BoardEntry $prop.Value
             }
         }
     }
@@ -1369,6 +1598,7 @@ try {
             $sorted[$systemId] = $newestPerSystem[$systemId]
         }
         $dell = $sorted
+        Mark-Fresh 'dell'
         $sweepCounts['Dell systems'] = $dell.Count
         Write-Host "Dell: $($dell.Count) systems resolved."
     }
@@ -1430,13 +1660,14 @@ try {
     }
 
     $entries = [ordered]@{}
+    $freshIntelKeys = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
     foreach ($key in $intelPages.Keys) {
         $page = $intelPages[$key]
         $dom = Get-BrowserDom $browser $page.url
         $text = [System.Net.WebUtility]::HtmlDecode(($dom -replace '<[^>]+>', ' '))
 
         if ($text -match $page.pattern) {
-            $entries[$key] = [ordered]@{
+            $candidate = [ordered]@{
                 version = $Matches[1]
                 url = $page.url
             }
@@ -1446,7 +1677,12 @@ try {
             # Published so the app can offer the file directly.
             $exe = [regex]::Match($dom, 'https://downloadmirror\.intel\.com/[^\s"''<>]+\.exe')
             if ($exe.Success) {
-                $entries[$key].download = $exe.Value
+                $candidate.download = $exe.Value
+                $entries[$key] = $candidate
+                [void]$freshIntelKeys.Add($key)
+            }
+            else {
+                Write-Warning "No installer download found on the Intel '$key' page; keeping the previous entry."
             }
         }
         else {
@@ -1463,7 +1699,9 @@ try {
     # goes away, mirroring how we treat the community NVIDIA GPU map.
     # Source: FirstEverTech/Universal-Intel-Chipset-Updater (MIT).
     try {
-        $infMd = Invoke-RestMethod 'https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/main/data/intel-chipset-infs-latest.md' -UserAgent $userAgent
+        $infMd = Invoke-RestMethod `
+            "https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/$intelInfSourceCommit/data/intel-chipset-infs-latest.md" `
+            -UserAgent $userAgent -TimeoutSec 60
         $infMap = [ordered]@{}
         foreach ($line in ($infMd -split "`n")) {
             # Data rows are markdown table rows; the version column is a real
@@ -1488,6 +1726,7 @@ try {
 
         if ($infMap.Count -gt 0) {
             $entries['chipsetInf'] = $infMap
+            [void]$freshIntelKeys.Add('chipsetInf')
             Write-Host "Intel chipset INF map: $($infMap.Count) hardware ids"
         }
         else {
@@ -1502,10 +1741,22 @@ try {
         }
     }
 
+    # The five download pages are independent. One page missing this run must
+    # not remove a healthy branch that was already published.
+    if ($previousFeed.intel) {
+        foreach ($entry in $previousFeed.intel.PSObject.Properties) {
+            if (-not $entries.Contains($entry.Name)) {
+                $entries[$entry.Name] = $entry.Value
+            }
+        }
+    }
     if ($entries.Count -eq 0) {
         throw 'No Intel versions could be fetched.'
     }
     $intel = $entries
+    foreach ($key in $freshIntelKeys) {
+        Mark-Fresh "intel.$key"
+    }
 }
 catch {
     Write-Warning "Intel scrape failed: $($_.Exception.Message)"
@@ -1523,7 +1774,9 @@ if (-not $intel -and $previousFeed.intel) {
 # comes from the same community GPU map the app uses for its online lookup.
 $nvidia = $null
 try {
-    $gpuData = Invoke-RestMethod 'https://raw.githubusercontent.com/ZenitH-AT/nvidia-data/main/gpu-data.json' -UserAgent $userAgent
+    $gpuData = Invoke-RestMethod `
+        "https://raw.githubusercontent.com/ZenitH-AT/nvidia-data/$nvidiaDataSourceCommit/gpu-data.json" `
+        -UserAgent $userAgent -TimeoutSec 60
     $pfid = $null
     foreach ($section in $gpuData.PSObject.Properties) {
         $hit = $section.Value.PSObject.Properties |
@@ -1534,13 +1787,13 @@ try {
             break
         }
     }
-    if (-not $pfid) {
-        throw 'No known GPU found in the community GPU map.'
+    if ("$pfid" -notmatch '^\d+$') {
+        throw 'No valid numeric GPU id found in the community GPU map.'
     }
 
     $lookupUrl = 'https://gfwsl.geforce.com/services_toolkit/services/com/nvidia/services/AjaxDriverService.php' +
         "?func=DriverManualLookup&pfid=$pfid&osID=135&languageCode=1033&isWHQL=1&dch=1&sort1=0&numberOfResults=1"
-    $info = (Invoke-RestMethod $lookupUrl -UserAgent $userAgent).IDS[0].downloadInfo
+    $info = (Invoke-RestMethod $lookupUrl -UserAgent $userAgent -TimeoutSec 60).IDS[0].downloadInfo
     if (-not $info.Version) {
         throw 'Lookup returned no version.'
     }
@@ -1552,6 +1805,7 @@ try {
         # offer the download directly instead of the details page.
         download = "$($info.DownloadURL)"
     }
+    Mark-Fresh 'nvidia'
 }
 catch {
     Write-Warning "NVIDIA lookup failed: $($_.Exception.Message)"
@@ -1603,6 +1857,21 @@ function Write-RunSummary([string] $outcome) {
     if ($sweepCounts.Contains('name conflicts')) {
         $lines += "| Names claimed by two vendors | $($sweepCounts['name conflicts']) |"
     }
+    if ($sweepCounts.Contains('Gigabyte revision-ambiguous')) {
+        $lines += "| Gigabyte names spanning revisions | $($sweepCounts['Gigabyte revision-ambiguous']) |"
+    }
+    if ($sweepCounts.Contains('Gigabyte beta entries replaced')) {
+        $lines += "| Gigabyte beta entries replaced | $($sweepCounts['Gigabyte beta entries replaced']) |"
+    }
+    if ($sweepCounts.Contains('date regressions accepted')) {
+        $lines += "| Date regressions accepted | $($sweepCounts['date regressions accepted']) |"
+    }
+    if ($sweepCounts.Contains('dropped, unreadable BIOS')) {
+        $lines += "| Unreadable BIOS values dropped | $($sweepCounts['dropped, unreadable BIOS']) |"
+    }
+    if ($sweepCounts.Contains('recovered, garbled BIOS')) {
+        $lines += "| Garbled BIOS values recovered | $($sweepCounts['recovered, garbled BIOS']) |"
+    }
     if ($motherboards) {
         $lines += "| Boards total | $(Measure-Entries $motherboards) |"
     }
@@ -1621,8 +1890,8 @@ $publishConflicts = if ((Measure-Entries $boardConflicts) -gt 0) { $boardConflic
 # Leave the file untouched when the data hasn't changed, so the scheduled
 # workflow only commits on actual releases.
 if ($previousFeed) {
-    $existingData = @($previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.motherboardConflicts, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
-    $newData = @($amd, $windowsBuilds, $windows10, $motherboards, $publishConflicts, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
+    $existingData = @($previousFeed.schemaVersion, $previousFeed.amd, $previousFeed.windowsBuilds, $previousFeed.windows10, $previousFeed.motherboards, $previousFeed.motherboardConflicts, $previousFeed.dell, $previousFeed.intel, $previousFeed.nvidia) | ConvertTo-Json -Depth 5
+    $newData = @(1, $amd, $windowsBuilds, $windows10, $motherboards, $publishConflicts, $dell, $intel, $nvidia) | ConvertTo-Json -Depth 5
     if ($existingData -eq $newData) {
         Write-RunSummary 'unchanged - feed not rewritten'
         return
@@ -1630,8 +1899,20 @@ if ($previousFeed) {
 }
 
 $feed = [ordered]@{
-    updated = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    schemaVersion = 1
+    updated = $runTimestamp
     source = $gpuSourceUrl
+    communitySources = [ordered]@{
+        intelChipsetInf = [ordered]@{
+            repository = 'FirstEverTech/Universal-Intel-Chipset-Updater'
+            commit = $intelInfSourceCommit
+        }
+        nvidiaGpuMap = [ordered]@{
+            repository = 'ZenitH-AT/nvidia-data'
+            commit = $nvidiaDataSourceCommit
+        }
+    }
+    freshness = $freshness
     amd = $amd
 }
 if ($windowsBuilds) {
@@ -1658,6 +1939,8 @@ if ($intel) {
 if ($nvidia) {
     $feed.nvidia = $nvidia
 }
+
+Assert-FeedContract $feed | Out-Null
 
 $json = $feed | ConvertTo-Json -Depth 5
 Set-Content -Path $outputPath -Value $json -Encoding utf8
