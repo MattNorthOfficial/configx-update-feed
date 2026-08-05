@@ -1201,15 +1201,34 @@ try {
     # Such a board is better left unlisted - no verdict at all - than compared
     # against a string its firmware can never match.
     $droppedBios = 0
+    $recoveredBios = 0
+    $biosShape = '^[A-Za-z0-9][A-Za-z0-9._/+-]{0,19}$'
 
     $boards = [ordered]@{}
     foreach ($name in ($fetched.Keys | Sort-Object)) {
         $entry = $fetched[$name]
 
-        if ("$($entry.bios)" -notmatch '^[A-Za-z0-9][A-Za-z0-9._/+-]{0,19}$') {
-            Write-Warning "Dropping '$name': implausible BIOS value '$($entry.bios)'."
-            $droppedBios++
-            continue
+        $value = "$($entry.bios)"
+        if ($value -notmatch $biosShape) {
+            # Corruption tends to be a tail rather than the whole value:
+            # B550 AORUS PRO V2's page serves "F19" followed by three
+            # non-ASCII characters, and dropping the board costs its owners
+            # a verdict over a version that is plainly readable. Recover the
+            # head only when everything after it is non-ASCII - a tail with
+            # ordinary characters in it could be part of the version, and
+            # guessing where that ends is how you publish half a version.
+            $head = [regex]::Match($value, '^[A-Za-z0-9][A-Za-z0-9._/+-]*').Value
+            $tail = $value.Substring($head.Length)
+            if ($head.Length -ge 2 -and $head -match $biosShape -and $tail -notmatch '[\x20-\x7E]') {
+                Write-Warning "Recovered '$name': BIOS '$value' read as '$head'."
+                $entry.bios = $head
+                $recoveredBios++
+            }
+            else {
+                Write-Warning "Dropping '$name': implausible BIOS value '$value'."
+                $droppedBios++
+                continue
+            }
         }
 
         # Name the vendor whose board this reading describes. The app matches
@@ -1241,6 +1260,9 @@ try {
     $sweepCounts['carried forward'] = $boards.Count - $freshCount
     if ($droppedBios -gt 0) {
         $sweepCounts['dropped, unreadable BIOS'] = $droppedBios
+    }
+    if ($recoveredBios -gt 0) {
+        $sweepCounts['recovered, garbled BIOS'] = $recoveredBios
     }
     $motherboards = $boards
 }
