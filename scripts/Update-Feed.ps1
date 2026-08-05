@@ -103,11 +103,21 @@ $previousFeed = if (Test-Path $outputPath) {
 }
 else { $null }
 
+function Format-FeedTimestamp($value) {
+    if ($value -is [datetime]) {
+        return $value.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    }
+    if ($value -is [datetimeoffset]) {
+        return $value.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    }
+    return "$value"
+}
+
 $runTimestamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
 $freshness = [ordered]@{}
 if ($previousFeed.freshness) {
     foreach ($entry in $previousFeed.freshness.PSObject.Properties) {
-        $freshness[$entry.Name] = "$($entry.Value)"
+        $freshness[$entry.Name] = Format-FeedTimestamp $entry.Value
     }
 }
 elseif ($previousFeed.updated) {
@@ -119,7 +129,7 @@ elseif ($previousFeed.updated) {
             'motherboards.asrock', 'motherboards.asus',
             'dell', 'intel.chipset', 'intel.arc', 'intel.xe',
             'intel.rst20', 'intel.rst21', 'intel.chipsetInf', 'nvidia')) {
-        $freshness[$key] = "$($previousFeed.updated)"
+        $freshness[$key] = Format-FeedTimestamp $previousFeed.updated
     }
 }
 function Mark-Fresh([string] $key) {

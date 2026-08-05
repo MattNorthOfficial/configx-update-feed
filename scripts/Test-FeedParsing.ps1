@@ -24,6 +24,7 @@ function Get-ScraperFunctionText([string] $name) {
 Invoke-Expression (Get-ScraperFunctionText 'Read-JsonFromBrowserDom')
 Invoke-Expression (Get-ScraperFunctionText 'Test-GigabyteBetaBios')
 Invoke-Expression (Get-ScraperFunctionText 'Copy-BoardEntry')
+Invoke-Expression (Get-ScraperFunctionText 'Format-FeedTimestamp')
 
 $payload = '{"result":{"title":"MAG X870 TOMAHAWK WIFI","downloads":{"AMI BIOS":[]}}}'
 $encoded = [System.Net.WebUtility]::HtmlEncode($payload)
@@ -53,6 +54,13 @@ $copy = Copy-BoardEntry ([pscustomobject]@{
 })
 if (-not $copy.revisionAmbiguous -or $copy.bios -ne 'F41') {
     throw 'Board carry-forward dropped an additive safety field.'
+}
+
+$utc = [datetime]::SpecifyKind(
+    [datetime]'2026-08-05 13:06:09',
+    [System.DateTimeKind]::Utc)
+if ((Format-FeedTimestamp $utc) -ne '2026-08-05T13:06:09Z') {
+    throw 'A parsed JSON timestamp was not normalized back to ISO-8601 UTC.'
 }
 
 Write-Host 'Feed parser helper tests passed.'
