@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-05T09:22:23Z",
+  "updated": "2026-08-05T13:06:09Z",
   "source": "https://gpuopen.com/version-table/",
   "amd": {
     "windows": {
@@ -891,8 +891,8 @@
       "vendor": "asrock"
     },
     "B550 GAMING": {
-      "bios": "7C56vW11",
-      "date": "2026-07-27",
+      "bios": "7C56vW1",
+      "date": "2026-08-05",
       "vendor": "msi"
     },
     "B550 GAMING GEN3": {
@@ -906,8 +906,8 @@
       "vendor": "msi"
     },
     "B550 GAMING WIFI6E": {
-      "bios": "7C56vW11",
-      "date": "2026-07-27",
+      "bios": "7C56vW1",
+      "date": "2026-08-05",
       "vendor": "msi"
     },
     "B550 GAMING X": {
@@ -2683,6 +2683,12 @@
       "bios": "F6a",
       "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI6-PLUS-GEN5/support#support-dl-bios",
+      "vendor": "gigabyte"
+    },
+    "B760M GAMING WIFI6E DDR4 GEN5": {
+      "bios": "F3a",
+      "date": "2026-07-30",
+      "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI6E-DDR4-GEN5/support#support-dl-bios",
       "vendor": "gigabyte"
     },
     "B760M GAMING WIFI6E GEN5": {
@@ -7067,6 +7073,11 @@
       "date": "2026-07-02",
       "vendor": "msi"
     },
+    "MPG B850M EDGE TI MAX WIFI (Rev 1)": {
+      "bios": "7E92v1A32",
+      "date": "2026-07-02",
+      "vendor": "msi"
+    },
     "MPG B860I EDGE TI WIFI": {
       "bios": "7E43v1A60",
       "date": "2026-07-14",
@@ -7248,8 +7259,8 @@
       "vendor": "msi"
     },
     "MPG Z890 EDGE TI WIFI": {
-      "bios": "7E19v2AA0",
-      "date": "2026-04-07",
+      "bios": "7E19v2AB0",
+      "date": "2026-08-05",
       "vendor": "msi"
     },
     "MPG Z890I EDGE TI WIFI": {
@@ -14443,8 +14454,8 @@
       "vendor": "gigabyte"
     },
     "Z790 GAMING PLUS AX": {
-      "bios": "F8",
-      "date": "2026-06-30",
+      "bios": "F9a",
+      "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/Z790-GAMING-PLUS-AX-rev-10/support#support-dl-bios",
       "vendor": "gigabyte"
     },
@@ -14475,8 +14486,8 @@
       "vendor": "asus"
     },
     "Z790 GAMING X": {
-      "bios": "FH",
-      "date": "2026-06-30",
+      "bios": "FIa",
+      "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/Z790-GAMING-X-rev-20/support#support-dl-bios",
       "vendor": "gigabyte"
     },
@@ -14618,8 +14629,8 @@
       "vendor": "gigabyte"
     },
     "Z790 UD WIFI7": {
-      "bios": "F3",
-      "date": "2026-06-29",
+      "bios": "F4a",
+      "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/Z790-UD-WIFI7-rev-12/support#support-dl-bios",
       "vendor": "gigabyte"
     },
@@ -14665,8 +14676,8 @@
       "vendor": "msi"
     },
     "Z790I AORUS ULTRA": {
-      "bios": "F13",
-      "date": "2026-06-30",
+      "bios": "F14a",
+      "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/Z790I-AORUS-ULTRA-rev-10/support#support-dl-bios",
       "vendor": "gigabyte"
     },
@@ -14677,8 +14688,8 @@
       "vendor": "asrock"
     },
     "Z790M AORUS ELITE": {
-      "bios": "F14",
-      "date": "2026-06-30",
+      "bios": "F15a",
+      "date": "2026-07-31",
       "url": "https://www.gigabyte.com/Motherboard/Z790M-AORUS-ELITE-rev-10/support#support-dl-bios",
       "vendor": "gigabyte"
     },
@@ -15009,59 +15020,59 @@
     }
   },
   "motherboardConflicts": {
-    "B650M GAMING PLUS WIFI": {
-      "gigabyte": {
-        "bios": "F41c",
-        "date": "2026-07-21",
-        "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-PLUS-WIFI-rev-10-11-12/support#support-dl-bios"
-      },
-      "msi": {
-        "bios": "7E24v1E2",
-        "date": "2026-07-06"
-      }
-    },
-    "B760M GAMING WIFI": {
-      "gigabyte": {
-        "bios": "F15a",
-        "date": "2026-07-31",
-        "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI-rev-12-14/support#support-dl-bios"
-      },
-      "msi": {
-        "bios": "7D90vH9",
-        "date": "2026-04-07"
-      }
-    },
-    "B760M GAMING PLUS WIFI DDR4": {
-      "gigabyte": {
-        "bios": "F11a",
-        "date": "2026-07-31",
-        "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-PLUS-WIFI-DDR4-rev-10/support#support-dl-bios"
-      },
-      "msi": {
-        "bios": "7D99vM8",
-        "date": "2026-06-08"
-      }
-    },
-    "B840M GAMING PLUS WIFI6E": {
-      "gigabyte": {
-        "bios": "F7c",
-        "date": "2026-07-21",
-        "url": "https://www.gigabyte.com/Motherboard/B840M-GAMING-PLUS-WIFI6E/support#support-dl-bios"
-      },
-      "msi": {
-        "bios": "7E77v1A42",
-        "date": "2026-06-26"
-      }
-    },
     "B650M GAMING WIFI": {
+      "msi": {
+        "bios": "7E30v1F2",
+        "date": "2026-07-06"
+      },
       "gigabyte": {
         "bios": "F41c",
         "date": "2026-07-21",
         "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-WIFI-rev-10/support#support-dl-bios"
-      },
+      }
+    },
+    "B760M GAMING WIFI": {
       "msi": {
-        "bios": "7E30v1F2",
+        "bios": "7D90vH9",
+        "date": "2026-04-07"
+      },
+      "gigabyte": {
+        "bios": "F15a",
+        "date": "2026-07-31",
+        "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-WIFI-rev-12-14/support#support-dl-bios"
+      }
+    },
+    "B760M GAMING PLUS WIFI DDR4": {
+      "msi": {
+        "bios": "7D99vM8",
+        "date": "2026-06-08"
+      },
+      "gigabyte": {
+        "bios": "F11a",
+        "date": "2026-07-31",
+        "url": "https://www.gigabyte.com/Motherboard/B760M-GAMING-PLUS-WIFI-DDR4-rev-10/support#support-dl-bios"
+      }
+    },
+    "B840M GAMING PLUS WIFI6E": {
+      "msi": {
+        "bios": "7E77v1A42",
+        "date": "2026-06-26"
+      },
+      "gigabyte": {
+        "bios": "F7c",
+        "date": "2026-07-21",
+        "url": "https://www.gigabyte.com/Motherboard/B840M-GAMING-PLUS-WIFI6E/support#support-dl-bios"
+      }
+    },
+    "B650M GAMING PLUS WIFI": {
+      "msi": {
+        "bios": "7E24v1E2",
         "date": "2026-07-06"
+      },
+      "gigabyte": {
+        "bios": "F41c",
+        "date": "2026-07-21",
+        "url": "https://www.gigabyte.com/Motherboard/B650M-GAMING-PLUS-WIFI-rev-10-11-12/support#support-dl-bios"
       }
     }
   },
