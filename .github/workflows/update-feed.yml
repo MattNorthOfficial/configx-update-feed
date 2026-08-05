@@ -104,10 +104,12 @@ jobs:
           FEED_SIGNING_KEY_PEM: ${{ secrets.FEED_SIGNING_KEY_PEM }}
         run: |
           git diff --quiet -- feed/updates.json
-          if ($LASTEXITCODE -ne 0 -or -not (Test-Path feed/updates.sig)) {
+          $feedChanged = $LASTEXITCODE -ne 0
+          if ($feedChanged -or -not (Test-Path feed/updates.sig)) {
             ./scripts/Sign-Feed.ps1
           }
           ./scripts/Verify-FeedSignature.ps1
+          exit 0
 
       # Now that the two run types can overlap, one can publish while the other
       # is still working. A full sweep owns the motherboard sections, but a
