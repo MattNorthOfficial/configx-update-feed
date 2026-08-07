@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-06T12:28:45Z",
+  "updated": "2026-08-07T00:28:24Z",
   "source": "https://gpuopen.com/version-table/",
   "communitySources": {
     "intelChipsetInf": {
@@ -13,22 +13,22 @@
     }
   },
   "freshness": {
-    "amd.windows": "2026-08-06T12:28:45Z",
-    "amd.chipset": "2026-08-06T12:28:45Z",
-    "windowsBuilds": "2026-08-06T12:28:45Z",
-    "windows10": "2026-08-06T12:28:45Z",
+    "amd.windows": "2026-08-07T00:28:24Z",
+    "amd.chipset": "2026-08-07T00:28:24Z",
+    "windowsBuilds": "2026-08-07T00:28:24Z",
+    "windows10": "2026-08-07T00:28:24Z",
     "motherboards.msi": "2026-08-06T12:28:45Z",
     "motherboards.gigabyte": "2026-08-06T12:28:45Z",
     "motherboards.asrock": "2026-08-06T12:28:45Z",
     "motherboards.asus": "2026-08-06T12:28:45Z",
-    "dell": "2026-08-06T12:28:45Z",
+    "dell": "2026-08-07T00:28:24Z",
     "intel.chipset": "2026-08-06T12:28:45Z",
-    "intel.arc": "2026-08-06T12:28:45Z",
-    "intel.xe": "2026-08-06T12:28:45Z",
-    "intel.rst20": "2026-08-06T12:28:45Z",
-    "intel.rst21": "2026-08-06T12:28:45Z",
-    "intel.chipsetInf": "2026-08-06T12:28:45Z",
-    "nvidia": "2026-08-06T12:28:45Z"
+    "intel.arc": "2026-08-07T00:28:24Z",
+    "intel.xe": "2026-08-07T00:28:24Z",
+    "intel.rst20": "2026-08-07T00:28:24Z",
+    "intel.rst21": "2026-08-07T00:28:24Z",
+    "intel.chipsetInf": "2026-08-07T00:28:24Z",
+    "nvidia": "2026-08-07T00:28:24Z"
   },
   "amd": {
     "windows": {
@@ -18807,11 +18807,6 @@
     }
   },
   "intel": {
-    "chipset": {
-      "version": "10.1.20658.8883",
-      "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html",
-      "download": "https://downloadmirror.intel.com/925343/SetupChipset.exe"
-    },
     "arc": {
       "version": "32.0.101.8864",
       "url": "https://www.intel.com/content/www/us/en/download/785597/intel-arc-graphics-windows.html",
@@ -21824,6 +21819,11 @@
       "19D6": "10.1.2.80",
       "8C31": "10.0.24",
       "8CB1": "10.0.24"
+    },
+    "chipset": {
+      "version": "10.1.20658.8883",
+      "url": "https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html",
+      "download": "https://downloadmirror.intel.com/925343/SetupChipset.exe"
     }
   },
   "nvidia": {
